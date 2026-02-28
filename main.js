@@ -112,13 +112,14 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
   const faces = card.querySelectorAll('.card3d-gloss');
 
   /* State */
-  let rotX = 8, rotY = -20;
+  let rotX = 8, rotY = 0;
   let velX = 0, velY = 0;
   let isDragging = false;
   let lastX = 0, lastY = 0;
   let rafId = null;
   let idleId = null;
   let idleOn = false;
+  let idleT = 0;
   let lastTap = 0;
   let flipped = false;
 
@@ -136,13 +137,16 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
     });
   }
 
-  /* ── Idle auto-spin ── */
+  /* ── Idle sway (gentle left-right oscillation, front-facing) ── */
   function startIdle() {
     if (idleOn) return;
     idleOn = true;
+    idleT = 0;
     (function tick() {
       if (!idleOn) return;
-      rotY += 0.22;
+      idleT += 0.012;
+      rotY = Math.sin(idleT) * 20;
+      rotX = 8;
       render();
       idleId = requestAnimationFrame(tick);
     })();
@@ -225,8 +229,8 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
   /* ── Sheet open / close ── */
   new MutationObserver(() => {
     if (sheet.classList.contains('open')) {
-      /* Spring-in animation then start idle spin */
-      rotX = 8; rotY = -20; flipped = false;
+      /* Spring-in to centre, then start gentle sway */
+      rotX = 8; rotY = 0; flipped = false;
       render('transform 0.7s cubic-bezier(0.34,1.4,0.64,1)');
       setTimeout(() => { render(); startIdle(); }, 800);
     } else {

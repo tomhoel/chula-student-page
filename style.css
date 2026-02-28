@@ -822,6 +822,7 @@ html[lang="en"] .act-desc { font-family: var(--f); }
 
 .sheet-panel-card {
   padding-bottom: max(env(safe-area-inset-bottom), 28px);
+  overflow: hidden; /* prevent card drag from scrolling the panel */
 }
 
 /* Stage: centres the scene */
@@ -830,6 +831,7 @@ html[lang="en"] .act-desc { font-family: var(--f); }
   justify-content: center;
   align-items: center;
   padding: 20px 0 12px;
+  touch-action: none; /* prevent touch scroll bleeding through to the panel */
 }
 
 /*
@@ -869,7 +871,7 @@ html[lang="en"] .act-desc { font-family: var(--f); }
 .card3d-face {
   position: absolute;
   inset: 0;
-  border-radius: 10px;
+  border-radius: 4px;
   overflow: hidden;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -905,38 +907,38 @@ html[lang="en"] .act-desc { font-family: var(--f); }
 */
 .card3d-edge {
   position: absolute;
-  background: linear-gradient(135deg, #e8e6e4 0%, #d4d2d0 100%);
+  background: #c0bebe; /* solid gray — matches the core fill */
 }
 
 /*
-  Edges are INSET by the card's border-radius (10px) on each end.
-  This keeps edges out of the corner zones so the face border-radius
-  reads as naturally rounded — no hard 90° corner visible.
+  Edges are INSET by the card's border-radius (4px) on each end
+  so they only cover the straight sections of the face sides.
+  The card3d-core fills the corner gaps with the same gray.
 */
 
 /* Right edge — faces +X */
 .card3d-edge-right {
-  top: 10px;
+  top: 4px;
   right: -4px;
   width: 8px;
-  height: calc(100% - 20px);
+  height: calc(100% - 8px);
   transform: rotateY(-90deg);
 }
 
 /* Left edge — faces -X */
 .card3d-edge-left {
-  top: 10px;
+  top: 4px;
   left: -4px;
   width: 8px;
-  height: calc(100% - 20px);
+  height: calc(100% - 8px);
   transform: rotateY(90deg);
 }
 
 /* Top edge — faces -Y (up) */
 .card3d-edge-top {
   top: -4px;
-  left: 10px;
-  width: calc(100% - 20px);
+  left: 4px;
+  width: calc(100% - 8px);
   height: 8px;
   transform: rotateX(-90deg);
 }
@@ -944,17 +946,30 @@ html[lang="en"] .act-desc { font-family: var(--f); }
 /* Bottom edge — faces +Y (down) */
 .card3d-edge-bottom {
   bottom: -4px;
-  left: 10px;
-  width: calc(100% - 20px);
+  left: 4px;
+  width: calc(100% - 8px);
   height: 8px;
   transform: rotateX(90deg);
+}
+
+/* ── Card core — fills corner gaps with gray ── */
+/*
+  Sits at Z=0 (midplane between the two faces).
+  No border-radius so its square corners fill the transparent
+  corner zones left by the face's border-radius.
+  No backface-visibility: hidden so it shows from both sides.
+*/
+.card3d-core {
+  position: absolute;
+  inset: 0;
+  background: #c0bebe;
 }
 
 /* ── Glossy specular highlight — position driven by JS CSS vars ── */
 .card3d-gloss {
   position: absolute;
   inset: 0;
-  border-radius: 10px;
+  border-radius: 4px;
   background: radial-gradient(
     circle at var(--gx, 50%) var(--gy, 30%),
     rgba(255,255,255,0.30) 0%,
