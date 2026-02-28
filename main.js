@@ -157,14 +157,28 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
   function startIdle() {
     if (idleOn) return;
     idleOn = true;
-    idleT = 0;
-    (function tick() {
+    /* Smoothly settle from current rotation to idle start before swaying */
+    var fromX = rotX, fromY = rotY, t = 0;
+    (function settle() {
       if (!idleOn) return;
-      idleT += 0.006;
-      rotY = Math.sin(idleT) * 30;  /* ±30° so edge thickness is clearly visible */
-      rotX = 8;
+      t += 0.025;                              /* ~40 frames to settle */
+      if (t >= 1) {
+        rotX = 8; rotY = 0; idleT = 0;
+        (function tick() {
+          if (!idleOn) return;
+          idleT += 0.006;
+          rotY = Math.sin(idleT) * 30;  /* ±30° so edge thickness is clearly visible */
+          rotX = 8;
+          render();
+          idleId = requestAnimationFrame(tick);
+        })();
+        return;
+      }
+      var ease = 1 - Math.pow(1 - t, 3);      /* cubic ease-out */
+      rotX = fromX + (8 - fromX) * ease;
+      rotY = fromY + (0 - fromY) * ease;
       render();
-      idleId = requestAnimationFrame(tick);
+      idleId = requestAnimationFrame(settle);
     })();
   }
   function stopIdle() {

@@ -192,6 +192,26 @@
       <svg class="card-arrow card-arrow-inline" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
     </button>
 
+    <button class="card card-wide card-map" data-sheet="location" type="button">
+      <div class="card-map-pin ci-pink">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+          <circle cx="12" cy="9" r="2.5"/>
+        </svg>
+      </div>
+      <div class="card-wide-body">
+        <span class="card-label">
+          <span class="l-th">แผนที่มหาวิทยาลัย</span>
+          <span class="l-en">Campus Map</span>
+        </span>
+        <span class="card-sub">
+          <span class="l-th">คณะเศรษฐศาสตร์ · จุฬาฯ</span>
+          <span class="l-en">Faculty of Economics · CU</span>
+        </span>
+      </div>
+      <svg class="card-arrow card-arrow-inline" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </button>
+
   </div>
 
   <!-- ══════════════════════════════════════
@@ -402,6 +422,85 @@
           <span class="l-en">University Sport</span>
         </span>
       </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Campus Map Sheet -->
+<div class="sheet" id="sheet-location" role="dialog" aria-modal="true">
+  <div class="sheet-scrim" data-close></div>
+  <div class="sheet-panel sheet-panel-map">
+    <div class="sheet-handle"></div>
+
+    <div class="sheet-head">
+      <h2 class="sheet-title">
+        <span class="l-th">แผนที่มหาวิทยาลัย</span>
+        <span class="l-en">Campus Map</span>
+      </h2>
+      <button class="sheet-close" data-close aria-label="Close">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- Map embed -->
+    <div class="map-frame">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2200!2d100.5283!3d13.7328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29ed278ab0a01%3A0xdea36a8674421495!2sFaculty%20of%20Economics%2C%20Chulalongkorn%20University!5e0!3m2!1sen!2sth"
+        width="100%" height="100%"
+        style="border:0" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Faculty of Economics, Chulalongkorn University">
+      </iframe>
+    </div>
+
+    <!-- Location details -->
+    <div class="map-details">
+      <div class="map-place">
+        <div class="map-place-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+        </div>
+        <div>
+          <h3 class="map-place-name">
+            <span class="l-th">คณะเศรษฐศาสตร์</span>
+            <span class="l-en">Faculty of Economics</span>
+          </h3>
+          <p class="map-place-addr">
+            <span class="l-th">254 ถ.พญาไท แขวงวังใหม่ เขตปทุมวัน กรุงเทพฯ 10330</span>
+            <span class="l-en">254 Phayathai Rd, Pathumwan, Bangkok 10330</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="sheet-sep"></div>
+
+      <div class="map-transit">
+        <div class="map-transit-row">
+          <span class="transit-badge transit-bts">BTS</span>
+          <span class="transit-text">
+            <span class="l-th">สถานีสยาม / สนามกีฬาแห่งชาติ</span>
+            <span class="l-en">Siam / National Stadium</span>
+          </span>
+        </div>
+        <div class="map-transit-row">
+          <span class="transit-badge transit-mrt">MRT</span>
+          <span class="transit-text">
+            <span class="l-th">สถานีสามย่าน (ทางออก 2)</span>
+            <span class="l-en">Sam Yan Station (Exit 2)</span>
+          </span>
+        </div>
+      </div>
+
+      <a class="map-directions-btn" href="https://www.google.com/maps/dir/?api=1&destination=Faculty+of+Economics,+Chulalongkorn+University,+Bangkok" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+        </svg>
+        <span class="l-th">เปิดเส้นทาง</span>
+        <span class="l-en">Get Directions</span>
+      </a>
     </div>
 
   </div>

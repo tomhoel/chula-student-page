@@ -768,6 +768,130 @@ html[lang="en"] .act-desc { font-family: var(--f); }
   text-transform: uppercase;
 }
 
+/* ── Campus Map card button ── */
+.card-map { gap: 10px; }
+
+.card-map-pin {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Campus Map sheet content ── */
+.sheet-panel-map {
+  padding-bottom: max(env(safe-area-inset-bottom), 24px);
+}
+
+.map-frame {
+  width: 100%;
+  height: 200px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.04);
+  margin-bottom: 16px;
+}
+
+.map-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.map-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.map-place {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.map-place-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--cu-tint);
+  color: var(--cu);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.map-place-name {
+  font: 600 15px / 1.2 var(--f-th);
+  color: var(--t1);
+  margin-bottom: 4px;
+}
+
+html[lang="en"] .map-place-name { font-family: var(--f); }
+
+.map-place-addr {
+  font: 400 12px / 1.5 var(--f-th);
+  color: var(--t2);
+}
+
+html[lang="en"] .map-place-addr { font-family: var(--f); }
+
+.map-transit {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.map-transit-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.transit-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font: 700 10px / 1 var(--f);
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.transit-bts { background: #7fb241; }
+.transit-mrt { background: #1e50a0; }
+
+.transit-text {
+  font: 400 13px / 1.3 var(--f-th);
+  color: var(--t1);
+}
+
+html[lang="en"] .transit-text { font-family: var(--f); }
+
+.map-directions-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 12px;
+  background: var(--cu);
+  color: #fff;
+  border-radius: 12px;
+  font: 600 13px / 1 var(--f-th);
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+html[lang="en"] .map-directions-btn { font-family: var(--f); }
+
+.map-directions-btn:active { background: var(--cu-dark); }
+
 /* ══════════════════════════════════════════════════════
    DESKTOP — phone-frame style
 ══════════════════════════════════════════════════════ */
