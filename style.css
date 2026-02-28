@@ -203,13 +203,14 @@ html[lang="en"] .lang-stable > .l-th {
 
 /* Photo column — flex container so photo fills full column height */
 .id-photo-col {
-  flex-shrink: 0;
+  flex: 0 0 33.333%;
+  max-width: 33.333%;
   display: flex;
   border-right: 1px solid rgba(0,0,0,0.08);
 }
 
 .id-photo {
-  width: 88px;
+  width: 100%;
   flex: 1;          /* fills whatever height the info column sets */
   object-fit: cover;
   object-position: top center;
@@ -924,8 +925,6 @@ html[lang="en"] .map-directions-btn { font-family: var(--f); }
       0 60px 120px rgba(222,93,142,0.10);
     overflow: hidden;
   }
-
-  .id-photo { width: 100px; }
 
   .sheet-panel { max-width: 430px; }
 }
