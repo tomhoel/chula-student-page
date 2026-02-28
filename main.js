@@ -144,7 +144,7 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
     idleT = 0;
     (function tick() {
       if (!idleOn) return;
-      idleT += 0.012;
+      idleT += 0.006;
       rotY = Math.sin(idleT) * 20;
       rotX = 8;
       render();
