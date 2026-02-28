@@ -857,9 +857,9 @@ html[lang="en"] .act-desc { font-family: var(--f); }
 .card3d-scene {
   perspective: 900px;
   perspective-origin: 50% 40%;
-  /* Size = card + 8px overhang on every side for the 16px-thick edges */
-  width: 210px;
-  height: 320px;
+  /* Size = card + 4px overhang on every side for the 8px-thick edges */
+  width: 198px;
+  height: 309px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -897,12 +897,12 @@ html[lang="en"] .act-desc { font-family: var(--f); }
 
 /* Front sits half-thickness forward */
 .card3d-front {
-  transform: translateZ(8px);
+  transform: translateZ(4px);
 }
 
 /* Back is flipped and sits half-thickness backward */
 .card3d-back {
-  transform: rotateY(180deg) translateZ(8px);
+  transform: rotateY(180deg) translateZ(4px);
 }
 
 .card3d-face img {
@@ -913,64 +913,73 @@ html[lang="en"] .act-desc { font-family: var(--f); }
   pointer-events: none;
 }
 
-/* ── Card edges (thickness = 16px total, 8px per half) ── */
+/* ── Card edges (thickness = 8px total, 4px per half) ── */
 /*
-  Each edge element is T=16px wide, centred on the card boundary
-  (offset = T/2 = 8px), rotated 90° to face outward.
-  Gold colour matches the dominant tone of the card face.
-  border-radius: 10px curves the ends to meet the face corners.
+  Each edge element is T=8px wide, centred on the card boundary
+  (offset = T/2 = 4px), rotated 90° to face outward.
+  Shortened by border-radius (10px) at each end so they don't
+  intrude into the corner zones — corners are handled by slices.
 */
 .card3d-edge {
   position: absolute;
   background: linear-gradient(to bottom, #d4aa3a, #b8852a, #d4aa3a);
-  border-radius: 10px;
+  border-radius: 3px;
 }
 
 /* Right edge — faces +X */
 .card3d-edge-right {
-  top: 0;
-  right: -8px;
-  width: 16px;
-  height: 100%;
+  top: 10px;
+  right: -4px;
+  width: 8px;
+  height: calc(100% - 20px);
   transform: rotateY(-90deg);
 }
 
 /* Left edge — faces -X */
 .card3d-edge-left {
-  top: 0;
-  left: -8px;
-  width: 16px;
-  height: 100%;
+  top: 10px;
+  left: -4px;
+  width: 8px;
+  height: calc(100% - 20px);
   transform: rotateY(90deg);
 }
 
 /* Top edge — faces -Y (up) */
 .card3d-edge-top {
-  top: -8px;
-  left: 0;
-  width: 100%;
-  height: 16px;
+  top: -4px;
+  left: 10px;
+  width: calc(100% - 20px);
+  height: 8px;
   transform: rotateX(-90deg);
 }
 
 /* Bottom edge — faces +Y (down) */
 .card3d-edge-bottom {
-  bottom: -8px;
-  left: 0;
-  width: 100%;
-  height: 16px;
+  bottom: -4px;
+  left: 10px;
+  width: calc(100% - 20px);
+  height: 8px;
   transform: rotateX(90deg);
+}
+
+/* ── Corner slices — stacked layers with border-radius for smooth 3D corners ── */
+.card3d-slice {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: linear-gradient(to bottom, #d4aa3a, #b8852a, #d4aa3a);
+  pointer-events: none;
 }
 
 /* ── Card core — fills corner gaps from front/back view ── */
 /*
   Sits at Z=0 (midplane between the two faces).
-  No border-radius: square corners poke into the zones the face
-  rounds away, showing gray instead of transparency.
+  border-radius matches the faces so corners look rounded.
 */
 .card3d-core {
   position: absolute;
   inset: 0;
+  border-radius: 10px;
   background: #c49030;
 }
 

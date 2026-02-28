@@ -111,6 +111,20 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
 
   const faces = card.querySelectorAll('.card3d-gloss');
 
+  /* ── Generate Z-stacked slices for smooth 3D rounded corners ── */
+  /* Slices are full rounded-rectangles at different Z depths.       */
+  /* They fill the corner zones where shortened edge panels don't.   */
+  (function generateSlices() {
+    const HALF = 4;                       // half-thickness
+    const firstEdge = card.querySelector('.card3d-edge');
+    for (let z = -HALF + 0.5; z <= HALF - 0.5; z += 1) {
+      const sl = document.createElement('div');
+      sl.className = 'card3d-slice';
+      sl.style.transform = 'translateZ(' + z + 'px)';
+      card.insertBefore(sl, firstEdge);   // behind edges, behind faces
+    }
+  })();
+
   /* State */
   let rotX = 8, rotY = 0;
   let velX = 0, velY = 0;
