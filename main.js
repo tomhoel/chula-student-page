@@ -120,6 +120,8 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
   let idleId = null;
   let idleOn = false;
   let idleT = 0;
+  let idleTimerId = null;   /* covers ALL deferred startIdle calls */
+  let openTimerId  = null;  /* covers the post-open render+startIdle */
   let lastTap = 0;
   let flipped = false;
 
@@ -145,7 +147,7 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
     (function tick() {
       if (!idleOn) return;
       idleT += 0.006;
-      rotY = Math.sin(idleT) * 20;
+      rotY = Math.sin(idleT) * 30;  /* ±30° so edge thickness is clearly visible */
       rotX = 8;
       render();
       idleId = requestAnimationFrame(tick);
@@ -155,9 +157,15 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
     idleOn = false;
     cancelAnimationFrame(idleId);
   }
+  /* Cancel every pending deferred startIdle before starting a new interaction */
+  function cancelPendingIdle() {
+    clearTimeout(idleTimerId);
+    clearTimeout(openTimerId);
+  }
 
   /* ── Drag ── */
   function onStart(x, y) {
+    cancelPendingIdle();   /* ← prevents the open-timer firing mid-drag */
     stopIdle();
     cancelAnimationFrame(rafId);
     isDragging = true;
@@ -190,7 +198,7 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
       if (Math.abs(velX) > 0.15 || Math.abs(velY) > 0.15) {
         rafId = requestAnimationFrame(decay);
       } else {
-        setTimeout(startIdle, 2500);
+        idleTimerId = setTimeout(startIdle, 2500);
       }
     })();
   }
@@ -202,7 +210,7 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
       flipped = !flipped;
       stopIdle();
       render('transform 0.55s cubic-bezier(0.34,1.2,0.64,1)');
-      setTimeout(startIdle, 1500);
+      idleTimerId = setTimeout(startIdle, 1500);
     }
     lastTap = now;
   }
@@ -232,8 +240,11 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
       /* Spring-in to centre, then start gentle sway */
       rotX = 8; rotY = 0; flipped = false;
       render('transform 0.7s cubic-bezier(0.34,1.4,0.64,1)');
-      setTimeout(() => { render(); startIdle(); }, 800);
+      openTimerId = setTimeout(() => {
+        if (!isDragging) { render(); startIdle(); }
+      }, 800);
     } else {
+      cancelPendingIdle();
       stopIdle();
       cancelAnimationFrame(rafId);
     }

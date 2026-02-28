@@ -857,9 +857,9 @@ html[lang="en"] .act-desc { font-family: var(--f); }
 .card3d-scene {
   perspective: 900px;
   perspective-origin: 50% 40%;
-  /* Size = card size + room for edges poking out */
-  width: 210px;
-  height: 330px;
+  /* Size = card + 15px overhang on every side for the 30px-thick edges */
+  width: 224px;
+  height: 334px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -897,12 +897,12 @@ html[lang="en"] .act-desc { font-family: var(--f); }
 
 /* Front sits half-thickness forward */
 .card3d-front {
-  transform: translateZ(4px);
+  transform: translateZ(15px);
 }
 
 /* Back is flipped and sits half-thickness backward */
 .card3d-back {
-  transform: rotateY(180deg) translateZ(4px);
+  transform: rotateY(180deg) translateZ(15px);
 }
 
 .card3d-face img {
@@ -913,31 +913,24 @@ html[lang="en"] .act-desc { font-family: var(--f); }
   pointer-events: none;
 }
 
-/* ── Card edges (thickness = 8px) ── */
+/* ── Card edges (thickness = 30px total, 15px per half) ── */
 /*
-  Each edge is centered on the card boundary.
-  Offset = T/2 = 4px, so element center aligns with card edge.
-  Rotation makes it face outward.
+  Each edge element is T=30px wide and spans the full length of its side.
+  It is placed so its centre sits exactly on the card boundary
+  (offset = T/2 = 15px), then rotated 90° to face outward.
+  border-radius: 10px rounds the ends to match the face corner radius.
 */
 .card3d-edge {
   position: absolute;
   background: #f2f0ef;
-  /* Round the ends so each edge curves into the face corners */
   border-radius: 10px;
 }
-
-/*
-  Edges run the FULL length of each side so they seal the corner
-  zones from any viewing angle. The card3d-core fills the same
-  corners from the front/back view. Together they eliminate all
-  see-through gaps.
-*/
 
 /* Right edge — faces +X */
 .card3d-edge-right {
   top: 0;
-  right: -4px;
-  width: 8px;
+  right: -15px;
+  width: 30px;
   height: 100%;
   transform: rotateY(-90deg);
 }
@@ -945,27 +938,27 @@ html[lang="en"] .act-desc { font-family: var(--f); }
 /* Left edge — faces -X */
 .card3d-edge-left {
   top: 0;
-  left: -4px;
-  width: 8px;
+  left: -15px;
+  width: 30px;
   height: 100%;
   transform: rotateY(90deg);
 }
 
 /* Top edge — faces -Y (up) */
 .card3d-edge-top {
-  top: -4px;
+  top: -15px;
   left: 0;
   width: 100%;
-  height: 8px;
+  height: 30px;
   transform: rotateX(-90deg);
 }
 
 /* Bottom edge — faces +Y (down) */
 .card3d-edge-bottom {
-  bottom: -4px;
+  bottom: -15px;
   left: 0;
   width: 100%;
-  height: 8px;
+  height: 30px;
   transform: rotateX(90deg);
 }
 
