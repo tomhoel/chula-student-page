@@ -13,10 +13,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <!-- Prevent dark-mode flash before CSS loads -->
+  <script>
+    (function(){try{var t=localStorage.getItem('cu-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;}catch(_){document.documentElement.dataset.theme='light';}})();
+  </script>
 </head>
 <body>
 
 <div class="app">
+
+  <!-- Ambient animated background blobs (GPU-composited, pointer-events: none) -->
+  <div class="bg-orb bg-orb-1" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb-2" aria-hidden="true"></div>
 
   <!-- ══════════════════════════════════════
        TOP BANNER — white, like CU website
@@ -36,10 +44,37 @@
       </div>
     </div>
 
-    <!-- Language toggle -->
-    <div class="lang-toggle" role="group" aria-label="Language">
-      <button class="lang-btn" data-lang="th" aria-pressed="true">TH</button>
-      <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+    <!-- Controls: share + dark mode + language -->
+    <div class="banner-controls">
+
+      <button class="icon-btn" id="share-btn" aria-label="Share profile">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+          <polyline points="16 6 12 2 8 6"/>
+          <line x1="12" y1="2" x2="12" y2="15"/>
+        </svg>
+      </button>
+
+      <button class="icon-btn" id="theme-btn" aria-label="Toggle dark mode">
+        <!-- Moon: visible in light mode, click to go dark -->
+        <svg class="theme-icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <!-- Sun: visible in dark mode, click to go light -->
+        <svg class="theme-icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn" data-lang="th" aria-pressed="true">TH</button>
+        <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+
     </div>
 
   </header>
@@ -259,7 +294,18 @@
       </div>
       <div class="info-row">
         <dt><span class="l-th">รหัสนิสิต</span><span class="l-en">Student ID</span></dt>
-        <dd class="id-num">01&thinsp;9562&thinsp;33&thinsp;5601&thinsp;45</dd>
+        <div class="id-copy-row">
+          <dd class="id-num">01&thinsp;9562&thinsp;33&thinsp;5601&thinsp;45</dd>
+          <button class="copy-btn" id="copy-id-btn" data-copy="01956233560145" aria-label="Copy student ID">
+            <svg class="copy-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="9" y="9" width="13" height="13" rx="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+            <svg class="copy-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </button>
+        </div>
       </div>
       <div class="info-row">
         <dt><span class="l-th">คณะ</span><span class="l-en">Faculty</span></dt>
@@ -557,6 +603,8 @@
 
   </div>
 </div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="main.js"></script>
 </body>

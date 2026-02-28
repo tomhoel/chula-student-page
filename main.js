@@ -278,3 +278,106 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
     }
   }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
 })();
+
+/* ── TOAST ───────────────────────────────────────────── */
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toast._tid);
+  toast._tid = setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
+/* ── DARK MODE ───────────────────────────────────────── */
+(function () {
+  const btn = document.getElementById('theme-btn');
+  if (!btn) return;
+
+  btn.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('cu-theme', next); } catch (_) {}
+  });
+})();
+
+/* ── SHARE ───────────────────────────────────────────── */
+(function () {
+  const btn = document.getElementById('share-btn');
+  if (!btn) return;
+
+  btn.addEventListener('click', async () => {
+    const payload = {
+      title: 'กรวิชญ์ ฉ่ำไกร · Chulalongkorn University',
+      text:  'Graduate Scholar of Finance, Faculty of Economics, CU',
+      url:   location.href,
+    };
+    try {
+      if (navigator.share) {
+        await navigator.share(payload);
+      } else {
+        await navigator.clipboard.writeText(location.href);
+        showToast('Link copied!');
+      }
+    } catch (_) {}
+  });
+})();
+
+/* ── COPY STUDENT ID ─────────────────────────────────── */
+(function () {
+  const btn = document.getElementById('copy-id-btn');
+  if (!btn) return;
+
+  btn.addEventListener('click', async () => {
+    const text = btn.dataset.copy;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (_) {
+      /* execCommand fallback for older browsers */
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    btn.classList.add('copied');
+    showToast('Student ID copied');
+    clearTimeout(btn._tid);
+    btn._tid = setTimeout(() => btn.classList.remove('copied'), 2200);
+  });
+})();
+
+/* ── GYROSCOPE PARALLAX ──────────────────────────────── */
+(function () {
+  const photo = document.getElementById('profile-photo');
+  if (!photo) return;
+
+  function onOrientation(e) {
+    if (e.gamma === null || e.beta === null) return;
+    /* gamma = left/right tilt, beta = front/back tilt
+       Normalise beta: typical phone held upright ≈ 45-70°   */
+    const x = Math.max(-28, Math.min(28, e.gamma));
+    const y = Math.max(-28, Math.min(28, e.beta - 50));
+    /* scale(1.05) gives overflow room; id-card clips via overflow:hidden */
+    photo.style.transform = `translate(${(x * 0.38).toFixed(2)}px, ${(y * 0.28).toFixed(2)}px) scale(1.05)`;
+  }
+
+  function startGyro() {
+    window.addEventListener('deviceorientation', onOrientation, { passive: true });
+  }
+
+  if (typeof DeviceOrientationEvent !== 'undefined' &&
+      typeof DeviceOrientationEvent.requestPermission === 'function') {
+    /* iOS 13+ — request on first user touch anywhere on the page */
+    document.addEventListener('touchstart', function ask() {
+      document.removeEventListener('touchstart', ask);
+      DeviceOrientationEvent.requestPermission()
+        .then(s => { if (s === 'granted') startGyro(); })
+        .catch(() => {});
+    }, { once: true, passive: true });
+  } else if (typeof DeviceOrientationEvent !== 'undefined') {
+    startGyro();
+  }
+})();
