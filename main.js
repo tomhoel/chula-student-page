@@ -654,32 +654,28 @@ function showToast(msg) {
 
 
 /* ═══════════════════════════════════════════════════════
-   SPORT PHOTO LOADING FIX
+   ATHLETIC PROFILE — SP TAB SWITCHING
 ═══════════════════════════════════════════════════════ */
+(function () {
+  var sheet = document.getElementById('sheet-activities');
+  if (!sheet) return;
 
-(function() {
-  // Handle sport photo loading
-  document.querySelectorAll('.sp-sport-photo img').forEach(img => {
-    // Add loaded class when image loads
-    img.addEventListener('load', () => {
-      img.classList.add('loaded');
+  sheet.addEventListener('click', function (e) {
+    var tab = e.target.closest('.sp-tab');
+    if (!tab) return;
+    var target = tab.dataset.spTab;
+
+    sheet.querySelectorAll('.sp-tab').forEach(function (t) {
+      t.classList.remove('sp-tab--active');
+      t.setAttribute('aria-selected', 'false');
     });
-    
-    // Handle already cached images
-    if (img.complete) {
-      img.classList.add('loaded');
-    }
-    
-    // Error handling
-    img.addEventListener('error', () => {
-      console.error('Failed to load sport photo:', img.src);
-      img.parentElement.parentElement.classList.add('image-error');
-      // Set emoji based on alt text
-      const emoji = img.alt.includes('football') ? '⚽' : 
-                    img.alt.includes('swimming') ? '🏊' : '🏃';
-      img.parentElement.parentElement.setAttribute('data-emoji', emoji);
+    sheet.querySelectorAll('.sp-tab-content').forEach(function (c) {
+      c.classList.remove('active');
     });
+
+    tab.classList.add('sp-tab--active');
+    tab.setAttribute('aria-selected', 'true');
+    var content = document.getElementById('sptab-' + target);
+    if (content) content.classList.add('active');
   });
 })();
-
-console.log('Sport photo loading fix applied');
