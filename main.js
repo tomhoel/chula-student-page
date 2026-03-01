@@ -277,6 +277,23 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
       cancelAnimationFrame(rafId);
     }
   }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
+  
+  /* ── Expose functions for external controls ── */
+  window.card3dFlip = function() {
+    flipped = !flipped;
+    stopIdle();
+    render('transform 0.55s cubic-bezier(0.34,1.2,0.64,1)');
+    idleTimerId = setTimeout(startIdle, 1500);
+  };
+  
+  window.card3dReset = function() {
+    rotX = 8; 
+    rotY = 0; 
+    flipped = false;
+    stopIdle();
+    render('transform 0.5s cubic-bezier(0.34,1.2,0.64,1)');
+    idleTimerId = setTimeout(startIdle, 1000);
+  };
 })();
 
 /* ── TOAST ───────────────────────────────────────────── */
@@ -396,3 +413,410 @@ function showToast(msg) {
     }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
   });
 })();
+
+
+/* ═══════════════════════════════════════════════════════
+   ENHANCED INTERACTIONS & PERFORMANCE
+═══════════════════════════════════════════════════════ */
+
+// Haptic feedback utility
+function haptic(intensity = 'light') {
+  if ('vibrate' in navigator) {
+    const patterns = {
+      light: 10,
+      medium: 20,
+      heavy: 30,
+      success: [10, 50, 10],
+      error: [30, 50, 30]
+    };
+    navigator.vibrate(patterns[intensity] || patterns.light);
+  }
+}
+
+// Add haptic to all buttons
+document.querySelectorAll('button, .card, .nav-item').forEach(el => {
+  el.addEventListener('click', () => haptic('light'));
+});
+
+/* ═══════════════════════════════════════════════════════
+   COLLAPSIBLE SECTIONS
+═══════════════════════════════════════════════════════ */
+
+document.querySelectorAll('.ag-section-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const expanded = header.getAttribute('aria-expanded') === 'true';
+    const contentId = header.getAttribute('aria-controls');
+    const content = document.getElementById(contentId);
+    
+    header.setAttribute('aria-expanded', !expanded);
+    
+    if (expanded) {
+      content.setAttribute('hidden', '');
+    } else {
+      content.removeAttribute('hidden');
+    }
+    
+    haptic('light');
+  });
+});
+
+/* ═══════════════════════════════════════════════════════
+   SHEET SCROLL PROGRESS
+═══════════════════════════════════════════════════════ */
+
+document.querySelectorAll('.sheet-panel').forEach(panel => {
+  const progressBar = panel.querySelector('.sheet-progress-bar');
+  if (!progressBar) return;
+  
+  panel.addEventListener('scroll', () => {
+    const scrollPercent = (panel.scrollTop / (panel.scrollHeight - panel.clientHeight)) * 100;
+    progressBar.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+  }, { passive: true });
+});
+
+/* ═══════════════════════════════════════════════════════
+   3D CARD ENHANCED CONTROLS
+═══════════════════════════════════════════════════════ */
+
+(function() {
+  const scene = document.getElementById('card3d-scene');
+  if (!scene) return;
+  
+  let zoomLevel = 1;
+  const maxZoom = 3;
+  
+  // Zoom controls
+  document.getElementById('zoom-in')?.addEventListener('click', () => {
+    if (zoomLevel < maxZoom) {
+      zoomLevel++;
+      scene.className = `card3d-scene zoom-${zoomLevel}`;
+      haptic('light');
+    }
+  });
+  
+  document.getElementById('zoom-out')?.addEventListener('click', () => {
+    if (zoomLevel > 1) {
+      zoomLevel--;
+      scene.className = `card3d-scene zoom-${zoomLevel}`;
+      haptic('light');
+    }
+  });
+  
+  document.getElementById('view-reset')?.addEventListener('click', () => {
+    zoomLevel = 1;
+    scene.className = 'card3d-scene zoom-1';
+    // Reset rotation
+    if (window.card3dReset) window.card3dReset();
+    haptic('medium');
+  });
+  
+  // Flip button
+  document.getElementById('flip-card')?.addEventListener('click', () => {
+    if (window.card3dFlip) window.card3dFlip();
+    haptic('medium');
+  });
+  
+  // Pinch to zoom support
+  let initialDistance = 0;
+  
+  scene.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 2) {
+      initialDistance = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+    }
+  }, { passive: true });
+  
+  scene.addEventListener('touchmove', (e) => {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      const currentDistance = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      
+      if (currentDistance > initialDistance * 1.2 && zoomLevel < maxZoom) {
+        zoomLevel++;
+        scene.className = `card3d-scene zoom-${zoomLevel}`;
+        initialDistance = currentDistance;
+      } else if (currentDistance < initialDistance * 0.8 && zoomLevel > 1) {
+        zoomLevel--;
+        scene.className = `card3d-scene zoom-${zoomLevel}`;
+        initialDistance = currentDistance;
+      }
+    }
+  }, { passive: false });
+})();
+
+/* ═══════════════════════════════════════════════════════
+   PULL TO REFRESH
+═══════════════════════════════════════════════════════ */
+
+(function() {
+  const app = document.querySelector('.app');
+  if (!app) return;
+  
+  let startY = 0;
+  let isPulling = false;
+  let indicator = null;
+  
+  // Create indicator
+  indicator = document.createElement('div');
+  indicator.className = 'ptr-indicator';
+  indicator.innerHTML = `
+    <div class="spinner" style="display:none;width:16px;height:16px;border-width:2px;"></div>
+    <span>Pull to refresh</span>
+  `;
+  document.body.appendChild(indicator);
+  
+  app.addEventListener('touchstart', (e) => {
+    if (window.scrollY === 0 || app.scrollTop === 0) {
+      startY = e.touches[0].clientY;
+      isPulling = true;
+    }
+  }, { passive: true });
+  
+  app.addEventListener('touchmove', (e) => {
+    if (!isPulling) return;
+    
+    const diff = e.touches[0].clientY - startY;
+    if (diff > 0 && diff < 150) {
+      indicator.classList.add('visible');
+      indicator.style.transform = `translateX(-50%) translateY(${diff * 0.3}px)`;
+      
+      if (diff > 100) {
+        indicator.querySelector('span').textContent = 'Release to refresh';
+      }
+    }
+  }, { passive: true });
+  
+  app.addEventListener('touchend', (e) => {
+    if (!isPulling) return;
+    isPulling = false;
+    
+    const diff = e.changedTouches[0].clientY - startY;
+    indicator.style.transform = '';
+    
+    if (diff > 100) {
+      indicator.querySelector('.spinner').style.display = 'block';
+      indicator.querySelector('span').textContent = 'Refreshing...';
+      indicator.classList.add('refreshing');
+      
+      // Reload after brief delay
+      setTimeout(() => {
+        window.location.reload();
+      }, 800);
+    } else {
+      indicator.classList.remove('visible');
+    }
+  }, { passive: true });
+})();
+
+/* ═══════════════════════════════════════════════════════
+   QUICK SCROLL TO TOP
+═══════════════════════════════════════════════════════ */
+
+(function() {
+  const btn = document.createElement('button');
+  btn.className = 'scroll-top-btn';
+  btn.setAttribute('aria-label', 'Scroll to top');
+  btn.innerHTML = `
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  `;
+  document.body.appendChild(btn);
+  
+  const sheets = document.querySelectorAll('.sheet-panel');
+  let currentSheet = null;
+  
+  sheets.forEach(sheet => {
+    sheet.addEventListener('scroll', () => {
+      if (sheet.scrollTop > 300) {
+        btn.classList.add('visible');
+        currentSheet = sheet;
+      } else {
+        btn.classList.remove('visible');
+      }
+    }, { passive: true });
+  });
+  
+  btn.addEventListener('click', () => {
+    if (currentSheet) {
+      currentSheet.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    haptic('light');
+  });
+})();
+
+/* ═══════════════════════════════════════════════════════
+   RIPPLE EFFECT ON CARDS
+═══════════════════════════════════════════════════════ */
+
+document.querySelectorAll('.card, .ag-section-header, .map-transit-card').forEach(el => {
+  el.classList.add('ripple');
+  
+  el.addEventListener('click', (e) => {
+    const rect = el.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    el.style.setProperty('--press-x', `${x}%`);
+    el.style.setProperty('--press-y', `${y}%`);
+  });
+});
+
+/* ═══════════════════════════════════════════════════════
+   LIGHTBOX LOADING STATE
+═══════════════════════════════════════════════════════ */
+
+(function() {
+  const lightbox = document.getElementById('lightbox-photo');
+  const img = lightbox?.querySelector('.lightbox-img');
+  const loader = lightbox?.querySelector('.lightbox-loader');
+  
+  if (img && loader) {
+    img.addEventListener('load', () => {
+      loader.classList.add('loaded');
+    });
+    
+    // Handle already cached image
+    if (img.complete) {
+      loader.classList.add('loaded');
+    }
+  }
+})();
+
+/* ═══════════════════════════════════════════════════════
+   TOAST NOTIFICATION SYSTEM
+═══════════════════════════════════════════════════════ */
+
+function showToast(message, type = 'default') {
+  let container = document.querySelector('.toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.className = 'toast-container';
+    document.body.appendChild(container);
+  }
+  
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.textContent = message;
+  
+  // Add icon based on type
+  const icons = {
+    success: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+    error: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
+  };
+  
+  if (icons[type]) {
+    toast.insertAdjacentHTML('afterbegin', icons[type]);
+  }
+  
+  container.appendChild(toast);
+  
+  // Trigger animation
+  requestAnimationFrame(() => {
+    toast.classList.add('show');
+  });
+  
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
+}
+
+// Override existing showToast
+window.showToast = showToast;
+
+/* ═══════════════════════════════════════════════════════
+   KEYBOARD NAVIGATION
+═══════════════════════════════════════════════════════ */
+
+document.addEventListener('keydown', (e) => {
+  // Quick escape to close all
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.sheet.open').forEach(sheet => {
+      sheet.classList.remove('open');
+    });
+    document.querySelectorAll('.lightbox.open').forEach(lb => {
+      lb.classList.remove('open');
+    });
+  }
+  
+  // Focus trap in sheets
+  if (e.key === 'Tab') {
+    const activeSheet = document.querySelector('.sheet.open');
+    if (activeSheet) {
+      const focusables = activeSheet.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
+});
+
+/* ═══════════════════════════════════════════════════════
+   PERFORMANCE: INTERSECTION OBSERVER FOR ANIMATIONS
+═══════════════════════════════════════════════════════ */
+
+const animationObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animationPlayState = 'running';
+    } else {
+      entry.target.style.animationPlayState = 'paused';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.bg-orb, .card').forEach(el => {
+  animationObserver.observe(el);
+});
+
+/* ═══════════════════════════════════════════════════════
+   IMAGE LAZY LOADING FALLBACK
+═══════════════════════════════════════════════════════ */
+
+if ('loading' in HTMLImageElement.prototype) {
+  // Browser supports native lazy loading
+  document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+    img.src = img.dataset.src || img.src;
+  });
+} else {
+  // Fallback for older browsers
+  const lazyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src || img.src;
+        lazyObserver.unobserve(img);
+      }
+    });
+  });
+  
+  document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+    lazyObserver.observe(img);
+  });
+}
+
+/* ═══════════════════════════════════════════════════════
+   SERVICE WORKER REGISTRATION (PWA)
+═══════════════════════════════════════════════════════ */
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('SW registered:', reg))
+      .catch(err => console.log('SW registration failed:', err));
+  });
+}
+
+console.log('✨ Enhanced Chula Student Page loaded with all improvements!');
