@@ -369,3 +369,36 @@ function showToast(msg) {
     startGyro();
   }
 })();
+
+/* ── ACADEMIC SHEET — re-animate bars on each open ──── */
+(function () {
+  const sheet = document.getElementById('sheet-academic');
+  if (!sheet) return;
+
+  /* Collect all animated fills so we can reset them before each open */
+  function getAnimatedFills() {
+    return sheet.querySelectorAll(
+      '.ag-bar-fill, .ag-trend-fill, .ag-dist-fill'
+    );
+  }
+
+  new MutationObserver(() => {
+    if (sheet.classList.contains('open')) {
+      /* Briefly kill transition so reset is invisible, then let CSS
+         handle the animated re-entrance (triggered by .sheet.open rule) */
+      getAnimatedFills().forEach(el => {
+        el.style.transition = 'none';
+        el.style.width = '0';
+      });
+      /* One frame later — remove inline overrides so CSS rules apply */
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          getAnimatedFills().forEach(el => {
+            el.style.transition = '';
+            el.style.width = '';
+          });
+        });
+      });
+    }
+  }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
+})();

@@ -409,70 +409,402 @@
 <!-- Academic Sheet -->
 <div class="sheet" id="sheet-academic" role="dialog" aria-modal="true">
   <div class="sheet-scrim" data-close></div>
-  <div class="sheet-panel">
+  <div class="sheet-panel sheet-panel-academic">
     <div class="sheet-handle"></div>
 
     <div class="sheet-head">
       <h2 class="sheet-title">
-        <span class="l-th">ข้อมูลวิชาการ</span>
-        <span class="l-en">Academic Profile</span>
+        <span class="l-th">ผลการเรียน</span>
+        <span class="l-en">Academic Performance</span>
       </h2>
       <button class="sheet-close" data-close aria-label="Close">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
 
-    <div class="uni-row">
-      <img src="cu-logo.png"
-        alt="CU" class="uni-logo" onerror="this.style.display='none'">
-      <div>
-        <p class="uni-th">จุฬาลงกรณ์มหาวิทยาลัย</p>
-        <p class="uni-en">Chulalongkorn University · Est. 1917</p>
+    <!-- ── GPA Hero ── -->
+    <div class="ag-hero">
+      <div class="ag-gpa-ring" aria-label="GPA 3.78 out of 4.00">
+        <span class="ag-gpa-num">3.78</span>
+        <span class="ag-gpa-denom">/4.00</span>
+        <span class="ag-gpa-label">
+          <span class="l-th">เกรดเฉลี่ยสะสม</span>
+          <span class="l-en">Cumulative GPA</span>
+        </span>
+      </div>
+      <div class="ag-hero-right">
+        <div class="ag-hero-stats">
+          <div class="ag-hstat">
+            <span class="ag-hstat-val">5<sup>th</sup></span>
+            <span class="ag-hstat-lbl">
+              <span class="l-th">อันดับในกลุ่ม</span>
+              <span class="l-en">Class Rank</span>
+            </span>
+          </div>
+          <div class="ag-hstat-sep"></div>
+          <div class="ag-hstat">
+            <span class="ag-hstat-val">Top 12%</span>
+            <span class="ag-hstat-lbl">
+              <span class="l-th">เปอร์เซ็นไทล์</span>
+              <span class="l-en">Percentile</span>
+            </span>
+          </div>
+          <div class="ag-hstat-sep"></div>
+          <div class="ag-hstat">
+            <span class="ag-hstat-val">18<span class="ag-hstat-of">/30</span></span>
+            <span class="ag-hstat-lbl">
+              <span class="l-th">หน่วยกิต</span>
+              <span class="l-en">Credits</span>
+            </span>
+          </div>
+        </div>
+        <div class="ag-standing-badge">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span class="l-th">ผู้สมัครเกียรตินิยม</span>
+          <span class="l-en">Honours Candidate</span>
+        </div>
+        <div class="ag-program-tag">M.Sc. Finance · CU · 2025–2029</div>
       </div>
     </div>
 
-    <div class="sheet-sep"></div>
-
-    <div class="acad-block">
-      <span class="acad-tag tag-pink">
-        <span class="l-th">คณะ</span><span class="l-en">Faculty</span>
-      </span>
-      <h3 class="acad-h">
-        <span class="l-th">คณะเศรษฐศาสตร์</span>
-        <span class="l-en">Faculty of Economics</span>
-      </h3>
-      <p class="acad-sub">
-        <span class="l-th">Faculty of Economics</span>
-        <span class="l-en">คณะเศรษฐศาสตร์</span>
+    <!-- ── GPA Trend by Semester ── -->
+    <div class="ag-section">
+      <p class="ag-section-title">
+        <span class="l-th">แนวโน้ม GPA รายภาค</span>
+        <span class="l-en">GPA Trend by Semester</span>
       </p>
-      <p class="acad-desc">
-        <span class="l-th">หนึ่งในคณะเศรษฐศาสตร์ที่มีชื่อเสียงที่สุดของประเทศไทย ได้รับการยอมรับในด้านมาตรฐานวิชาการและการวิจัยด้านนโยบายเศรษฐกิจ</span>
-        <span class="l-en">One of Thailand's most distinguished economics faculties, recognized for rigorous academic standards and influential research in economic policy and financial markets.</span>
+      <div class="ag-trend">
+        <div class="ag-trend-row">
+          <span class="ag-trend-sem">
+            <span class="l-th">ภาค 1/2568</span>
+            <span class="l-en">Sem 1 · 2025</span>
+          </span>
+          <div class="ag-trend-track">
+            <div class="ag-trend-fill" style="--w: 91.25%"></div>
+          </div>
+          <span class="ag-trend-val">3.65</span>
+        </div>
+        <div class="ag-trend-row">
+          <span class="ag-trend-sem">
+            <span class="l-th">ภาค 2/2568</span>
+            <span class="l-en">Sem 2 · 2025</span>
+          </span>
+          <div class="ag-trend-track">
+            <div class="ag-trend-fill ag-trend-fill--now" style="--w: 94.5%"></div>
+          </div>
+          <span class="ag-trend-val ag-trend-val--now">3.78 ↑</span>
+        </div>
+      </div>
+      <p class="ag-trend-note">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        <span class="l-th">GPA เพิ่มขึ้น +0.13 จากภาคที่แล้ว</span>
+        <span class="l-en">GPA improved +0.13 from last semester</span>
       </p>
     </div>
 
-    <div class="sheet-sep"></div>
+    <!-- ── Current Semester ── -->
+    <div class="ag-section">
+      <div class="ag-section-head">
+        <p class="ag-section-title">
+          <span class="l-th">ภาค 2 / ปีการศึกษา 2568</span>
+          <span class="l-en">Semester 2 / Academic Year 2025</span>
+        </p>
+        <span class="ag-sem-chip ag-sem-active">
+          <span class="live-dot live-dot--sm" aria-hidden="true"></span>
+          <span class="l-th">กำลังศึกษา</span>
+          <span class="l-en">In Progress</span>
+        </span>
+      </div>
 
-    <div class="acad-block">
-      <span class="acad-tag tag-gold">
-        <span class="l-th">หลักสูตร</span><span class="l-en">Program</span>
-      </span>
-      <h3 class="acad-h">
-        <span class="l-th">นิสิตมหาบัณฑิต สาขาวิชาการเงิน</span>
-        <span class="l-en">Graduate Scholar of Finance</span>
-      </h3>
-      <p class="acad-sub">
-        <span class="l-th">Graduate Scholar of Finance</span>
-        <span class="l-en">นิสิตมหาบัณฑิต สาขาวิชาการเงิน</span>
+      <div class="ag-courses">
+
+        <div class="ag-course">
+          <div class="ag-course-top">
+            <div class="ag-course-left">
+              <span class="ag-course-code">ECON 6201</span>
+              <span class="ag-course-name">
+                <span class="l-th">ทฤษฎีพอร์ตโฟลิโอและการตั้งราคาสินทรัพย์</span>
+                <span class="l-en">Portfolio Theory &amp; Asset Pricing</span>
+              </span>
+            </div>
+            <div class="ag-grade ag-grade--a">
+              <span class="ag-grade-letter">A</span>
+              <span class="ag-grade-pts">4.00</span>
+            </div>
+          </div>
+          <div class="ag-bars">
+            <div class="ag-bar-row">
+              <span class="ag-bar-lbl ag-bar-lbl--you"><span class="l-th">คุณ</span><span class="l-en">You</span></span>
+              <div class="ag-bar-track"><div class="ag-bar-fill ag-bar-fill--you" style="--w:96%"></div></div>
+              <span class="ag-bar-pct">96%</span>
+            </div>
+            <div class="ag-bar-row">
+              <span class="ag-bar-lbl ag-bar-lbl--avg"><span class="l-th">เฉลี่ย</span><span class="l-en">Avg</span></span>
+              <div class="ag-bar-track"><div class="ag-bar-fill ag-bar-fill--avg" style="--w:72%"></div></div>
+              <span class="ag-bar-pct ag-bar-pct--muted">72%</span>
+            </div>
+          </div>
+          <span class="ag-course-cr">3 cr</span>
+        </div>
+
+        <div class="ag-course">
+          <div class="ag-course-top">
+            <div class="ag-course-left">
+              <span class="ag-course-code">ECON 6202</span>
+              <span class="ag-course-name">
+                <span class="l-th">การเงินองค์กร</span>
+                <span class="l-en">Corporate Finance</span>
+              </span>
+            </div>
+            <div class="ag-grade ag-grade--aminus">
+              <span class="ag-grade-letter">A<sup>−</sup></span>
+              <span class="ag-grade-pts">3.75</span>
+            </div>
+          </div>
+          <div class="ag-bars">
+            <div class="ag-bar-row">
+              <span class="ag-bar-lbl ag-bar-lbl--you"><span class="l-th">คุณ</span><span class="l-en">You</span></span>
+              <div class="ag-bar-track"><div class="ag-bar-fill ag-bar-fill--you" style="--w:90%"></div></div>
+              <span class="ag-bar-pct">90%</span>
+            </div>
+            <div class="ag-bar-row">
+              <span class="ag-bar-lbl ag-bar-lbl--avg"><span class="l-th">เฉลี่ย</span><span class="l-en">Avg</span></span>
+              <div class="ag-bar-track"><div class="ag-bar-fill ag-bar-fill--avg" style="--w:74%"></div></div>
+              <span class="ag-bar-pct ag-bar-pct--muted">74%</span>
+            </div>
+          </div>
+          <span class="ag-course-cr">3 cr</span>
+        </div>
+
+        <div class="ag-course">
+          <div class="ag-course-top">
+            <div class="ag-course-left">
+              <span class="ag-course-code">ECON 6203</span>
+              <span class="ag-course-name">
+                <span class="l-th">ตราสารอนุพันธ์และการจัดการความเสี่ยง</span>
+                <span class="l-en">Derivatives &amp; Risk Management</span>
+              </span>
+            </div>
+            <div class="ag-grade ag-grade--a">
+              <span class="ag-grade-letter">A</span>
+              <span class="ag-grade-pts">4.00</span>
+            </div>
+          </div>
+          <div class="ag-bars">
+            <div class="ag-bar-row">
+              <span class="ag-bar-lbl ag-bar-lbl--you"><span class="l-th">คุณ</span><span class="l-en">You</span></span>
+              <div class="ag-bar-track"><div class="ag-bar-fill ag-bar-fill--you" style="--w:93%"></div></div>
+              <span class="ag-bar-pct">93%</span>
+            </div>
+            <div class="ag-bar-row">
+              <span class="ag-bar-lbl ag-bar-lbl--avg"><span class="l-th">เฉลี่ย</span><span class="l-en">Avg</span></span>
+              <div class="ag-bar-track"><div class="ag-bar-fill ag-bar-fill--avg" style="--w:68%"></div></div>
+              <span class="ag-bar-pct ag-bar-pct--muted">68%</span>
+            </div>
+          </div>
+          <span class="ag-course-cr">3 cr</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Semester 1 / 2025 ── -->
+    <div class="ag-section">
+      <div class="ag-section-head">
+        <p class="ag-section-title">
+          <span class="l-th">ภาค 1 / ปีการศึกษา 2568</span>
+          <span class="l-en">Semester 1 / Academic Year 2025</span>
+        </p>
+        <span class="ag-sem-chip ag-sem-done">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="l-th">สำเร็จ</span>
+          <span class="l-en">Completed</span>
+        </span>
+      </div>
+
+      <div class="ag-courses">
+
+        <div class="ag-course">
+          <div class="ag-course-top">
+            <div class="ag-course-left">
+              <span class="ag-course-code">ECON 6101</span>
+              <span class="ag-course-name">
+                <span class="l-th">เศรษฐศาสตร์การเงิน</span>
+                <span class="l-en">Financial Economics</span>
+              </span>
+            </div>
+            <div class="ag-grade ag-grade--a">
+              <span class="ag-grade-letter">A</span>
+              <span class="ag-grade-pts">4.00</span>
+            </div>
+          </div>
+          <div class="ag-bars">
+            <div class="ag-bar-row">
+              <span class="ag-bar-lbl ag-bar-lbl--you"><span class="l-th">คุณ</span><span class="l-en">You</span></span>
+              <div class="ag-bar-track"><div class="ag-bar-fill ag-bar-fill--you" style="--w:95%"></div></div>
+              <span class="ag-bar-pct">95%</span>
+            </div>
+            <div class="ag-bar-row">
+              <span class="ag-bar-lbl ag-bar-lbl--avg"><span class="l-th">เฉลี่ย</span><span class="l-en">Avg</span></span>
+              <div class="ag-bar-track"><div class="ag-bar-fill ag-bar-fill--avg" style="--w:76%"></div></div>
+              <span class="ag-bar-pct ag-bar-pct--muted">76%</span>
+            </div>
+          </div>
+          <span class="ag-course-cr">3 cr</span>
+        </div>
+
+        <div class="ag-course">
+          <div class="ag-course-top">
+            <div class="ag-course-left">
+              <span class="ag-course-code">ECON 6102</span>
+              <span class="ag-course-name">
+                <span class="l-th">วิธีเชิงปริมาณทางการเงิน</span>
+                <span class="l-en">Quantitative Methods in Finance</span>
+              </span>
+            </div>
+            <div class="ag-grade ag-grade--a">
+              <span class="ag-grade-letter">A</span>
+              <span class="ag-grade-pts">4.00</span>
+            </div>
+          </div>
+          <div class="ag-bars">
+            <div class="ag-bar-row">
+              <span class="ag-bar-lbl ag-bar-lbl--you"><span class="l-th">คุณ</span><span class="l-en">You</span></span>
+              <div class="ag-bar-track"><div class="ag-bar-fill ag-bar-fill--you" style="--w:92%"></div></div>
+              <span class="ag-bar-pct">92%</span>
+            </div>
+            <div class="ag-bar-row">
+              <span class="ag-bar-lbl ag-bar-lbl--avg"><span class="l-th">เฉลี่ย</span><span class="l-en">Avg</span></span>
+              <div class="ag-bar-track"><div class="ag-bar-fill ag-bar-fill--avg" style="--w:71%"></div></div>
+              <span class="ag-bar-pct ag-bar-pct--muted">71%</span>
+            </div>
+          </div>
+          <span class="ag-course-cr">3 cr</span>
+        </div>
+
+        <div class="ag-course">
+          <div class="ag-course-top">
+            <div class="ag-course-left">
+              <span class="ag-course-code">ECON 6103</span>
+              <span class="ag-course-name">
+                <span class="l-th">จุลเศรษฐศาสตร์สำหรับการเงิน</span>
+                <span class="l-en">Microeconomics for Finance</span>
+              </span>
+            </div>
+            <div class="ag-grade ag-grade--bplus">
+              <span class="ag-grade-letter">B<sup>+</sup></span>
+              <span class="ag-grade-pts">3.50</span>
+            </div>
+          </div>
+          <div class="ag-bars">
+            <div class="ag-bar-row">
+              <span class="ag-bar-lbl ag-bar-lbl--you"><span class="l-th">คุณ</span><span class="l-en">You</span></span>
+              <div class="ag-bar-track"><div class="ag-bar-fill ag-bar-fill--you" style="--w:84%"></div></div>
+              <span class="ag-bar-pct">84%</span>
+            </div>
+            <div class="ag-bar-row">
+              <span class="ag-bar-lbl ag-bar-lbl--avg"><span class="l-th">เฉลี่ย</span><span class="l-en">Avg</span></span>
+              <div class="ag-bar-track"><div class="ag-bar-fill ag-bar-fill--avg" style="--w:79%"></div></div>
+              <span class="ag-bar-pct ag-bar-pct--muted">79%</span>
+            </div>
+          </div>
+          <span class="ag-course-cr">3 cr</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Grade Distribution (Cohort) ── -->
+    <div class="ag-section">
+      <p class="ag-section-title">
+        <span class="l-th">การกระจายเกรดในกลุ่ม (รหัส 9562 · 42 คน)</span>
+        <span class="l-en">Grade Distribution — Cohort 9562 · 42 students</span>
       </p>
-      <p class="acad-desc">
-        <span class="l-th">หลักสูตรระดับมหาบัณฑิตที่ครอบคลุมทฤษฎีการเงิน ตลาดทุน การวิเคราะห์การลงทุน และวิธีการเงินเชิงปริมาณ</span>
-        <span class="l-en">Advanced master's program covering financial theory, capital markets, investment analysis, and quantitative finance methodologies.</span>
+      <div class="ag-dist">
+        <div class="ag-dist-row">
+          <span class="ag-dist-grade">A</span>
+          <div class="ag-dist-track">
+            <div class="ag-dist-fill ag-dist-fill--a" style="--w:28.6%">
+              <span class="ag-you-pin" aria-label="Your position">▾</span>
+            </div>
+          </div>
+          <span class="ag-dist-n">12</span>
+        </div>
+        <div class="ag-dist-row">
+          <span class="ag-dist-grade">B<sup>+</sup></span>
+          <div class="ag-dist-track">
+            <div class="ag-dist-fill ag-dist-fill--b" style="--w:26.2%"></div>
+          </div>
+          <span class="ag-dist-n">11</span>
+        </div>
+        <div class="ag-dist-row">
+          <span class="ag-dist-grade">B</span>
+          <div class="ag-dist-track">
+            <div class="ag-dist-fill ag-dist-fill--b" style="--w:21.4%"></div>
+          </div>
+          <span class="ag-dist-n">9</span>
+        </div>
+        <div class="ag-dist-row">
+          <span class="ag-dist-grade">C<sup>+</sup></span>
+          <div class="ag-dist-track">
+            <div class="ag-dist-fill ag-dist-fill--c" style="--w:14.3%"></div>
+          </div>
+          <span class="ag-dist-n">6</span>
+        </div>
+        <div class="ag-dist-row">
+          <span class="ag-dist-grade">C</span>
+          <div class="ag-dist-track">
+            <div class="ag-dist-fill ag-dist-fill--c" style="--w:9.5%"></div>
+          </div>
+          <span class="ag-dist-n">4</span>
+        </div>
+      </div>
+      <p class="ag-dist-note">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span class="l-th">กรวิชญ์อยู่ในกลุ่มเกรด A · อันดับที่ 5 จาก 42 คน</span>
+        <span class="l-en">Korawit is in the A-grade group · Rank 5 of 42 students</span>
       </p>
-      <span class="enroll-chip">
-        <span class="l-th">ปีการศึกษา 2568 – 2572</span>
-        <span class="l-en">Enrollment: 2025 – 2029</span>
-      </span>
+    </div>
+
+    <!-- ── Academic Advisor ── -->
+    <div class="ag-section ag-section--last">
+      <p class="ag-section-title">
+        <span class="l-th">อาจารย์ที่ปรึกษา</span>
+        <span class="l-en">Academic Advisor</span>
+      </p>
+      <div class="ag-advisor-card">
+        <div class="ag-advisor-avatar">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div>
+          <p class="ag-advisor-name">
+            <span class="l-th">รศ.ดร. สุรี ตั้งเตมีย์ศิริกุล</span>
+            <span class="l-en">Assoc. Prof. Dr. Suree Tangtermsirikul</span>
+          </p>
+          <p class="ag-advisor-dept">
+            <span class="l-th">ภาควิชาการเงิน · คณะเศรษฐศาสตร์</span>
+            <span class="l-en">Dept. of Finance · Faculty of Economics</span>
+          </p>
+        </div>
+      </div>
+      <div class="ag-kv-list">
+        <div class="ag-kv">
+          <span class="ag-kv-key"><span class="l-th">ห้องทำงาน</span><span class="l-en">Office</span></span>
+          <span class="ag-kv-val">EC 601 · 6th Floor</span>
+        </div>
+        <div class="ag-kv">
+          <span class="ag-kv-key"><span class="l-th">เวลาพบ</span><span class="l-en">Office Hours</span></span>
+          <span class="ag-kv-val"><span class="l-th">จ. & พ. 13:00–15:00</span><span class="l-en">Mon & Wed 13:00–15:00</span></span>
+        </div>
+        <div class="ag-kv">
+          <span class="ag-kv-key">Email</span>
+          <span class="ag-kv-val ag-kv-mono">suree.t@econ.chula.ac.th</span>
+        </div>
+        <div class="ag-kv">
+          <span class="ag-kv-key"><span class="l-th">ความเชี่ยวชาญ</span><span class="l-en">Specialisation</span></span>
+          <span class="ag-kv-val"><span class="l-th">การเงินองค์กร · ตลาดทุน</span><span class="l-en">Corporate Finance · Capital Markets</span></span>
+        </div>
+      </div>
     </div>
 
   </div>
