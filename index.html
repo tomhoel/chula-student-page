@@ -1262,7 +1262,16 @@
         <!-- Split: photo left, info right -->
         <div class="sp-sport-top">
           <div class="sp-sport-photo">
-            <img src="football_photoshoot.png" alt="Korawit in CU football kit" loading="lazy">
+            <picture>
+              <source srcset="football_photoshoot.webp" type="image/webp">
+              <img src="football_photoshoot.png" 
+                   alt="Korawit in CU football kit" 
+                   loading="lazy" 
+                   decoding="async"
+                   width="130" 
+                   height="155"
+                   onerror="this.onerror=null; this.parentElement.style.background='#de5d8e'; this.style.display='none';">
+            </picture>
             <span class="sp-sport-photo-badge">⚽</span>
           </div>
           <div class="sp-sport-right">
@@ -1359,7 +1368,16 @@
         <!-- Split: photo left, info + training right -->
         <div class="sp-sport-top">
           <div class="sp-sport-photo">
-            <img src="svimming_photoshoot.png" alt="Korawit in CU swimming kit" loading="lazy">
+            <picture>
+              <source srcset="svimming_photoshoot.webp" type="image/webp">
+              <img src="svimming_photoshoot.png" 
+                   alt="Korawit in CU swimming kit" 
+                   loading="lazy" 
+                   decoding="async"
+                   width="130" 
+                   height="155"
+                   onerror="this.onerror=null; this.parentElement.style.background='#2563eb'; this.style.display='none';">
+            </picture>
             <span class="sp-sport-photo-badge">🏊</span>
           </div>
           <div class="sp-sport-right">
