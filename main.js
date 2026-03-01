@@ -706,3 +706,84 @@ function showToast(msg) {
   /* Run on initial load — overview is active by default */
   runOverviewAnimations();
 })();
+
+/* ── ACADEMIC SHEET (ac-* system) ────────────────────── */
+(function () {
+  'use strict';
+
+  /* --- tab switching --- */
+  var acTabBtns   = document.querySelectorAll('.ac-tab');
+  var acTabPanels = document.querySelectorAll('.ac-tab-panel');
+
+  function switchAcTab(tabId) {
+    acTabBtns.forEach(function (b) {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    acTabPanels.forEach(function (p) { p.classList.remove('active'); });
+
+    var btn   = document.querySelector('.ac-tab[data-actab="' + tabId + '"]');
+    var panel = document.getElementById(tabId);
+    if (btn) {
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+    }
+    if (panel) panel.classList.add('active');
+  }
+
+  acTabBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      switchAcTab(this.dataset.actab);
+    });
+  });
+
+  /* --- GPA ring animation on sheet open/close --- */
+  var acSheet = document.getElementById('sheet-academic');
+  if (acSheet) {
+    var acRingAnimated = false;
+
+    function animateAcRing() {
+      var ring = acSheet.querySelector('.ac-ring-fill');
+      if (ring && !acRingAnimated) {
+        acRingAnimated = true;
+        setTimeout(function () {
+          ring.style.strokeDashoffset = '11.06'; /* 3.78/4.00 = 94.5% filled */
+        }, 120);
+      }
+    }
+
+    function resetAcRing() {
+      var ring = acSheet.querySelector('.ac-ring-fill');
+      if (ring) {
+        ring.style.strokeDashoffset = '201.06';
+        acRingAnimated = false;
+      }
+    }
+
+    /* watch for .open class being added/removed */
+    var acObs = new MutationObserver(function (mutations) {
+      mutations.forEach(function (m) {
+        if (m.attributeName === 'class') {
+          if (acSheet.classList.contains('open')) {
+            animateAcRing();
+          } else {
+            resetAcRing();
+            /* reset tab to RECORD on close */
+            switchAcTab('actab-record');
+          }
+        }
+      });
+    });
+    acObs.observe(acSheet, { attributes: true });
+  }
+
+  /* --- build rank strip (42 dots, dot #5 highlighted) --- */
+  var rankStrip = document.getElementById('acRankStrip');
+  if (rankStrip) {
+    for (var i = 1; i <= 42; i++) {
+      var dot = document.createElement('div');
+      dot.className = 'ac-rank-dot' + (i === 5 ? ' me' : '');
+      rankStrip.appendChild(dot);
+    }
+  }
+}());
