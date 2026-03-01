@@ -66,7 +66,7 @@
   ══════════════════════════════════════ -->
   <section class="profile">
 
-    <div class="id-card">
+    <div class="id-card" id="id-card-main">
 
       <!-- Left: rectangular photo (tap to enlarge) -->
       <div class="id-photo-col">
@@ -89,15 +89,6 @@
             <span class="l-th">Korawit Chamkrai</span>
             <span class="l-en">กรวิชญ์ ฉ่ำไกร</span>
           </p>
-          <div class="id-meta-chips">
-            <span class="id-meta-chip">
-              <span class="l-th">อายุ 29 ปี</span>
-              <span class="l-en">Age 29</span>
-            </span>
-            <span class="id-meta-chip">
-              🇹🇭&thinsp;<span class="l-th">ไทย</span><span class="l-en">Thai</span>
-            </span>
-          </div>
         </div>
 
         <div class="id-divider" aria-hidden="true"></div>
@@ -109,16 +100,19 @@
               <span class="l-en">Date of Birth</span>
             </span>
             <span class="id-value lang-stable">
-              <span class="l-th">27 ธ.ค. 2539</span>
-              <span class="l-en">27 Dec 1996</span>
+              <span class="l-th">27 ธ.ค. 2539 <em class="id-age-note">· 29 ปี</em></span>
+              <span class="l-en">27 Dec 1996 <em class="id-age-note">· age 29</em></span>
             </span>
           </div>
           <div class="id-field">
             <span class="id-label lang-stable">
-              <span class="l-th">หมู่เลือด</span>
-              <span class="l-en">Blood</span>
+              <span class="l-th">สัญชาติ</span>
+              <span class="l-en">Nationality</span>
             </span>
-            <span class="id-value">B+</span>
+            <span class="id-value lang-stable">
+              <span class="l-th">🇹🇭 ไทย</span>
+              <span class="l-en">🇹🇭 Thai</span>
+            </span>
           </div>
         </div>
 
@@ -143,12 +137,19 @@
             <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
             <span class="l-th">ยืนยันแล้ว · ใช้งานได้</span>
             <span class="l-en">Verified · Active</span>
+            <span class="vr-live-badge" aria-label="Live verified">
+              <span class="vr-pulse-ring" aria-hidden="true"></span>
+              <span class="vr-pulse-ring vr-pulse-ring--delay" aria-hidden="true"></span>
+              <span class="vr-live-dot" aria-hidden="true"></span>
+              <span id="vr-date"></span>
+            </span>
           </div>
         </div>
 
       </div><!-- /.id-info-col -->
 
     </div><!-- /.id-card -->
+
 
   </section>
 
@@ -526,20 +527,28 @@
       </p>
     </div>
 
-    <!-- ── Current Semester ── -->
-    <div class="ag-section">
-      <div class="ag-section-head">
-        <p class="ag-section-title">
-          <span class="l-th">ภาค 2 / ปีการศึกษา 2568</span>
-          <span class="l-en">Semester 2 / Academic Year 2025</span>
-        </p>
-        <span class="ag-sem-chip ag-sem-active">
-          <span class="live-dot live-dot--sm" aria-hidden="true"></span>
-          <span class="l-th">กำลังศึกษา</span>
-          <span class="l-en">In Progress</span>
-        </span>
-      </div>
-
+    <!-- ── Current Semester (collapsible, open by default) ── -->
+    <div class="ag-section ag-collapse-section" data-open="true" data-sem-status="active">
+      <button class="ag-collapse-btn" aria-expanded="true">
+        <div class="ag-collapse-hd">
+          <p class="ag-collapse-title lang-stable">
+            <span class="l-th">ภาค 2 / ปีการศึกษา 2568</span>
+            <span class="l-en">Semester 2 / Academic Year 2025</span>
+          </p>
+          <div class="ag-collapse-chips">
+            <span class="ag-sem-chip ag-sem-active">
+              <span class="live-dot live-dot--sm" aria-hidden="true"></span>
+              <span class="l-th">กำลังศึกษา</span>
+              <span class="l-en">In Progress</span>
+            </span>
+            <span class="ag-course-count">3 <span class="l-th">วิชา</span><span class="l-en">courses</span> · 9 cr</span>
+          </div>
+        </div>
+        <svg class="ag-collapse-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="ag-collapse-body">
       <div class="ag-courses">
 
         <div class="ag-course">
@@ -629,22 +638,32 @@
           <span class="ag-course-cr">3 cr</span>
         </div>
 
-      </div>
-    </div>
+      </div><!-- /.ag-courses -->
+      </div><!-- /.ag-collapse-body -->
+    </div><!-- /.ag-collapse-section (Sem 2) -->
 
-    <!-- ── Semester 1 / 2025 ── -->
-    <div class="ag-section">
-      <div class="ag-section-head">
-        <p class="ag-section-title">
-          <span class="l-th">ภาค 1 / ปีการศึกษา 2568</span>
-          <span class="l-en">Semester 1 / Academic Year 2025</span>
-        </p>
-        <span class="ag-sem-chip ag-sem-done">
-          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-          <span class="l-th">สำเร็จ</span>
-          <span class="l-en">Completed</span>
-        </span>
-      </div>
+    <!-- ── Semester 1 / 2025 (collapsible, collapsed by default) ── -->
+    <div class="ag-section ag-collapse-section" data-open="false" data-sem-status="done">
+      <button class="ag-collapse-btn" aria-expanded="false">
+        <div class="ag-collapse-hd">
+          <p class="ag-collapse-title lang-stable">
+            <span class="l-th">ภาค 1 / ปีการศึกษา 2568</span>
+            <span class="l-en">Semester 1 / Academic Year 2025</span>
+          </p>
+          <div class="ag-collapse-chips">
+            <span class="ag-sem-chip ag-sem-done">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="l-th">สำเร็จ</span>
+              <span class="l-en">Completed</span>
+            </span>
+            <span class="ag-course-count">3 <span class="l-th">วิชา</span><span class="l-en">courses</span> · 9 cr</span>
+          </div>
+        </div>
+        <svg class="ag-collapse-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="ag-collapse-body">
 
       <div class="ag-courses">
 
@@ -735,8 +754,9 @@
           <span class="ag-course-cr">3 cr</span>
         </div>
 
-      </div>
-    </div>
+      </div><!-- /.ag-courses (Sem 1) -->
+      </div><!-- /.ag-collapse-body (Sem 1) -->
+    </div><!-- /.ag-collapse-section (Sem 1) -->
 
     <!-- ── Grade Distribution (Cohort) ── -->
     <div class="ag-section">
@@ -791,7 +811,7 @@
     </div>
 
     <!-- ── Academic Advisor ── -->
-    <div class="ag-section ag-section--last">
+    <div class="ag-section">
       <p class="ag-section-title">
         <span class="l-th">อาจารย์ที่ปรึกษา</span>
         <span class="l-en">Academic Advisor</span>
@@ -829,6 +849,196 @@
           <span class="ag-kv-val"><span class="l-th">การเงินองค์กร · ตลาดทุน</span><span class="l-en">Corporate Finance · Capital Markets</span></span>
         </div>
       </div>
+    </div>
+
+    <!-- ── Future Subjects Overview ── -->
+    <div class="ag-section ag-section--last">
+      <div class="ag-future-header">
+        <span class="ag-future-badge">
+          <span class="ag-future-badge-dot" aria-hidden="true"></span>
+          <span class="l-th">วิชาในอนาคต</span>
+          <span class="l-en">Upcoming Courses</span>
+        </span>
+      </div>
+
+      <!-- Semester 3 / 2026 -->
+      <p class="ag-future-group-title">
+        <span class="l-th">ภาค 3 / ปีการศึกษา 2569 (คาดการณ์)</span>
+        <span class="l-en">Semester 3 / AY 2026 — Planned</span>
+      </p>
+
+      <div class="ag-future-course" data-open="false">
+        <button class="ag-future-toggle">
+          <div class="ag-future-code-block">
+            <span class="ag-future-code">ECON 6301</span>
+            <span class="ag-future-name">
+              <span class="l-th">ตราสารหนี้และตลาดสินเชื่อ</span>
+              <span class="l-en">Fixed Income &amp; Credit Markets</span>
+            </span>
+          </div>
+          <span class="ag-future-cr-chip">3 cr</span>
+          <svg class="ag-future-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="ag-future-desc-body">
+          <p class="ag-future-desc">
+            <span class="l-th">วิเคราะห์การกำหนดราคาพันธบัตร โครงสร้างอัตราดอกเบี้ย credit default swaps และผลิตภัณฑ์สินเชื่อที่มีโครงสร้าง เช่น CDOs</span>
+            <span class="l-en">Advanced bond pricing, yield curve dynamics, credit default swaps, and structured credit products including CDOs and CLOs.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="ag-future-course" data-open="false">
+        <button class="ag-future-toggle">
+          <div class="ag-future-code-block">
+            <span class="ag-future-code">ECON 6302</span>
+            <span class="ag-future-name">
+              <span class="l-th">การเงินเชิงพฤติกรรมและความผิดปกติของตลาด</span>
+              <span class="l-en">Behavioral Finance &amp; Market Anomalies</span>
+            </span>
+          </div>
+          <span class="ag-future-cr-chip">3 cr</span>
+          <svg class="ag-future-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="ag-future-desc-body">
+          <p class="ag-future-desc">
+            <span class="l-th">อคติทางจิตวิทยาที่ส่งผลต่อการตัดสินใจลงทุน ทฤษฎี Prospect Theory ฮิวริสติกส์ และหลักฐานของความไร้ประสิทธิภาพของตลาด</span>
+            <span class="l-en">Psychological biases in investor decisions; prospect theory, heuristics, and empirical evidence of market inefficiencies.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="ag-future-course" data-open="false">
+        <button class="ag-future-toggle">
+          <div class="ag-future-code-block">
+            <span class="ag-future-code">ECON 6303</span>
+            <span class="ag-future-name">
+              <span class="l-th">เศรษฐมิติการเงิน</span>
+              <span class="l-en">Financial Econometrics</span>
+            </span>
+          </div>
+          <span class="ag-future-cr-chip">3 cr</span>
+          <svg class="ag-future-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="ag-future-desc-body">
+          <p class="ag-future-desc">
+            <span class="l-th">เศรษฐมิติอนุกรมเวลาประยุกต์กับข้อมูลการเงิน ได้แก่ ARMA, GARCH, cointegration และ event studies</span>
+            <span class="l-en">Time-series econometrics for financial data: ARMA, GARCH volatility models, cointegration, and event study methodology.</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Semester 4 / 2026 -->
+      <p class="ag-future-group-title">
+        <span class="l-th">ภาค 4 / ปีการศึกษา 2569 (คาดการณ์)</span>
+        <span class="l-en">Semester 4 / AY 2026 — Planned</span>
+      </p>
+
+      <div class="ag-future-course" data-open="false">
+        <button class="ag-future-toggle">
+          <div class="ag-future-code-block">
+            <span class="ag-future-code">ECON 6401</span>
+            <span class="ag-future-name">
+              <span class="l-th">การบริหารพอร์ตโฟลิโอขั้นสูง</span>
+              <span class="l-en">Advanced Portfolio Management</span>
+            </span>
+          </div>
+          <span class="ag-future-cr-chip">3 cr</span>
+          <svg class="ag-future-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="ag-future-desc-body">
+          <p class="ag-future-desc">
+            <span class="l-th">Factor models, smart beta, การบูรณาการ ESG และ performance attribution ในการบริหารพอร์ตสถาบัน</span>
+            <span class="l-en">Factor models, smart beta strategies, ESG integration, and performance attribution in institutional portfolio management.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="ag-future-course" data-open="false">
+        <button class="ag-future-toggle">
+          <div class="ag-future-code-block">
+            <span class="ag-future-code">ECON 6402</span>
+            <span class="ag-future-name">
+              <span class="l-th">FinTech และการเงินดิจิทัล</span>
+              <span class="l-en">FinTech &amp; Digital Finance</span>
+            </span>
+          </div>
+          <span class="ag-future-cr-chip">3 cr</span>
+          <svg class="ag-future-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="ag-future-desc-body">
+          <p class="ag-future-desc">
+            <span class="l-th">Blockchain, สินทรัพย์ดิจิทัล, algorithmic trading, robo-advisors และกรอบกฎหมายของเทคโนโลยีการเงิน</span>
+            <span class="l-en">Blockchain, digital assets, algorithmic trading, robo-advisors, and the regulatory landscape of financial technology.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="ag-future-course" data-open="false">
+        <button class="ag-future-toggle">
+          <div class="ag-future-code-block">
+            <span class="ag-future-code">ECON 6403</span>
+            <span class="ag-future-name">
+              <span class="l-th">การเงินระหว่างประเทศและตลาดแลกเปลี่ยน</span>
+              <span class="l-en">International Finance &amp; Exchange Markets</span>
+            </span>
+          </div>
+          <span class="ag-future-cr-chip">3 cr</span>
+          <svg class="ag-future-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="ag-future-desc-body">
+          <p class="ag-future-desc">
+            <span class="l-th">การกำหนดอัตราแลกเปลี่ยน การบริหารความเสี่ยงด้านสกุลเงิน กระแสเงินทุนข้ามพรมแดน และ M&amp;A ระหว่างประเทศ</span>
+            <span class="l-en">Exchange rate determination, currency risk management, international capital flows, and cross-border M&amp;A finance.</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Thesis -->
+      <p class="ag-future-group-title">
+        <span class="l-th">วิทยานิพนธ์ (2570–2571)</span>
+        <span class="l-en">Thesis (2027–2028)</span>
+      </p>
+
+      <div class="ag-future-course" data-open="false">
+        <button class="ag-future-toggle">
+          <div class="ag-future-code-block">
+            <span class="ag-future-code">ECON 6900</span>
+            <span class="ag-future-name">
+              <span class="l-th">การออกแบบงานวิจัยและระเบียบวิธีวิจัย</span>
+              <span class="l-en">Research Design &amp; Methodology</span>
+            </span>
+          </div>
+          <span class="ag-future-cr-chip">3 cr</span>
+          <svg class="ag-future-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="ag-future-desc-body">
+          <p class="ag-future-desc">
+            <span class="l-th">การพัฒนาคำถามวิจัย การทบทวนวรรณกรรม และวิธีการวิจัยเชิงปริมาณ/คุณภาพในสาขาการเงิน</span>
+            <span class="l-en">Formulating research questions, conducting literature reviews, and applying quantitative/qualitative methods in finance research.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="ag-future-course" data-open="false">
+        <button class="ag-future-toggle">
+          <div class="ag-future-code-block">
+            <span class="ag-future-code">ECON 6901</span>
+            <span class="ag-future-name">
+              <span class="l-th">วิทยานิพนธ์ M.Sc. การเงิน</span>
+              <span class="l-en">M.Sc. Finance Thesis</span>
+            </span>
+          </div>
+          <span class="ag-future-cr-chip">12 cr</span>
+          <svg class="ag-future-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="ag-future-desc-body">
+          <p class="ag-future-desc">
+            <span class="l-th">งานวิจัยต้นฉบับภายใต้การดูแลของอาจารย์ที่ปรึกษา สิ้นสุดด้วยการเขียนวิทยานิพนธ์และการสอบป้องกันต่อสาธารณะ</span>
+            <span class="l-en">Original research under faculty supervision, culminating in a written thesis and public defence before an examination committee.</span>
+          </p>
+        </div>
+      </div>
+
     </div>
 
   </div>
@@ -1529,6 +1739,326 @@
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ══════════════════════════════════════════════════
+     CHEAT PANEL — CU Internal Intelligence System
+══════════════════════════════════════════════════ -->
+<div class="cheat-panel" id="cheat-panel" role="dialog" aria-modal="true" aria-label="CU Internal Intelligence System">
+  <div class="cp-scrim" id="cheat-scrim"></div>
+  <div class="cp-container">
+    <div class="cp-handle"></div>
+
+    <!-- Header -->
+    <div class="cp-header">
+      <div class="cp-cls-badge">TOP SECRET</div>
+      <div class="cp-title-block">
+        <span class="cp-sys-label">CU INTERNAL INTELLIGENCE SYSTEM v4.2.1</span>
+        <span class="cp-sys-subtitle">Restricted Access — Authorized Personnel Only</span>
+      </div>
+      <button class="cp-close" id="cheat-close" aria-label="Close">✕</button>
+    </div>
+
+    <!-- System bar -->
+    <div class="cp-sysbar">
+      <span class="cp-sysbar-item"><span class="cp-sysbar-key">SESSION</span>&nbsp;<span class="cp-sysbar-val">CU-9562-A3F9</span></span>
+      <span class="cp-sysbar-dot"></span>
+      <span class="cp-sysbar-item"><span class="cp-sysbar-key">ACCESS</span>&nbsp;<span class="cp-sysbar-val cp-val-green">GRANTED</span></span>
+      <span class="cp-sysbar-dot"></span>
+      <span class="cp-sysbar-item"><span class="cp-sysbar-key">TIMESTAMP</span>&nbsp;<span class="cp-sysbar-val" id="cp-timestamp">--</span></span>
+      <span class="cp-sysbar-dot"></span>
+      <span class="cp-sysbar-item"><span class="cp-sysbar-key">NODE</span>&nbsp;<span class="cp-sysbar-val">REG-CU-EC-03</span></span>
+    </div>
+
+    <!-- CUNII Student Banner -->
+    <div class="cp-student-banner">
+      <div class="cp-student-id-block">
+        <div class="cp-cunii-label">CU NEURAL<br>INTELLIGENCE</div>
+        <div class="cp-cunii-score"><span class="cp-cunii-num">94.7</span><span class="cp-cunii-max">/100</span></div>
+        <div class="cp-cunii-sub">Top 3.2% · Cohort 9562</div>
+      </div>
+      <div class="cp-student-meta">
+        <div class="cp-meta-row"><span class="cp-meta-k">UID</span><span class="cp-meta-v">01-9562-33-5601-45</span></div>
+        <div class="cp-meta-row"><span class="cp-meta-k">BIO-HASH</span><span class="cp-meta-v">3B:A7:F2:9C:4D:8E:12:FF</span></div>
+        <div class="cp-meta-row"><span class="cp-meta-k">NFC-SIG</span><span class="cp-meta-v">A3·F9·2C·7E·B1·4A</span></div>
+        <div class="cp-meta-row"><span class="cp-meta-k">CLEARANCE</span><span class="cp-meta-v cp-val-amber">GRAD-LEVEL-2</span></div>
+        <div class="cp-meta-row"><span class="cp-meta-k">RISK IDX</span><span class="cp-meta-v cp-val-green">0.04 — MINIMAL</span></div>
+      </div>
+    </div>
+
+    <!-- Tab bar -->
+    <div class="cp-tabs" role="tablist">
+      <button class="cp-tab cp-tab-active" data-cp-tab="cognitive" role="tab" aria-selected="true">COGNITIVE</button>
+      <button class="cp-tab" data-cp-tab="behavioral" role="tab" aria-selected="false">BEHAVIORAL</button>
+      <button class="cp-tab" data-cp-tab="social" role="tab" aria-selected="false">SOCIAL</button>
+      <button class="cp-tab" data-cp-tab="forecast" role="tab" aria-selected="false">FORECAST</button>
+    </div>
+
+    <!-- ── COGNITIVE tab ── -->
+    <div class="cp-tab-content active" id="cptab-cognitive" role="tabpanel">
+      <p class="cp-section-title">COGNITIVE ANALYTICS</p>
+      <div class="cp-data-grid">
+        <div class="cp-data-cell">
+          <span class="cp-data-key">Learning Velocity</span>
+          <span class="cp-data-val cp-data-val--green">97.3</span>
+          <span class="cp-data-sub">Top 2.1% overall</span>
+        </div>
+        <div class="cp-data-cell">
+          <span class="cp-data-key">Retention Index</span>
+          <span class="cp-data-val cp-data-val--green">91.8</span>
+          <span class="cp-data-sub">Long-term memory score</span>
+        </div>
+        <div class="cp-data-cell">
+          <span class="cp-data-key">Analytical Aptitude</span>
+          <span class="cp-data-val">88.4</span>
+          <span class="cp-data-sub">Quant-dominant profile</span>
+        </div>
+        <div class="cp-data-cell">
+          <span class="cp-data-key">Cognitive Load Cap.</span>
+          <span class="cp-data-val">84.2</span>
+          <span class="cp-data-sub">High tolerance</span>
+        </div>
+      </div>
+
+      <p class="cp-section-title">SUBJECT AFFINITY MATRIX</p>
+      <div class="cp-hex-grid">
+        <div class="cp-hex-cell">
+          <div class="cp-hex-subject">DERIVATIVES</div>
+          <div class="cp-hex-score cp-hex-score--high">98</div>
+        </div>
+        <div class="cp-hex-cell">
+          <div class="cp-hex-subject">PORT. THEORY</div>
+          <div class="cp-hex-score cp-hex-score--high">96</div>
+        </div>
+        <div class="cp-hex-cell">
+          <div class="cp-hex-subject">QUANT. METH.</div>
+          <div class="cp-hex-score cp-hex-score--high">94</div>
+        </div>
+        <div class="cp-hex-cell">
+          <div class="cp-hex-subject">CORP. FIN.</div>
+          <div class="cp-hex-score">88</div>
+        </div>
+        <div class="cp-hex-cell">
+          <div class="cp-hex-subject">ECONOMICS</div>
+          <div class="cp-hex-score">86</div>
+        </div>
+        <div class="cp-hex-cell">
+          <div class="cp-hex-subject">BEHAVIOURAL</div>
+          <div class="cp-hex-score" style="color:rgba(99,102,241,0.75)">79</div>
+        </div>
+      </div>
+
+      <p class="cp-section-title">CUNII COMPONENT SCORES</p>
+      <div class="cp-bar-wrap">
+        <div class="cp-bar-label-row"><span class="cp-bar-lbl">Quantitative Reasoning</span><span class="cp-bar-val">97/100</span></div>
+        <div class="cp-bar-track"><div class="cp-bar-fill" style="--w:97%"></div></div>
+      </div>
+      <div class="cp-bar-wrap">
+        <div class="cp-bar-label-row"><span class="cp-bar-lbl">Logical Deduction</span><span class="cp-bar-val">93/100</span></div>
+        <div class="cp-bar-track"><div class="cp-bar-fill" style="--w:93%"></div></div>
+      </div>
+      <div class="cp-bar-wrap">
+        <div class="cp-bar-label-row"><span class="cp-bar-lbl">Mathematical Fluency</span><span class="cp-bar-val">91/100</span></div>
+        <div class="cp-bar-track"><div class="cp-bar-fill" style="--w:91%"></div></div>
+      </div>
+      <div class="cp-bar-wrap">
+        <div class="cp-bar-label-row"><span class="cp-bar-lbl">Verbal / Reading Speed</span><span class="cp-bar-val">82/100</span></div>
+        <div class="cp-bar-track"><div class="cp-bar-fill" style="--w:82%"></div></div>
+      </div>
+      <div class="cp-bar-wrap">
+        <div class="cp-bar-label-row"><span class="cp-bar-lbl">Creative Synthesis</span><span class="cp-bar-val">74/100</span></div>
+        <div class="cp-bar-track"><div class="cp-bar-fill cp-bar-fill--amber" style="--w:74%"></div></div>
+      </div>
+    </div>
+
+    <!-- ── BEHAVIORAL tab ── -->
+    <div class="cp-tab-content" id="cptab-behavioral" role="tabpanel">
+      <p class="cp-section-title">BEHAVIORAL ANALYTICS</p>
+      <div class="cp-data-grid">
+        <div class="cp-data-cell">
+          <span class="cp-data-key">Study Hours / Day</span>
+          <span class="cp-data-val">6.4h</span>
+          <span class="cp-data-sub">Self-reported avg.</span>
+        </div>
+        <div class="cp-data-cell">
+          <span class="cp-data-key">Peak Performance</span>
+          <span class="cp-data-val" style="font-size:13px">09:00–13:00</span>
+          <span class="cp-data-sub">Library system data</span>
+        </div>
+        <div class="cp-data-cell">
+          <span class="cp-data-key">Assignment Lead</span>
+          <span class="cp-data-val cp-data-val--green">+4.2d</span>
+          <span class="cp-data-sub">Avg. before deadline</span>
+        </div>
+        <div class="cp-data-cell">
+          <span class="cp-data-key">Library Sessions</span>
+          <span class="cp-data-val">142</span>
+          <span class="cp-data-sub">This academic year</span>
+        </div>
+      </div>
+
+      <p class="cp-section-title">STRESS &amp; WELLBEING INDEX</p>
+      <div class="cp-bar-wrap">
+        <div class="cp-bar-label-row"><span class="cp-bar-lbl">Academic Pressure Tolerance</span><span class="cp-bar-val">88/100</span></div>
+        <div class="cp-bar-track"><div class="cp-bar-fill" style="--w:88%"></div></div>
+      </div>
+      <div class="cp-bar-wrap">
+        <div class="cp-bar-label-row"><span class="cp-bar-lbl">Social Stress Management</span><span class="cp-bar-val">79/100</span></div>
+        <div class="cp-bar-track"><div class="cp-bar-fill" style="--w:79%"></div></div>
+      </div>
+      <div class="cp-bar-wrap">
+        <div class="cp-bar-label-row"><span class="cp-bar-lbl">Burnout Risk Indicator</span><span class="cp-bar-val">14/100 (Low)</span></div>
+        <div class="cp-bar-track"><div class="cp-bar-fill cp-bar-fill--amber" style="--w:14%"></div></div>
+      </div>
+
+      <p class="cp-section-title">BEHAVIORAL LOG EXCERPT</p>
+      <div class="cp-log">
+        <div class="cp-log-line cp-log-line--bright">[2026-02-28 09:12] LIB-ACC · EC Bldg L4 · Duration: 3h 14m</div>
+        <div class="cp-log-line">[2026-02-27 21:04] PORTAL-LOGIN · GPA Report Viewed</div>
+        <div class="cp-log-line cp-log-line--bright">[2026-02-26 10:30] SUBMIT · ECON6203 · A3 — 4.2 days early</div>
+        <div class="cp-log-line">[2026-02-25 08:55] LIB-ACC · EC Bldg L4 · Duration: 2h 47m</div>
+        <div class="cp-log-line">[2026-02-24 14:22] PORTAL-LOGIN · Course Reg. Checked</div>
+        <div class="cp-log-line cp-log-line--bright">[2026-02-22 09:08] POOL-ACC · CU Aquatic · Duration: 1h 25m</div>
+      </div>
+    </div>
+
+    <!-- ── SOCIAL tab ── -->
+    <div class="cp-tab-content" id="cptab-social" role="tabpanel">
+      <p class="cp-section-title">SOCIAL INTELLIGENCE</p>
+      <div class="cp-score-rings">
+        <div class="cp-score-ring-item">
+          <svg class="cp-ring-svg" viewBox="0 0 58 58" aria-hidden="true">
+            <circle cx="29" cy="29" r="23" fill="none" stroke="rgba(34,197,94,0.15)" stroke-width="5"/>
+            <circle cx="29" cy="29" r="23" fill="none" stroke="#22c55e" stroke-width="5"
+              stroke-dasharray="144.5" stroke-dashoffset="23.1"
+              stroke-linecap="round" transform="rotate(-90 29 29)"/>
+            <text x="29" y="34" text-anchor="middle" font-size="13" font-weight="700" fill="#16a34a" font-family="system-ui,sans-serif">84</text>
+          </svg>
+          <span class="cp-ring-num">Network</span>
+          <span class="cp-ring-lbl">Peer connections</span>
+        </div>
+        <div class="cp-score-ring-item">
+          <svg class="cp-ring-svg" viewBox="0 0 58 58" aria-hidden="true">
+            <circle cx="29" cy="29" r="23" fill="none" stroke="rgba(99,102,241,0.15)" stroke-width="5"/>
+            <circle cx="29" cy="29" r="23" fill="none" stroke="rgba(99,102,241,0.85)" stroke-width="5"
+              stroke-dasharray="144.5" stroke-dashoffset="20.2"
+              stroke-linecap="round" transform="rotate(-90 29 29)"/>
+            <text x="29" y="34" text-anchor="middle" font-size="13" font-weight="700" fill="rgba(99,102,241,0.9)" font-family="system-ui,sans-serif">86</text>
+          </svg>
+          <span class="cp-ring-num">Collab</span>
+          <span class="cp-ring-lbl">Group work</span>
+        </div>
+        <div class="cp-score-ring-item">
+          <svg class="cp-ring-svg" viewBox="0 0 58 58" aria-hidden="true">
+            <circle cx="29" cy="29" r="23" fill="none" stroke="rgba(255,184,0,0.15)" stroke-width="5"/>
+            <circle cx="29" cy="29" r="23" fill="none" stroke="rgba(255,184,0,0.85)" stroke-width="5"
+              stroke-dasharray="144.5" stroke-dashoffset="31.8"
+              stroke-linecap="round" transform="rotate(-90 29 29)"/>
+            <text x="29" y="34" text-anchor="middle" font-size="13" font-weight="700" fill="rgba(255,184,0,0.85)" font-family="system-ui,sans-serif">78</text>
+          </svg>
+          <span class="cp-ring-num">Influence</span>
+          <span class="cp-ring-lbl">Peer leadership</span>
+        </div>
+      </div>
+
+      <p class="cp-section-title">SOCIAL GRAPH METRICS</p>
+      <div class="cp-bar-wrap">
+        <div class="cp-bar-label-row"><span class="cp-bar-lbl">Degree Centrality (cohort graph)</span><span class="cp-bar-val">0.72</span></div>
+        <div class="cp-bar-track"><div class="cp-bar-fill" style="--w:72%"></div></div>
+      </div>
+      <div class="cp-bar-wrap">
+        <div class="cp-bar-label-row"><span class="cp-bar-lbl">Betweenness Centrality</span><span class="cp-bar-val">0.48</span></div>
+        <div class="cp-bar-track"><div class="cp-bar-fill" style="--w:48%"></div></div>
+      </div>
+      <div class="cp-bar-wrap">
+        <div class="cp-bar-label-row"><span class="cp-bar-lbl">Faculty Recognition Score</span><span class="cp-bar-val">91/100</span></div>
+        <div class="cp-bar-track"><div class="cp-bar-fill" style="--w:91%"></div></div>
+      </div>
+
+      <p class="cp-section-title">PEER PERCEPTION LOG</p>
+      <div class="cp-log">
+        <div class="cp-log-line">RELIABILITY ············· 94/100 ██████████████████░░░░</div>
+        <div class="cp-log-line">ACADEMIC HELPFULNESS ···· 88/100 █████████████████░░░░░</div>
+        <div class="cp-log-line">LEADERSHIP POTENTIAL ···· 82/100 ████████████████░░░░░░</div>
+        <div class="cp-log-line">APPROACHABILITY ········· 90/100 █████████████████░░░░░</div>
+      </div>
+    </div>
+
+    <!-- ── FORECAST tab ── -->
+    <div class="cp-tab-content" id="cptab-forecast" role="tabpanel">
+      <p class="cp-section-title">RESEARCH POTENTIAL</p>
+      <div class="cp-data-grid">
+        <div class="cp-data-cell">
+          <span class="cp-data-key">Discovery Index</span>
+          <span class="cp-data-val cp-data-val--green">87.3</span>
+          <span class="cp-data-sub">Patent potential</span>
+        </div>
+        <div class="cp-data-cell">
+          <span class="cp-data-key">Pub. Probability</span>
+          <span class="cp-data-val cp-data-val--amber">74%</span>
+          <span class="cp-data-sub">Within 5 years</span>
+        </div>
+        <div class="cp-data-cell">
+          <span class="cp-data-key">Thesis Score (est.)</span>
+          <span class="cp-data-val">88–93</span>
+          <span class="cp-data-sub">AI-predicted range</span>
+        </div>
+        <div class="cp-data-cell">
+          <span class="cp-data-key">PhD Pursuit Prob.</span>
+          <span class="cp-data-val cp-data-val--amber">62%</span>
+          <span class="cp-data-sub">Indicative only</span>
+        </div>
+      </div>
+
+      <p class="cp-section-title">ACADEMIC TIMELINE FORECAST</p>
+      <div class="cp-timeline">
+        <div class="cp-timeline-item cp-tl-now">
+          <div class="cp-tl-date">▶ NOW — 2026 Q1</div>
+          <div class="cp-tl-event">Semester 2 / AY 2025 — Active</div>
+          <div class="cp-tl-note">GPA trajectory: 3.78 → projected 3.82 by EOY</div>
+        </div>
+        <div class="cp-timeline-item">
+          <div class="cp-tl-date">2026 Q3</div>
+          <div class="cp-tl-event">Semester 3 — Fixed Income &amp; Advanced Topics</div>
+          <div class="cp-tl-note">Predicted GPA delta: +0.04</div>
+        </div>
+        <div class="cp-timeline-item">
+          <div class="cp-tl-date">2027 Q1</div>
+          <div class="cp-tl-event">Thesis Proposal Submission</div>
+          <div class="cp-tl-note">Research area: Quantitative Asset Pricing (predicted 68%)</div>
+        </div>
+        <div class="cp-timeline-item">
+          <div class="cp-tl-date">2027 Q4</div>
+          <div class="cp-tl-event">Thesis Defence — Predicted Score: 88–93</div>
+          <div class="cp-tl-note">Graduation probability: 96.4% within 4 years</div>
+        </div>
+        <div class="cp-timeline-item">
+          <div class="cp-tl-date">2028</div>
+          <div class="cp-tl-event">M.Sc. Graduation — Honours Candidate</div>
+          <div class="cp-tl-note">Career path: Quant Finance / Investment Research</div>
+        </div>
+      </div>
+
+      <p class="cp-section-title">CAREER TRAJECTORY PREDICTION</p>
+      <div class="cp-bar-wrap">
+        <div class="cp-bar-label-row"><span class="cp-bar-lbl">Investment Banking / Quant Finance</span><span class="cp-bar-val">68%</span></div>
+        <div class="cp-bar-track"><div class="cp-bar-fill" style="--w:68%"></div></div>
+      </div>
+      <div class="cp-bar-wrap">
+        <div class="cp-bar-label-row"><span class="cp-bar-lbl">Academia / Research</span><span class="cp-bar-val">22%</span></div>
+        <div class="cp-bar-track"><div class="cp-bar-fill" style="--w:22%"></div></div>
+      </div>
+      <div class="cp-bar-wrap">
+        <div class="cp-bar-label-row"><span class="cp-bar-lbl">FinTech / Startup</span><span class="cp-bar-val">7%</span></div>
+        <div class="cp-bar-track"><div class="cp-bar-fill cp-bar-fill--amber" style="--w:7%"></div></div>
+      </div>
+      <div class="cp-bar-wrap">
+        <div class="cp-bar-label-row"><span class="cp-bar-lbl">Public Sector / Policy</span><span class="cp-bar-val">3%</span></div>
+        <div class="cp-bar-track"><div class="cp-bar-fill cp-bar-fill--amber" style="--w:3%"></div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <script src="main.js"></script>
 </body>

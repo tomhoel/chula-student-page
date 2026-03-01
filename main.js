@@ -1,5 +1,14 @@
 'use strict';
 
+/* ── LIVE DATE BADGE ─────────────────────────────────── */
+(function () {
+  const el = document.getElementById('vr-date');
+  if (!el) return;
+  const now = new Date();
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  el.textContent = now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
+})();
+
 /* ── LANGUAGE TOGGLE ────────────────────────────────── */
 
 function setLang(lang) {
@@ -112,16 +121,14 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
   const faces = card.querySelectorAll('.card3d-gloss');
 
   /* ── Generate Z-stacked slices for smooth 3D rounded corners ── */
-  /* Slices are full rounded-rectangles at different Z depths.       */
-  /* They fill the corner zones where shortened edge panels don't.   */
   (function generateSlices() {
-    const HALF = 4;                       // half-thickness
+    const HALF = 4;
     const firstEdge = card.querySelector('.card3d-edge');
     for (let z = -HALF + 0.5; z <= HALF - 0.5; z += 1) {
       const sl = document.createElement('div');
       sl.className = 'card3d-slice';
       sl.style.transform = 'translateZ(' + z + 'px)';
-      card.insertBefore(sl, firstEdge);   // behind edges, behind faces
+      card.insertBefore(sl, firstEdge);
     }
   })();
 
@@ -134,17 +141,21 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
   let idleId = null;
   let idleOn = false;
   let idleT = 0;
-  let idleTimerId = null;   /* covers ALL deferred startIdle calls */
-  let openTimerId  = null;  /* covers the post-open render+startIdle */
+  let idleTimerId = null;
   let lastTap = 0;
   let flipped = false;
+
+  /* ── Normalise rotY to -180..180 so return is always the shortest path ── */
+  function normaliseRotY() {
+    rotY = ((rotY % 360) + 360) % 360;
+    if (rotY > 180) rotY -= 360;
+  }
 
   /* ── Render ── */
   function render(transition) {
     const base = flipped ? 180 : 0;
     card.style.transition = transition || 'none';
     card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY + base}deg)`;
-    /* Gloss: map tilt to a specular highlight position */
     const gx = 50 + rotY * 0.5;
     const gy = 50 - rotX * 1.2;
     faces.forEach(f => {
@@ -153,47 +164,58 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
     });
   }
 
-  /* ── Idle sway (gentle left-right oscillation, front-facing) ── */
-  function startIdle() {
+  /* ── Idle sway (immediate — used on sheet open) ── */
+  function startIdleNow() {
     if (idleOn) return;
     idleOn = true;
-    /* Smoothly settle from current rotation to idle start before swaying */
+    idleT = 0;
+    (function tick() {
+      if (!idleOn) return;
+      idleT += 0.006;
+      rotY = Math.sin(idleT) * 30;   /* ±30° — edge clearly visible */
+      rotX = 8;
+      render();
+      idleId = requestAnimationFrame(tick);
+    })();
+  }
+
+  /* ── Idle sway (after interaction — settles from current position first) ── */
+  function startIdleFromCurrent() {
+    if (idleOn) return;
+    idleOn = true;
+    normaliseRotY();   /* take shortest angular path back — no multi-spin */
     var fromX = rotX, fromY = rotY, t = 0;
     (function settle() {
       if (!idleOn) return;
-      t += 0.025;                              /* ~40 frames to settle */
+      t += 0.04;                           /* ~25 frames ≈ 400 ms settle */
       if (t >= 1) {
         rotX = 8; rotY = 0; idleT = 0;
         (function tick() {
           if (!idleOn) return;
           idleT += 0.006;
-          rotY = Math.sin(idleT) * 30;  /* ±30° so edge thickness is clearly visible */
+          rotY = Math.sin(idleT) * 30;
           rotX = 8;
           render();
           idleId = requestAnimationFrame(tick);
         })();
         return;
       }
-      var ease = 1 - Math.pow(1 - t, 3);      /* cubic ease-out */
+      var ease = 1 - Math.pow(1 - t, 3);   /* cubic ease-out */
       rotX = fromX + (8 - fromX) * ease;
       rotY = fromY + (0 - fromY) * ease;
       render();
       idleId = requestAnimationFrame(settle);
     })();
   }
+
   function stopIdle() {
     idleOn = false;
     cancelAnimationFrame(idleId);
   }
-  /* Cancel every pending deferred startIdle before starting a new interaction */
-  function cancelPendingIdle() {
-    clearTimeout(idleTimerId);
-    clearTimeout(openTimerId);
-  }
 
   /* ── Drag ── */
   function onStart(x, y) {
-    cancelPendingIdle();   /* ← prevents the open-timer firing mid-drag */
+    clearTimeout(idleTimerId);
     stopIdle();
     cancelAnimationFrame(rafId);
     isDragging = true;
@@ -215,18 +237,20 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
   function onEnd() {
     if (!isDragging) return;
     isDragging = false;
-    /* Momentum decay */
+    /* Momentum — higher friction coeff = longer satisfying spin */
     (function decay() {
-      velX *= 0.91;
-      velY *= 0.91;
+      velX *= 0.94;
+      velY *= 0.94;
       rotY += velX * 0.55;
       rotX -= velY * 0.55;
       rotX = Math.max(-60, Math.min(60, rotX));
       render();
-      if (Math.abs(velX) > 0.15 || Math.abs(velY) > 0.15) {
+      if (Math.abs(velX) > 0.12 || Math.abs(velY) > 0.12) {
         rafId = requestAnimationFrame(decay);
       } else {
-        idleTimerId = setTimeout(startIdle, 2500);
+        /* Normalise before settling so return is ≤180° rotation */
+        normaliseRotY();
+        idleTimerId = setTimeout(startIdleFromCurrent, 1200);
       }
     })();
   }
@@ -237,8 +261,9 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
     if (now - lastTap < 300) {
       flipped = !flipped;
       stopIdle();
+      normaliseRotY();
       render('transform 0.55s cubic-bezier(0.34,1.2,0.64,1)');
-      idleTimerId = setTimeout(startIdle, 1500);
+      idleTimerId = setTimeout(startIdleFromCurrent, 1500);
     }
     lastTap = now;
   }
@@ -265,14 +290,12 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
   /* ── Sheet open / close ── */
   new MutationObserver(() => {
     if (sheet.classList.contains('open')) {
-      /* Spring-in to centre, then start gentle sway */
+      /* Snap to front, then start sway immediately — no wait, no CSS spring */
       rotX = 8; rotY = 0; flipped = false;
-      render('transform 0.7s cubic-bezier(0.34,1.4,0.64,1)');
-      openTimerId = setTimeout(() => {
-        if (!isDragging) { render(); startIdle(); }
-      }, 800);
+      render();
+      setTimeout(() => { if (!isDragging) startIdleNow(); }, 40);
     } else {
-      cancelPendingIdle();
+      clearTimeout(idleTimerId);
       stopIdle();
       cancelAnimationFrame(rafId);
     }
@@ -394,5 +417,158 @@ function showToast(msg) {
         });
       });
     }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
+  });
+})();
+
+/* ── ACADEMIC COLLAPSIBLE SECTIONS ────────────────── */
+(function () {
+  document.querySelectorAll('.ag-collapse-section').forEach(section => {
+    const btn  = section.querySelector('.ag-collapse-btn');
+    const body = section.querySelector('.ag-collapse-body');
+    if (!btn || !body) return;
+
+    const isOpen = section.dataset.open === 'true';
+    body.style.maxHeight = isOpen ? body.scrollHeight + 'px' : '0';
+    body.style.opacity   = isOpen ? '1' : '0';
+
+    btn.addEventListener('click', () => {
+      const open = section.dataset.open === 'true';
+      if (open) {
+        /* Collapse: fix current height then animate to 0 */
+        body.style.maxHeight = body.scrollHeight + 'px';
+        requestAnimationFrame(() => {
+          body.style.maxHeight = '0';
+          body.style.opacity   = '0';
+        });
+        section.dataset.open = 'false';
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        body.style.maxHeight = body.scrollHeight + 'px';
+        body.style.opacity   = '1';
+        section.dataset.open = 'true';
+        btn.setAttribute('aria-expanded', 'true');
+        /* After transition, clear max-height so content can grow */
+        body.addEventListener('transitionend', function reset() {
+          body.removeEventListener('transitionend', reset);
+          if (section.dataset.open === 'true') body.style.maxHeight = 'none';
+        });
+      }
+    });
+  });
+})();
+
+/* ── FUTURE COURSE COLLAPSIBLES ──────────────────── */
+(function () {
+  document.querySelectorAll('.ag-future-course').forEach(course => {
+    const btn  = course.querySelector('.ag-future-toggle');
+    const body = course.querySelector('.ag-future-desc-body');
+    if (!btn || !body) return;
+
+    body.style.maxHeight = '0';
+    body.style.opacity   = '0';
+    course.dataset.open  = 'false';
+
+    btn.addEventListener('click', () => {
+      const open = course.dataset.open === 'true';
+      if (open) {
+        body.style.maxHeight = body.scrollHeight + 'px';
+        requestAnimationFrame(() => {
+          body.style.maxHeight = '0';
+          body.style.opacity   = '0';
+        });
+        course.dataset.open = 'false';
+      } else {
+        body.style.maxHeight = body.scrollHeight + 'px';
+        body.style.opacity   = '1';
+        course.dataset.open  = 'true';
+        body.addEventListener('transitionend', function reset() {
+          body.removeEventListener('transitionend', reset);
+          if (course.dataset.open === 'true') body.style.maxHeight = 'none';
+        });
+      }
+    });
+  });
+})();
+
+/* ── CHEAT PANEL — CU Internal Intelligence System ── */
+(function () {
+  const idCard   = document.getElementById('id-card-main');
+  const panel    = document.getElementById('cheat-panel');
+  const scrim    = document.getElementById('cheat-scrim');
+  const closeBtn = document.getElementById('cheat-close');
+  if (!idCard || !panel) return;
+
+  function updateTimestamp() {
+    const el = document.getElementById('cp-timestamp');
+    if (!el) return;
+    const now = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    el.textContent =
+      now.getFullYear() + '-' +
+      pad(now.getMonth() + 1) + '-' +
+      pad(now.getDate()) + ' ' +
+      pad(now.getHours()) + ':' +
+      pad(now.getMinutes()) + ':' +
+      pad(now.getSeconds()) + ' ICT';
+  }
+
+  idCard.addEventListener('click', e => {
+    /* Don't open panel when tapping the photo — let lightbox handle that */
+    if (e.target.closest('.id-photo-col')) return;
+    panel.classList.add('open');
+    updateTimestamp();
+    /* Re-animate bars every time panel opens */
+    panel.querySelectorAll('.cp-bar-fill').forEach(el => {
+      el.style.transition = 'none';
+      el.style.width = '0';
+    });
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        panel.querySelectorAll('.cp-bar-fill').forEach(el => {
+          el.style.transition = '';
+          el.style.width = '';
+        });
+      });
+    });
+  });
+
+  function closePanel() { panel.classList.remove('open'); }
+
+  if (closeBtn) closeBtn.addEventListener('click', closePanel);
+  if (scrim)    scrim.addEventListener('click', closePanel);
+
+  /* Tab switching */
+  panel.addEventListener('click', e => {
+    const tab = e.target.closest('.cp-tab');
+    if (!tab) return;
+    const target = tab.dataset.cpTab;
+    panel.querySelectorAll('.cp-tab').forEach(t => {
+      t.classList.remove('cp-tab-active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    panel.querySelectorAll('.cp-tab-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('cp-tab-active');
+    tab.setAttribute('aria-selected', 'true');
+    const content = document.getElementById('cptab-' + target);
+    if (content) {
+      content.classList.add('active');
+      /* Re-animate bars in newly shown tab */
+      content.querySelectorAll('.cp-bar-fill').forEach(el => {
+        el.style.transition = 'none';
+        el.style.width = '0';
+      });
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          content.querySelectorAll('.cp-bar-fill').forEach(el => {
+            el.style.transition = '';
+            el.style.width = '';
+          });
+        });
+      });
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
   });
 })();
