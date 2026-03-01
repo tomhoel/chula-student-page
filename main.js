@@ -651,35 +651,3 @@ function showToast(msg) {
     }
   }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
 })();
-
-
-/* ═══════════════════════════════════════════════════════
-   SPORT PHOTO LOADING FIX
-═══════════════════════════════════════════════════════ */
-
-(function() {
-  // Handle sport photo loading
-  document.querySelectorAll('.sp-sport-photo img').forEach(img => {
-    // Add loaded class when image loads
-    img.addEventListener('load', () => {
-      img.classList.add('loaded');
-    });
-    
-    // Handle already cached images
-    if (img.complete) {
-      img.classList.add('loaded');
-    }
-    
-    // Error handling
-    img.addEventListener('error', () => {
-      console.error('Failed to load sport photo:', img.src);
-      img.parentElement.parentElement.classList.add('image-error');
-      // Set emoji based on alt text
-      const emoji = img.alt.includes('football') ? '⚽' : 
-                    img.alt.includes('swimming') ? '🏊' : '🏃';
-      img.parentElement.parentElement.setAttribute('data-emoji', emoji);
-    });
-  });
-})();
-
-console.log('Sport photo loading fix applied');
