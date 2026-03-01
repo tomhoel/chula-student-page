@@ -637,6 +637,48 @@ function showToast(msg) {
   runOverviewAnimations();
 })();
 
+/* ══════════════════════════════════════════════════════
+   ATHLETIC PROFILE — FITNESS RING ANIMATION
+══════════════════════════════════════════════════════ */
+(function () {
+  var spSheet = document.getElementById('sheet-activities');
+  if (!spSheet) return;
+
+  var spRingAnimated = false;
+
+  function animateSpRing() {
+    var ring = spSheet.querySelector('.sp-ring-fill');
+    if (ring && !spRingAnimated) {
+      spRingAnimated = true;
+      setTimeout(function () {
+        ring.style.strokeDashoffset = '26.14'; /* 87/100 = 87% filled; 201.06 * 0.13 = 26.14 */
+      }, 120);
+    }
+  }
+
+  function resetSpRing() {
+    var ring = spSheet.querySelector('.sp-ring-fill');
+    if (ring) {
+      ring.style.strokeDashoffset = '201.06';
+      spRingAnimated = false;
+    }
+  }
+
+  var spObs = new MutationObserver(function (mutations) {
+    mutations.forEach(function (m) {
+      if (m.attributeName === 'class') {
+        if (spSheet.classList.contains('open')) {
+          animateSpRing();
+        } else {
+          resetSpRing();
+        }
+      }
+    });
+  });
+
+  spObs.observe(spSheet, { attributes: true });
+}());
+
 /* ── ACADEMIC SHEET (ac-* system) ────────────────────── */
 (function () {
   'use strict';
