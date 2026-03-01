@@ -3064,7 +3064,6 @@ html[lang="en"] .sp-profile-text {
 .sp-sport-card {
   display: flex;
   align-items: stretch;
-  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   overflow: hidden;
   min-height: 136px;
@@ -3090,7 +3089,7 @@ html[lang="en"] .sp-profile-text {
 .sp-sport-card--swim     { border-left: 3px solid #0ea5e9; }
 
 .sp-sport-card-photo {
-  width: 34%;
+  width: 42%;
   flex-shrink: 0;
   overflow: hidden;
   background: #111;
@@ -3115,6 +3114,48 @@ html[lang="en"] .sp-profile-text {
   border-left: 1px solid rgba(0, 0, 0, 0.06);
 }
 
+.sp-sport-card-toprow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sp-sport-card-rating-num {
+  margin-left: auto;
+  font: 700 16px / 1 var(--f);
+  color: var(--cu);
+  letter-spacing: -0.02em;
+}
+.sp-sport-card-rating-num--blue { color: #0ea5e9; }
+.sp-sport-card-rating-den {
+  font: 500 9px / 1 var(--f);
+  color: var(--t3);
+  margin-left: 1px;
+}
+.sp-form-strip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+.sp-form-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.sp-form-w    { background: #22c55e; }
+.sp-form-d    { background: #f59e0b; }
+.sp-form-l    { background: rgba(0,0,0,0.18); }
+.sp-form-pb   { background: var(--cu); }
+.sp-form-good { background: #22c55e; }
+.sp-form-norm { background: rgba(0,0,0,0.15); }
+.sp-form-lbl {
+  font: 700 7px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-left: 3px;
+}
 .sp-sport-card-tag-row {
   display: flex;
   align-items: center;
