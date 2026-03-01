@@ -5061,4 +5061,260 @@ html[lang="en"] .ag-future-desc {
 }
 
 
-/* ═══════════════════════════════════════════════════════
+/* ══════════════════════════════════════════════════════
+   ACADEMIC INTELLIGENCE SYSTEM — Sheet Redesign
+   ac-* prefix
+══════════════════════════════════════════════════════ */
+
+/* override sheet-panel default so our flex column works */
+.sheet-panel-academic {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ── HEADER ─────────────────────────────────────────── */
+.ac-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 18px 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  flex-shrink: 0;
+}
+.ac-cls-badge {
+  background: #c0392b;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-family: var(--f);
+  flex-shrink: 0;
+}
+.ac-header-title {
+  font-family: var(--f);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--t1);
+  flex: 1;
+  text-transform: uppercase;
+}
+.ac-close {
+  background: none;
+  border: none;
+  color: var(--t3);
+  font-size: 15px;
+  cursor: pointer;
+  padding: 4px 6px;
+  line-height: 1;
+  border-radius: 4px;
+}
+.ac-close:hover { background: rgba(0,0,0,0.06); }
+
+/* ── SYSBAR ──────────────────────────────────────────── */
+.ac-sysbar {
+  background: rgba(0,0,0,0.025);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  overflow: hidden;
+  padding: 7px 0;
+  flex-shrink: 0;
+}
+.ac-sysbar-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  animation: acSysScroll 28s linear infinite;
+  white-space: nowrap;
+  font-family: var(--f);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--t2);
+  padding-left: 18px;
+}
+.ac-sb-key { color: var(--t3); font-weight: 600; }
+.ac-sb-val { color: var(--t1); font-weight: 500; }
+.ac-sb-sep { color: var(--t3); }
+.ac-sb-div { color: rgba(0,0,0,0.15); }
+@keyframes acSysScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── STUDENT BANNER ───────────────────────────────────── */
+.ac-student-banner {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  gap: 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  background: linear-gradient(135deg, rgba(222,93,142,0.04) 0%, transparent 60%);
+  flex-shrink: 0;
+}
+.ac-score-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+.ac-gpa-ring-wrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.ac-gpa-ring {
+  width: 80px;
+  height: 80px;
+  transform: rotate(-90deg);
+}
+.ac-ring-bg {
+  fill: none;
+  stroke: rgba(0,0,0,0.07);
+  stroke-width: 7;
+}
+.ac-ring-fill {
+  fill: none;
+  stroke: var(--cu);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 201.06;
+  stroke-dashoffset: 201.06;
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.16,1,0.3,1);
+}
+.ac-score-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  line-height: 1.1;
+}
+.ac-score-val {
+  font-family: var(--f);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--t1);
+  letter-spacing: -0.02em;
+}
+.ac-score-denom {
+  font-family: var(--f);
+  font-size: 10px;
+  color: var(--t3);
+}
+.ac-honours-label {
+  font-family: var(--f);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--cu);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.ac-honours-dot {
+  width: 6px;
+  height: 6px;
+  background: #22c55e;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: acDotPulse 2s ease-in-out infinite;
+}
+@keyframes acDotPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+.ac-meta-rows {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.ac-meta-row {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+.ac-meta-key {
+  font-family: var(--f);
+  font-size: 8.5px;
+  letter-spacing: 0.1em;
+  color: var(--t3);
+  text-transform: uppercase;
+  min-width: 62px;
+  flex-shrink: 0;
+  font-weight: 600;
+}
+.ac-meta-val {
+  font-family: var(--f);
+  font-size: 11px;
+  color: var(--t1);
+  font-weight: 500;
+}
+
+/* ── TABS ────────────────────────────────────────────── */
+.ac-tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  padding: 0 18px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  flex-shrink: 0;
+}
+.ac-tabs::-webkit-scrollbar { display: none; }
+.ac-tab {
+  padding: 10px 14px;
+  font-family: var(--f);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--t3);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+  margin-bottom: -1px;
+}
+.ac-tab.active {
+  color: var(--cu);
+  border-bottom-color: var(--cu);
+}
+.ac-tab-content {
+  overflow-y: auto;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
+}
+.ac-tab-panel {
+  display: none;
+  padding: 4px 18px 28px;
+}
+.ac-tab-panel.active {
+  display: block;
+  animation: acPanelIn 0.25s ease;
+}
+@keyframes acPanelIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ac-section-title {
+  font-family: var(--f);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--t3);
+  margin: 16px 0 8px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
