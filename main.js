@@ -289,18 +289,6 @@ function showToast(msg) {
   toast._tid = setTimeout(() => toast.classList.remove('show'), 2200);
 }
 
-/* ── DARK MODE ───────────────────────────────────────── */
-(function () {
-  const btn = document.getElementById('theme-btn');
-  if (!btn) return;
-
-  btn.addEventListener('click', () => {
-    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-    document.documentElement.dataset.theme = next;
-    try { localStorage.setItem('cu-theme', next); } catch (_) {}
-  });
-})();
-
 /* ── SHARE ───────────────────────────────────────────── */
 (function () {
   const btn = document.getElementById('share-btn');
