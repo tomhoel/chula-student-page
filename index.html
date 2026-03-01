@@ -1184,58 +1184,43 @@
     <div class="sheet-panel sheet-panel-activities">
       <div class="sheet-handle"></div>
 
-      <div class="sheet-head">
-        <h2 class="sheet-title">
-          <span class="l-th">โปรไฟล์กีฬา</span>
-          <span class="l-en">Athletic Profile</span>
-        </h2>
-        <button class="sheet-close" data-close aria-label="Close">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        </button>
+      <!-- ── SP Header (mirrors cp-header) ── -->
+      <div class="sp-header">
+        <div class="sp-sport-badge">SPORT</div>
+        <div class="sp-header-title-block">
+          <span class="sp-header-label">ATHLETIC PROFILE · PERFORMANCE RECORD</span>
+          <span class="sp-header-subtitle">Fitness Assessment — AY 2025</span>
+        </div>
+        <button class="sp-header-close" data-close aria-label="Close">✕</button>
       </div>
 
-      <!-- ── Athletic Overview ── -->
-      <div class="sp-overview">
-        <div class="sp-overview-top">
-          <div class="sp-fitness-score-block">
-            <div class="sp-fitness-score">
-              <span class="sp-fitness-num">87</span>
-              <span class="sp-fitness-max">/100</span>
-            </div>
-            <span class="sp-fitness-lbl">
-              <span class="l-th">ดัชนีสมรรถภาพ</span>
-              <span class="l-en">Fitness Index</span>
-            </span>
-          </div>
-          <div class="sp-overview-stats">
-            <div class="sp-ostat">
-              <span class="sp-ostat-val">2</span>
-              <span class="sp-ostat-lbl"><span class="l-th">กีฬา</span><span class="l-en">Sports</span></span>
-            </div>
-            <div class="sp-ostat-sep"></div>
-            <div class="sp-ostat">
-              <span class="sp-ostat-val">4+</span>
-              <span class="sp-ostat-lbl"><span class="l-th">ปีที่แข่ง</span><span class="l-en">Years
-                  Active</span></span>
-            </div>
-            <div class="sp-ostat-sep"></div>
-            <div class="sp-ostat">
-              <span class="sp-ostat-val">Top 8%</span>
-              <span class="sp-ostat-lbl"><span class="l-th">ในกลุ่ม</span><span class="l-en">In Cohort</span></span>
-            </div>
-          </div>
+      <!-- ── SP Sysbar (mirrors cp-sysbar) ── -->
+      <div class="sp-sysbar">
+        <span class="sp-sysbar-item"><span class="sp-sysbar-key">SPORTS</span>&nbsp;<span class="sp-sysbar-val">2</span></span>
+        <span class="sp-sysbar-dot"></span>
+        <span class="sp-sysbar-item"><span class="sp-sysbar-key">FITNESS</span>&nbsp;<span class="sp-sysbar-val">87/100</span></span>
+        <span class="sp-sysbar-dot"></span>
+        <span class="sp-sysbar-item"><span class="sp-sysbar-key">RANK</span>&nbsp;<span class="sp-sysbar-val sp-sysbar-val--pink">TOP 8%</span></span>
+        <span class="sp-sysbar-dot"></span>
+        <span class="sp-sysbar-item"><span class="sp-sysbar-key">SEASON</span>&nbsp;<span class="sp-sysbar-val">2025–26</span></span>
+        <span class="sp-sysbar-dot"></span>
+        <span class="sp-sysbar-item"><span class="sp-sysbar-key">DIV</span>&nbsp;<span class="sp-sysbar-val">GRAD</span></span>
+      </div>
+
+      <!-- ── Athlete Banner (mirrors cp-student-banner) ── -->
+      <div class="sp-athlete-banner">
+        <div class="sp-athlete-score-block">
+          <div class="sp-athlete-score-label">FITNESS<br>INDEX</div>
+          <div class="sp-athlete-score"><span class="sp-athlete-num">87</span><span class="sp-athlete-denom">/100</span></div>
+          <div class="sp-athlete-rank">Top 8% · AY 2025</div>
         </div>
-        <div class="sp-fitness-track">
-          <div class="sp-fitness-fill" style="--w:87%"></div>
+        <div class="sp-athlete-meta">
+          <div class="sp-athlete-meta-row"><span class="sp-athlete-meta-k">SPORT COUNT</span><span class="sp-athlete-meta-v">2</span></div>
+          <div class="sp-athlete-meta-row"><span class="sp-athlete-meta-k">YEARS ACTIVE</span><span class="sp-athlete-meta-v">4+</span></div>
+          <div class="sp-athlete-meta-row"><span class="sp-athlete-meta-k">RANK</span><span class="sp-athlete-meta-v sp-val-pink">TOP 8%</span></div>
+          <div class="sp-athlete-meta-row"><span class="sp-athlete-meta-k">DIVISION</span><span class="sp-athlete-meta-v">GRAD STUDENT</span></div>
+          <div class="sp-athlete-meta-row"><span class="sp-athlete-meta-k">SEASON</span><span class="sp-athlete-meta-v">2025–26</span></div>
         </div>
-        <p class="sp-fitness-note">
-          <span class="l-th">อันดับ Top 8% ด้านสมรรถภาพกีฬา ในกลุ่มนิสิตมหาบัณฑิต ประจำปี 2568</span>
-          <span class="l-en">Ranks Top 8% athletically among CU graduate students, AY 2025</span>
-        </p>
       </div>
 
       <!-- ── Performance Radar ── -->
