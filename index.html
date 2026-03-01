@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="theme-color" content="#de5d8e">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="description" content="กรวิชญ์ ฉ่ำไกร — Graduate Scholar of Finance, Chulalongkorn University">
   <meta property="og:title" content="กรวิชญ์ ฉ่ำไกร · Chulalongkorn University">
   <meta property="og:description" content="Verified student — Graduate Scholar of Finance, Faculty of Economics">
@@ -176,18 +177,29 @@
     <!-- Row 2: Activities -->
     <button class="card card-sm" data-sheet="activities" type="button">
       <div class="card-icon ci-green">
+        <!-- Trophy / award icon -->
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M12 8c-2 0-4 1-4 4s2 4 4 4 4-1 4-4-2-4-4-4z"/>
-          <path d="M4.9 7.6C6.3 6 8 5 10 4.5M19.1 7.6C17.7 6 16 5 14 4.5M4.9 16.4C6.3 18 8 19 10 19.5M19.1 16.4C17.7 18 16 19 14 19.5"/>
+          <path d="M6 9H4a2 2 0 0 0-2 2v1a4 4 0 0 0 4 4h.1"/>
+          <path d="M18 9h2a2 2 0 0 1 2 2v1a4 4 0 0 1-4 4h-.1"/>
+          <path d="M8 21h8M12 17v4"/>
+          <path d="M6 3h12v9a6 6 0 0 1-12 0V3z"/>
         </svg>
       </div>
       <div class="card-text">
         <span class="card-label">
-          <span class="l-th">กิจกรรม</span>
-          <span class="l-en">Activities</span>
+          <span class="l-th">กิจกรรมกีฬา</span>
+          <span class="l-en">Sports & Activities</span>
         </span>
-        <span class="card-sub">⚽ 🏊</span>
+        <div class="card-sport-pills">
+          <span class="card-sport-pill">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M4.9 7.6C6.3 6 8 5 10 4.5M19.1 7.6C17.7 6 16 5 14 4.5"/></svg>
+            <span class="l-th">ฟุตบอล</span><span class="l-en">Football</span>
+          </span>
+          <span class="card-sport-pill">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M2 12h4M18 12h4M12 2v4M12 18v4"/><circle cx="12" cy="12" r="4"/></svg>
+            <span class="l-th">ว่ายน้ำ</span><span class="l-en">Swimming</span>
+          </span>
+        </div>
       </div>
       <svg class="card-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
     </button>
@@ -330,11 +342,15 @@
         </dd>
       </div>
       <div class="info-row">
-        <dt><span class="l-th">สัญชาติ / หมู่เลือด</span><span class="l-en">Nationality / Blood</span></dt>
+        <dt><span class="l-th">สัญชาติ</span><span class="l-en">Nationality</span></dt>
         <dd>
-          <span class="l-th">ไทย <em>Thai</em> &nbsp;·&nbsp; <span class="sid-blood">A+</span></span>
-          <span class="l-en">Thai <em>ไทย</em> &nbsp;·&nbsp; <span class="sid-blood">A+</span></span>
+          <span class="l-th">ไทย <em>Thai</em></span>
+          <span class="l-en">Thai <em>ไทย</em></span>
         </dd>
+      </div>
+      <div class="info-row info-row--blood">
+        <dt><span class="l-th">หมู่เลือด</span><span class="l-en">Blood Type</span></dt>
+        <dd><span class="sid-blood-badge">A<sup>+</sup></span></dd>
       </div>
     </dl>
 
@@ -755,38 +771,25 @@
 
     <!-- ── INFO ABOVE CARD ── -->
     <div class="card3d-above">
-      <!-- Stat pills row -->
       <div class="card3d-stats">
         <div class="card3d-stat">
           <span class="card3d-stat-val">2025</span>
-          <span class="card3d-stat-lbl">
-            <span class="l-th">รับเข้า</span>
-            <span class="l-en">Enrolled</span>
-          </span>
+          <span class="card3d-stat-lbl"><span class="l-th">รับเข้า</span><span class="l-en">Enrolled</span></span>
+        </div>
+        <div class="card3d-stat-sep"></div>
+        <div class="card3d-stat">
+          <span class="card3d-stat-val">3.78</span>
+          <span class="card3d-stat-lbl"><span class="l-th">เกรดเฉลี่ย</span><span class="l-en">GPA</span></span>
+        </div>
+        <div class="card3d-stat-sep"></div>
+        <div class="card3d-stat">
+          <span class="card3d-stat-val">18/30</span>
+          <span class="card3d-stat-lbl"><span class="l-th">หน่วยกิต</span><span class="l-en">Credits</span></span>
         </div>
         <div class="card3d-stat-sep"></div>
         <div class="card3d-stat">
           <span class="card3d-stat-val">2029</span>
-          <span class="card3d-stat-lbl">
-            <span class="l-th">หมดอายุ</span>
-            <span class="l-en">Expires</span>
-          </span>
-        </div>
-        <div class="card3d-stat-sep"></div>
-        <div class="card3d-stat">
-          <span class="card3d-stat-val">M.Sc.</span>
-          <span class="card3d-stat-lbl">
-            <span class="l-th">ปริญญา</span>
-            <span class="l-en">Degree</span>
-          </span>
-        </div>
-        <div class="card3d-stat-sep"></div>
-        <div class="card3d-stat">
-          <span class="card3d-stat-val">CU</span>
-          <span class="card3d-stat-lbl">
-            <span class="l-th">สถาบัน</span>
-            <span class="l-en">Institution</span>
-          </span>
+          <span class="card3d-stat-lbl"><span class="l-th">หมดอายุ</span><span class="l-en">Expires</span></span>
         </div>
       </div>
     </div>
@@ -822,57 +825,91 @@
     <!-- ── INFO BELOW CARD ── -->
     <div class="card3d-below">
 
-      <!-- Campus access permissions -->
-      <div class="card3d-access">
+      <!-- Academic standing -->
+      <div class="card3d-panel">
         <p class="card3d-section-lbl">
-          <span class="l-th">สิทธิ์เข้าถึงวิทยาเขต</span>
-          <span class="l-en">Campus Access</span>
+          <span class="l-th">สถานะทางวิชาการ</span>
+          <span class="l-en">Academic Standing</span>
         </p>
-        <div class="card3d-access-grid">
-          <div class="card3d-access-item">
-            <span class="card3d-access-icon">📚</span>
-            <span class="l-th">ห้องสมุด</span>
-            <span class="l-en">Library</span>
+        <div class="card3d-rows">
+          <div class="card3d-row">
+            <span class="card3d-row-key"><span class="l-th">สถานะ</span><span class="l-en">Status</span></span>
+            <span class="card3d-row-val card3d-val--active">
+              <span class="card3d-status-dot"></span>
+              <span class="l-th">ลงทะเบียนแล้ว</span><span class="l-en">Active Enrollment</span>
+            </span>
           </div>
-          <div class="card3d-access-item">
-            <span class="card3d-access-icon">🏊</span>
-            <span class="l-th">ศูนย์กีฬา</span>
-            <span class="l-en">Sports Complex</span>
+          <div class="card3d-row">
+            <span class="card3d-row-key"><span class="l-th">ระดับ</span><span class="l-en">Level</span></span>
+            <span class="card3d-row-val"><span class="l-th">ระดับมหาบัณฑิต (M.Sc.)</span><span class="l-en">Graduate — M.Sc. Finance</span></span>
           </div>
-          <div class="card3d-access-item">
-            <span class="card3d-access-icon">🔬</span>
-            <span class="l-th">ห้องแล็บ</span>
-            <span class="l-en">Research Lab</span>
+          <div class="card3d-row">
+            <span class="card3d-row-key"><span class="l-th">ภาคการศึกษา</span><span class="l-en">Semester</span></span>
+            <span class="card3d-row-val"><span class="l-th">ภาค 2 / ปีการศึกษา 2568</span><span class="l-en">Semester 2 / Academic Year 2025</span></span>
           </div>
-          <div class="card3d-access-item">
-            <span class="card3d-access-icon">💻</span>
-            <span class="l-th">คอมพิวเตอร์</span>
-            <span class="l-en">Computer Lab</span>
+          <div class="card3d-row">
+            <span class="card3d-row-key"><span class="l-th">สถานะวิชาการ</span><span class="l-en">Standing</span></span>
+            <span class="card3d-row-val card3d-val--good"><span class="l-th">ผลการเรียนดี</span><span class="l-en">Good Academic Standing</span></span>
           </div>
         </div>
       </div>
 
-      <!-- Security / chip features -->
-      <div class="card3d-security">
+      <!-- Campus access permissions -->
+      <div class="card3d-panel">
         <p class="card3d-section-lbl">
-          <span class="l-th">คุณสมบัติความปลอดภัย</span>
-          <span class="l-en">Security Features</span>
+          <span class="l-th">สิทธิ์เข้าถึงวิทยาเขต</span>
+          <span class="l-en">Campus Access Rights</span>
         </p>
-        <div class="card3d-security-row">
-          <div class="card3d-sec-item">
-            <span class="card3d-sec-dot card3d-sec-dot--cu"></span>
-            <span class="l-th">ชิปฝังใน</span>
-            <span class="l-en">Microchip</span>
+        <div class="card3d-access-grid">
+          <div class="card3d-access-item">
+            <svg class="card3d-check" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="l-th">ห้องสมุดกลาง</span><span class="l-en">Central Library</span>
           </div>
-          <div class="card3d-sec-item">
-            <span class="card3d-sec-dot card3d-sec-dot--gold"></span>
-            <span class="l-th">NFC</span>
-            <span class="l-en">NFC</span>
+          <div class="card3d-access-item">
+            <svg class="card3d-check" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="l-th">ศูนย์กีฬา</span><span class="l-en">Sports Complex</span>
           </div>
-          <div class="card3d-sec-item">
-            <span class="card3d-sec-dot card3d-sec-dot--green"></span>
-            <span class="l-th">โฮโลแกรม</span>
-            <span class="l-en">Hologram</span>
+          <div class="card3d-access-item">
+            <svg class="card3d-check" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="l-th">ห้องปฏิบัติการ</span><span class="l-en">Research Lab</span>
+          </div>
+          <div class="card3d-access-item">
+            <svg class="card3d-check" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="l-th">ห้องคอมพิวเตอร์</span><span class="l-en">Computer Lab</span>
+          </div>
+          <div class="card3d-access-item">
+            <svg class="card3d-check" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="l-th">ศูนย์วิจัย</span><span class="l-en">Research Centre</span>
+          </div>
+          <div class="card3d-access-item">
+            <svg class="card3d-check" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="l-th">กิจกรรมนิสิต</span><span class="l-en">Student Events</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card authentication -->
+      <div class="card3d-panel">
+        <p class="card3d-section-lbl">
+          <span class="l-th">การรับรองบัตร</span>
+          <span class="l-en">Card Authentication</span>
+        </p>
+        <div class="card3d-rows">
+          <div class="card3d-row">
+            <span class="card3d-row-key">NFC Protocol</span>
+            <span class="card3d-row-val card3d-mono">ISO 14443-A / NTAG216</span>
+          </div>
+          <div class="card3d-row">
+            <span class="card3d-row-key">Chip Serial</span>
+            <span class="card3d-row-val card3d-mono">A3·F9·2C·7E·B1·D4</span>
+          </div>
+          <div class="card3d-row">
+            <span class="card3d-row-key">Card Standard</span>
+            <span class="card3d-row-val card3d-mono">ISO 7810 ID-1</span>
+          </div>
+          <div class="card3d-row">
+            <span class="card3d-row-key"><span class="l-th">ออกโดย</span><span class="l-en">Issued By</span></span>
+            <span class="card3d-row-val"><span class="l-th">สำนักทะเบียนฯ จุฬาฯ</span><span class="l-en">CU Registrar's Office</span></span>
           </div>
         </div>
       </div>
