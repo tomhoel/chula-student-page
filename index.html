@@ -1417,156 +1417,121 @@
       <!-- ══════════════════ FOOTBALL TAB ══════════════════ -->
       <div class="sp-tab-content" id="sptab-football" role="tabpanel">
 
-        <!-- Hero Banner -->
-        <div class="sp-hero">
-          <picture>
-            <source srcset="football_photoshoot.webp?v=2" type="image/webp">
-            <img src="football_photoshoot.png?v=2" alt="Korawit in CU football kit" loading="lazy" decoding="async"
-              onerror="this.onerror=null; this.parentElement.parentElement.style.background='linear-gradient(160deg,#de5d8e,#8b1a4a)'; this.style.display='none';">
-          </picture>
-          <div class="sp-hero-overlay"></div>
-          <div class="sp-hero-badge">
-            <span class="sp-hero-rating">8.3</span><span class="sp-hero-rating-denom">/10</span>
+        <!-- Player Card -->
+        <div class="sp-player-card">
+          <div class="sp-player-photo">
+            <picture>
+              <source srcset="football_photoshoot.webp?v=2" type="image/webp">
+              <img src="football_photoshoot.png?v=2" alt="Korawit in CU football kit" loading="lazy" decoding="async"
+                onerror="this.onerror=null; this.parentElement.parentElement.style.background='linear-gradient(160deg,#de5d8e,#8b1a4a)'; this.style.display='none';">
+            </picture>
           </div>
-          <div class="sp-hero-text">
-            <p class="sp-hero-sport"><span class="l-th">ฟุตบอล</span><span class="l-en">Football</span></p>
-            <p class="sp-hero-sub">CU Economics FC · <span class="l-th">กองกลางตัวรุก</span><span class="l-en">Attacking
-                Midfielder</span></p>
+          <div class="sp-player-info">
+            <div class="sp-player-sport-tag sp-player-sport-tag--football">FOOTBALL</div>
+            <div>
+              <p class="sp-player-club">CU Economics FC</p>
+              <p class="sp-player-position"><span class="l-th">กองกลางตัวรุก</span><span class="l-en">Attacking Midfielder</span></p>
+            </div>
+            <div class="sp-player-rating-row">
+              <span class="sp-player-rating-num sp-player-rating-num--pink">8.3</span><span class="sp-player-rating-denom">/10</span>
+              <span class="sp-player-rating-lbl">Season Rating</span>
+            </div>
+            <div class="sp-player-mini-stats">
+              <div class="sp-mini-stat">
+                <span class="sp-mini-val">12</span>
+                <span class="sp-mini-lbl">MTH</span>
+              </div>
+              <div class="sp-mini-stat">
+                <span class="sp-mini-val sp-mini-val--pink">4</span>
+                <span class="sp-mini-lbl">GLS</span>
+              </div>
+              <div class="sp-mini-stat">
+                <span class="sp-mini-val sp-mini-val--pink">7</span>
+                <span class="sp-mini-lbl">AST</span>
+              </div>
+              <div class="sp-mini-stat">
+                <span class="sp-mini-val">75%</span>
+                <span class="sp-mini-lbl">WIN</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Metric Chips -->
-        <div class="sp-metric-row">
-          <div class="sp-metric-chip">
-            <span class="sp-metric-val">12</span>
-            <span class="sp-metric-lbl"><span class="l-th">แมตช์</span><span class="l-en">Matches</span></span>
+        <!-- Season Performance -->
+        <p class="sp-section-title"><span class="l-th">ผลงานในฤดูกาล</span><span class="l-en">Season Performance</span></p>
+        <div class="sp-stat-grid">
+          <div class="sp-stat-cell">
+            <span class="sp-stat-key"><span class="l-th">ยิงแม่น</span><span class="l-en">Shot Acc.</span></span>
+            <span class="sp-stat-val sp-stat-val--pink">78%</span>
+            <span class="sp-stat-sub">avg 61%</span>
           </div>
-          <div class="sp-metric-chip sp-metric-chip--accent">
-            <span class="sp-metric-val">4</span>
-            <span class="sp-metric-lbl"><span class="l-th">ประตู</span><span class="l-en">Goals</span></span>
+          <div class="sp-stat-cell">
+            <span class="sp-stat-key"><span class="l-th">ส่งแม่น</span><span class="l-en">Pass Acc.</span></span>
+            <span class="sp-stat-val sp-stat-val--pink">91%</span>
+            <span class="sp-stat-sub">avg 72%</span>
           </div>
-          <div class="sp-metric-chip sp-metric-chip--accent">
-            <span class="sp-metric-val">7</span>
-            <span class="sp-metric-lbl"><span class="l-th">แอสซิสต์</span><span class="l-en">Assists</span></span>
+          <div class="sp-stat-cell">
+            <span class="sp-stat-key"><span class="l-th">ดริบเบิ้ล</span><span class="l-en">Dribbles</span></span>
+            <span class="sp-stat-val">74%</span>
+            <span class="sp-stat-sub">avg 55%</span>
           </div>
-          <div class="sp-metric-chip">
-            <span class="sp-metric-val">94%</span>
-            <span class="sp-metric-lbl"><span class="l-th">เล่นครบ</span><span class="l-en">Full Match</span></span>
+          <div class="sp-stat-cell">
+            <span class="sp-stat-key"><span class="l-th">แย่งบอล</span><span class="l-en">Tackles</span></span>
+            <span class="sp-stat-val sp-stat-val--green">82%</span>
+            <span class="sp-stat-sub">avg 64%</span>
           </div>
-          <div class="sp-metric-chip">
-            <span class="sp-metric-val">31.5</span>
-            <span class="sp-metric-lbl"><span class="l-th">กม./ชม.</span><span class="l-en">km/h max</span></span>
+          <div class="sp-stat-cell">
+            <span class="sp-stat-key"><span class="l-th">เล่นครบ</span><span class="l-en">Full Time</span></span>
+            <span class="sp-stat-val">94%</span>
+            <span class="sp-stat-sub">11/12 <span class="l-th">เกม</span><span class="l-en">games</span></span>
+          </div>
+          <div class="sp-stat-cell">
+            <span class="sp-stat-key"><span class="l-th">ความเร็วสูงสุด</span><span class="l-en">Top Speed</span></span>
+            <span class="sp-stat-val">31.5</span>
+            <span class="sp-stat-sub">km/h</span>
           </div>
         </div>
 
-        <!-- Archetype strip -->
-        <div class="sp-archetype-strip">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-          </svg>
-          <span class="sp-archetype-label">Technical Playmaker</span>
-          <span class="sp-archetype-avg">avg 86.5</span>
-        </div>
-
-        <!-- Performance bars -->
-        <div class="sp-perf-bars">
-          <div class="sp-perf-row">
-            <span class="sp-perf-lbl"><span class="l-th">ความแม่นยำการยิง</span><span class="l-en">Shot
-                Accuracy</span></span>
-            <div class="sp-cmp-rows">
-              <div class="sp-cmp-row">
-                <span class="sp-cmp-tag sp-cmp-tag--you">YOU</span>
-                <div class="sp-bar-track">
-                  <div class="sp-bar-fill sp-bar-fill--you" style="--w:78%"></div>
-                </div>
-                <span class="sp-cmp-pct">78%</span>
-              </div>
-              <div class="sp-cmp-row">
-                <span class="sp-cmp-tag sp-cmp-tag--avg">AVG</span>
-                <div class="sp-bar-track">
-                  <div class="sp-bar-fill sp-bar-fill--avg" style="--w:61%"></div>
-                </div>
-                <span class="sp-cmp-pct sp-cmp-pct--avg">61%</span>
+        <!-- Match History -->
+        <p class="sp-section-title"><span class="l-th">ผลแข่งขันล่าสุด</span><span class="l-en">Match History</span></p>
+        <div class="sp-match-list">
+          <div class="sp-match-row">
+            <div class="sp-match-result sp-match-result--w">
+              <span class="sp-match-badge">W</span>
+              <span class="sp-match-score">2–1</span>
+            </div>
+            <div class="sp-match-body">
+              <span class="sp-match-opponent">Thammasat University FC</span>
+              <span class="sp-match-meta">CU Games Semi-Final · Apr 2025</span>
+              <div class="sp-match-contrib">
+                <span class="sp-match-contrib-item">⚽ 1 Goal</span>
+                <span class="sp-match-contrib-item">🎯 1 Assist</span>
               </div>
             </div>
           </div>
-          <div class="sp-perf-row">
-            <span class="sp-perf-lbl"><span class="l-th">ความแม่นยำการส่งบอล</span><span class="l-en">Pass
-                Accuracy</span></span>
-            <div class="sp-cmp-rows">
-              <div class="sp-cmp-row">
-                <span class="sp-cmp-tag sp-cmp-tag--you">YOU</span>
-                <div class="sp-bar-track">
-                  <div class="sp-bar-fill sp-bar-fill--you" style="--w:91%"></div>
-                </div>
-                <span class="sp-cmp-pct">91%</span>
-              </div>
-              <div class="sp-cmp-row">
-                <span class="sp-cmp-tag sp-cmp-tag--avg">AVG</span>
-                <div class="sp-bar-track">
-                  <div class="sp-bar-fill sp-bar-fill--avg" style="--w:72%"></div>
-                </div>
-                <span class="sp-cmp-pct sp-cmp-pct--avg">72%</span>
+          <div class="sp-match-row">
+            <div class="sp-match-result sp-match-result--w">
+              <span class="sp-match-badge">W</span>
+              <span class="sp-match-score">3–0</span>
+            </div>
+            <div class="sp-match-body">
+              <span class="sp-match-opponent">KMUTT FC</span>
+              <span class="sp-match-meta">CUSAT League · Mar 2025</span>
+              <div class="sp-match-contrib">
+                <span class="sp-match-contrib-item">⚽ 2 Goals</span>
               </div>
             </div>
           </div>
-          <div class="sp-perf-row">
-            <span class="sp-perf-lbl"><span class="l-th">ดริบเบิ้ลสำเร็จ</span><span class="l-en">Dribbles
-                Won</span></span>
-            <div class="sp-cmp-rows">
-              <div class="sp-cmp-row">
-                <span class="sp-cmp-tag sp-cmp-tag--you">YOU</span>
-                <div class="sp-bar-track">
-                  <div class="sp-bar-fill sp-bar-fill--you" style="--w:74%"></div>
-                </div>
-                <span class="sp-cmp-pct">74%</span>
-              </div>
-              <div class="sp-cmp-row">
-                <span class="sp-cmp-tag sp-cmp-tag--avg">AVG</span>
-                <div class="sp-bar-track">
-                  <div class="sp-bar-fill sp-bar-fill--avg" style="--w:55%"></div>
-                </div>
-                <span class="sp-cmp-pct sp-cmp-pct--avg">55%</span>
-              </div>
+          <div class="sp-match-row sp-match-row--last">
+            <div class="sp-match-result sp-match-result--d">
+              <span class="sp-match-badge">D</span>
+              <span class="sp-match-score">1–1</span>
             </div>
-          </div>
-          <div class="sp-perf-row">
-            <span class="sp-perf-lbl"><span class="l-th">การแย่งบอลสำเร็จ</span><span class="l-en">Tackles
-                Won</span></span>
-            <div class="sp-cmp-rows">
-              <div class="sp-cmp-row">
-                <span class="sp-cmp-tag sp-cmp-tag--you">YOU</span>
-                <div class="sp-bar-track">
-                  <div class="sp-bar-fill sp-bar-fill--you" style="--w:82%"></div>
-                </div>
-                <span class="sp-cmp-pct">82%</span>
-              </div>
-              <div class="sp-cmp-row">
-                <span class="sp-cmp-tag sp-cmp-tag--avg">AVG</span>
-                <div class="sp-bar-track">
-                  <div class="sp-bar-fill sp-bar-fill--avg" style="--w:64%"></div>
-                </div>
-                <span class="sp-cmp-pct sp-cmp-pct--avg">64%</span>
-              </div>
-            </div>
-          </div>
-          <div class="sp-perf-row">
-            <span class="sp-perf-lbl"><span class="l-th">การดวลลูกกลางอากาศ</span><span class="l-en">Aerial Duels
-                Won</span></span>
-            <div class="sp-cmp-rows">
-              <div class="sp-cmp-row">
-                <span class="sp-cmp-tag sp-cmp-tag--you">YOU</span>
-                <div class="sp-bar-track">
-                  <div class="sp-bar-fill sp-bar-fill--you" style="--w:68%"></div>
-                </div>
-                <span class="sp-cmp-pct">68%</span>
-              </div>
-              <div class="sp-cmp-row">
-                <span class="sp-cmp-tag sp-cmp-tag--avg">AVG</span>
-                <div class="sp-bar-track">
-                  <div class="sp-bar-fill sp-bar-fill--avg" style="--w:58%"></div>
-                </div>
-                <span class="sp-cmp-pct sp-cmp-pct--avg">58%</span>
+            <div class="sp-match-body">
+              <span class="sp-match-opponent">Kasetsart University FC</span>
+              <span class="sp-match-meta">Friendly · Feb 2025</span>
+              <div class="sp-match-contrib">
+                <span class="sp-match-contrib-item">🎯 1 Assist</span>
               </div>
             </div>
           </div>
@@ -1606,46 +1571,83 @@
       <!-- ══════════════════ SWIMMING TAB ══════════════════ -->
       <div class="sp-tab-content" id="sptab-swimming" role="tabpanel">
 
-        <!-- Hero Banner -->
-        <div class="sp-hero sp-hero--swim">
-          <picture>
-            <source srcset="svimming_photoshoot.webp?v=2" type="image/webp">
-            <img src="svimming_photoshoot.png?v=2" alt="Korawit in CU swimming kit" loading="lazy" decoding="async"
-              onerror="this.onerror=null; this.parentElement.parentElement.style.background='linear-gradient(160deg,#0ea5e9,#1e3a8a)'; this.style.display='none';">
-          </picture>
-          <div class="sp-hero-overlay"></div>
-          <span class="sp-hero-elite-badge">ELITE</span>
-          <div class="sp-hero-text">
-            <p class="sp-hero-sport"><span class="l-th">ว่ายน้ำ</span><span class="l-en">Swimming</span></p>
-            <p class="sp-hero-sub">CU Aquatic Society · Freestyle &amp; IM</p>
+        <!-- Player Card -->
+        <div class="sp-player-card sp-player-card--swim">
+          <div class="sp-player-photo">
+            <picture>
+              <source srcset="svimming_photoshoot.webp?v=2" type="image/webp">
+              <img src="svimming_photoshoot.png?v=2" alt="Korawit in CU swimming kit" loading="lazy" decoding="async"
+                onerror="this.onerror=null; this.parentElement.parentElement.style.background='linear-gradient(160deg,#0ea5e9,#1e3a8a)'; this.style.display='none';">
+            </picture>
+          </div>
+          <div class="sp-player-info sp-player-info--swim">
+            <div class="sp-player-sport-tag sp-player-sport-tag--swim">SWIMMING</div>
+            <div>
+              <p class="sp-player-club">CU Aquatic Society</p>
+              <p class="sp-player-position">Freestyle &amp; IM</p>
+            </div>
+            <div class="sp-player-rating-row">
+              <span class="sp-player-rating-num sp-player-rating-num--blue">26.4s</span>
+              <span class="sp-player-rating-lbl">50m PB</span>
+            </div>
+            <div class="sp-player-mini-stats">
+              <div class="sp-mini-stat">
+                <span class="sp-mini-val sp-mini-val--blue">4×</span>
+                <span class="sp-mini-lbl">WK</span>
+              </div>
+              <div class="sp-mini-stat">
+                <span class="sp-mini-val">~4km</span>
+                <span class="sp-mini-lbl">SES</span>
+              </div>
+              <div class="sp-mini-stat">
+                <span class="sp-mini-val sp-mini-val--gold">32</span>
+                <span class="sp-mini-lbl">SWOLF</span>
+              </div>
+              <div class="sp-mini-stat">
+                <span class="sp-mini-val">168</span>
+                <span class="sp-mini-lbl">BPM</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Metric Chips -->
-        <div class="sp-metric-row">
-          <div class="sp-metric-chip sp-metric-chip--blue">
-            <span class="sp-metric-val">4×</span>
-            <span class="sp-metric-lbl"><span class="l-th">/สัปดาห์</span><span class="l-en">/week</span></span>
+        <!-- Training Load -->
+        <p class="sp-section-title"><span class="l-th">ภาระการฝึกซ้อม</span><span class="l-en">Training Load</span></p>
+        <div class="sp-stat-grid">
+          <div class="sp-stat-cell">
+            <span class="sp-stat-key"><span class="l-th">ระยะ/เซสชัน</span><span class="l-en">Dist./Session</span></span>
+            <span class="sp-stat-val sp-stat-val--blue">~4 km</span>
+            <span class="sp-stat-sub">avg 3.5 km</span>
           </div>
-          <div class="sp-metric-chip sp-metric-chip--blue">
-            <span class="sp-metric-val">~4 km</span>
-            <span class="sp-metric-lbl"><span class="l-th">/ครั้ง</span><span class="l-en">/session</span></span>
+          <div class="sp-stat-cell">
+            <span class="sp-stat-key">SWOLF</span>
+            <span class="sp-stat-val sp-stat-val--blue">32</span>
+            <span class="sp-stat-sub"><span class="l-th">ประสิทธิภาพสูง</span><span class="l-en">high efficiency</span></span>
           </div>
-          <div class="sp-metric-chip sp-metric-chip--gold">
-            <span class="sp-metric-val">26.4s</span>
-            <span class="sp-metric-lbl">50m PB</span>
+          <div class="sp-stat-cell">
+            <span class="sp-stat-key"><span class="l-th">ชีพจรสูงสุด</span><span class="l-en">Max HR</span></span>
+            <span class="sp-stat-val">168</span>
+            <span class="sp-stat-sub">BPM</span>
           </div>
-          <div class="sp-metric-chip">
-            <span class="sp-metric-val">32</span>
-            <span class="sp-metric-lbl">SWOLF</span>
+          <div class="sp-stat-cell">
+            <span class="sp-stat-key"><span class="l-th">ฝึก/สัปดาห์</span><span class="l-en">Sessions/Wk</span></span>
+            <span class="sp-stat-val sp-stat-val--blue">4×</span>
+            <span class="sp-stat-sub"><span class="l-th">สม่ำเสมอ</span><span class="l-en">consistent</span></span>
           </div>
-          <div class="sp-metric-chip">
-            <span class="sp-metric-val">168</span>
-            <span class="sp-metric-lbl">Max BPM</span>
+          <div class="sp-stat-cell">
+            <span class="sp-stat-key"><span class="l-th">ท่าหลัก</span><span class="l-en">Strokes</span></span>
+            <span class="sp-stat-val sp-stat-val-sm">Free</span>
+            <span class="sp-stat-sub">+ Butterfly</span>
+          </div>
+          <div class="sp-stat-cell">
+            <span class="sp-stat-key"><span class="l-th">ระดับ</span><span class="l-en">Profile</span></span>
+            <span class="sp-stat-val sp-stat-val--gold sp-stat-val-sm">Elite</span>
+            <span class="sp-stat-sub"><span class="l-th">ระดับ CU</span><span class="l-en">CU level</span></span>
           </div>
         </div>
 
         <!-- Personal Bests Table -->
+        <p class="sp-section-title"><span class="l-th">สถิติส่วนตัว</span><span class="l-en">Personal Bests</span></p>
         <div class="sp-pb-table">
           <div class="sp-pb-header">
             <span><span class="l-th">รายการ</span><span class="l-en">Event</span></span>
@@ -1657,40 +1659,31 @@
             <span class="sp-pb-event">50m Free</span>
             <span class="sp-pb-time sp-pb-time--gold">26.4s</span>
             <span class="sp-pb-avg">31.2s</span>
-            <span class="sp-pb-level sp-level-elite"><svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-              </svg> Elite</span>
+            <span class="sp-pb-level"><span class="sp-level-elite"><svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Elite</span></span>
           </div>
           <div class="sp-pb-row">
             <span class="sp-pb-event">100m Free</span>
             <span class="sp-pb-time sp-pb-time--gold">57.8s</span>
             <span class="sp-pb-avg">1:06.4</span>
-            <span class="sp-pb-level sp-level-elite"><svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-              </svg> Elite</span>
+            <span class="sp-pb-level"><span class="sp-level-elite"><svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Elite</span></span>
           </div>
           <div class="sp-pb-row">
             <span class="sp-pb-event">200m Free</span>
             <span class="sp-pb-time sp-pb-time--silver">2:08.1</span>
             <span class="sp-pb-avg">2:30.5</span>
-            <span class="sp-pb-level sp-level-excel">Excellent</span>
+            <span class="sp-pb-level"><span class="sp-level-excel">Excellent</span></span>
           </div>
           <div class="sp-pb-row">
             <span class="sp-pb-event">100m Fly</span>
             <span class="sp-pb-time sp-pb-time--gold">1:02.3</span>
             <span class="sp-pb-avg">1:15.0</span>
-            <span class="sp-pb-level sp-level-elite"><svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-              </svg> Elite</span>
+            <span class="sp-pb-level"><span class="sp-level-elite"><svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Elite</span></span>
           </div>
-          <div class="sp-pb-row">
+          <div class="sp-pb-row sp-pb-row--last">
             <span class="sp-pb-event">200m IM</span>
             <span class="sp-pb-time sp-pb-time--silver">2:24.5</span>
             <span class="sp-pb-avg">2:44.2</span>
-            <span class="sp-pb-level sp-level-excel">Excellent</span>
+            <span class="sp-pb-level"><span class="sp-level-excel">Excellent</span></span>
           </div>
         </div>
 
