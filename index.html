@@ -1223,12 +1223,17 @@
         </div>
       </div>
 
-      <!-- ── Performance Radar ── -->
-      <div class="sp-section">
-        <p class="sp-section-title">
-          <span class="l-th">สมรรถภาพด้านกีฬา</span>
-          <span class="l-en">Athletic Attributes</span>
-        </p>
+      <!-- ── Sport Tabs (mirrors cp-tabs) ── -->
+      <div class="sp-tabs" role="tablist">
+        <button class="sp-tab sp-tab--active" data-sp-tab="overview" role="tab" aria-selected="true">OVERVIEW</button>
+        <button class="sp-tab" data-sp-tab="football" role="tab" aria-selected="false">FOOTBALL</button>
+        <button class="sp-tab" data-sp-tab="swimming" role="tab" aria-selected="false">SWIMMING</button>
+      </div>
+
+      <!-- ══════════════════ OVERVIEW TAB ══════════════════ -->
+      <div class="sp-tab-content active" id="sptab-overview" role="tabpanel">
+
+        <p class="sp-section-title">ATHLETIC ATTRIBUTES</p>
         <div class="sp-radar-wrap">
           <svg class="sp-radar" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <!-- 50% ring -->
@@ -1274,7 +1279,7 @@
           </svg>
         </div><!-- /.sp-radar-wrap -->
 
-        <!-- Attribute breakdown: 2-col grid, sorted by tier -->
+        <p class="sp-section-title" style="margin-top:16px">ATTRIBUTE BREAKDOWN</p>
         <div class="sp-attr-grid">
 
           <!-- ELITE tier -->
@@ -1407,21 +1412,10 @@
           </p>
         </div><!-- /.sp-profile-summary -->
 
-      </div>
-
-
-      <!-- ── Sport Tabs ── -->
-      <div class="sp-tabs" role="tablist">
-        <button class="sp-tab sp-tab--active" data-sp-tab="football" role="tab" aria-selected="true">
-          ⚽ <span class="l-th">ฟุตบอล</span><span class="l-en">Football</span>
-        </button>
-        <button class="sp-tab" data-sp-tab="swimming" role="tab" aria-selected="false">
-          🏊 <span class="l-th">ว่ายน้ำ</span><span class="l-en">Swimming</span>
-        </button>
-      </div>
+      </div><!-- /#sptab-overview -->
 
       <!-- ══════════════════ FOOTBALL TAB ══════════════════ -->
-      <div class="sp-tab-content active" id="sptab-football" role="tabpanel">
+      <div class="sp-tab-content" id="sptab-football" role="tabpanel">
 
         <!-- Hero Banner -->
         <div class="sp-hero">
