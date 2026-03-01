@@ -2374,49 +2374,34 @@ html[lang="en"] .card3d-access-item {
 }
 .sp-header-close:hover { background: rgba(0,0,0,0.06); }
 
-/* ── SP Sysbar (mirrors cp-sysbar) ── */
+/* ── SP Sysbar (mirrors ac-sysbar — animated ticker) ── */
 .sp-sysbar {
-  display: flex;
+  background: rgba(0,0,0,0.025);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  overflow: hidden;
+  padding: 7px 0;
+  flex-shrink: 0;
+}
+.sp-sysbar-track {
+  display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 7px 18px;
-  background: rgba(0, 0, 0, 0.025);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.sp-sysbar::-webkit-scrollbar { display: none; }
-
-.sp-sysbar-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
+  animation: spSysScroll 28s linear infinite;
   white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.sp-sysbar-key {
-  font: 500 8px / 1 var(--f);
-  color: var(--t3);
-  letter-spacing: 0.08em;
-}
-
-.sp-sysbar-val {
-  font: 600 8.5px / 1 monospace;
+  font-family: var(--f);
+  font-size: 10px;
+  letter-spacing: 0.06em;
   color: var(--t2);
+  padding-left: 18px;
 }
-
-.sp-sysbar-val--pink {
-  color: var(--cu);
-}
-
-.sp-sysbar-dot {
-  width: 3px;
-  height: 3px;
-  background: rgba(0, 0, 0, 0.12);
-  border-radius: 50%;
-  flex-shrink: 0;
+.sp-sb-key { color: var(--t3); font-weight: 600; }
+.sp-sb-val { color: var(--t1); font-weight: 500; }
+.sp-sb-sep { color: var(--t3); }
+.sp-sb-div { color: rgba(0,0,0,0.15); }
+.sp-sb-val--pink { color: var(--cu); }
+@keyframes spSysScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 /* ── Athlete Banner (mirrors cp-student-banner) ── */
