@@ -370,35 +370,29 @@ function showToast(msg) {
   }
 })();
 
-/* ── ACADEMIC SHEET — re-animate bars on each open ──── */
+/* ── BAR ANIMATION — re-animate fills on each sheet open ── */
 (function () {
-  const sheet = document.getElementById('sheet-academic');
-  if (!sheet) return;
+  const FILL_SEL = '.ag-bar-fill, .ag-trend-fill, .ag-dist-fill, .sp-bar-fill, .sp-fitness-fill';
 
-  /* Collect all animated fills so we can reset them before each open */
-  function getAnimatedFills() {
-    return sheet.querySelectorAll(
-      '.ag-bar-fill, .ag-trend-fill, .ag-dist-fill'
-    );
-  }
+  ['sheet-academic', 'sheet-activities'].forEach(id => {
+    const sheet = document.getElementById(id);
+    if (!sheet) return;
 
-  new MutationObserver(() => {
-    if (sheet.classList.contains('open')) {
-      /* Briefly kill transition so reset is invisible, then let CSS
-         handle the animated re-entrance (triggered by .sheet.open rule) */
-      getAnimatedFills().forEach(el => {
+    new MutationObserver(() => {
+      if (!sheet.classList.contains('open')) return;
+      /* Reset widths instantly so the CSS transition replays on re-open */
+      sheet.querySelectorAll(FILL_SEL).forEach(el => {
         el.style.transition = 'none';
         el.style.width = '0';
       });
-      /* One frame later — remove inline overrides so CSS rules apply */
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          getAnimatedFills().forEach(el => {
+          sheet.querySelectorAll(FILL_SEL).forEach(el => {
             el.style.transition = '';
             el.style.width = '';
           });
         });
       });
-    }
-  }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
+    }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
+  });
 })();

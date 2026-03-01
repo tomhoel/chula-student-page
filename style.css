@@ -870,9 +870,9 @@ html[lang="en"] .act-desc { font-family: var(--f); }
    VIEW CARD BUTTON — mini 3D card thumbnail
 ══════════════════════════════════════════════════════ */
 .mini-card-wrap {
-  perspective: 160px;
-  width: 30px;
-  height: 34px;
+  perspective: 220px;
+  width: 50px;
+  height: 74px;
   flex-shrink: 0;
 }
 
@@ -1855,8 +1855,8 @@ html[lang="en"] .map-directions-btn { font-family: var(--f); }
 html[lang="en"] .card-sport-pill { font-family: var(--f); }
 .card-sport-pill svg { flex-shrink: 0; color: #16a34a; }
 
-/* Slightly increase card-sm height to fit pills comfortably */
-.card-sm { height: 124px; }
+/* card-sm height (pills removed — back to standard) */
+.card-sm { height: 118px; }
 
 /* ══════════════════════════════════════════════════════
    STUDENT ID SHEET — blood type badge
@@ -2054,15 +2054,22 @@ html[lang="en"] .card3d-access-item { font-family: var(--f); font-size: 10px; }
   color: var(--t2);
   margin-top: 1px;
 }
+/* Wrap block: ring on top, label below */
+.ag-gpa-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
 .ag-gpa-label {
-  position: absolute;
-  bottom: -18px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: static;
   white-space: nowrap;
   font: 500 9px / 1 var(--f-th);
   color: var(--t3);
   letter-spacing: 0.04em;
+  text-align: center;
 }
 html[lang="en"] .ag-gpa-label { font-family: var(--f); }
 
@@ -2239,8 +2246,9 @@ html[lang="en"] .ag-trend-sem { font-family: var(--f); font-size: 9.5px; }
 .ag-trend-val {
   font: 600 11px / 1 var(--f);
   color: var(--t2);
-  flex: 0 0 34px;
+  flex: 0 0 44px;
   text-align: right;
+  white-space: nowrap;
 }
 .ag-trend-val--now { color: var(--cu); font-weight: 700; }
 
@@ -2387,9 +2395,9 @@ html[lang="th"] .ag-bar-lbl { font-family: var(--f-th); }
 .ag-bar-pct--muted { color: var(--t3); }
 
 .ag-course-cr {
-  position: absolute;
-  bottom: 9px;
-  right: 12px;
+  display: block;
+  text-align: right;
+  margin-top: 5px;
   font: 500 9.5px / 1 var(--f);
   color: var(--t3);
   letter-spacing: 0.03em;
@@ -2549,4 +2557,478 @@ html[lang="en"] .ag-kv-val { font-family: var(--f); font-size: 11px; }
   font-family: 'SF Mono', 'Menlo', 'Consolas', monospace !important;
   font-size: 10.5px !important;
   color: var(--t2) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   ATHLETIC PROFILE SHEET
+══════════════════════════════════════════════════════ */
+
+.sheet-panel-activities {
+  max-height: 93dvh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: max(env(safe-area-inset-bottom), 36px);
+}
+
+/* ── Overview card ── */
+.sp-overview {
+  background: linear-gradient(135deg, rgba(34,197,94,0.07), rgba(59,130,246,0.07));
+  border: 1px solid rgba(34,197,94,0.15);
+  border-radius: 16px;
+  padding: 14px 14px 12px;
+  margin-bottom: 20px;
+}
+
+.sp-overview-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 11px;
+}
+
+.sp-fitness-score-block {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sp-fitness-score {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.sp-fitness-num {
+  font: 800 34px / 1 var(--f);
+  color: #15803d;
+  letter-spacing: -0.04em;
+}
+
+.sp-fitness-max {
+  font: 500 13px / 1 var(--f);
+  color: var(--t3);
+}
+
+.sp-fitness-lbl {
+  font: 500 9px / 1 var(--f-th);
+  color: var(--t3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+html[lang="en"] .sp-fitness-lbl { font-family: var(--f); }
+
+.sp-overview-stats {
+  display: flex;
+  align-items: center;
+}
+
+.sp-ostat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 0 10px;
+}
+.sp-ostat:first-child { padding-left: 0; }
+
+.sp-ostat-val {
+  font: 700 15px / 1 var(--f);
+  color: var(--t1);
+  letter-spacing: -0.01em;
+}
+
+.sp-ostat-lbl {
+  font: 500 9px / 1 var(--f-th);
+  color: var(--t3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+html[lang="en"] .sp-ostat-lbl { font-family: var(--f); }
+
+.sp-ostat-sep {
+  width: 1px;
+  height: 24px;
+  background: rgba(0,0,0,0.09);
+  flex-shrink: 0;
+}
+
+.sp-fitness-track {
+  height: 7px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 7px;
+}
+
+.sp-fitness-fill {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #4ade80, #16a34a);
+  transition: width 0s;
+}
+
+.sheet.open .sp-fitness-fill {
+  width: var(--w);
+  transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+}
+
+.sp-fitness-note {
+  font: 400 11px / 1.4 var(--f-th);
+  color: #16a34a;
+}
+html[lang="en"] .sp-fitness-note { font-family: var(--f); font-size: 10.5px; }
+
+/* ── Section ── */
+.sp-section { margin-bottom: 20px; }
+.sp-section--last { margin-bottom: 0; }
+
+.sp-section-title {
+  font: 700 11px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* ── Radar chart ── */
+.sp-radar-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 8px;
+}
+
+.sp-radar {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+/* ── Sport section ── */
+.sp-sport-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 13px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 13px 13px 0 0;
+  border-bottom: none;
+}
+
+.sp-sport-emoji {
+  font-size: 26px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.sp-sport-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.sp-sport-name {
+  font: 700 14px / 1 var(--f-th);
+  color: var(--t1);
+  margin-bottom: 2px;
+}
+html[lang="en"] .sp-sport-name { font-family: var(--f); }
+
+.sp-sport-club {
+  font: 400 10.5px / 1 var(--f);
+  color: var(--t3);
+}
+
+.sp-sport-rating {
+  display: flex;
+  align-items: baseline;
+  gap: 1px;
+  flex-shrink: 0;
+}
+
+.sp-rating-num {
+  font: 800 22px / 1 var(--f);
+  color: var(--cu);
+  letter-spacing: -0.02em;
+}
+
+.sp-rating-denom {
+  font: 500 10px / 1 var(--f);
+  color: var(--t3);
+}
+
+.sp-elite-badge {
+  margin-left: auto;
+  padding: 4px 9px;
+  background: rgba(184,133,42,0.11);
+  border: 1.5px solid rgba(184,133,42,0.28);
+  border-radius: 6px;
+  font: 800 10px / 1 var(--f);
+  color: var(--gold);
+  letter-spacing: 0.10em;
+  flex-shrink: 0;
+}
+
+/* ── Season stats grid ── */
+.sp-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(0,0,0,0.07);
+  border: 1px solid rgba(0,0,0,0.07);
+  border-top: none;
+  overflow: hidden;
+}
+
+.sp-stat-box {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 4px;
+  gap: 3px;
+}
+
+.sp-stat-val {
+  font: 700 18px / 1 var(--f);
+  color: var(--t1);
+  letter-spacing: -0.02em;
+}
+
+.sp-stat-lbl {
+  font: 500 9px / 1 var(--f-th);
+  color: var(--t3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+html[lang="en"] .sp-stat-lbl { font-family: var(--f); }
+
+/* ── Performance comparison bars ── */
+.sp-perf-bars {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-top: none;
+  border-radius: 0 0 13px 13px;
+  overflow: hidden;
+}
+
+.sp-perf-row {
+  padding: 9px 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.sp-perf-row:last-child { border-bottom: none; }
+
+.sp-perf-lbl {
+  display: block;
+  font: 500 10.5px / 1 var(--f-th);
+  color: var(--t2);
+  margin-bottom: 7px;
+}
+html[lang="en"] .sp-perf-lbl { font-family: var(--f); font-size: 10px; }
+
+.sp-cmp-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sp-cmp-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.sp-cmp-tag {
+  font: 700 8px / 1 var(--f);
+  flex: 0 0 24px;
+  letter-spacing: 0.05em;
+  padding: 2px 0;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.sp-cmp-tag--you {
+  background: var(--cu-tint);
+  color: var(--cu);
+}
+
+.sp-cmp-tag--avg {
+  background: rgba(0,0,0,0.05);
+  color: var(--t3);
+}
+
+.sp-bar-track {
+  flex: 1;
+  height: 5px;
+  background: rgba(0,0,0,0.07);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.sp-bar-fill {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  transition: width 0s;
+}
+.sp-bar-fill--you { background: linear-gradient(90deg, rgba(222,93,142,0.5), var(--cu)); }
+.sp-bar-fill--avg { background: rgba(0,0,0,0.16); }
+
+.sheet.open .sp-bar-fill {
+  width: var(--w);
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+}
+
+.sp-cmp-pct {
+  font: 600 10px / 1 var(--f);
+  color: var(--t1);
+  flex: 0 0 28px;
+  text-align: right;
+}
+.sp-cmp-pct--avg { color: var(--t3); }
+
+/* ── Personal bests table ── */
+.sp-pb-table {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-top: none;
+  overflow: hidden;
+}
+
+.sp-pb-header {
+  display: grid;
+  grid-template-columns: 1fr 54px 54px 70px;
+  padding: 6px 12px;
+  background: rgba(0,0,0,0.025);
+  font: 600 9px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  gap: 4px;
+}
+
+.sp-pb-row {
+  display: grid;
+  grid-template-columns: 1fr 54px 54px 70px;
+  align-items: center;
+  padding: 9px 12px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  gap: 4px;
+}
+
+.sp-pb-event {
+  font: 600 12px / 1 var(--f);
+  color: var(--t1);
+}
+
+.sp-pb-time {
+  font: 700 12px / 1 var(--f);
+}
+.sp-pb-time--gold   { color: #b8852a; }
+.sp-pb-time--silver { color: #6b7280; }
+
+.sp-pb-avg {
+  font: 400 11px / 1 var(--f);
+  color: var(--t3);
+}
+
+.sp-pb-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 7px;
+  border-radius: 999px;
+  font: 700 9px / 1 var(--f);
+  letter-spacing: 0.03em;
+}
+.sp-level-elite { background: rgba(184,133,42,0.11); color: var(--gold); border: 1px solid rgba(184,133,42,0.22); }
+.sp-level-excel { background: rgba(59,130,246,0.08); color: #1d4ed8; border: 1px solid rgba(59,130,246,0.18); }
+
+/* ── Training strip ── */
+.sp-training-strip {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-top: none;
+  border-radius: 0 0 13px 13px;
+  overflow: hidden;
+}
+
+.sp-training-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 9px 4px;
+  gap: 3px;
+}
+
+.sp-training-val {
+  font: 700 15px / 1 var(--f);
+  color: #0369a1;
+  letter-spacing: -0.01em;
+}
+
+.sp-training-lbl {
+  font: 500 9px / 1 var(--f-th);
+  color: var(--t3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+html[lang="en"] .sp-training-lbl { font-family: var(--f); }
+
+.sp-training-sep {
+  width: 1px;
+  height: 28px;
+  background: var(--sep);
+  flex-shrink: 0;
+}
+
+/* ── Awards ── */
+.sp-awards {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.sp-award-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.sp-award-row:last-child { border-bottom: none; }
+
+.sp-medal {
+  font-size: 22px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.sp-award-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.sp-award-name {
+  font: 500 12px / 1.3 var(--f-th);
+  color: var(--t1);
+}
+html[lang="en"] .sp-award-name { font-family: var(--f); font-size: 11.5px; }
+
+.sp-award-meta {
+  font: 400 10px / 1 var(--f);
+  color: var(--t3);
 }
