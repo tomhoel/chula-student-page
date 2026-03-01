@@ -2,7 +2,7 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#de5d8e">
   <meta name="description" content="กรวิชญ์ ฉ่ำไกร — Graduate Scholar of Finance, Chulalongkorn University">
   <meta property="og:title" content="กรวิชญ์ ฉ่ำไกร · Chulalongkorn University">
@@ -133,9 +133,9 @@
           </span>
         </div>
 
-        <!-- Verified badge -->
+        <!-- Live verified badge -->
         <div class="verified-ribbon">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="live-dot" aria-hidden="true"></span>
           <span class="l-th">ยืนยันแล้ว</span>
           <span class="l-en">Verified</span>
         </div>
@@ -147,10 +147,11 @@
   </section>
 
   <!-- ══════════════════════════════════════
-       CARDS
+       CARDS — 2×2 grid + full-width map
   ══════════════════════════════════════ -->
   <div class="cards">
 
+    <!-- Student ID -->
     <button class="card card-sm" data-sheet="student" type="button">
       <div class="card-icon ci-pink">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -170,6 +171,7 @@
       <svg class="card-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
     </button>
 
+    <!-- Academic -->
     <button class="card card-sm" data-sheet="academic" type="button">
       <div class="card-icon ci-gold">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -190,42 +192,69 @@
       <svg class="card-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
     </button>
 
-    <button class="card card-wide card-view3d" data-sheet="idcard" type="button">
-      <div class="card-wide-body">
-        <span class="card-label">
-          <span class="l-th">ดูบัตรนิสิต</span>
-          <span class="l-en">View Student Card</span>
-        </span>
-        <span class="card-sub">
-          <span class="l-th">3D · หมุนเพื่อดูทุกด้าน</span>
-          <span class="l-en">3D · Drag to spin &amp; flip</span>
-        </span>
-      </div>
+    <!-- View 3D Card -->
+    <button class="card card-sm card-view3d" data-sheet="idcard" type="button">
       <div class="mini-card-wrap">
         <div class="mini-card">
           <img src="id_front.png" alt="" class="mini-card-img">
         </div>
       </div>
-      <svg class="card-arrow card-arrow-inline" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      <div class="card-text">
+        <span class="card-label">
+          <span class="l-th">ดูบัตร 3D</span>
+          <span class="l-en">View Card 3D</span>
+        </span>
+        <span class="card-sub">
+          <span class="l-th">หมุนเพื่อดู</span>
+          <span class="l-en">Drag to spin</span>
+        </span>
+      </div>
+      <svg class="card-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
     </button>
 
-    <button class="card card-wide" data-sheet="activities" type="button">
-      <div class="card-wide-body">
+    <!-- Activities -->
+    <button class="card card-sm" data-sheet="activities" type="button">
+      <div class="card-icon ci-green">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 8c-2 0-4 1-4 4s2 4 4 4 4-1 4-4-2-4-4-4z"/>
+          <path d="M4.9 7.6C6.3 6 8 5 10 4.5M19.1 7.6C17.7 6 16 5 14 4.5M4.9 16.4C6.3 18 8 19 10 19.5M19.1 16.4C17.7 18 16 19 14 19.5"/>
+        </svg>
+      </div>
+      <div class="card-text">
         <span class="card-label">
           <span class="l-th">กิจกรรม</span>
           <span class="l-en">Activities</span>
         </span>
-        <div class="card-sports">
-          <span class="sport-pill">
-            ⚽ <span class="l-th">ฟุตบอล</span><span class="l-en">Football</span>
+        <span class="card-sub">⚽ 🏊</span>
+      </div>
+      <svg class="card-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </button>
+
+    <!-- Campus Map — full width, links to Google Maps -->
+    <a class="card card-map"
+       href="https://www.google.com/maps/place/Chulalongkorn+University/@13.7398,100.5295,17z"
+       target="_blank" rel="noopener noreferrer">
+      <div class="card-map-inner">
+        <div class="card-icon ci-map">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div class="card-text">
+          <span class="card-label">
+            <span class="l-th">แผนที่วิทยาเขต</span>
+            <span class="l-en">Campus Map</span>
           </span>
-          <span class="sport-pill">
-            🏊 <span class="l-th">ว่ายน้ำ</span><span class="l-en">Swimming</span>
+          <span class="card-sub">
+            <span class="l-th">จุฬาลงกรณ์มหาวิทยาลัย · กรุงเทพฯ</span>
+            <span class="l-en">Chulalongkorn University · Bangkok</span>
           </span>
         </div>
       </div>
-      <svg class="card-arrow card-arrow-inline" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-    </button>
+      <svg class="card-arrow card-arrow-ext" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+    </a>
 
     <button class="card card-wide card-map" data-sheet="location" type="button">
       <div class="card-map-pin ci-pink">

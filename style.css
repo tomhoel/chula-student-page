@@ -5,33 +5,34 @@
 
 /* ── TOKENS ─────────────────────────────────────────── */
 :root {
-  /* Official CU colors (from www.chula.ac.th CSS) */
+  color-scheme: light; /* force light mode — no dark mode */
+
+  /* Official CU colors */
   --cu:      #de5d8e;
   --cu-dark: #b43b6b;
   --cu-tint: rgba(222, 93, 142, 0.09);
   --gold:    #b8852a;
-  --gold-tint: rgba(184, 133, 42, 0.11);
+  --gold-tint: rgba(184, 133, 42, 0.10);
 
-  /* Surfaces */
-  --bg:      #F4EFF6;
-  --card:    rgba(255, 255, 255, 0.82);
-  --card-b:  rgba(255, 255, 255, 0.92);
+  /* Surfaces — solid white, no dark glass */
+  --bg:      #F2F0EE;
+  --card:    #FFFFFF;
+  --card-b:  #F9F9F9;
 
   /* Borders */
   --border:  rgba(0, 0, 0, 0.07);
   --sep:     rgba(0, 0, 0, 0.07);
 
   /* Text */
-  --t1: #1C1C1E;
-  --t2: #636366;
-  --t3: #AEAEB2;
+  --t1: #1A1A1A;
+  --t2: #6B6B6B;
+  --t3: #B0B0B0;
 
-  /* SF Pro on Apple devices, Inter everywhere else */
   --f:    -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
   --f-th: 'Sarabun', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
 
   --spring: cubic-bezier(0.32, 0.72, 0, 1);
-  --r: 16px;
+  --r: 14px;
 }
 
 /* ── RESET ───────────────────────────────────────────── */
@@ -46,7 +47,7 @@ body {
   font-family: var(--f);
   color: var(--t1);
   -webkit-font-smoothing: antialiased;
-  background: #F0EBF2;
+  background: var(--bg);
 }
 
 button {
@@ -292,8 +293,8 @@ html[lang="en"] .id-value { font-family: var(--f); font-size: 11.5px; }
   display: inline-flex;
   align-self: flex-start;
   align-items: center;
-  gap: 5px;
-  padding: 4px 10px;
+  gap: 6px;
+  padding: 4px 10px 4px 7px;
   background: rgba(34, 197, 94, 0.09);
   border: 1px solid rgba(34, 197, 94, 0.22);
   border-radius: 999px;
@@ -305,70 +306,94 @@ html[lang="en"] .id-value { font-family: var(--f); font-size: 11.5px; }
 
 html[lang="en"] .verified-ribbon { font-family: var(--f); }
 
-.verified-ribbon svg { flex-shrink: 0; color: #22c55e; }
+/* Pulsing live dot */
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.live-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.35);
+  animation: live-pulse 1.8s ease-out infinite;
+}
+
+@keyframes live-pulse {
+  0%   { transform: scale(0.6); opacity: 1; }
+  70%  { transform: scale(2.4); opacity: 0; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
 
 /* ══════════════════════════════════════════════════════
-   CARDS
+   CARDS — uniform 2×2 grid, all beside each other
 ══════════════════════════════════════════════════════ */
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
   gap: 10px;
   padding: 0 16px;
   flex-shrink: 0;
 }
 
-/* Glass card — iOS light mode */
+/* Base card — solid white, no backdrop-filter dark glass */
 .card {
   background: var(--card);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255,255,255,0.88);
+  border: 1px solid rgba(0,0,0,0.07);
   border-radius: var(--r);
   box-shadow:
-    0 1px 3px rgba(0,0,0,0.05),
-    0 4px 16px rgba(222,93,142,0.06);
-  padding: 14px 14px 28px; /* extra bottom padding for arrow */
+    0 1px 4px rgba(0,0,0,0.06),
+    0 4px 14px rgba(0,0,0,0.04);
+  padding: 13px 13px 28px;
   display: flex;
   flex-direction: column;
   gap: 0;
-  transition: transform 0.12s ease, background 0.14s ease;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
   position: relative;
   -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+  color: inherit;
 }
 
-/* Fixed height on small cards prevents any reflow on language switch */
 .card-sm { height: 118px; }
 
 .card:active {
   transform: scale(0.96);
-  background: var(--card-b);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
-/* Icons */
+/* ── Icons ── */
 .card-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 11px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
 }
 
-.ci-pink { background: var(--cu-tint); color: var(--cu); }
-.ci-gold  { background: var(--gold-tint); color: var(--gold); }
+.ci-pink  { background: var(--cu-tint);   color: var(--cu); }
+.ci-gold  { background: var(--gold-tint);  color: var(--gold); }
+.ci-green { background: rgba(34,197,94,0.10); color: #16a34a; }
+.ci-map   { background: rgba(59,130,246,0.10); color: #2563eb; }
 
-/* Card text */
+/* ── Card text ── */
 .card-text {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
 .card-label {
-  font: 600 14px / 1 var(--f-th);
+  font: 600 13.5px / 1 var(--f-th);
   color: var(--t1);
 }
 
@@ -382,49 +407,53 @@ html[lang="en"] .card-label { font-family: var(--f); }
   text-overflow: ellipsis;
 }
 
-/* Arrow placed absolutely in small cards */
+/* Arrow: absolute bottom-right on sm cards */
 .card-arrow {
   position: absolute;
-  bottom: 13px;
-  right: 13px;
+  bottom: 12px;
+  right: 12px;
   color: var(--t3);
 }
 
-/* Wide activities card */
-.card-wide {
+/* ── View 3D card — mini-card as the icon ── */
+.card-view3d .mini-card-wrap {
+  margin-bottom: 9px;
+}
+
+/* ── Campus Map — full-width, horizontal layout ── */
+.card-map {
   grid-column: 1 / -1;
   flex-direction: row;
   align-items: center;
-  padding: 14px 16px;
-  gap: 12px;
+  padding: 13px 14px 13px 13px;
+  height: auto;
 }
 
-.card-wide-body {
+.card-map-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  min-width: 0;
 }
 
-.card-sports {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+.card-map-inner .card-icon {
+  margin-bottom: 0;
+  flex-shrink: 0;
 }
 
-.sport-pill {
-  padding: 4px 10px;
-  background: rgba(0,0,0,0.04);
-  border: 1px solid rgba(0,0,0,0.07);
-  border-radius: 999px;
-  font: 400 12px / 1 var(--f-th);
-  color: var(--t2);
+.card-map-inner .card-text {
+  flex: 1;
+  min-width: 0;
 }
 
-html[lang="en"] .sport-pill { font-family: var(--f); }
+.card-map-inner .card-sub {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-.card-arrow-inline {
-  position: static;
+.card-arrow-ext {
   flex-shrink: 0;
   color: var(--t3);
 }
@@ -909,10 +938,7 @@ html[lang="en"] .map-directions-btn { font-family: var(--f); }
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background:
-      radial-gradient(ellipse 80% 60% at 30% 20%, rgba(222,93,142,0.08) 0%, transparent 55%),
-      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(184,133,42,0.05) 0%, transparent 50%),
-      #E8E0EC;
+    background: #E8E5E2;
   }
 
   .app {
@@ -932,12 +958,10 @@ html[lang="en"] .map-directions-btn { font-family: var(--f); }
 /* ══════════════════════════════════════════════════════
    VIEW CARD BUTTON — mini 3D card thumbnail
 ══════════════════════════════════════════════════════ */
-.card-view3d { gap: 10px; }
-
 .mini-card-wrap {
   perspective: 160px;
-  width: 30px;    /* portrait: narrower than tall */
-  height: 47px;
+  width: 30px;
+  height: 34px;
   flex-shrink: 0;
 }
 
@@ -1192,6 +1216,7 @@ html[lang="en"] .card3d-hint { font-family: var(--f); }
   .id-card, .cards .card { animation: none; }
   .bg-orb { animation: none; }
   .id-photo { transition: none !important; }
+  .live-dot::after { animation: none; }
 }
 
 /* ══════════════════════════════════════════════════════
