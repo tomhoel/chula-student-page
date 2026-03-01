@@ -3031,128 +3031,199 @@ html[lang="en"] .ag-kv-val {
   padding-bottom: max(env(safe-area-inset-bottom), 36px);
 }
 
-/* ── Overview card ── */
-.sp-overview {
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.07), rgba(59, 130, 246, 0.07));
-  border: 1px solid rgba(34, 197, 94, 0.15);
-  border-radius: 16px;
-  padding: 14px 14px 12px;
-  margin-bottom: 20px;
-}
-
-.sp-overview-top {
+/* ── SP Header (mirrors cp-header) ── */
+.sp-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 11px;
+  gap: 10px;
+  padding: 14px 18px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
 }
 
-.sp-fitness-score-block {
+.sp-sport-badge {
+  flex-shrink: 0;
+  padding: 3px 8px;
+  background: var(--cu);
+  color: #fff;
+  font: 700 8px / 1 var(--f);
+  letter-spacing: 0.10em;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.sp-header-title-block {
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 3px;
-}
-
-.sp-fitness-score {
-  display: flex;
-  align-items: baseline;
   gap: 2px;
 }
 
-.sp-fitness-num {
-  font: 800 34px / 1 var(--f);
-  color: #15803d;
-  letter-spacing: -0.04em;
-}
-
-.sp-fitness-max {
-  font: 500 13px / 1 var(--f);
-  color: var(--t3);
-}
-
-.sp-fitness-lbl {
-  font: 500 9px / 1 var(--f-th);
-  color: var(--t3);
+.sp-header-label {
+  font: 700 10px / 1 var(--f);
+  color: var(--t1);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-}
-
-html[lang="en"] .sp-fitness-lbl {
-  font-family: var(--f);
-}
-
-.sp-overview-stats {
-  display: flex;
-  align-items: center;
-}
-
-.sp-ostat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  padding: 0 10px;
-}
-
-.sp-ostat:first-child {
-  padding-left: 0;
-}
-
-.sp-ostat-val {
-  font: 700 15px / 1 var(--f);
-  color: var(--t1);
-  letter-spacing: -0.01em;
-}
-
-.sp-ostat-lbl {
-  font: 500 9px / 1 var(--f-th);
-  color: var(--t3);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-html[lang="en"] .sp-ostat-lbl {
-  font-family: var(--f);
+.sp-header-subtitle {
+  font: 400 9px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.03em;
 }
 
-.sp-ostat-sep {
-  width: 1px;
-  height: 24px;
-  background: rgba(0, 0, 0, 0.09);
+.sp-header-close {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.06);
+  font: 400 11px / 1 var(--f);
+  color: var(--t2);
+  cursor: pointer;
+  border: none;
+  transition: background 0.15s;
+}
+
+.sp-header-close:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* ── SP Sysbar (mirrors cp-sysbar) ── */
+.sp-sysbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 18px;
+  background: rgba(0, 0, 0, 0.025);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.sp-sysbar::-webkit-scrollbar { display: none; }
+
+.sp-sysbar-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
   flex-shrink: 0;
 }
 
-.sp-fitness-track {
-  height: 7px;
-  background: rgba(0, 0, 0, 0.08);
-  border-radius: 999px;
-  overflow: hidden;
-  margin-bottom: 7px;
+.sp-sysbar-key {
+  font: 500 8px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.08em;
 }
 
-.sp-fitness-fill {
-  height: 100%;
-  width: 0;
-  border-radius: inherit;
-  background: linear-gradient(90deg, #4ade80, #16a34a);
-  transition: width 0s;
+.sp-sysbar-val {
+  font: 600 8.5px / 1 monospace;
+  color: var(--t2);
 }
 
-.sheet.open .sp-fitness-fill {
-  width: var(--w);
-  transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+.sp-sysbar-val--pink {
+  color: var(--cu);
 }
 
-.sp-fitness-note {
-  font: 400 11px / 1.4 var(--f-th);
-  color: #16a34a;
+.sp-sysbar-dot {
+  width: 3px;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
-html[lang="en"] .sp-fitness-note {
-  font-family: var(--f);
-  font-size: 10.5px;
+/* ── Athlete Banner (mirrors cp-student-banner) ── */
+.sp-athlete-banner {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.sp-athlete-score-block {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, rgba(222, 93, 142, 0.10), rgba(222, 93, 142, 0.04));
+  border-right: 1px solid rgba(222, 93, 142, 0.15);
+  min-width: 90px;
+}
+
+.sp-athlete-score-label {
+  font: 700 7px / 1.2 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.sp-athlete-score {
+  display: flex;
+  align-items: baseline;
+  gap: 1px;
+}
+
+.sp-athlete-num {
+  font: 800 28px / 1 var(--f);
+  color: var(--cu);
+  letter-spacing: -0.04em;
+}
+
+.sp-athlete-denom {
+  font: 500 11px / 1 var(--f);
+  color: var(--t3);
+}
+
+.sp-athlete-rank {
+  font: 500 8px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.sp-athlete-meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 16px;
+  gap: 5px;
+}
+
+.sp-athlete-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.sp-athlete-meta-k {
+  font: 500 8px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.sp-athlete-meta-v {
+  font: 600 8.5px / 1 monospace;
+  color: var(--t2);
+  text-align: right;
+}
+
+.sp-val-pink {
+  color: var(--cu);
 }
 
 /* ── Section ── */
