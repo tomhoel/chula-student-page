@@ -192,10 +192,8 @@
       <svg class="card-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
     </button>
 
-    <!-- Row 2: Faculty of Economics Map — direct link -->
-    <a class="card card-sm"
-       href="https://www.google.com/maps/place/Faculty+of+Economics,+Chulalongkorn+University/@13.7328,100.5283,17z"
-       target="_blank" rel="noopener noreferrer">
+    <!-- Row 2: Faculty of Economics Map — opens rich sheet -->
+    <button class="card card-sm" data-sheet="location" type="button">
       <div class="card-icon ci-map">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/>
@@ -208,12 +206,12 @@
           <span class="l-en">Location</span>
         </span>
         <span class="card-sub">
-          <span class="l-th">คณะเศรษฐศาสตร์</span>
-          <span class="l-en">Faculty of Econ.</span>
+          <span class="l-th">BTS · MRT · เดิน</span>
+          <span class="l-en">BTS · MRT · Walk</span>
         </span>
       </div>
-      <svg class="card-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-    </a>
+      <svg class="card-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </button>
 
     <!-- Row 3: View 3D Card — full width -->
     <button class="card card-wide card-view3d" data-sheet="idcard" type="button">
@@ -259,19 +257,34 @@
 <!-- Student ID Sheet -->
 <div class="sheet" id="sheet-student" role="dialog" aria-modal="true">
   <div class="sheet-scrim" data-close></div>
-  <div class="sheet-panel">
+  <div class="sheet-panel sheet-panel-student">
     <div class="sheet-handle"></div>
 
     <div class="sheet-head">
       <h2 class="sheet-title">
-        <span class="l-th">บัตรนิสิต</span>
-        <span class="l-en">Student ID</span>
+        <span class="l-th">บัตรประจำตัวนิสิต</span>
+        <span class="l-en">Student Identity Card</span>
       </h2>
       <button class="sheet-close" data-close aria-label="Close">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
 
+    <!-- ── CU Institutional header ── -->
+    <div class="sid-header">
+      <img src="cu-logo.png" class="sid-logo" alt="CU" onerror="this.style.display='none'">
+      <div class="sid-header-text">
+        <span class="sid-uni-th">จุฬาลงกรณ์มหาวิทยาลัย</span>
+        <span class="sid-uni-en">CHULALONGKORN UNIVERSITY</span>
+        <span class="sid-card-type">STUDENT IDENTITY CARD · ประจำตัวนิสิต</span>
+      </div>
+      <div class="sid-active-badge">
+        <span class="live-dot" aria-hidden="true"></span>
+        ACTIVE
+      </div>
+    </div>
+
+    <!-- ── Info rows ── -->
     <dl class="info-list">
       <div class="info-row">
         <dt><span class="l-th">ชื่อ – นามสกุล</span><span class="l-en">Full Name</span></dt>
@@ -281,7 +294,7 @@
         </dd>
       </div>
       <div class="info-row">
-        <dt><span class="l-th">รหัสนิสิต</span><span class="l-en">Student ID</span></dt>
+        <dt><span class="l-th">รหัสนิสิต</span><span class="l-en">Student ID No.</span></dt>
         <div class="id-copy-row">
           <dd class="id-num">01&thinsp;9562&thinsp;33&thinsp;5601&thinsp;45</dd>
           <button class="copy-btn" id="copy-id-btn" data-copy="01956233560145" aria-label="Copy student ID">
@@ -305,24 +318,69 @@
       <div class="info-row">
         <dt><span class="l-th">หลักสูตร</span><span class="l-en">Program</span></dt>
         <dd>
-          <span class="l-th">นิสิตมหาบัณฑิต สาขาวิชาการเงิน <em>Graduate Scholar of Finance</em></span>
-          <span class="l-en">Graduate Scholar of Finance <em>นิสิตมหาบัณฑิต สาขาวิชาการเงิน</em></span>
+          <span class="l-th">นิสิตมหาบัณฑิต สาขาวิชาการเงิน <em>M.Sc. Finance</em></span>
+          <span class="l-en">Graduate Scholar of Finance <em>M.Sc. Finance</em></span>
+        </dd>
+      </div>
+      <div class="info-row">
+        <dt><span class="l-th">วันเกิด</span><span class="l-en">Date of Birth</span></dt>
+        <dd>
+          <span class="l-th">27 ธันวาคม พ.ศ. 2539 <em>27 December 1996</em></span>
+          <span class="l-en">27 December 1996 <em>27 ธ.ค. 2539</em></span>
+        </dd>
+      </div>
+      <div class="info-row">
+        <dt><span class="l-th">สัญชาติ / หมู่เลือด</span><span class="l-en">Nationality / Blood</span></dt>
+        <dd>
+          <span class="l-th">ไทย <em>Thai</em> &nbsp;·&nbsp; <span class="sid-blood">A+</span></span>
+          <span class="l-en">Thai <em>ไทย</em> &nbsp;·&nbsp; <span class="sid-blood">A+</span></span>
         </dd>
       </div>
     </dl>
 
+    <!-- ── Validity dates ── -->
     <div class="dates-strip">
       <div class="date-cell">
-        <span class="date-lbl"><span class="l-th">วันออกบัตร</span><span class="l-en">Date Issued</span></span>
+        <span class="date-lbl"><span class="l-th">วันออกบัตร</span><span class="l-en">Issued</span></span>
         <span class="date-val">10 Aug 2025</span>
       </div>
       <div class="date-rule"></div>
       <div class="date-cell">
-        <span class="date-lbl"><span class="l-th">วันหมดอายุ</span><span class="l-en">Valid Until</span></span>
+        <span class="date-lbl"><span class="l-th">หมดอายุ</span><span class="l-en">Expires</span></span>
         <span class="date-val">30 Jul 2029</span>
+      </div>
+      <div class="date-rule"></div>
+      <div class="date-cell">
+        <span class="date-lbl"><span class="l-th">ปีการศึกษา</span><span class="l-en">Academic Year</span></span>
+        <span class="date-val">2568–2572</span>
       </div>
     </div>
 
+    <!-- ── RFID / Access / Year strip ── -->
+    <div class="sid-chip-strip">
+      <div class="sid-chip-item">
+        <span class="sid-chip-lbl">RFID TAG</span>
+        <span class="sid-chip-val">CU·9562·3356·0145</span>
+      </div>
+      <div class="sid-chip-sep"></div>
+      <div class="sid-chip-item">
+        <span class="sid-chip-lbl">ACCESS TIER</span>
+        <span class="sid-chip-val sid-access-grad">GRADUATE</span>
+      </div>
+      <div class="sid-chip-sep"></div>
+      <div class="sid-chip-item">
+        <span class="sid-chip-lbl">NFC ID</span>
+        <span class="sid-chip-val">A3·F9·2C·7E</span>
+      </div>
+    </div>
+
+    <!-- ── Barcode ── -->
+    <div class="sid-barcode" aria-hidden="true">
+      <div class="sid-barcode-stripes"></div>
+      <span class="sid-barcode-num">0 1 9 5 6 2 3 3 5 6 0 1 4 5</span>
+    </div>
+
+    <!-- ── Verified strip ── -->
     <div class="verified-strip-sheet">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       <span class="l-th">ยืนยันอย่างเป็นทางการ · จุฬาลงกรณ์มหาวิทยาลัย</span>
@@ -457,6 +515,219 @@
         </span>
       </div>
     </div>
+
+  </div>
+</div>
+
+<!-- Location Sheet -->
+<div class="sheet" id="sheet-location" role="dialog" aria-modal="true">
+  <div class="sheet-scrim" data-close></div>
+  <div class="sheet-panel sheet-panel-map">
+    <div class="sheet-handle"></div>
+
+    <div class="sheet-head">
+      <h2 class="sheet-title">
+        <span class="l-th">คณะเศรษฐศาสตร์</span>
+        <span class="l-en">Faculty of Economics</span>
+      </h2>
+      <button class="sheet-close" data-close aria-label="Close">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- Embedded map -->
+    <div class="map-frame">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d968!2d100.52939!3d13.73258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29ed278ab0a01%3A0xdea36a8674421495!2sFaculty%20of%20Economics%2C%20Chulalongkorn%20University!5e0!3m2!1sen!2sth!4v1700000000000"
+        width="100%" height="100%"
+        style="border:0" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Faculty of Economics, Chulalongkorn University">
+      </iframe>
+    </div>
+
+    <!-- Address -->
+    <div class="map-addr-row">
+      <div class="map-addr-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      </div>
+      <div>
+        <p class="map-addr-primary">
+          <span class="l-th">254 ถ.พญาไท แขวงวังใหม่ เขตปทุมวัน กรุงเทพฯ 10330</span>
+          <span class="l-en">254 Phayathai Rd, Pathumwan, Bangkok 10330</span>
+        </p>
+        <p class="map-addr-sub">
+          <span class="l-th">จุฬาลงกรณ์มหาวิทยาลัย · ก่อตั้ง พ.ศ. 2460</span>
+          <span class="l-en">Chulalongkorn University · Est. 1917</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="sheet-sep"></div>
+
+    <!-- How to get there -->
+    <p class="map-section-title">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      <span class="l-th">วิธีเดินทาง</span>
+      <span class="l-en">How to Get There</span>
+    </p>
+
+    <div class="map-transit-list">
+
+      <!-- BTS Siam -->
+      <div class="map-transit-card">
+        <div class="map-transit-left">
+          <span class="transit-badge transit-bts">BTS</span>
+        </div>
+        <div class="map-transit-body">
+          <p class="map-transit-name">
+            <span class="l-th">สถานีสยาม</span>
+            <span class="l-en">Siam Station</span>
+          </p>
+          <p class="map-transit-detail">
+            <span class="l-th">ทางออก 3 → เดินประมาณ 6 นาที (~500 ม.)</span>
+            <span class="l-en">Exit 3 → 6 min walk (~500 m)</span>
+          </p>
+        </div>
+        <div class="map-transit-time">
+          <span class="map-time-num">6</span>
+          <span class="map-time-unit">min</span>
+        </div>
+      </div>
+
+      <!-- BTS National Stadium -->
+      <div class="map-transit-card">
+        <div class="map-transit-left">
+          <span class="transit-badge transit-bts">BTS</span>
+        </div>
+        <div class="map-transit-body">
+          <p class="map-transit-name">
+            <span class="l-th">สถานีสนามกีฬาแห่งชาติ</span>
+            <span class="l-en">National Stadium</span>
+          </p>
+          <p class="map-transit-detail">
+            <span class="l-th">ทางออก 1 → เดินประมาณ 4 นาที (~350 ม.)</span>
+            <span class="l-en">Exit 1 → 4 min walk (~350 m) — closest</span>
+          </p>
+        </div>
+        <div class="map-transit-time map-transit-time--best">
+          <span class="map-time-num">4</span>
+          <span class="map-time-unit">min</span>
+        </div>
+      </div>
+
+      <!-- MRT Sam Yan -->
+      <div class="map-transit-card">
+        <div class="map-transit-left">
+          <span class="transit-badge transit-mrt">MRT</span>
+        </div>
+        <div class="map-transit-body">
+          <p class="map-transit-name">
+            <span class="l-th">สถานีสามย่าน</span>
+            <span class="l-en">Sam Yan Station</span>
+          </p>
+          <p class="map-transit-detail">
+            <span class="l-th">ทางออก 2 → เดินประมาณ 10 นาที (~800 ม.)</span>
+            <span class="l-en">Exit 2 → 10 min walk (~800 m)</span>
+          </p>
+        </div>
+        <div class="map-transit-time">
+          <span class="map-time-num">10</span>
+          <span class="map-time-unit">min</span>
+        </div>
+      </div>
+
+      <!-- MRT Hua Lamphong -->
+      <div class="map-transit-card">
+        <div class="map-transit-left">
+          <span class="transit-badge transit-mrt">MRT</span>
+        </div>
+        <div class="map-transit-body">
+          <p class="map-transit-name">
+            <span class="l-th">สถานีหัวลำโพง</span>
+            <span class="l-en">Hua Lamphong Station</span>
+          </p>
+          <p class="map-transit-detail">
+            <span class="l-th">ทางออก 1 → เดินประมาณ 14 นาที (~1.1 กม.)</span>
+            <span class="l-en">Exit 1 → 14 min walk (~1.1 km)</span>
+          </p>
+        </div>
+        <div class="map-transit-time">
+          <span class="map-time-num">14</span>
+          <span class="map-time-unit">min</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sheet-sep"></div>
+
+    <!-- Nearby landmarks -->
+    <p class="map-section-title">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span class="l-th">สถานที่ใกล้เคียง</span>
+      <span class="l-en">Nearby</span>
+    </p>
+
+    <div class="map-nearby-grid">
+      <div class="map-nearby-item">
+        <span class="map-nearby-emoji">📚</span>
+        <span class="map-nearby-name">
+          <span class="l-th">ห้องสมุดกลาง จุฬาฯ</span>
+          <span class="l-en">CU Central Library</span>
+        </span>
+        <span class="map-nearby-dist">150 m</span>
+      </div>
+      <div class="map-nearby-item">
+        <span class="map-nearby-emoji">🛍️</span>
+        <span class="map-nearby-name">
+          <span class="l-th">สยามสแควร์</span>
+          <span class="l-en">Siam Square</span>
+        </span>
+        <span class="map-nearby-dist">700 m</span>
+      </div>
+      <div class="map-nearby-item">
+        <span class="map-nearby-emoji">🏢</span>
+        <span class="map-nearby-name">
+          <span class="l-th">ชั้มจุรีสแควร์</span>
+          <span class="l-en">Chamchuri Square</span>
+        </span>
+        <span class="map-nearby-dist">300 m</span>
+      </div>
+      <div class="map-nearby-item">
+        <span class="map-nearby-emoji">🍜</span>
+        <span class="map-nearby-name">
+          <span class="l-th">ศูนย์อาหาร จุฬาฯ</span>
+          <span class="l-en">CU Food Court</span>
+        </span>
+        <span class="map-nearby-dist">80 m</span>
+      </div>
+      <div class="map-nearby-item">
+        <span class="map-nearby-emoji">🏊</span>
+        <span class="map-nearby-name">
+          <span class="l-th">สระว่ายน้ำ จุฬาฯ</span>
+          <span class="l-en">CU Swimming Pool</span>
+        </span>
+        <span class="map-nearby-dist">450 m</span>
+      </div>
+      <div class="map-nearby-item">
+        <span class="map-nearby-emoji">☕</span>
+        <span class="map-nearby-name">
+          <span class="l-th">ร้านกาแฟ 94</span>
+          <span class="l-en">Café 94</span>
+        </span>
+        <span class="map-nearby-dist">40 m</span>
+      </div>
+    </div>
+
+    <!-- Get Directions button -->
+    <a class="map-directions-btn"
+       href="https://www.google.com/maps/dir/?api=1&destination=Faculty+of+Economics,+Chulalongkorn+University,+Bangkok"
+       target="_blank" rel="noopener noreferrer">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      <span class="l-th">เปิด Google Maps</span>
+      <span class="l-en">Open in Google Maps</span>
+    </a>
 
   </div>
 </div>

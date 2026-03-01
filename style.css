@@ -1416,3 +1416,406 @@ html[lang="en"] .card3d-sec-item { font-family: var(--f); font-size: 10.5px; }
 .card3d-sec-dot--cu    { background: var(--cu); }
 .card3d-sec-dot--gold  { background: var(--gold); }
 .card3d-sec-dot--green { background: #22c55e; }
+
+/* ══════════════════════════════════════════════════════
+   STUDENT ID SHEET — enriched design
+══════════════════════════════════════════════════════ */
+
+/* Taller panel so all content is visible */
+.sheet-panel-student {
+  max-height: 93dvh;
+  overflow-y: auto;
+}
+
+/* CU institutional header */
+.sid-header {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 13px;
+  background: linear-gradient(135deg, var(--cu-tint) 0%, rgba(184,133,42,0.06) 100%);
+  border: 1px solid rgba(222,93,142,0.14);
+  border-radius: 13px;
+  margin-bottom: 16px;
+}
+
+.sid-logo {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.sid-header-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.sid-uni-th {
+  font: 700 12px / 1.3 var(--f-th);
+  color: var(--t1);
+}
+
+.sid-uni-en {
+  font: 800 9px / 1 var(--f);
+  color: var(--cu);
+  letter-spacing: 0.11em;
+}
+
+.sid-card-type {
+  font: 500 8px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.08em;
+  margin-top: 1px;
+}
+
+/* ACTIVE badge */
+.sid-active-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  font: 700 7px / 1 var(--f);
+  color: #16a34a;
+  letter-spacing: 0.08em;
+}
+
+/* Blood type highlight */
+.sid-blood {
+  display: inline-block;
+  font: 700 13px / 1 var(--f);
+  color: #dc2626;
+  background: rgba(220,38,38,0.08);
+  border: 1px solid rgba(220,38,38,0.18);
+  border-radius: 6px;
+  padding: 1px 7px;
+  letter-spacing: 0.03em;
+}
+
+/* RFID / Access chip strip */
+.sid-chip-strip {
+  display: flex;
+  align-items: center;
+  background: rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 11px;
+  padding: 10px 14px;
+  margin-top: 4px;
+}
+
+.sid-chip-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.sid-chip-lbl {
+  font: 700 7.5px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sid-chip-val {
+  font: 600 10.5px / 1 var(--f);
+  color: var(--t1);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sid-access-grad {
+  color: var(--cu);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.sid-chip-sep {
+  width: 1px;
+  height: 28px;
+  background: rgba(0,0,0,0.09);
+  margin: 0 12px;
+  flex-shrink: 0;
+}
+
+/* CSS Barcode */
+.sid-barcode {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 14px 10px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 11px;
+}
+
+.sid-barcode-stripes {
+  width: 100%;
+  height: 52px;
+  background: repeating-linear-gradient(
+    90deg,
+    #111 0,   #111 2px,
+    #fff 2px,  #fff 4px,
+    #111 4px,  #111 5px,
+    #fff 5px,  #fff 7px,
+    #111 7px,  #111 10px,
+    #fff 10px, #fff 13px,
+    #111 13px, #111 15px,
+    #fff 15px, #fff 17px,
+    #111 17px, #111 18px,
+    #fff 18px, #fff 21px,
+    #111 21px, #111 24px,
+    #fff 24px, #fff 28px,
+    #111 28px, #111 30px,
+    #fff 30px, #fff 32px,
+    #111 32px, #111 33px,
+    #fff 33px, #fff 36px,
+    #111 36px, #111 39px,
+    #fff 39px, #fff 43px,
+    #111 43px, #111 44px,
+    #fff 44px, #fff 46px,
+    #111 46px, #111 49px,
+    #fff 49px, #fff 52px
+  );
+  border-radius: 2px;
+}
+
+.sid-barcode-num {
+  font: 400 9px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.2em;
+}
+
+/* ══════════════════════════════════════════════════════
+   LOCATION SHEET — map + rich transit info
+══════════════════════════════════════════════════════ */
+
+.sheet-panel-map {
+  max-height: 93dvh;
+  overflow-y: auto;
+  padding-bottom: max(env(safe-area-inset-bottom), 28px);
+}
+
+/* Embedded map */
+.map-frame {
+  width: 100%;
+  height: 190px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.04);
+  margin-bottom: 14px;
+}
+
+.map-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Address row */
+.map-addr-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.map-addr-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--cu-tint);
+  color: var(--cu);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.map-addr-primary {
+  font: 500 12.5px / 1.45 var(--f-th);
+  color: var(--t1);
+}
+
+html[lang="en"] .map-addr-primary { font-family: var(--f); font-size: 12px; }
+
+.map-addr-sub {
+  font: 400 10.5px / 1 var(--f-th);
+  color: var(--t3);
+  margin-top: 4px;
+}
+
+html[lang="en"] .map-addr-sub { font-family: var(--f); }
+
+/* Section titles */
+.map-section-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font: 700 10px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+html[lang="th"] .map-section-title { font-family: var(--f-th); }
+
+/* Transit cards */
+.map-transit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.map-transit-card {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 13px;
+  background: var(--card);
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.map-transit-left { flex-shrink: 0; }
+
+.transit-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  padding: 4px 8px;
+  border-radius: 7px;
+  font: 800 10px / 1 var(--f);
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+
+.transit-bts { background: #5a9e20; }
+.transit-mrt { background: #1e50a0; }
+
+.map-transit-body { flex: 1; min-width: 0; }
+
+.map-transit-name {
+  font: 600 13px / 1.2 var(--f-th);
+  color: var(--t1);
+  margin-bottom: 3px;
+}
+
+html[lang="en"] .map-transit-name { font-family: var(--f); font-size: 12.5px; }
+
+.map-transit-detail {
+  font: 400 11px / 1.4 var(--f-th);
+  color: var(--t2);
+}
+
+html[lang="en"] .map-transit-detail { font-family: var(--f); }
+
+/* Walk time bubble */
+.map-transit-time {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 9px;
+  background: rgba(0,0,0,0.04);
+  border-radius: 9px;
+  min-width: 40px;
+}
+
+.map-transit-time--best {
+  background: rgba(34,197,94,0.10);
+  border: 1px solid rgba(34,197,94,0.20);
+}
+
+.map-transit-time--best .map-time-num { color: #16a34a; }
+
+.map-time-num {
+  font: 700 15px / 1 var(--f);
+  color: var(--t1);
+}
+
+.map-time-unit {
+  font: 400 9px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+/* Nearby landmarks */
+.map-nearby-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--card);
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.map-nearby-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 13px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.map-nearby-item:last-child { border-bottom: none; }
+
+.map-nearby-emoji {
+  font-size: 17px;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+}
+
+.map-nearby-name {
+  flex: 1;
+  font: 400 12.5px / 1 var(--f-th);
+  color: var(--t1);
+  min-width: 0;
+}
+
+html[lang="en"] .map-nearby-name { font-family: var(--f); font-size: 12px; }
+
+.map-nearby-dist {
+  font: 600 11px / 1 var(--f);
+  color: var(--t3);
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+/* Get Directions button */
+.map-directions-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 13px;
+  background: var(--cu);
+  color: #fff;
+  border-radius: 13px;
+  font: 600 13px / 1 var(--f-th);
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+html[lang="en"] .map-directions-btn { font-family: var(--f); }
+.map-directions-btn:active { background: var(--cu-dark); }
