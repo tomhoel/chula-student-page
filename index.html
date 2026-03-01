@@ -93,15 +93,24 @@
 
         <div class="id-divider" aria-hidden="true"></div>
 
-        <div class="id-field">
-          <span class="id-label lang-stable">
-            <span class="l-th">วันเกิด</span>
-            <span class="l-en">Date of Birth</span>
-          </span>
-          <span class="id-value lang-stable">
-            <span class="l-th">27 ธันวาคม พ.ศ. 2539</span>
-            <span class="l-en">27 December 1996</span>
-          </span>
+        <div class="id-row2">
+          <div class="id-field">
+            <span class="id-label lang-stable">
+              <span class="l-th">วันเกิด</span>
+              <span class="l-en">Date of Birth</span>
+            </span>
+            <span class="id-value lang-stable">
+              <span class="l-th">27 ธ.ค. 2539</span>
+              <span class="l-en">27 Dec 1996</span>
+            </span>
+          </div>
+          <div class="id-field">
+            <span class="id-label lang-stable">
+              <span class="l-th">หมู่เลือด</span>
+              <span class="l-en">Blood</span>
+            </span>
+            <span class="id-value">B+</span>
+          </div>
         </div>
 
         <div class="id-field">
@@ -110,9 +119,24 @@
             <span class="l-en">Program</span>
           </span>
           <span class="id-value lang-stable">
-            <span class="l-th">นิสิตมหาบัณฑิต · สาขาวิชาการเงิน</span>
+            <span class="l-th">นิสิตมหาบัณฑิต · การเงิน</span>
             <span class="l-en">Graduate Scholar · Finance</span>
           </span>
+        </div>
+
+        <div class="id-stats-strip">
+          <div class="id-stat">
+            <span class="id-stat-val">3.78</span>
+            <span class="id-stat-lbl">GPA</span>
+          </div>
+          <div class="id-stat">
+            <span class="id-stat-val">#5</span>
+            <span class="id-stat-lbl lang-stable"><span class="l-th">อันดับ</span><span class="l-en">Rank</span></span>
+          </div>
+          <div class="id-stat">
+            <span class="id-stat-val">Yr.1</span>
+            <span class="id-stat-lbl lang-stable"><span class="l-th">ชั้นปี</span><span class="l-en">Year</span></span>
+          </div>
         </div>
 
         <!-- Live verified badge -->
@@ -220,10 +244,11 @@
 
     <!-- Row 3: View 3D Card — full width -->
     <button class="card card-wide card-view3d" data-sheet="idcard" type="button">
-      <div class="mini-card-wrap">
-        <div class="mini-card">
-          <img src="id_front.png" alt="" class="mini-card-img">
-        </div>
+      <div class="card-icon ci-indigo">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="5" width="20" height="14" rx="2.5"/>
+          <path d="M6 9h12M6 13h8"/>
+        </svg>
       </div>
       <div class="card-wide-body">
         <span class="card-label">
@@ -235,7 +260,11 @@
           <span class="l-en">Drag to spin · Double-tap to flip</span>
         </span>
       </div>
-      <svg class="card-arrow card-arrow-inline" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      <div class="mini-card-wrap">
+        <div class="mini-card">
+          <img src="id_front.png" alt="" class="mini-card-img">
+        </div>
+      </div>
     </button>
 
   </div>
@@ -910,6 +939,7 @@
 
     <!-- ── Football ── -->
     <div class="sp-section">
+      <div class="sp-sport-block">
       <div class="sp-sport-head">
         <span class="sp-sport-emoji">⚽</span>
         <div class="sp-sport-info">
@@ -991,10 +1021,12 @@
           </div>
         </div>
       </div>
+      </div><!-- /.sp-sport-block -->
     </div>
 
     <!-- ── Swimming ── -->
     <div class="sp-section">
+      <div class="sp-sport-block">
       <div class="sp-sport-head">
         <span class="sp-sport-emoji">🏊</span>
         <div class="sp-sport-info">
@@ -1056,6 +1088,7 @@
           <span class="sp-training-lbl"><span class="l-th">/เดือน</span><span class="l-en">/month</span></span>
         </div>
       </div>
+      </div><!-- /.sp-sport-block -->
     </div>
 
     <!-- ── Competition Results ── -->
