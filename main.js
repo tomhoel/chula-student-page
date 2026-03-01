@@ -660,6 +660,26 @@ function showToast(msg) {
   var sheet = document.getElementById('sheet-activities');
   if (!sheet) return;
 
+  /* Count-up animation for sport card numbers */
+  function spCountUp(el) {
+    var target = parseFloat(el.dataset.count);
+    var decimals = parseInt(el.dataset.decimals || '0', 10);
+    var duration = 700;
+    var startTime = null;
+    function frame(now) {
+      if (!startTime) startTime = now;
+      var progress = Math.min((now - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = (target * eased).toFixed(decimals);
+      if (progress < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function runOverviewAnimations() {
+    document.querySelectorAll('#sptab-overview [data-count]').forEach(spCountUp);
+  }
+
   sheet.addEventListener('click', function (e) {
     var tab = e.target.closest('.sp-tab');
     if (!tab) return;
@@ -677,5 +697,12 @@ function showToast(msg) {
     tab.setAttribute('aria-selected', 'true');
     var content = document.getElementById('sptab-' + target);
     if (content) content.classList.add('active');
+
+    if (target === 'overview') {
+      runOverviewAnimations();
+    }
   });
+
+  /* Run on initial load — overview is active by default */
+  runOverviewAnimations();
 })();
