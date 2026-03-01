@@ -3028,6 +3028,9 @@ html[lang="en"] .ag-kv-val {
   max-height: 93dvh;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
   padding-bottom: max(env(safe-area-inset-bottom), 36px);
 }
 
@@ -3285,145 +3288,269 @@ html[lang="en"] .ag-kv-val {
   display: block;
 }
 
-/* ── Hero Banner ── */
-.sp-hero {
-  position: relative;
+/* ── Player Card (photo 1/3 | info 2/3) ── */
+.sp-player-card {
+  display: flex;
+  align-items: stretch;
   width: calc(100% + 36px);
-  margin: -16px -18px 16px;
-  height: 200px;
+  margin: -16px -18px 18px;
+  min-height: 172px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
   overflow: hidden;
-  background: linear-gradient(160deg, #de5d8e, #8b1a4a);
 }
 
-.sp-hero picture,
-.sp-hero img {
+.sp-player-photo {
+  width: 33.33%;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #111;
+  position: relative;
+}
+
+.sp-player-photo picture,
+.sp-player-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 8%;
   display: block;
 }
 
-.sp-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.05) 0%,
-    rgba(0, 0, 0, 0.55) 100%
-  );
+.sp-player-info {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-left: 1px solid rgba(0, 0, 0, 0.07);
 }
 
-.sp-hero--swim {
-  background: linear-gradient(160deg, #0ea5e9, #1e3a8a);
+.sp-player-sport-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font: 800 7px / 1 var(--f);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  align-self: flex-start;
 }
 
-.sp-hero-badge {
-  position: absolute;
-  top: 12px;
-  right: 14px;
+.sp-player-sport-tag--football {
+  background: var(--cu);
+  color: #fff;
+}
+
+.sp-player-sport-tag--swim {
+  background: #0ea5e9;
+  color: #fff;
+}
+
+.sp-player-club {
+  font: 600 11px / 1 var(--f);
+  color: var(--t1);
+  margin-bottom: 1px;
+}
+
+.sp-player-position {
+  font: 400 10px / 1 var(--f-th);
+  color: var(--t3);
+}
+
+html[lang="en"] .sp-player-position {
+  font-family: var(--f);
+}
+
+.sp-player-rating-row {
   display: flex;
   align-items: baseline;
-  gap: 2px;
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border-radius: 8px;
-  padding: 5px 9px;
+  gap: 3px;
+  margin-top: 1px;
 }
 
-.sp-hero-rating {
-  font: 800 18px / 1 var(--f);
-  color: #fff;
-  letter-spacing: -0.02em;
+.sp-player-rating-num {
+  font: 800 26px / 1 var(--f);
+  letter-spacing: -0.03em;
 }
 
-.sp-hero-rating-denom {
-  font: 500 10px / 1 var(--f);
-  color: rgba(255, 255, 255, 0.65);
-}
+.sp-player-rating-num--pink { color: var(--cu); }
+.sp-player-rating-num--blue { color: #0ea5e9; }
 
-.sp-hero-elite-badge {
-  position: absolute;
-  top: 12px;
-  right: 14px;
-  padding: 4px 9px;
-  background: rgba(234, 179, 8, 0.90);
-  color: #fff;
-  font: 800 8px / 1 var(--f);
-  letter-spacing: 0.12em;
-  border-radius: 6px;
-}
-
-.sp-hero-text {
-  position: absolute;
-  bottom: 14px;
-  left: 18px;
-  right: 18px;
-}
-
-.sp-hero-sport {
-  font: 800 18px / 1 var(--f);
-  color: #fff;
-  margin-bottom: 3px;
-  letter-spacing: -0.01em;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
-}
-
-.sp-hero-sub {
+.sp-player-rating-denom {
   font: 500 11px / 1 var(--f);
-  color: rgba(255, 255, 255, 0.80);
+  color: var(--t3);
 }
 
-/* ── Metric chips ── */
-.sp-metric-row {
+.sp-player-rating-lbl {
+  font: 500 9px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.02em;
+  margin-left: 1px;
+}
+
+.sp-player-mini-stats {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
+  gap: 0;
+  margin-top: auto;
+  padding-top: 9px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.sp-metric-chip {
+.sp-mini-stat {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3px;
-  padding: 8px 10px;
-  background: rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  border-radius: 10px;
   flex: 1;
-  min-width: 52px;
 }
 
-.sp-metric-chip--accent {
-  background: rgba(222, 93, 142, 0.07);
-  border-color: rgba(222, 93, 142, 0.18);
+.sp-mini-stat:not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.sp-metric-chip--blue {
-  background: rgba(37, 99, 235, 0.07);
-  border-color: rgba(37, 99, 235, 0.18);
-}
-
-.sp-metric-chip--gold {
-  background: rgba(234, 179, 8, 0.08);
-  border-color: rgba(234, 179, 8, 0.25);
-}
-
-.sp-metric-val {
+.sp-mini-val {
   font: 700 14px / 1 var(--f);
   color: var(--t1);
+  letter-spacing: -0.02em;
+}
+
+.sp-mini-val--pink { color: var(--cu); }
+.sp-mini-val--blue { color: #0ea5e9; }
+.sp-mini-val--gold { color: #b8852a; }
+
+.sp-mini-lbl {
+  font: 600 7px / 1 var(--f);
+  color: var(--t3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Stat grid (cp-data-cell style) ── */
+.sp-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.sp-stat-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: rgba(0, 0, 0, 0.025);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+  padding: 9px 10px 8px;
+}
+
+.sp-stat-key {
+  font: 500 8.5px / 1 var(--f-th);
+  color: var(--t3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+html[lang="en"] .sp-stat-key {
+  font-family: var(--f);
+  font-size: 8px;
+}
+
+.sp-stat-val {
+  font: 700 17px / 1 var(--f);
+  color: var(--t1);
+  letter-spacing: -0.02em;
+}
+
+.sp-stat-val--pink { color: var(--cu); }
+.sp-stat-val--green { color: #16a34a; }
+.sp-stat-val--blue { color: #0ea5e9; }
+.sp-stat-val--gold { color: #b8852a; }
+.sp-stat-val-sm { font-size: 13px; letter-spacing: 0; }
+
+.sp-stat-sub {
+  font: 400 9px / 1 var(--f);
+  color: var(--t3);
+}
+
+/* ── Match history ── */
+.sp-match-list {
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.sp-match-row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.sp-match-row--last {
+  border-bottom: none;
+}
+
+.sp-match-result {
+  width: 46px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px 0;
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(0, 0, 0, 0.018);
+}
+
+.sp-match-result--w .sp-match-badge { color: #16a34a; }
+.sp-match-result--d .sp-match-badge { color: #b45309; }
+.sp-match-result--l .sp-match-badge { color: #dc2626; }
+
+.sp-match-badge {
+  font: 800 11px / 1 var(--f);
+  letter-spacing: 0.02em;
+}
+
+.sp-match-score {
+  font: 600 10px / 1 var(--f);
+  color: var(--t2);
   letter-spacing: -0.01em;
 }
 
-.sp-metric-lbl {
-  font: 500 8px / 1 var(--f);
+.sp-match-body {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sp-match-opponent {
+  font: 600 11px / 1 var(--f);
+  color: var(--t1);
+}
+
+.sp-match-meta {
+  font: 400 9.5px / 1 var(--f);
   color: var(--t3);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  text-align: center;
-  white-space: nowrap;
+}
+
+.sp-match-contrib {
+  display: flex;
+  gap: 8px;
+  margin-top: 3px;
+}
+
+.sp-match-contrib-item {
+  font: 500 9.5px / 1 var(--f);
+  color: var(--t2);
 }
 
 /* ── Radar chart ── */
@@ -3639,138 +3766,51 @@ html[lang="en"] .sp-profile-text {
 }
 
 
-/* ── Performance comparison bars ── */
-.sp-perf-bars {
-  background: #fff;
-  overflow: hidden;
-}
-
-.sp-perf-row {
-  padding: 9px 12px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.sp-perf-row:last-child {
-  border-bottom: none;
-}
-
-.sp-perf-lbl {
-  display: block;
-  font: 500 10.5px / 1 var(--f-th);
-  color: var(--t2);
-  margin-bottom: 7px;
-}
-
-html[lang="en"] .sp-perf-lbl {
-  font-family: var(--f);
-  font-size: 10px;
-}
-
-.sp-cmp-rows {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.sp-cmp-row {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.sp-cmp-tag {
-  font: 700 8px / 1 var(--f);
-  flex: 0 0 24px;
-  letter-spacing: 0.05em;
-  padding: 2px 0;
-  text-align: center;
-  border-radius: 4px;
-}
-
-.sp-cmp-tag--you {
-  background: var(--cu-tint);
-  color: var(--cu);
-}
-
-.sp-cmp-tag--avg {
-  background: rgba(0, 0, 0, 0.05);
-  color: var(--t3);
-}
-
-.sp-bar-track {
-  flex: 1;
-  height: 5px;
-  background: rgba(0, 0, 0, 0.07);
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.sp-bar-fill {
-  height: 100%;
-  width: 0;
-  border-radius: inherit;
-  transition: width 0s;
-}
-
-.sp-bar-fill--you {
-  background: linear-gradient(90deg, rgba(222, 93, 142, 0.5), var(--cu));
-}
-
-.sp-bar-fill--avg {
-  background: rgba(0, 0, 0, 0.16);
-}
-
-.sheet.open .sp-bar-fill {
-  width: var(--w);
-  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
-}
-
-.sp-cmp-pct {
-  font: 600 10px / 1 var(--f);
-  color: var(--t1);
-  flex: 0 0 28px;
-  text-align: right;
-}
-
-.sp-cmp-pct--avg {
-  color: var(--t3);
-}
-
 /* ── Personal bests table ── */
 .sp-pb-table {
-  background: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
   overflow: hidden;
+  margin-bottom: 16px;
 }
 
 .sp-pb-header {
   display: grid;
-  grid-template-columns: 1fr 54px 54px 70px;
+  grid-template-columns: 1fr 54px 54px 68px;
   padding: 6px 12px;
   background: rgba(0, 0, 0, 0.025);
-  font: 600 9px / 1 var(--f);
+  font: 600 8.5px / 1 var(--f);
   color: var(--t3);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   gap: 4px;
 }
 
+.sp-pb-header span:last-child {
+  text-align: center;
+}
+
 .sp-pb-row {
   display: grid;
-  grid-template-columns: 1fr 54px 54px 70px;
+  grid-template-columns: 1fr 54px 54px 68px;
   align-items: center;
   padding: 9px 12px;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   gap: 4px;
 }
 
+.sp-pb-row--last {
+  /* no extra style needed, handled by border-radius on container */
+}
+
 .sp-pb-event {
-  font: 600 12px / 1 var(--f);
+  font: 600 11.5px / 1 var(--f);
   color: var(--t1);
 }
 
 .sp-pb-time {
   font: 700 12px / 1 var(--f);
+  letter-spacing: -0.01em;
 }
 
 .sp-pb-time--gold {
@@ -3782,46 +3822,58 @@ html[lang="en"] .sp-perf-lbl {
 }
 
 .sp-pb-avg {
-  font: 400 11px / 1 var(--f);
+  font: 400 10.5px / 1 var(--f);
   color: var(--t3);
 }
 
+/* Level column — centered */
 .sp-pb-level {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sp-level-elite {
   display: inline-flex;
   align-items: center;
   gap: 3px;
   padding: 3px 7px;
-  border-radius: 999px;
-  font: 700 9px / 1 var(--f);
-  letter-spacing: 0.03em;
-}
-
-.sp-level-elite {
-  background: rgba(184, 133, 42, 0.11);
-  color: var(--gold);
+  border-radius: 4px;
+  background: rgba(184, 133, 42, 0.10);
   border: 1px solid rgba(184, 133, 42, 0.22);
+  font: 700 7.5px / 1 var(--f);
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 .sp-level-excel {
-  background: rgba(59, 130, 246, 0.08);
-  color: #1d4ed8;
-  border: 1px solid rgba(59, 130, 246, 0.18);
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 7px;
+  border-radius: 4px;
+  background: rgba(14, 165, 233, 0.08);
+  border: 1px solid rgba(14, 165, 233, 0.20);
+  font: 700 7.5px / 1 var(--f);
+  color: #0284c7;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
 }
-
 
 /* ── Highlights ── */
 .sp-highlights {
-  background: #fff;
-  border-top: 1px solid rgba(0, 0, 0, 0.07);
-  padding: 12px;
+  margin-bottom: 4px;
 }
 
 .sp-hl-title {
-  font: 700 11px / 1 var(--f);
-  color: var(--t1);
-  margin-bottom: 8px;
+  font: 700 9px / 1 var(--f);
+  color: var(--t3);
+  margin-bottom: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  position: relative;
 }
 
 .sp-hl-list {
@@ -3830,27 +3882,28 @@ html[lang="en"] .sp-perf-lbl {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
 }
 
 .sp-hl-list li {
   display: flex;
-  gap: 8px;
+  gap: 9px;
   align-items: flex-start;
 }
 
 .sp-hl-icon {
   font-size: 13px;
-  line-height: 1.2;
+  line-height: 1.25;
+  flex-shrink: 0;
 }
 
 .sp-hl-list span.l-th {
-  font: 400 11.5px / 1.4 var(--f-th);
+  font: 400 11px / 1.45 var(--f-th);
   color: var(--t2);
 }
 
 html[lang="en"] .sp-hl-list span.l-en {
-  font: 400 10.5px / 1.4 var(--f);
+  font: 400 10.5px / 1.45 var(--f);
   color: var(--t2);
 }
 
