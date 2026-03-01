@@ -2404,91 +2404,118 @@ html[lang="en"] .card3d-access-item {
   to   { transform: translateX(-50%); }
 }
 
-/* ── Athlete Banner (mirrors cp-student-banner) ── */
+/* ── Athlete Banner (mirrors ac-student-banner) ── */
 .sp-athlete-banner {
   display: flex;
-  gap: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-}
-
-.sp-athlete-score-block {
+  align-items: center;
+  padding: 14px 18px;
+  gap: 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  background: linear-gradient(135deg, rgba(222,93,142,0.04) 0%, transparent 60%);
   flex-shrink: 0;
+}
+.sp-score-block {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 4px;
-  padding: 14px 16px;
-  background: linear-gradient(135deg, rgba(222, 93, 142, 0.10), rgba(222, 93, 142, 0.04));
-  border-right: 1px solid rgba(222, 93, 142, 0.15);
-  min-width: 90px;
+  gap: 7px;
+  flex-shrink: 0;
 }
-
-.sp-athlete-score-label {
-  font: 700 7px / 1.2 var(--f);
-  color: var(--t3);
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
+.sp-fitness-ring-wrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.sp-fitness-ring {
+  width: 80px;
+  height: 80px;
+  transform: rotate(-90deg);
+}
+.sp-ring-bg {
+  fill: none;
+  stroke: rgba(0,0,0,0.07);
+  stroke-width: 7;
+}
+.sp-ring-fill {
+  fill: none;
+  stroke: var(--cu);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 201.06;
+  stroke-dashoffset: 201.06;
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.16,1,0.3,1);
+}
+.sp-score-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  line-height: 1.1;
 }
-
-.sp-athlete-score {
-  display: flex;
-  align-items: baseline;
-  gap: 1px;
+.sp-score-val {
+  font-family: var(--f);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--t1);
+  letter-spacing: -0.02em;
 }
-
-.sp-athlete-num {
-  font: 800 28px / 1 var(--f);
+.sp-score-denom {
+  font-family: var(--f);
+  font-size: 10px;
+  color: var(--t3);
+}
+.sp-athlete-status-label {
+  font-family: var(--f);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   color: var(--cu);
-  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
-
-.sp-athlete-denom {
-  font: 500 11px / 1 var(--f);
-  color: var(--t3);
+.sp-status-dot {
+  width: 6px;
+  height: 6px;
+  background: #22c55e;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: spDotPulse 2s ease-in-out infinite;
 }
-
-.sp-athlete-rank {
-  font: 500 8px / 1 var(--f);
-  color: var(--t3);
-  letter-spacing: 0.03em;
-  white-space: nowrap;
+@keyframes spDotPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
 }
-
 .sp-athlete-meta {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 10px 16px;
   gap: 5px;
 }
-
 .sp-athlete-meta-row {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   gap: 8px;
+  align-items: baseline;
 }
-
 .sp-athlete-meta-k {
-  font: 500 8px / 1 var(--f);
+  font-family: var(--f);
+  font-size: 8.5px;
+  letter-spacing: 0.1em;
   color: var(--t3);
-  letter-spacing: 0.07em;
   text-transform: uppercase;
-  white-space: nowrap;
+  min-width: 70px;
+  flex-shrink: 0;
+  font-weight: 600;
 }
-
 .sp-athlete-meta-v {
-  font: 600 8.5px / 1 monospace;
-  color: var(--t2);
-  text-align: right;
+  font-family: var(--f);
+  font-size: 11px;
+  color: var(--t1);
+  font-weight: 500;
 }
-
-.sp-val-pink {
-  color: var(--cu);
-}
+.sp-val-pink { color: var(--cu); }
 
 /* ── Section ── */
 .sp-section {
