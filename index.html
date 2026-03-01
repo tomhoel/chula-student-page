@@ -872,7 +872,84 @@
 
         <!-- FORECAST TAB (placeholder) -->
         <div class="ac-tab-panel" id="actab-forecast" role="tabpanel">
-          <!-- filled in Task 5 -->
+          <div class="ac-section-title">GPA TRAJECTORY</div>
+          <div class="ac-trajectory-wrap">
+            <svg class="ac-trajectory" viewBox="0 0 300 130" preserveAspectRatio="xMidYMid meet">
+              <!-- grid lines -->
+              <line x1="30" y1="49" x2="270" y2="49" class="ac-traj-grid"/>
+              <line x1="30" y1="76" x2="270" y2="76" class="ac-traj-threshold"/>
+              <line x1="30" y1="115" x2="270" y2="115" class="ac-traj-grid"/>
+              <!-- y-axis labels -->
+              <text x="4" y="53" class="ac-traj-label">3.70</text>
+              <text x="4" y="80" class="ac-traj-label">3.50</text>
+              <!-- honours label -->
+              <text x="200" y="73" class="ac-traj-honours-label">HONOURS MIN</text>
+              <!-- projected confidence band (S2 to S6) -->
+              <polygon class="ac-traj-band" points="78,39 126,28 174,22 222,18 270,16 270,32 222,34 174,38 126,40 78,39"/>
+              <!-- actual solid line S1-S2 -->
+              <polyline class="ac-traj-actual" points="30,56 78,39"/>
+              <!-- projected dashed line S2-S6 -->
+              <polyline class="ac-traj-projected" points="78,39 126,34 174,30 222,26 270,23"/>
+              <!-- actual dots -->
+              <circle cx="30" cy="56" r="4.5" class="ac-traj-dot" style="--delay:900ms"/>
+              <circle cx="78" cy="39" r="4.5" class="ac-traj-dot" style="--delay:1000ms"/>
+              <!-- projected dots (hollow) -->
+              <circle cx="126" cy="34" r="3" class="ac-traj-dot-proj" style="--delay:1200ms"/>
+              <circle cx="174" cy="30" r="3" class="ac-traj-dot-proj" style="--delay:1400ms"/>
+              <circle cx="222" cy="26" r="3" class="ac-traj-dot-proj" style="--delay:1600ms"/>
+              <circle cx="270" cy="23" r="3" class="ac-traj-dot-proj" style="--delay:1800ms"/>
+            </svg>
+            <div class="ac-traj-x-labels">
+              <span>S1</span><span>S2</span><span>S3</span><span>S4</span><span>S5</span><span>S6</span>
+            </div>
+          </div>
+
+          <div class="ac-forecast-grid">
+            <div class="ac-forecast-card">
+              <div class="ac-fc-label">HONOURS STATUS</div>
+              <div class="ac-fc-val ac-fc-green">ON TRACK</div>
+              <div class="ac-fc-sub">+0.28 above threshold</div>
+            </div>
+            <div class="ac-forecast-card">
+              <div class="ac-fc-label">PROJECTED GPA</div>
+              <div class="ac-fc-val">3.88 – 3.92</div>
+              <div class="ac-fc-sub">Based on trajectory</div>
+            </div>
+            <div class="ac-forecast-card">
+              <div class="ac-fc-label">GRADUATION</div>
+              <div class="ac-fc-val">May 2027</div>
+              <div class="ac-fc-sub">On schedule</div>
+            </div>
+            <div class="ac-forecast-card">
+              <div class="ac-fc-label">RISK FLAGS</div>
+              <div class="ac-fc-val ac-fc-green">NONE</div>
+              <div class="ac-fc-sub">All subjects above avg</div>
+            </div>
+          </div>
+
+          <div class="ac-credits-path">
+            <span class="ac-cp-label">CREDITS TO GRADUATION</span>
+            <span class="ac-cp-val">18 / 30 completed · 12 remaining · Est. 4 semesters</span>
+          </div>
+
+          <div class="ac-section-title" style="margin-top:16px">UPCOMING COURSES — SEM 3 (PLANNED)</div>
+          <div class="ac-upcoming-list">
+            <div class="ac-upcoming-row">
+              <span class="ac-upcoming-code">ECON 6301</span>
+              <span class="ac-upcoming-name">Fixed Income &amp; Credit Markets</span>
+              <span class="ac-upcoming-cr">3 cr</span>
+            </div>
+            <div class="ac-upcoming-row">
+              <span class="ac-upcoming-code">ECON 6302</span>
+              <span class="ac-upcoming-name">International Finance</span>
+              <span class="ac-upcoming-cr">3 cr</span>
+            </div>
+            <div class="ac-upcoming-row">
+              <span class="ac-upcoming-code">ECON 6303</span>
+              <span class="ac-upcoming-name">Financial Modelling</span>
+              <span class="ac-upcoming-cr">3 cr</span>
+            </div>
+          </div>
         </div>
 
       </div><!-- /.ac-tab-content -->
