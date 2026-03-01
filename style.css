@@ -5318,3 +5318,152 @@ html[lang="en"] .ag-future-desc {
   align-items: center;
   justify-content: space-between;
 }
+
+/* ── RECORD TAB ──────────────────────────────────────── */
+.ac-sem-gpa {
+  color: var(--cu);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.ac-gpa-compare { margin-bottom: 16px; }
+.ac-gpa-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.ac-gpa-sem {
+  font-family: var(--f);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--t3);
+  min-width: 38px;
+  font-weight: 600;
+}
+.ac-gpa-bar-wrap {
+  flex: 1;
+  height: 8px;
+  background: rgba(0,0,0,0.05);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.ac-gpa-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cu), rgba(222,93,142,0.7));
+  border-radius: 4px;
+  width: 0%;
+  transition: width 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+#actab-record.active .ac-gpa-bar {
+  width: var(--target);
+}
+.ac-gpa-val {
+  font-family: var(--f);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--t1);
+  min-width: 72px;
+  text-align: right;
+}
+.ac-delta-badge {
+  font-size: 10px;
+  color: #22c55e;
+  font-weight: 600;
+}
+.ac-course-card {
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  background: rgba(0,0,0,0.015);
+}
+.ac-course-card--done { opacity: 0.85; }
+.ac-course-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.ac-grade-badge {
+  font-family: var(--f);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 5px;
+  flex-shrink: 0;
+  min-width: 30px;
+  text-align: center;
+}
+.ac-grade-a       { background: rgba(222,93,142,0.14); color: var(--cu); }
+.ac-grade-a-minus { background: rgba(222,93,142,0.10); color: var(--cu); }
+.ac-grade-b-plus  { background: rgba(234,179,8,0.15);  color: #b45309;  }
+.ac-course-info { flex: 1; }
+.ac-course-code {
+  font-family: var(--f);
+  font-size: 9px;
+  color: var(--t3);
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.ac-course-name {
+  font-family: var(--f);
+  font-size: 13px;
+  color: var(--t1);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.ac-course-score {
+  font-family: var(--f);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--t1);
+  flex-shrink: 0;
+}
+.ac-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 6px;
+}
+.ac-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ac-bar-label {
+  font-family: var(--f);
+  font-size: 9px;
+  color: var(--t3);
+  min-width: 22px;
+  letter-spacing: 0.04em;
+}
+.ac-bar-wrap {
+  flex: 1;
+  height: 5px;
+  background: rgba(0,0,0,0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.ac-bar {
+  height: 100%;
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.85s cubic-bezier(0.16,1,0.3,1) var(--delay, 0ms);
+}
+#actab-record.active .ac-bar { width: var(--w); }
+.ac-bar-you { background: var(--cu); }
+.ac-bar-avg { background: rgba(0,0,0,0.22); }
+.ac-bar-pct {
+  font-family: var(--f);
+  font-size: 9px;
+  color: var(--t2);
+  min-width: 18px;
+  text-align: right;
+}
+.ac-course-delta {
+  font-family: var(--f);
+  font-size: 10px;
+  color: #22c55e;
+  font-weight: 600;
+}
