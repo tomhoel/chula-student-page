@@ -1121,15 +1121,16 @@
           <line x1="100" y1="100" x2="43.7" y2="132.5" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
           <line x1="100" y1="100" x2="43.7" y2="67.5" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
           <!-- Data: Speed 88, Endurance 82, Strength 76, Agility 87, Technique 91, Teamwork 95 -->
-          <polygon points="100,42.8 146.2,73.35 142.8,124.7 100,156.55 48.8,129.6 46.5,69.1"
-            fill="rgba(222,93,142,0.14)" stroke="#de5d8e" stroke-width="1.8" stroke-linejoin="round"/>
-          <!-- Vertex dots -->
-          <circle cx="100" cy="42.8" r="3" fill="#de5d8e"/>
-          <circle cx="146.2" cy="73.35" r="3" fill="#de5d8e"/>
-          <circle cx="142.8" cy="124.7" r="3" fill="#de5d8e"/>
-          <circle cx="100" cy="156.55" r="3" fill="#de5d8e"/>
-          <circle cx="48.8" cy="129.6" r="3" fill="#de5d8e"/>
-          <circle cx="46.5" cy="69.1" r="3" fill="#de5d8e"/>
+          <polygon id="sp-radar-poly" points="100,100 100,100 100,100 100,100 100,100 100,100"
+            fill="rgba(222,93,142,0.14)" stroke="#de5d8e" stroke-width="1.8" stroke-linejoin="round"
+            data-pts="100,42.8 146.2,73.35 142.8,124.7 100,156.55 48.8,129.6 46.5,69.1"/>
+          <!-- Vertex dots (animated from center) -->
+          <circle class="sp-radar-dot" cx="100" cy="100" r="0" fill="#de5d8e"/>
+          <circle class="sp-radar-dot" cx="100" cy="100" r="0" fill="#de5d8e"/>
+          <circle class="sp-radar-dot" cx="100" cy="100" r="0" fill="#de5d8e"/>
+          <circle class="sp-radar-dot" cx="100" cy="100" r="0" fill="#de5d8e"/>
+          <circle class="sp-radar-dot" cx="100" cy="100" r="0" fill="#de5d8e"/>
+          <circle class="sp-radar-dot" cx="100" cy="100" r="0" fill="#de5d8e"/>
           <!-- Axis labels -->
           <text x="100" y="27" text-anchor="middle" font-size="8.5" font-weight="600" fill="#6B6B6B">Speed</text>
           <text x="100" y="18" text-anchor="middle" font-size="8" font-weight="700" fill="#de5d8e">88</text>
@@ -1144,160 +1145,287 @@
           <text x="37" y="67" text-anchor="end" font-size="8.5" font-weight="600" fill="#6B6B6B">Teamwork</text>
           <text x="37" y="77" text-anchor="end" font-size="8" font-weight="700" fill="#de5d8e">95</text>
         </svg>
-      </div>
+      </div><!-- /.sp-radar-wrap -->
+
+      <!-- Attribute breakdown: 2-col grid, sorted by tier -->
+      <div class="sp-attr-grid">
+
+        <!-- ELITE tier -->
+        <div class="sp-attr-card" data-tier="elite">
+          <div class="sp-attr-card-top">
+            <span class="sp-attr-dot"></span>
+            <span class="sp-attr-card-name"><span class="l-th">ทีมเวิร์ค</span><span class="l-en">Teamwork</span></span>
+            <span class="sp-attr-tier">ELITE</span>
+          </div>
+          <div class="sp-attr-score-row">
+            <span class="sp-attr-card-score">95</span>
+            <span class="sp-attr-score-denom">/100</span>
+          </div>
+          <div class="sp-attr-bar-track"><div class="sp-attr-bar-fill" style="--aw:95%"></div></div>
+          <p class="sp-attr-desc"><span class="l-th">ผู้นำทีมและการอ่านพื้นที่</span><span class="l-en">Leadership &amp; spatial reading</span></p>
+        </div>
+
+        <div class="sp-attr-card" data-tier="elite">
+          <div class="sp-attr-card-top">
+            <span class="sp-attr-dot"></span>
+            <span class="sp-attr-card-name"><span class="l-th">เทคนิค</span><span class="l-en">Technique</span></span>
+            <span class="sp-attr-tier">ELITE</span>
+          </div>
+          <div class="sp-attr-score-row">
+            <span class="sp-attr-card-score">91</span>
+            <span class="sp-attr-score-denom">/100</span>
+          </div>
+          <div class="sp-attr-bar-track"><div class="sp-attr-bar-fill" style="--aw:91%"></div></div>
+          <p class="sp-attr-desc"><span class="l-th">ควบคุมบอลและแตะบอลชั้นเยี่ยม</span><span class="l-en">Superior ball control &amp; first touch</span></p>
+        </div>
+
+        <!-- HIGH tier -->
+        <div class="sp-attr-card" data-tier="high">
+          <div class="sp-attr-card-top">
+            <span class="sp-attr-dot"></span>
+            <span class="sp-attr-card-name"><span class="l-th">ความเร็ว</span><span class="l-en">Speed</span></span>
+            <span class="sp-attr-tier">HIGH</span>
+          </div>
+          <div class="sp-attr-score-row">
+            <span class="sp-attr-card-score">88</span>
+            <span class="sp-attr-score-denom">/100</span>
+          </div>
+          <div class="sp-attr-bar-track"><div class="sp-attr-bar-fill" style="--aw:88%"></div></div>
+          <p class="sp-attr-desc"><span class="l-th">ความเร็วระเบิดและการเคลื่อนที่นอกบอล</span><span class="l-en">Elite burst pace &amp; off-ball movement</span></p>
+        </div>
+
+        <div class="sp-attr-card" data-tier="high">
+          <div class="sp-attr-card-top">
+            <span class="sp-attr-dot"></span>
+            <span class="sp-attr-card-name"><span class="l-th">ความคล่องตัว</span><span class="l-en">Agility</span></span>
+            <span class="sp-attr-tier">HIGH</span>
+          </div>
+          <div class="sp-attr-score-row">
+            <span class="sp-attr-card-score">87</span>
+            <span class="sp-attr-score-denom">/100</span>
+          </div>
+          <div class="sp-attr-bar-track"><div class="sp-attr-bar-fill" style="--aw:87%"></div></div>
+          <p class="sp-attr-desc"><span class="l-th">เปลี่ยนทิศทางรวดเร็วและระเบิดพลัง</span><span class="l-en">Quick direction changes &amp; explosive turns</span></p>
+        </div>
+
+        <div class="sp-attr-card" data-tier="high">
+          <div class="sp-attr-card-top">
+            <span class="sp-attr-dot"></span>
+            <span class="sp-attr-card-name"><span class="l-th">ความอึด</span><span class="l-en">Endurance</span></span>
+            <span class="sp-attr-tier">HIGH</span>
+          </div>
+          <div class="sp-attr-score-row">
+            <span class="sp-attr-card-score">82</span>
+            <span class="sp-attr-score-denom">/100</span>
+          </div>
+          <div class="sp-attr-bar-track"><div class="sp-attr-bar-fill" style="--aw:82%"></div></div>
+          <p class="sp-attr-desc"><span class="l-th">สมรรถภาพสูงตลอด 90 นาที</span><span class="l-en">High match fitness over 90 minutes</span></p>
+        </div>
+
+        <!-- GOOD tier -->
+        <div class="sp-attr-card" data-tier="good">
+          <div class="sp-attr-card-top">
+            <span class="sp-attr-dot"></span>
+            <span class="sp-attr-card-name"><span class="l-th">ความแข็งแกร่ง</span><span class="l-en">Strength</span></span>
+            <span class="sp-attr-tier">GOOD</span>
+          </div>
+          <div class="sp-attr-score-row">
+            <span class="sp-attr-card-score">76</span>
+            <span class="sp-attr-score-denom">/100</span>
+          </div>
+          <div class="sp-attr-bar-track"><div class="sp-attr-bar-fill" style="--aw:76%"></div></div>
+          <p class="sp-attr-desc"><span class="l-th">ต่อสู้ทางกายภาพได้มั่นคง</span><span class="l-en">Solid physical contest ability</span></p>
+        </div>
+
+      </div><!-- /.sp-attr-grid -->
+
+      <!-- Overall athlete profile summary -->
+      <div class="sp-profile-summary">
+        <div class="sp-profile-header">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <span class="sp-profile-label"><span class="l-th">โปรไฟล์นักกีฬา</span><span class="l-en">Athlete Profile</span></span>
+          <span class="sp-profile-score-badge">86.5 avg</span>
+        </div>
+        <p class="sp-profile-archetype">Technical Playmaker</p>
+        <p class="sp-profile-text">
+          <span class="l-th">เทคนิค (91) และทีมเวิร์ค (95) ระดับ Elite รองรับสไตล์การเล่นเชิงรุกที่มีความเข้มข้นสูง ความเร็ว (88) และความคล่องตัว (87) เพิ่มอันตรายตลอดเวลาในสนาม</span>
+          <span class="l-en">Elite technique (91) and teamwork (95) anchor a high-tempo attacking style. Speed (88) and agility (87) deliver constant off-ball threat throughout the match.</span>
+        </p>
+      </div><!-- /.sp-profile-summary -->
+
     </div>
 
     <!-- ── Football ── -->
     <div class="sp-section">
       <div class="sp-sport-block">
-      <div class="sp-sport-head">
-        <span class="sp-sport-emoji">⚽</span>
-        <div class="sp-sport-info">
-          <p class="sp-sport-name">
-            <span class="l-th">ฟุตบอล</span>
-            <span class="l-en">Football</span>
-          </p>
-          <p class="sp-sport-club">CU Economics FC · Attacking Midfielder</p>
-        </div>
-        <div class="sp-sport-rating">
-          <span class="sp-rating-num">8.3</span>
-          <span class="sp-rating-denom">/10</span>
-        </div>
-      </div>
 
-      <div class="sp-stats-grid">
-        <div class="sp-stat-box">
-          <span class="sp-stat-val">12</span>
-          <span class="sp-stat-lbl"><span class="l-th">แมตช์</span><span class="l-en">Matches</span></span>
-        </div>
-        <div class="sp-stat-box">
-          <span class="sp-stat-val">4</span>
-          <span class="sp-stat-lbl"><span class="l-th">ประตู</span><span class="l-en">Goals</span></span>
-        </div>
-        <div class="sp-stat-box">
-          <span class="sp-stat-val">7</span>
-          <span class="sp-stat-lbl"><span class="l-th">แอสซิสต์</span><span class="l-en">Assists</span></span>
-        </div>
-        <div class="sp-stat-box">
-          <span class="sp-stat-val">94%</span>
-          <span class="sp-stat-lbl"><span class="l-th">เล่นครบ</span><span class="l-en">Full Match</span></span>
-        </div>
-      </div>
+        <!-- Split: photo left, info right -->
+        <div class="sp-sport-top">
+          <div class="sp-sport-photo">
+            <img src="football_photoshoot.png" alt="Korawit in CU football kit" loading="lazy">
+            <span class="sp-sport-photo-badge">⚽</span>
+          </div>
+          <div class="sp-sport-right">
+            <div class="sp-sport-head">
+              <div class="sp-sport-info">
+                <p class="sp-sport-name">
+                  <span class="l-th">ฟุตบอล</span>
+                  <span class="l-en">Football</span>
+                </p>
+                <p class="sp-sport-club">CU Economics FC · Attacking Midfielder</p>
+              </div>
+              <div class="sp-sport-rating">
+                <span class="sp-rating-num">8.3</span>
+                <span class="sp-rating-denom">/10</span>
+              </div>
+            </div>
+            <div class="sp-stats-grid">
+              <div class="sp-stat-box">
+                <span class="sp-stat-val">12</span>
+                <span class="sp-stat-lbl"><span class="l-th">แมตช์</span><span class="l-en">Matches</span></span>
+              </div>
+              <div class="sp-stat-box">
+                <span class="sp-stat-val">4</span>
+                <span class="sp-stat-lbl"><span class="l-th">ประตู</span><span class="l-en">Goals</span></span>
+              </div>
+              <div class="sp-stat-box">
+                <span class="sp-stat-val">7</span>
+                <span class="sp-stat-lbl"><span class="l-th">แอสซิสต์</span><span class="l-en">Assists</span></span>
+              </div>
+              <div class="sp-stat-box">
+                <span class="sp-stat-val">94%</span>
+                <span class="sp-stat-lbl"><span class="l-th">เล่นครบ</span><span class="l-en">Full Match</span></span>
+              </div>
+            </div>
+          </div><!-- /.sp-sport-right -->
+        </div><!-- /.sp-sport-top -->
 
-      <div class="sp-perf-bars">
-        <div class="sp-perf-row">
-          <span class="sp-perf-lbl"><span class="l-th">ความแม่นยำการยิง</span><span class="l-en">Shot Accuracy</span></span>
-          <div class="sp-cmp-rows">
-            <div class="sp-cmp-row">
-              <span class="sp-cmp-tag sp-cmp-tag--you">YOU</span>
-              <div class="sp-bar-track"><div class="sp-bar-fill sp-bar-fill--you" style="--w:78%"></div></div>
-              <span class="sp-cmp-pct">78%</span>
-            </div>
-            <div class="sp-cmp-row">
-              <span class="sp-cmp-tag sp-cmp-tag--avg">AVG</span>
-              <div class="sp-bar-track"><div class="sp-bar-fill sp-bar-fill--avg" style="--w:61%"></div></div>
-              <span class="sp-cmp-pct sp-cmp-pct--avg">61%</span>
-            </div>
-          </div>
-        </div>
-        <div class="sp-perf-row">
-          <span class="sp-perf-lbl"><span class="l-th">ความแม่นยำการส่งบอล</span><span class="l-en">Pass Accuracy</span></span>
-          <div class="sp-cmp-rows">
-            <div class="sp-cmp-row">
-              <span class="sp-cmp-tag sp-cmp-tag--you">YOU</span>
-              <div class="sp-bar-track"><div class="sp-bar-fill sp-bar-fill--you" style="--w:91%"></div></div>
-              <span class="sp-cmp-pct">91%</span>
-            </div>
-            <div class="sp-cmp-row">
-              <span class="sp-cmp-tag sp-cmp-tag--avg">AVG</span>
-              <div class="sp-bar-track"><div class="sp-bar-fill sp-bar-fill--avg" style="--w:72%"></div></div>
-              <span class="sp-cmp-pct sp-cmp-pct--avg">72%</span>
+        <!-- Full-width performance bars -->
+        <div class="sp-perf-bars">
+          <div class="sp-perf-row">
+            <span class="sp-perf-lbl"><span class="l-th">ความแม่นยำการยิง</span><span class="l-en">Shot Accuracy</span></span>
+            <div class="sp-cmp-rows">
+              <div class="sp-cmp-row">
+                <span class="sp-cmp-tag sp-cmp-tag--you">YOU</span>
+                <div class="sp-bar-track"><div class="sp-bar-fill sp-bar-fill--you" style="--w:78%"></div></div>
+                <span class="sp-cmp-pct">78%</span>
+              </div>
+              <div class="sp-cmp-row">
+                <span class="sp-cmp-tag sp-cmp-tag--avg">AVG</span>
+                <div class="sp-bar-track"><div class="sp-bar-fill sp-bar-fill--avg" style="--w:61%"></div></div>
+                <span class="sp-cmp-pct sp-cmp-pct--avg">61%</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="sp-perf-row">
-          <span class="sp-perf-lbl"><span class="l-th">ดริบเบิ้ลสำเร็จ</span><span class="l-en">Dribbles Won</span></span>
-          <div class="sp-cmp-rows">
-            <div class="sp-cmp-row">
-              <span class="sp-cmp-tag sp-cmp-tag--you">YOU</span>
-              <div class="sp-bar-track"><div class="sp-bar-fill sp-bar-fill--you" style="--w:74%"></div></div>
-              <span class="sp-cmp-pct">74%</span>
-            </div>
-            <div class="sp-cmp-row">
-              <span class="sp-cmp-tag sp-cmp-tag--avg">AVG</span>
-              <div class="sp-bar-track"><div class="sp-bar-fill sp-bar-fill--avg" style="--w:55%"></div></div>
-              <span class="sp-cmp-pct sp-cmp-pct--avg">55%</span>
+          <div class="sp-perf-row">
+            <span class="sp-perf-lbl"><span class="l-th">ความแม่นยำการส่งบอล</span><span class="l-en">Pass Accuracy</span></span>
+            <div class="sp-cmp-rows">
+              <div class="sp-cmp-row">
+                <span class="sp-cmp-tag sp-cmp-tag--you">YOU</span>
+                <div class="sp-bar-track"><div class="sp-bar-fill sp-bar-fill--you" style="--w:91%"></div></div>
+                <span class="sp-cmp-pct">91%</span>
+              </div>
+              <div class="sp-cmp-row">
+                <span class="sp-cmp-tag sp-cmp-tag--avg">AVG</span>
+                <div class="sp-bar-track"><div class="sp-bar-fill sp-bar-fill--avg" style="--w:72%"></div></div>
+                <span class="sp-cmp-pct sp-cmp-pct--avg">72%</span>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+          <div class="sp-perf-row">
+            <span class="sp-perf-lbl"><span class="l-th">ดริบเบิ้ลสำเร็จ</span><span class="l-en">Dribbles Won</span></span>
+            <div class="sp-cmp-rows">
+              <div class="sp-cmp-row">
+                <span class="sp-cmp-tag sp-cmp-tag--you">YOU</span>
+                <div class="sp-bar-track"><div class="sp-bar-fill sp-bar-fill--you" style="--w:74%"></div></div>
+                <span class="sp-cmp-pct">74%</span>
+              </div>
+              <div class="sp-cmp-row">
+                <span class="sp-cmp-tag sp-cmp-tag--avg">AVG</span>
+                <div class="sp-bar-track"><div class="sp-bar-fill sp-bar-fill--avg" style="--w:55%"></div></div>
+                <span class="sp-cmp-pct sp-cmp-pct--avg">55%</span>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.sp-perf-bars -->
+
       </div><!-- /.sp-sport-block -->
     </div>
 
     <!-- ── Swimming ── -->
     <div class="sp-section">
       <div class="sp-sport-block">
-      <div class="sp-sport-head">
-        <span class="sp-sport-emoji">🏊</span>
-        <div class="sp-sport-info">
-          <p class="sp-sport-name">
-            <span class="l-th">ว่ายน้ำ</span>
-            <span class="l-en">Swimming</span>
-          </p>
-          <p class="sp-sport-club">CU Aquatic Society · Freestyle &amp; IM</p>
-        </div>
-        <span class="sp-elite-badge">ELITE</span>
-      </div>
 
-      <div class="sp-pb-table">
-        <div class="sp-pb-header">
-          <span><span class="l-th">รายการ</span><span class="l-en">Event</span></span>
-          <span>PB</span>
-          <span>CU Avg</span>
-          <span><span class="l-th">ระดับ</span><span class="l-en">Level</span></span>
-        </div>
-        <div class="sp-pb-row">
-          <span class="sp-pb-event">50m Free</span>
-          <span class="sp-pb-time sp-pb-time--gold">26.4s</span>
-          <span class="sp-pb-avg">31.2s</span>
-          <span class="sp-pb-level sp-level-elite">
-            <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            Elite
-          </span>
-        </div>
-        <div class="sp-pb-row">
-          <span class="sp-pb-event">100m Free</span>
-          <span class="sp-pb-time sp-pb-time--gold">57.8s</span>
-          <span class="sp-pb-avg">1:06.4</span>
-          <span class="sp-pb-level sp-level-elite">
-            <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            Elite
-          </span>
-        </div>
-        <div class="sp-pb-row">
-          <span class="sp-pb-event">200m IM</span>
-          <span class="sp-pb-time sp-pb-time--silver">2:24.5</span>
-          <span class="sp-pb-avg">2:44.2</span>
-          <span class="sp-pb-level sp-level-excel">Excellent</span>
-        </div>
-      </div>
+        <!-- Split: photo left, info + training right -->
+        <div class="sp-sport-top">
+          <div class="sp-sport-photo">
+            <img src="svimming_photoshoot.png" alt="Korawit in CU swimming kit" loading="lazy">
+            <span class="sp-sport-photo-badge">🏊</span>
+          </div>
+          <div class="sp-sport-right">
+            <div class="sp-sport-head">
+              <div class="sp-sport-info">
+                <p class="sp-sport-name">
+                  <span class="l-th">ว่ายน้ำ</span>
+                  <span class="l-en">Swimming</span>
+                </p>
+                <p class="sp-sport-club">CU Aquatic Society · Freestyle &amp; IM</p>
+              </div>
+              <span class="sp-elite-badge">ELITE</span>
+            </div>
+            <div class="sp-training-strip">
+              <div class="sp-training-item">
+                <span class="sp-training-val">4×</span>
+                <span class="sp-training-lbl"><span class="l-th">/สัปดาห์</span><span class="l-en">/week</span></span>
+              </div>
+              <div class="sp-training-sep"></div>
+              <div class="sp-training-item">
+                <span class="sp-training-val">~4 km</span>
+                <span class="sp-training-lbl"><span class="l-th">/ครั้ง</span><span class="l-en">/session</span></span>
+              </div>
+              <div class="sp-training-sep"></div>
+              <div class="sp-training-item">
+                <span class="sp-training-val">~64 km</span>
+                <span class="sp-training-lbl"><span class="l-th">/เดือน</span><span class="l-en">/month</span></span>
+              </div>
+            </div>
+          </div><!-- /.sp-sport-right -->
+        </div><!-- /.sp-sport-top -->
 
-      <div class="sp-training-strip">
-        <div class="sp-training-item">
-          <span class="sp-training-val">4×</span>
-          <span class="sp-training-lbl"><span class="l-th">/สัปดาห์</span><span class="l-en">/week</span></span>
-        </div>
-        <div class="sp-training-sep"></div>
-        <div class="sp-training-item">
-          <span class="sp-training-val">~4 km</span>
-          <span class="sp-training-lbl"><span class="l-th">/ครั้ง</span><span class="l-en">/session</span></span>
-        </div>
-        <div class="sp-training-sep"></div>
-        <div class="sp-training-item">
-          <span class="sp-training-val">~64 km</span>
-          <span class="sp-training-lbl"><span class="l-th">/เดือน</span><span class="l-en">/month</span></span>
-        </div>
-      </div>
+        <!-- Full-width PB table below -->
+        <div class="sp-pb-table">
+          <div class="sp-pb-header">
+            <span><span class="l-th">รายการ</span><span class="l-en">Event</span></span>
+            <span>PB</span>
+            <span>CU Avg</span>
+            <span><span class="l-th">ระดับ</span><span class="l-en">Level</span></span>
+          </div>
+          <div class="sp-pb-row">
+            <span class="sp-pb-event">50m Free</span>
+            <span class="sp-pb-time sp-pb-time--gold">26.4s</span>
+            <span class="sp-pb-avg">31.2s</span>
+            <span class="sp-pb-level sp-level-elite">
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              Elite
+            </span>
+          </div>
+          <div class="sp-pb-row">
+            <span class="sp-pb-event">100m Free</span>
+            <span class="sp-pb-time sp-pb-time--gold">57.8s</span>
+            <span class="sp-pb-avg">1:06.4</span>
+            <span class="sp-pb-level sp-level-elite">
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              Elite
+            </span>
+          </div>
+          <div class="sp-pb-row">
+            <span class="sp-pb-event">200m IM</span>
+            <span class="sp-pb-time sp-pb-time--silver">2:24.5</span>
+            <span class="sp-pb-avg">2:44.2</span>
+            <span class="sp-pb-level sp-level-excel">Excellent</span>
+          </div>
+        </div><!-- /.sp-pb-table -->
+
       </div><!-- /.sp-sport-block -->
     </div>
 

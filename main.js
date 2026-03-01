@@ -572,3 +572,82 @@ function showToast(msg) {
     if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
   });
 })();
+
+/* ══════════════════════════════════════════════════════
+   ATHLETIC PROFILE — RADAR ANIMATION
+══════════════════════════════════════════════════════ */
+(function () {
+  const sheet   = document.getElementById('sheet-activities');
+  const poly    = document.getElementById('sp-radar-poly');
+  const dots    = Array.from(document.querySelectorAll('.sp-radar-dot'));
+  if (!sheet || !poly || !dots.length) return;
+
+  /* Target vertex positions [cx, cy] for each axis */
+  const TARGET = [
+    [100,  42.8 ],  /* Speed 88      — top       */
+    [146.2, 73.35], /* Endurance 82  — top-right  */
+    [142.8,124.7 ], /* Strength 76   — bot-right  */
+    [100,  156.55], /* Agility 87    — bottom     */
+    [ 48.8,129.6 ], /* Technique 91  — bot-left   */
+    [ 46.5, 69.1 ], /* Teamwork 95   — top-left   */
+  ];
+
+  let animated = false;
+
+  function easeOutBack(t) {
+    const c1 = 1.70158, c3 = c1 + 1;
+    return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+  }
+
+  function animateRadar() {
+    if (animated) return;
+    animated = true;
+
+    const DURATION = 950;
+    const start    = performance.now();
+
+    function frame(now) {
+      const elapsed = now - start;
+      const t = Math.min(elapsed / DURATION, 1);
+      const e = easeOutBack(t);
+
+      /* Animate polygon points from center outward */
+      const pts = TARGET.map(([tx, ty]) =>
+        `${(100 + (tx - 100) * e).toFixed(1)},${(100 + (ty - 100) * e).toFixed(1)}`
+      ).join(' ');
+      poly.setAttribute('points', pts);
+
+      /* Animate each dot with staggered delay */
+      dots.forEach(function (dot, i) {
+        const delay  = i * 90;
+        const dotT   = Math.min(Math.max((elapsed - delay) / (DURATION * 0.65), 0), 1);
+        const de     = easeOutBack(dotT);
+        const [tx, ty] = TARGET[i];
+        dot.setAttribute('cx', (100 + (tx - 100) * de).toFixed(1));
+        dot.setAttribute('cy', (100 + (ty - 100) * de).toFixed(1));
+        dot.setAttribute('r',  (3.2 * de).toFixed(2));
+      });
+
+      if (t < 1) requestAnimationFrame(frame);
+    }
+
+    /* Reset to center before animating */
+    poly.setAttribute('points', '100,100 100,100 100,100 100,100 100,100 100,100');
+    dots.forEach(function (d) {
+      d.setAttribute('cx', '100');
+      d.setAttribute('cy', '100');
+      d.setAttribute('r',  '0');
+    });
+
+    requestAnimationFrame(frame);
+  }
+
+  new MutationObserver(function () {
+    if (sheet.classList.contains('open')) {
+      /* Delay slightly so the sheet slide-in has started */
+      setTimeout(animateRadar, 380);
+    } else {
+      animated = false; /* allow replay on next open */
+    }
+  }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
+})();
