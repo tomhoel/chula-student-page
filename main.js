@@ -420,76 +420,6 @@ function showToast(msg) {
   });
 })();
 
-/* ── ACADEMIC COLLAPSIBLE SECTIONS ────────────────── */
-(function () {
-  document.querySelectorAll('.ag-collapse-section').forEach(section => {
-    const btn  = section.querySelector('.ag-collapse-btn');
-    const body = section.querySelector('.ag-collapse-body');
-    if (!btn || !body) return;
-
-    const isOpen = section.dataset.open === 'true';
-    body.style.maxHeight = isOpen ? body.scrollHeight + 'px' : '0';
-    body.style.opacity   = isOpen ? '1' : '0';
-
-    btn.addEventListener('click', () => {
-      const open = section.dataset.open === 'true';
-      if (open) {
-        /* Collapse: fix current height then animate to 0 */
-        body.style.maxHeight = body.scrollHeight + 'px';
-        requestAnimationFrame(() => {
-          body.style.maxHeight = '0';
-          body.style.opacity   = '0';
-        });
-        section.dataset.open = 'false';
-        btn.setAttribute('aria-expanded', 'false');
-      } else {
-        body.style.maxHeight = body.scrollHeight + 'px';
-        body.style.opacity   = '1';
-        section.dataset.open = 'true';
-        btn.setAttribute('aria-expanded', 'true');
-        /* After transition, clear max-height so content can grow */
-        body.addEventListener('transitionend', function reset() {
-          body.removeEventListener('transitionend', reset);
-          if (section.dataset.open === 'true') body.style.maxHeight = 'none';
-        });
-      }
-    });
-  });
-})();
-
-/* ── FUTURE COURSE COLLAPSIBLES ──────────────────── */
-(function () {
-  document.querySelectorAll('.ag-future-course').forEach(course => {
-    const btn  = course.querySelector('.ag-future-toggle');
-    const body = course.querySelector('.ag-future-desc-body');
-    if (!btn || !body) return;
-
-    body.style.maxHeight = '0';
-    body.style.opacity   = '0';
-    course.dataset.open  = 'false';
-
-    btn.addEventListener('click', () => {
-      const open = course.dataset.open === 'true';
-      if (open) {
-        body.style.maxHeight = body.scrollHeight + 'px';
-        requestAnimationFrame(() => {
-          body.style.maxHeight = '0';
-          body.style.opacity   = '0';
-        });
-        course.dataset.open = 'false';
-      } else {
-        body.style.maxHeight = body.scrollHeight + 'px';
-        body.style.opacity   = '1';
-        course.dataset.open  = 'true';
-        body.addEventListener('transitionend', function reset() {
-          body.removeEventListener('transitionend', reset);
-          if (course.dataset.open === 'true') body.style.maxHeight = 'none';
-        });
-      }
-    });
-  });
-})();
-
 /* ── CHEAT PANEL — CU Internal Intelligence System ── */
 (function () {
   const idCard   = document.getElementById('id-card-main');
@@ -706,3 +636,84 @@ function showToast(msg) {
   /* Run on initial load — overview is active by default */
   runOverviewAnimations();
 })();
+
+/* ── ACADEMIC SHEET (ac-* system) ────────────────────── */
+(function () {
+  'use strict';
+
+  /* --- tab switching --- */
+  var acTabBtns   = document.querySelectorAll('.ac-tab');
+  var acTabPanels = document.querySelectorAll('.ac-tab-panel');
+
+  function switchAcTab(tabId) {
+    acTabBtns.forEach(function (b) {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    acTabPanels.forEach(function (p) { p.classList.remove('active'); });
+
+    var btn   = document.querySelector('.ac-tab[data-actab="' + tabId + '"]');
+    var panel = document.getElementById(tabId);
+    if (btn) {
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+    }
+    if (panel) panel.classList.add('active');
+  }
+
+  acTabBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      switchAcTab(this.dataset.actab);
+    });
+  });
+
+  /* --- GPA ring animation on sheet open/close --- */
+  var acSheet = document.getElementById('sheet-academic');
+  if (acSheet) {
+    var acRingAnimated = false;
+
+    function animateAcRing() {
+      var ring = acSheet.querySelector('.ac-ring-fill');
+      if (ring && !acRingAnimated) {
+        acRingAnimated = true;
+        setTimeout(function () {
+          ring.style.strokeDashoffset = '11.06'; /* 3.78/4.00 = 94.5% filled */
+        }, 120);
+      }
+    }
+
+    function resetAcRing() {
+      var ring = acSheet.querySelector('.ac-ring-fill');
+      if (ring) {
+        ring.style.strokeDashoffset = '201.06';
+        acRingAnimated = false;
+      }
+    }
+
+    /* watch for .open class being added/removed */
+    var acObs = new MutationObserver(function (mutations) {
+      mutations.forEach(function (m) {
+        if (m.attributeName === 'class') {
+          if (acSheet.classList.contains('open')) {
+            animateAcRing();
+          } else {
+            resetAcRing();
+            /* reset tab to RECORD on close */
+            switchAcTab('actab-record');
+          }
+        }
+      });
+    });
+    acObs.observe(acSheet, { attributes: true });
+  }
+
+  /* --- build rank strip (42 dots, dot #5 highlighted) --- */
+  var rankStrip = document.getElementById('acRankStrip');
+  if (rankStrip) {
+    for (var i = 1; i <= 42; i++) {
+      var dot = document.createElement('div');
+      dot.className = 'ac-rank-dot' + (i === 5 ? ' me' : '');
+      rankStrip.appendChild(dot);
+    }
+  }
+}());

@@ -464,716 +464,495 @@
     <div class="sheet-panel sheet-panel-academic">
       <div class="sheet-handle"></div>
 
-      <div class="sheet-head">
-        <h2 class="sheet-title">
-          <span class="l-th">ผลการเรียน</span>
-          <span class="l-en">Academic Performance</span>
-        </h2>
-        <button class="sheet-close" data-close aria-label="Close">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        </button>
+      <!-- ── AC HEADER ─────────────────────────────── -->
+      <div class="ac-header">
+        <span class="ac-cls-badge">ACADEMIC</span>
+        <span class="ac-header-title">CU ACADEMIC INTELLIGENCE SYSTEM</span>
+        <button class="ac-close" data-close aria-label="Close">✕</button>
       </div>
 
-      <!-- ── GPA Hero ── -->
-      <div class="ag-hero">
-        <div class="ag-gpa-block">
-          <div class="ag-gpa-ring" aria-label="GPA 3.78 out of 4.00">
-            <span class="ag-gpa-num">3.78</span>
-            <span class="ag-gpa-denom">/4.00</span>
-          </div>
-          <span class="ag-gpa-label">
-            <span class="l-th">เกรดเฉลี่ยสะสม</span>
-            <span class="l-en">Cumulative GPA</span>
-          </span>
+      <!-- ── AC SYSBAR ─────────────────────────────── -->
+      <div class="ac-sysbar">
+        <div class="ac-sysbar-track">
+          <span class="ac-sb-key">GPA</span><span class="ac-sb-sep">·</span><span class="ac-sb-val">3.78</span>
+          <span class="ac-sb-div">|</span>
+          <span class="ac-sb-key">RANK</span><span class="ac-sb-sep">·</span><span class="ac-sb-val">5 OF 42</span>
+          <span class="ac-sb-div">|</span>
+          <span class="ac-sb-key">PERCENTILE</span><span class="ac-sb-sep">·</span><span class="ac-sb-val">TOP 12%</span>
+          <span class="ac-sb-div">|</span>
+          <span class="ac-sb-key">STATUS</span><span class="ac-sb-sep">·</span><span class="ac-sb-val">HONOURS TRACK</span>
+          <span class="ac-sb-div">|</span>
+          <span class="ac-sb-key">CREDITS</span><span class="ac-sb-sep">·</span><span class="ac-sb-val">18 / 30</span>
+          <span class="ac-sb-div">|</span>
+          <span class="ac-sb-key">SEMESTER</span><span class="ac-sb-sep">·</span><span class="ac-sb-val">2 OF 6</span>
+          <span class="ac-sb-div">|</span>
+          <span class="ac-sb-key">COHORT</span><span class="ac-sb-sep">·</span><span class="ac-sb-val">9562</span>
+          <span class="ac-sb-div">|</span>
+          <span class="ac-sb-key">PROGRAM</span><span class="ac-sb-sep">·</span><span class="ac-sb-val">M.Sc. Finance</span>
+          <span class="ac-sb-div">|</span>
+          <!-- duplicate for seamless loop -->
+          <span class="ac-sb-key">GPA</span><span class="ac-sb-sep">·</span><span class="ac-sb-val">3.78</span>
+          <span class="ac-sb-div">|</span>
+          <span class="ac-sb-key">RANK</span><span class="ac-sb-sep">·</span><span class="ac-sb-val">5 OF 42</span>
+          <span class="ac-sb-div">|</span>
+          <span class="ac-sb-key">PERCENTILE</span><span class="ac-sb-sep">·</span><span class="ac-sb-val">TOP 12%</span>
+          <span class="ac-sb-div">|</span>
+          <span class="ac-sb-key">STATUS</span><span class="ac-sb-sep">·</span><span class="ac-sb-val">HONOURS TRACK</span>
+          <span class="ac-sb-div">|</span>
+          <span class="ac-sb-key">CREDITS</span><span class="ac-sb-sep">·</span><span class="ac-sb-val">18 / 30</span>
+          <span class="ac-sb-div">|</span>
+          <span class="ac-sb-key">SEMESTER</span><span class="ac-sb-sep">·</span><span class="ac-sb-val">2 OF 6</span>
+          <span class="ac-sb-div">|</span>
+          <span class="ac-sb-key">COHORT</span><span class="ac-sb-sep">·</span><span class="ac-sb-val">9562</span>
+          <span class="ac-sb-div">|</span>
+          <span class="ac-sb-key">PROGRAM</span><span class="ac-sb-sep">·</span><span class="ac-sb-val">M.Sc. Finance</span>
         </div>
-        <div class="ag-hero-right">
-          <div class="ag-hero-stats">
-            <div class="ag-hstat">
-              <span class="ag-hstat-val">5<sup>th</sup></span>
-              <span class="ag-hstat-lbl">
-                <span class="l-th">อันดับในกลุ่ม</span>
-                <span class="l-en">Class Rank</span>
-              </span>
-            </div>
-            <div class="ag-hstat-sep"></div>
-            <div class="ag-hstat">
-              <span class="ag-hstat-val">Top 12%</span>
-              <span class="ag-hstat-lbl">
-                <span class="l-th">เปอร์เซ็นไทล์</span>
-                <span class="l-en">Percentile</span>
-              </span>
-            </div>
-            <div class="ag-hstat-sep"></div>
-            <div class="ag-hstat">
-              <span class="ag-hstat-val">18<span class="ag-hstat-of">/30</span></span>
-              <span class="ag-hstat-lbl">
-                <span class="l-th">หน่วยกิต</span>
-                <span class="l-en">Credits</span>
-              </span>
-            </div>
-          </div>
-          <div class="ag-standing-badge">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+      </div>
+
+      <!-- ── AC STUDENT BANNER ──────────────────────── -->
+      <div class="ac-student-banner">
+        <div class="ac-score-block">
+          <div class="ac-gpa-ring-wrap">
+            <svg class="ac-gpa-ring" viewBox="0 0 80 80">
+              <circle class="ac-ring-bg" cx="40" cy="40" r="32"/>
+              <circle class="ac-ring-fill" cx="40" cy="40" r="32"/>
             </svg>
-            <span class="l-th">ผู้สมัครเกียรตินิยม</span>
-            <span class="l-en">Honours Candidate</span>
-          </div>
-          <div class="ag-program-tag">M.Sc. Finance · CU · 2025–2029</div>
-        </div>
-      </div>
-
-      <!-- ── GPA Trend by Semester ── -->
-      <div class="ag-section">
-        <p class="ag-section-title">
-          <span class="l-th">แนวโน้ม GPA รายภาค</span>
-          <span class="l-en">GPA Trend by Semester</span>
-        </p>
-        <div class="ag-trend">
-          <div class="ag-trend-row">
-            <span class="ag-trend-sem">
-              <span class="l-th">ภาค 1/2568</span>
-              <span class="l-en">Sem 1 · 2025</span>
-            </span>
-            <div class="ag-trend-track">
-              <div class="ag-trend-fill" style="--w: 91.25%"></div>
+            <div class="ac-score-inner">
+              <div class="ac-score-val">3.78</div>
+              <div class="ac-score-denom">/4.00</div>
             </div>
-            <span class="ag-trend-val">3.65</span>
           </div>
-          <div class="ag-trend-row">
-            <span class="ag-trend-sem">
-              <span class="l-th">ภาค 2/2568</span>
-              <span class="l-en">Sem 2 · 2025</span>
-            </span>
-            <div class="ag-trend-track">
-              <div class="ag-trend-fill ag-trend-fill--now" style="--w: 94.5%"></div>
-            </div>
-            <span class="ag-trend-val ag-trend-val--now">3.78 ↑</span>
+          <div class="ac-honours-label">
+            <span class="ac-honours-dot"></span>HONOURS CANDIDATE
           </div>
         </div>
-        <p class="ag-trend-note">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round">
-            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
-            <polyline points="16 7 22 7 22 13" />
-          </svg>
-          <span class="l-th">GPA เพิ่มขึ้น +0.13 จากภาคที่แล้ว</span>
-          <span class="l-en">GPA improved +0.13 from last semester</span>
-        </p>
-      </div>
-
-      <!-- ── Current Semester (collapsible, open by default) ── -->
-      <div class="ag-section ag-collapse-section" data-open="true" data-sem-status="active">
-        <button class="ag-collapse-btn" aria-expanded="true">
-          <div class="ag-collapse-hd">
-            <p class="ag-collapse-title lang-stable">
-              <span class="l-th">ภาค 2 / ปีการศึกษา 2568</span>
-              <span class="l-en">Semester 2 / Academic Year 2025</span>
-            </p>
-            <div class="ag-collapse-chips">
-              <span class="ag-sem-chip ag-sem-active">
-                <span class="live-dot live-dot--sm" aria-hidden="true"></span>
-                <span class="l-th">กำลังศึกษา</span>
-                <span class="l-en">In Progress</span>
-              </span>
-              <span class="ag-course-count">3 <span class="l-th">วิชา</span><span class="l-en">courses</span> · 9
-                cr</span>
-            </div>
+        <div class="ac-meta-rows">
+          <div class="ac-meta-row">
+            <span class="ac-meta-key">PROGRAM</span>
+            <span class="ac-meta-val">M.Sc. Finance</span>
           </div>
-          <svg class="ag-collapse-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-        </button>
-        <div class="ag-collapse-body">
-          <div class="ag-courses">
-
-            <div class="ag-course">
-              <div class="ag-course-top">
-                <div class="ag-course-left">
-                  <span class="ag-course-code">ECON 6201</span>
-                  <span class="ag-course-name">
-                    <span class="l-th">ทฤษฎีพอร์ตโฟลิโอและการตั้งราคาสินทรัพย์</span>
-                    <span class="l-en">Portfolio Theory &amp; Asset Pricing</span>
-                  </span>
-                </div>
-                <div class="ag-grade ag-grade--a">
-                  <span class="ag-grade-letter">A</span>
-                  <span class="ag-grade-pts">4.00</span>
-                </div>
-              </div>
-              <div class="ag-bars">
-                <div class="ag-bar-row">
-                  <span class="ag-bar-lbl ag-bar-lbl--you"><span class="l-th">คุณ</span><span
-                      class="l-en">You</span></span>
-                  <div class="ag-bar-track">
-                    <div class="ag-bar-fill ag-bar-fill--you" style="--w:96%"></div>
-                  </div>
-                  <span class="ag-bar-pct">96%</span>
-                </div>
-                <div class="ag-bar-row">
-                  <span class="ag-bar-lbl ag-bar-lbl--avg"><span class="l-th">เฉลี่ย</span><span
-                      class="l-en">Avg</span></span>
-                  <div class="ag-bar-track">
-                    <div class="ag-bar-fill ag-bar-fill--avg" style="--w:72%"></div>
-                  </div>
-                  <span class="ag-bar-pct ag-bar-pct--muted">72%</span>
-                </div>
-              </div>
-              <span class="ag-course-cr">3 cr</span>
-            </div>
-
-            <div class="ag-course">
-              <div class="ag-course-top">
-                <div class="ag-course-left">
-                  <span class="ag-course-code">ECON 6202</span>
-                  <span class="ag-course-name">
-                    <span class="l-th">การเงินองค์กร</span>
-                    <span class="l-en">Corporate Finance</span>
-                  </span>
-                </div>
-                <div class="ag-grade ag-grade--aminus">
-                  <span class="ag-grade-letter">A<sup>−</sup></span>
-                  <span class="ag-grade-pts">3.75</span>
-                </div>
-              </div>
-              <div class="ag-bars">
-                <div class="ag-bar-row">
-                  <span class="ag-bar-lbl ag-bar-lbl--you"><span class="l-th">คุณ</span><span
-                      class="l-en">You</span></span>
-                  <div class="ag-bar-track">
-                    <div class="ag-bar-fill ag-bar-fill--you" style="--w:90%"></div>
-                  </div>
-                  <span class="ag-bar-pct">90%</span>
-                </div>
-                <div class="ag-bar-row">
-                  <span class="ag-bar-lbl ag-bar-lbl--avg"><span class="l-th">เฉลี่ย</span><span
-                      class="l-en">Avg</span></span>
-                  <div class="ag-bar-track">
-                    <div class="ag-bar-fill ag-bar-fill--avg" style="--w:74%"></div>
-                  </div>
-                  <span class="ag-bar-pct ag-bar-pct--muted">74%</span>
-                </div>
-              </div>
-              <span class="ag-course-cr">3 cr</span>
-            </div>
-
-            <div class="ag-course">
-              <div class="ag-course-top">
-                <div class="ag-course-left">
-                  <span class="ag-course-code">ECON 6203</span>
-                  <span class="ag-course-name">
-                    <span class="l-th">ตราสารอนุพันธ์และการจัดการความเสี่ยง</span>
-                    <span class="l-en">Derivatives &amp; Risk Management</span>
-                  </span>
-                </div>
-                <div class="ag-grade ag-grade--a">
-                  <span class="ag-grade-letter">A</span>
-                  <span class="ag-grade-pts">4.00</span>
-                </div>
-              </div>
-              <div class="ag-bars">
-                <div class="ag-bar-row">
-                  <span class="ag-bar-lbl ag-bar-lbl--you"><span class="l-th">คุณ</span><span
-                      class="l-en">You</span></span>
-                  <div class="ag-bar-track">
-                    <div class="ag-bar-fill ag-bar-fill--you" style="--w:93%"></div>
-                  </div>
-                  <span class="ag-bar-pct">93%</span>
-                </div>
-                <div class="ag-bar-row">
-                  <span class="ag-bar-lbl ag-bar-lbl--avg"><span class="l-th">เฉลี่ย</span><span
-                      class="l-en">Avg</span></span>
-                  <div class="ag-bar-track">
-                    <div class="ag-bar-fill ag-bar-fill--avg" style="--w:68%"></div>
-                  </div>
-                  <span class="ag-bar-pct ag-bar-pct--muted">68%</span>
-                </div>
-              </div>
-              <span class="ag-course-cr">3 cr</span>
-            </div>
-
-          </div><!-- /.ag-courses -->
-        </div><!-- /.ag-collapse-body -->
-      </div><!-- /.ag-collapse-section (Sem 2) -->
-
-      <!-- ── Semester 1 / 2025 (collapsible, collapsed by default) ── -->
-      <div class="ag-section ag-collapse-section" data-open="false" data-sem-status="done">
-        <button class="ag-collapse-btn" aria-expanded="false">
-          <div class="ag-collapse-hd">
-            <p class="ag-collapse-title lang-stable">
-              <span class="l-th">ภาค 1 / ปีการศึกษา 2568</span>
-              <span class="l-en">Semester 1 / Academic Year 2025</span>
-            </p>
-            <div class="ag-collapse-chips">
-              <span class="ag-sem-chip ag-sem-done">
-                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                  stroke-linecap="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span class="l-th">สำเร็จ</span>
-                <span class="l-en">Completed</span>
-              </span>
-              <span class="ag-course-count">3 <span class="l-th">วิชา</span><span class="l-en">courses</span> · 9
-                cr</span>
-            </div>
+          <div class="ac-meta-row">
+            <span class="ac-meta-key">TRACK</span>
+            <span class="ac-meta-val">Financial Economics</span>
           </div>
-          <svg class="ag-collapse-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-        </button>
-        <div class="ag-collapse-body">
-
-          <div class="ag-courses">
-
-            <div class="ag-course">
-              <div class="ag-course-top">
-                <div class="ag-course-left">
-                  <span class="ag-course-code">ECON 6101</span>
-                  <span class="ag-course-name">
-                    <span class="l-th">เศรษฐศาสตร์การเงิน</span>
-                    <span class="l-en">Financial Economics</span>
-                  </span>
-                </div>
-                <div class="ag-grade ag-grade--a">
-                  <span class="ag-grade-letter">A</span>
-                  <span class="ag-grade-pts">4.00</span>
-                </div>
-              </div>
-              <div class="ag-bars">
-                <div class="ag-bar-row">
-                  <span class="ag-bar-lbl ag-bar-lbl--you"><span class="l-th">คุณ</span><span
-                      class="l-en">You</span></span>
-                  <div class="ag-bar-track">
-                    <div class="ag-bar-fill ag-bar-fill--you" style="--w:95%"></div>
-                  </div>
-                  <span class="ag-bar-pct">95%</span>
-                </div>
-                <div class="ag-bar-row">
-                  <span class="ag-bar-lbl ag-bar-lbl--avg"><span class="l-th">เฉลี่ย</span><span
-                      class="l-en">Avg</span></span>
-                  <div class="ag-bar-track">
-                    <div class="ag-bar-fill ag-bar-fill--avg" style="--w:76%"></div>
-                  </div>
-                  <span class="ag-bar-pct ag-bar-pct--muted">76%</span>
-                </div>
-              </div>
-              <span class="ag-course-cr">3 cr</span>
-            </div>
-
-            <div class="ag-course">
-              <div class="ag-course-top">
-                <div class="ag-course-left">
-                  <span class="ag-course-code">ECON 6102</span>
-                  <span class="ag-course-name">
-                    <span class="l-th">วิธีเชิงปริมาณทางการเงิน</span>
-                    <span class="l-en">Quantitative Methods in Finance</span>
-                  </span>
-                </div>
-                <div class="ag-grade ag-grade--a">
-                  <span class="ag-grade-letter">A</span>
-                  <span class="ag-grade-pts">4.00</span>
-                </div>
-              </div>
-              <div class="ag-bars">
-                <div class="ag-bar-row">
-                  <span class="ag-bar-lbl ag-bar-lbl--you"><span class="l-th">คุณ</span><span
-                      class="l-en">You</span></span>
-                  <div class="ag-bar-track">
-                    <div class="ag-bar-fill ag-bar-fill--you" style="--w:92%"></div>
-                  </div>
-                  <span class="ag-bar-pct">92%</span>
-                </div>
-                <div class="ag-bar-row">
-                  <span class="ag-bar-lbl ag-bar-lbl--avg"><span class="l-th">เฉลี่ย</span><span
-                      class="l-en">Avg</span></span>
-                  <div class="ag-bar-track">
-                    <div class="ag-bar-fill ag-bar-fill--avg" style="--w:71%"></div>
-                  </div>
-                  <span class="ag-bar-pct ag-bar-pct--muted">71%</span>
-                </div>
-              </div>
-              <span class="ag-course-cr">3 cr</span>
-            </div>
-
-            <div class="ag-course">
-              <div class="ag-course-top">
-                <div class="ag-course-left">
-                  <span class="ag-course-code">ECON 6103</span>
-                  <span class="ag-course-name">
-                    <span class="l-th">จุลเศรษฐศาสตร์สำหรับการเงิน</span>
-                    <span class="l-en">Microeconomics for Finance</span>
-                  </span>
-                </div>
-                <div class="ag-grade ag-grade--bplus">
-                  <span class="ag-grade-letter">B<sup>+</sup></span>
-                  <span class="ag-grade-pts">3.50</span>
-                </div>
-              </div>
-              <div class="ag-bars">
-                <div class="ag-bar-row">
-                  <span class="ag-bar-lbl ag-bar-lbl--you"><span class="l-th">คุณ</span><span
-                      class="l-en">You</span></span>
-                  <div class="ag-bar-track">
-                    <div class="ag-bar-fill ag-bar-fill--you" style="--w:84%"></div>
-                  </div>
-                  <span class="ag-bar-pct">84%</span>
-                </div>
-                <div class="ag-bar-row">
-                  <span class="ag-bar-lbl ag-bar-lbl--avg"><span class="l-th">เฉลี่ย</span><span
-                      class="l-en">Avg</span></span>
-                  <div class="ag-bar-track">
-                    <div class="ag-bar-fill ag-bar-fill--avg" style="--w:79%"></div>
-                  </div>
-                  <span class="ag-bar-pct ag-bar-pct--muted">79%</span>
-                </div>
-              </div>
-              <span class="ag-course-cr">3 cr</span>
-            </div>
-
-          </div><!-- /.ag-courses (Sem 1) -->
-        </div><!-- /.ag-collapse-body (Sem 1) -->
-      </div><!-- /.ag-collapse-section (Sem 1) -->
-
-      <!-- ── Grade Distribution (Cohort) ── -->
-      <div class="ag-section">
-        <p class="ag-section-title">
-          <span class="l-th">การกระจายเกรดในกลุ่ม (รหัส 9562 · 42 คน)</span>
-          <span class="l-en">Grade Distribution — Cohort 9562 · 42 students</span>
-        </p>
-        <div class="ag-dist">
-          <div class="ag-dist-row">
-            <span class="ag-dist-grade">A</span>
-            <div class="ag-dist-track">
-              <div class="ag-dist-fill ag-dist-fill--a" style="--w:28.6%">
-                <span class="ag-you-pin" aria-label="Your position">▾</span>
-              </div>
-            </div>
-            <span class="ag-dist-n">12</span>
+          <div class="ac-meta-row">
+            <span class="ac-meta-key">CREDITS</span>
+            <span class="ac-meta-val">18 / 30</span>
           </div>
-          <div class="ag-dist-row">
-            <span class="ag-dist-grade">B<sup>+</sup></span>
-            <div class="ag-dist-track">
-              <div class="ag-dist-fill ag-dist-fill--b" style="--w:26.2%"></div>
-            </div>
-            <span class="ag-dist-n">11</span>
+          <div class="ac-meta-row">
+            <span class="ac-meta-key">SEMESTER</span>
+            <span class="ac-meta-val">2 of 6</span>
           </div>
-          <div class="ag-dist-row">
-            <span class="ag-dist-grade">B</span>
-            <div class="ag-dist-track">
-              <div class="ag-dist-fill ag-dist-fill--b" style="--w:21.4%"></div>
-            </div>
-            <span class="ag-dist-n">9</span>
+          <div class="ac-meta-row">
+            <span class="ac-meta-key">COHORT</span>
+            <span class="ac-meta-val">9562</span>
           </div>
-          <div class="ag-dist-row">
-            <span class="ag-dist-grade">C<sup>+</sup></span>
-            <div class="ag-dist-track">
-              <div class="ag-dist-fill ag-dist-fill--c" style="--w:14.3%"></div>
-            </div>
-            <span class="ag-dist-n">6</span>
-          </div>
-          <div class="ag-dist-row">
-            <span class="ag-dist-grade">C</span>
-            <div class="ag-dist-track">
-              <div class="ag-dist-fill ag-dist-fill--c" style="--w:9.5%"></div>
-            </div>
-            <span class="ag-dist-n">4</span>
-          </div>
-        </div>
-        <p class="ag-dist-note">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10" />
-            <line x1="12" y1="8" x2="12" y2="12" />
-            <line x1="12" y1="16" x2="12.01" y2="16" />
-          </svg>
-          <span class="l-th">กรวิชญ์อยู่ในกลุ่มเกรด A · อันดับที่ 5 จาก 42 คน</span>
-          <span class="l-en">Korawit is in the A-grade group · Rank 5 of 42 students</span>
-        </p>
-      </div>
-
-      <!-- ── Academic Advisor ── -->
-      <div class="ag-section">
-        <p class="ag-section-title">
-          <span class="l-th">อาจารย์ที่ปรึกษา</span>
-          <span class="l-en">Academic Advisor</span>
-        </p>
-        <div class="ag-advisor-card">
-          <div class="ag-advisor-avatar">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-          </div>
-          <div>
-            <p class="ag-advisor-name">
-              <span class="l-th">รศ.ดร. สุรี ตั้งเตมีย์ศิริกุล</span>
-              <span class="l-en">Assoc. Prof. Dr. Suree Tangtermsirikul</span>
-            </p>
-            <p class="ag-advisor-dept">
-              <span class="l-th">ภาควิชาการเงิน · คณะเศรษฐศาสตร์</span>
-              <span class="l-en">Dept. of Finance · Faculty of Economics</span>
-            </p>
-          </div>
-        </div>
-        <div class="ag-kv-list">
-          <div class="ag-kv">
-            <span class="ag-kv-key"><span class="l-th">ห้องทำงาน</span><span class="l-en">Office</span></span>
-            <span class="ag-kv-val">EC 601 · 6th Floor</span>
-          </div>
-          <div class="ag-kv">
-            <span class="ag-kv-key"><span class="l-th">เวลาพบ</span><span class="l-en">Office Hours</span></span>
-            <span class="ag-kv-val"><span class="l-th">จ. & พ. 13:00–15:00</span><span class="l-en">Mon & Wed
-                13:00–15:00</span></span>
-          </div>
-          <div class="ag-kv">
-            <span class="ag-kv-key">Email</span>
-            <span class="ag-kv-val ag-kv-mono">suree.t@econ.chula.ac.th</span>
-          </div>
-          <div class="ag-kv">
-            <span class="ag-kv-key"><span class="l-th">ความเชี่ยวชาญ</span><span
-                class="l-en">Specialisation</span></span>
-            <span class="ag-kv-val"><span class="l-th">การเงินองค์กร · ตลาดทุน</span><span class="l-en">Corporate
-                Finance · Capital Markets</span></span>
+          <div class="ac-meta-row">
+            <span class="ac-meta-key">ADVISOR</span>
+            <span class="ac-meta-val">A.Prof.Dr. Suree T.</span>
           </div>
         </div>
       </div>
 
-      <!-- ── Future Subjects Overview ── -->
-      <div class="ag-section ag-section--last">
-        <div class="ag-future-header">
-          <span class="ag-future-badge">
-            <span class="ag-future-badge-dot" aria-hidden="true"></span>
-            <span class="l-th">วิชาในอนาคต</span>
-            <span class="l-en">Upcoming Courses</span>
-          </span>
-        </div>
-
-        <!-- Semester 3 / 2026 -->
-        <p class="ag-future-group-title">
-          <span class="l-th">ภาค 3 / ปีการศึกษา 2569 (คาดการณ์)</span>
-          <span class="l-en">Semester 3 / AY 2026 — Planned</span>
-        </p>
-
-        <div class="ag-future-course" data-open="false">
-          <button class="ag-future-toggle">
-            <div class="ag-future-code-block">
-              <span class="ag-future-code">ECON 6301</span>
-              <span class="ag-future-name">
-                <span class="l-th">ตราสารหนี้และตลาดสินเชื่อ</span>
-                <span class="l-en">Fixed Income &amp; Credit Markets</span>
-              </span>
-            </div>
-            <span class="ag-future-cr-chip">3 cr</span>
-            <svg class="ag-future-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </button>
-          <div class="ag-future-desc-body">
-            <p class="ag-future-desc">
-              <span class="l-th">วิเคราะห์การกำหนดราคาพันธบัตร โครงสร้างอัตราดอกเบี้ย credit default swaps
-                และผลิตภัณฑ์สินเชื่อที่มีโครงสร้าง เช่น CDOs</span>
-              <span class="l-en">Advanced bond pricing, yield curve dynamics, credit default swaps, and structured
-                credit products including CDOs and CLOs.</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="ag-future-course" data-open="false">
-          <button class="ag-future-toggle">
-            <div class="ag-future-code-block">
-              <span class="ag-future-code">ECON 6302</span>
-              <span class="ag-future-name">
-                <span class="l-th">การเงินเชิงพฤติกรรมและความผิดปกติของตลาด</span>
-                <span class="l-en">Behavioral Finance &amp; Market Anomalies</span>
-              </span>
-            </div>
-            <span class="ag-future-cr-chip">3 cr</span>
-            <svg class="ag-future-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </button>
-          <div class="ag-future-desc-body">
-            <p class="ag-future-desc">
-              <span class="l-th">อคติทางจิตวิทยาที่ส่งผลต่อการตัดสินใจลงทุน ทฤษฎี Prospect Theory ฮิวริสติกส์
-                และหลักฐานของความไร้ประสิทธิภาพของตลาด</span>
-              <span class="l-en">Psychological biases in investor decisions; prospect theory, heuristics, and empirical
-                evidence of market inefficiencies.</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="ag-future-course" data-open="false">
-          <button class="ag-future-toggle">
-            <div class="ag-future-code-block">
-              <span class="ag-future-code">ECON 6303</span>
-              <span class="ag-future-name">
-                <span class="l-th">เศรษฐมิติการเงิน</span>
-                <span class="l-en">Financial Econometrics</span>
-              </span>
-            </div>
-            <span class="ag-future-cr-chip">3 cr</span>
-            <svg class="ag-future-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </button>
-          <div class="ag-future-desc-body">
-            <p class="ag-future-desc">
-              <span class="l-th">เศรษฐมิติอนุกรมเวลาประยุกต์กับข้อมูลการเงิน ได้แก่ ARMA, GARCH, cointegration และ event
-                studies</span>
-              <span class="l-en">Time-series econometrics for financial data: ARMA, GARCH volatility models,
-                cointegration, and event study methodology.</span>
-            </p>
-          </div>
-        </div>
-
-        <!-- Semester 4 / 2026 -->
-        <p class="ag-future-group-title">
-          <span class="l-th">ภาค 4 / ปีการศึกษา 2569 (คาดการณ์)</span>
-          <span class="l-en">Semester 4 / AY 2026 — Planned</span>
-        </p>
-
-        <div class="ag-future-course" data-open="false">
-          <button class="ag-future-toggle">
-            <div class="ag-future-code-block">
-              <span class="ag-future-code">ECON 6401</span>
-              <span class="ag-future-name">
-                <span class="l-th">การบริหารพอร์ตโฟลิโอขั้นสูง</span>
-                <span class="l-en">Advanced Portfolio Management</span>
-              </span>
-            </div>
-            <span class="ag-future-cr-chip">3 cr</span>
-            <svg class="ag-future-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </button>
-          <div class="ag-future-desc-body">
-            <p class="ag-future-desc">
-              <span class="l-th">Factor models, smart beta, การบูรณาการ ESG และ performance attribution
-                ในการบริหารพอร์ตสถาบัน</span>
-              <span class="l-en">Factor models, smart beta strategies, ESG integration, and performance attribution in
-                institutional portfolio management.</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="ag-future-course" data-open="false">
-          <button class="ag-future-toggle">
-            <div class="ag-future-code-block">
-              <span class="ag-future-code">ECON 6402</span>
-              <span class="ag-future-name">
-                <span class="l-th">FinTech และการเงินดิจิทัล</span>
-                <span class="l-en">FinTech &amp; Digital Finance</span>
-              </span>
-            </div>
-            <span class="ag-future-cr-chip">3 cr</span>
-            <svg class="ag-future-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </button>
-          <div class="ag-future-desc-body">
-            <p class="ag-future-desc">
-              <span class="l-th">Blockchain, สินทรัพย์ดิจิทัล, algorithmic trading, robo-advisors
-                และกรอบกฎหมายของเทคโนโลยีการเงิน</span>
-              <span class="l-en">Blockchain, digital assets, algorithmic trading, robo-advisors, and the regulatory
-                landscape of financial technology.</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="ag-future-course" data-open="false">
-          <button class="ag-future-toggle">
-            <div class="ag-future-code-block">
-              <span class="ag-future-code">ECON 6403</span>
-              <span class="ag-future-name">
-                <span class="l-th">การเงินระหว่างประเทศและตลาดแลกเปลี่ยน</span>
-                <span class="l-en">International Finance &amp; Exchange Markets</span>
-              </span>
-            </div>
-            <span class="ag-future-cr-chip">3 cr</span>
-            <svg class="ag-future-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </button>
-          <div class="ag-future-desc-body">
-            <p class="ag-future-desc">
-              <span class="l-th">การกำหนดอัตราแลกเปลี่ยน การบริหารความเสี่ยงด้านสกุลเงิน กระแสเงินทุนข้ามพรมแดน และ
-                M&amp;A ระหว่างประเทศ</span>
-              <span class="l-en">Exchange rate determination, currency risk management, international capital flows, and
-                cross-border M&amp;A finance.</span>
-            </p>
-          </div>
-        </div>
-
-        <!-- Thesis -->
-        <p class="ag-future-group-title">
-          <span class="l-th">วิทยานิพนธ์ (2570–2571)</span>
-          <span class="l-en">Thesis (2027–2028)</span>
-        </p>
-
-        <div class="ag-future-course" data-open="false">
-          <button class="ag-future-toggle">
-            <div class="ag-future-code-block">
-              <span class="ag-future-code">ECON 6900</span>
-              <span class="ag-future-name">
-                <span class="l-th">การออกแบบงานวิจัยและระเบียบวิธีวิจัย</span>
-                <span class="l-en">Research Design &amp; Methodology</span>
-              </span>
-            </div>
-            <span class="ag-future-cr-chip">3 cr</span>
-            <svg class="ag-future-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </button>
-          <div class="ag-future-desc-body">
-            <p class="ag-future-desc">
-              <span class="l-th">การพัฒนาคำถามวิจัย การทบทวนวรรณกรรม
-                และวิธีการวิจัยเชิงปริมาณ/คุณภาพในสาขาการเงิน</span>
-              <span class="l-en">Formulating research questions, conducting literature reviews, and applying
-                quantitative/qualitative methods in finance research.</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="ag-future-course" data-open="false">
-          <button class="ag-future-toggle">
-            <div class="ag-future-code-block">
-              <span class="ag-future-code">ECON 6901</span>
-              <span class="ag-future-name">
-                <span class="l-th">วิทยานิพนธ์ M.Sc. การเงิน</span>
-                <span class="l-en">M.Sc. Finance Thesis</span>
-              </span>
-            </div>
-            <span class="ag-future-cr-chip">12 cr</span>
-            <svg class="ag-future-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </button>
-          <div class="ag-future-desc-body">
-            <p class="ag-future-desc">
-              <span class="l-th">งานวิจัยต้นฉบับภายใต้การดูแลของอาจารย์ที่ปรึกษา
-                สิ้นสุดด้วยการเขียนวิทยานิพนธ์และการสอบป้องกันต่อสาธารณะ</span>
-              <span class="l-en">Original research under faculty supervision, culminating in a written thesis and public
-                defence before an examination committee.</span>
-            </p>
-          </div>
-        </div>
-
+      <!-- ── AC TABS ────────────────────────────────── -->
+      <div class="ac-tabs" role="tablist">
+        <button class="ac-tab active" data-actab="actab-record"   role="tab" aria-selected="true">RECORD</button>
+        <button class="ac-tab"        data-actab="actab-metrics"  role="tab" aria-selected="false">METRICS</button>
+        <button class="ac-tab"        data-actab="actab-analysis" role="tab" aria-selected="false">ANALYSIS</button>
+        <button class="ac-tab"        data-actab="actab-forecast" role="tab" aria-selected="false">FORECAST</button>
       </div>
+
+      <!-- ── AC TAB CONTENT ─────────────────────────── -->
+      <div class="ac-tab-content">
+
+        <!-- RECORD TAB -->
+        <div class="ac-tab-panel active" id="actab-record"   role="tabpanel">
+          <div class="ac-section-title">GPA PROGRESSION</div>
+          <div class="ac-gpa-compare">
+            <div class="ac-gpa-bar-row">
+              <span class="ac-gpa-sem">SEM 1</span>
+              <div class="ac-gpa-bar-wrap">
+                <div class="ac-gpa-bar" style="--target: 91.25%"></div>
+              </div>
+              <span class="ac-gpa-val">3.65</span>
+            </div>
+            <div class="ac-gpa-bar-row">
+              <span class="ac-gpa-sem">SEM 2</span>
+              <div class="ac-gpa-bar-wrap">
+                <div class="ac-gpa-bar" style="--target: 94.5%"></div>
+              </div>
+              <span class="ac-gpa-val">3.78 <span class="ac-delta-badge">+0.13 ↑</span></span>
+            </div>
+          </div>
+
+          <div class="ac-section-title">SEMESTER 2 — ACTIVE <span class="ac-sem-gpa">GPA 3.78</span></div>
+
+          <div class="ac-course-card">
+            <div class="ac-course-head">
+              <span class="ac-grade-badge ac-grade-a">A</span>
+              <div class="ac-course-info">
+                <div class="ac-course-code">ECON 6201</div>
+                <div class="ac-course-name">Portfolio Theory</div>
+              </div>
+              <div class="ac-course-score">96%</div>
+            </div>
+            <div class="ac-bars">
+              <div class="ac-bar-row">
+                <span class="ac-bar-label">You</span>
+                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-you" style="--w:96%;--delay:0ms"></div></div>
+                <span class="ac-bar-pct">96</span>
+              </div>
+              <div class="ac-bar-row">
+                <span class="ac-bar-label">Avg</span>
+                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-avg" style="--w:72%;--delay:60ms"></div></div>
+                <span class="ac-bar-pct">72</span>
+              </div>
+            </div>
+            <div class="ac-course-delta">+24pp above cohort</div>
+          </div>
+
+          <div class="ac-course-card">
+            <div class="ac-course-head">
+              <span class="ac-grade-badge ac-grade-a-minus">A−</span>
+              <div class="ac-course-info">
+                <div class="ac-course-code">ECON 6202</div>
+                <div class="ac-course-name">Corporate Finance</div>
+              </div>
+              <div class="ac-course-score">90%</div>
+            </div>
+            <div class="ac-bars">
+              <div class="ac-bar-row">
+                <span class="ac-bar-label">You</span>
+                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-you" style="--w:90%;--delay:80ms"></div></div>
+                <span class="ac-bar-pct">90</span>
+              </div>
+              <div class="ac-bar-row">
+                <span class="ac-bar-label">Avg</span>
+                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-avg" style="--w:74%;--delay:140ms"></div></div>
+                <span class="ac-bar-pct">74</span>
+              </div>
+            </div>
+            <div class="ac-course-delta">+16pp above cohort</div>
+          </div>
+
+          <div class="ac-course-card">
+            <div class="ac-course-head">
+              <span class="ac-grade-badge ac-grade-a">A</span>
+              <div class="ac-course-info">
+                <div class="ac-course-code">ECON 6203</div>
+                <div class="ac-course-name">Derivatives</div>
+              </div>
+              <div class="ac-course-score">93%</div>
+            </div>
+            <div class="ac-bars">
+              <div class="ac-bar-row">
+                <span class="ac-bar-label">You</span>
+                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-you" style="--w:93%;--delay:160ms"></div></div>
+                <span class="ac-bar-pct">93</span>
+              </div>
+              <div class="ac-bar-row">
+                <span class="ac-bar-label">Avg</span>
+                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-avg" style="--w:68%;--delay:220ms"></div></div>
+                <span class="ac-bar-pct">68</span>
+              </div>
+            </div>
+            <div class="ac-course-delta">+25pp above cohort</div>
+          </div>
+
+          <div class="ac-section-title">SEMESTER 1 — COMPLETE <span class="ac-sem-gpa">GPA 3.65</span></div>
+
+          <div class="ac-course-card ac-course-card--done">
+            <div class="ac-course-head">
+              <span class="ac-grade-badge ac-grade-a">A</span>
+              <div class="ac-course-info">
+                <div class="ac-course-code">ECON 6101</div>
+                <div class="ac-course-name">Financial Economics</div>
+              </div>
+              <div class="ac-course-score">95%</div>
+            </div>
+            <div class="ac-bars">
+              <div class="ac-bar-row">
+                <span class="ac-bar-label">You</span>
+                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-you" style="--w:95%;--delay:240ms"></div></div>
+                <span class="ac-bar-pct">95</span>
+              </div>
+              <div class="ac-bar-row">
+                <span class="ac-bar-label">Avg</span>
+                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-avg" style="--w:76%;--delay:300ms"></div></div>
+                <span class="ac-bar-pct">76</span>
+              </div>
+            </div>
+            <div class="ac-course-delta">+19pp above cohort</div>
+          </div>
+
+          <div class="ac-course-card ac-course-card--done">
+            <div class="ac-course-head">
+              <span class="ac-grade-badge ac-grade-a">A</span>
+              <div class="ac-course-info">
+                <div class="ac-course-code">ECON 6102</div>
+                <div class="ac-course-name">Quantitative Methods</div>
+              </div>
+              <div class="ac-course-score">92%</div>
+            </div>
+            <div class="ac-bars">
+              <div class="ac-bar-row">
+                <span class="ac-bar-label">You</span>
+                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-you" style="--w:92%;--delay:320ms"></div></div>
+                <span class="ac-bar-pct">92</span>
+              </div>
+              <div class="ac-bar-row">
+                <span class="ac-bar-label">Avg</span>
+                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-avg" style="--w:71%;--delay:380ms"></div></div>
+                <span class="ac-bar-pct">71</span>
+              </div>
+            </div>
+            <div class="ac-course-delta">+21pp above cohort</div>
+          </div>
+
+          <div class="ac-course-card ac-course-card--done">
+            <div class="ac-course-head">
+              <span class="ac-grade-badge ac-grade-b-plus">B+</span>
+              <div class="ac-course-info">
+                <div class="ac-course-code">ECON 6103</div>
+                <div class="ac-course-name">Microeconomics</div>
+              </div>
+              <div class="ac-course-score">84%</div>
+            </div>
+            <div class="ac-bars">
+              <div class="ac-bar-row">
+                <span class="ac-bar-label">You</span>
+                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-you" style="--w:84%;--delay:400ms"></div></div>
+                <span class="ac-bar-pct">84</span>
+              </div>
+              <div class="ac-bar-row">
+                <span class="ac-bar-label">Avg</span>
+                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-avg" style="--w:79%;--delay:460ms"></div></div>
+                <span class="ac-bar-pct">79</span>
+              </div>
+            </div>
+            <div class="ac-course-delta">+5pp above cohort</div>
+          </div>
+        </div>
+
+        <!-- METRICS TAB -->
+        <div class="ac-tab-panel" id="actab-metrics"  role="tabpanel">
+          <div class="ac-metrics-top">
+            <div class="ac-credits-ring-wrap">
+              <svg class="ac-credits-ring" viewBox="0 0 120 120">
+                <circle class="ac-cr-bg" cx="60" cy="60" r="50"/>
+                <circle class="ac-cr-fill" cx="60" cy="60" r="50"/>
+              </svg>
+              <div class="ac-credits-center">
+                <div class="ac-credits-num">18</div>
+                <div class="ac-credits-denom">/ 30 cr</div>
+              </div>
+            </div>
+            <div class="ac-rank-block">
+              <div class="ac-section-title" style="margin-top:0">COHORT RANK</div>
+              <div class="ac-rank-strip" id="acRankStrip"></div>
+              <div class="ac-rank-label">5th of 42 students · Top 12%</div>
+            </div>
+          </div>
+
+          <div class="ac-section-title">GRADE DISTRIBUTION · COHORT 9562</div>
+          <div class="ac-grade-dist">
+            <div class="ac-dist-row">
+              <span class="ac-dist-grade">A</span>
+              <div class="ac-dist-bar-wrap"><div class="ac-dist-bar" style="--w:85%;--delay:0ms"></div></div>
+              <span class="ac-dist-count">12</span>
+            </div>
+            <div class="ac-dist-row">
+              <span class="ac-dist-grade">B+</span>
+              <div class="ac-dist-bar-wrap"><div class="ac-dist-bar" style="--w:79%;--delay:80ms"></div></div>
+              <span class="ac-dist-count">11</span>
+            </div>
+            <div class="ac-dist-row">
+              <span class="ac-dist-grade">B</span>
+              <div class="ac-dist-bar-wrap"><div class="ac-dist-bar" style="--w:64%;--delay:160ms"></div></div>
+              <span class="ac-dist-count">9</span>
+            </div>
+            <div class="ac-dist-row">
+              <span class="ac-dist-grade">C+</span>
+              <div class="ac-dist-bar-wrap"><div class="ac-dist-bar" style="--w:43%;--delay:240ms"></div></div>
+              <span class="ac-dist-count">6</span>
+            </div>
+            <div class="ac-dist-row">
+              <span class="ac-dist-grade">C</span>
+              <div class="ac-dist-bar-wrap"><div class="ac-dist-bar" style="--w:29%;--delay:320ms"></div></div>
+              <span class="ac-dist-count">4</span>
+            </div>
+          </div>
+
+          <div class="ac-section-title">GPA vs HONOURS THRESHOLD</div>
+          <div class="ac-threshold-block">
+            <div class="ac-threshold-bar-wrap">
+              <div class="ac-threshold-track">
+                <div class="ac-threshold-fill" style="--w:94.5%"></div>
+                <div class="ac-threshold-marker" style="--pos:87.5%" title="Honours 3.50">
+                  <span class="ac-threshold-label">3.50 min</span>
+                </div>
+              </div>
+            </div>
+            <div class="ac-threshold-meta">
+              <span class="ac-threshold-val">3.78</span>
+              <span class="ac-threshold-gap">+0.28 above threshold</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ANALYSIS TAB -->
+        <div class="ac-tab-panel" id="actab-analysis" role="tabpanel">
+          <div class="ac-section-title">SUBJECT AFFINITY</div>
+          <div class="ac-hex-grid">
+            <div class="ac-hex" style="--intensity:0.95;--stagger:0ms">
+              <div class="ac-hex-name">Portfolio<br>Theory</div>
+              <div class="ac-hex-score">96%</div>
+            </div>
+            <div class="ac-hex" style="--intensity:0.75;--stagger:60ms">
+              <div class="ac-hex-name">Corp<br>Finance</div>
+              <div class="ac-hex-score">90%</div>
+            </div>
+            <div class="ac-hex" style="--intensity:0.88;--stagger:120ms">
+              <div class="ac-hex-name">Derivatives</div>
+              <div class="ac-hex-score">93%</div>
+            </div>
+            <div class="ac-hex" style="--intensity:0.92;--stagger:180ms">
+              <div class="ac-hex-name">Financial<br>Economics</div>
+              <div class="ac-hex-score">95%</div>
+            </div>
+            <div class="ac-hex" style="--intensity:0.80;--stagger:240ms">
+              <div class="ac-hex-name">Quant<br>Methods</div>
+              <div class="ac-hex-score">92%</div>
+            </div>
+            <div class="ac-hex" style="--intensity:0.45;--stagger:300ms">
+              <div class="ac-hex-name">Micro-<br>economics</div>
+              <div class="ac-hex-score">84%</div>
+            </div>
+          </div>
+
+          <div class="ac-section-title">SCORE vs COHORT AVERAGE</div>
+          <div class="ac-delta-table">
+            <div class="ac-delta-row">
+              <span class="ac-delta-course">ECON 6203 Derivatives</span>
+              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:100%;--delay:0ms"></div></div>
+              <span class="ac-delta-val">+25pp</span>
+            </div>
+            <div class="ac-delta-row">
+              <span class="ac-delta-course">ECON 6201 Portfolio Theory</span>
+              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:96%;--delay:70ms"></div></div>
+              <span class="ac-delta-val">+24pp</span>
+            </div>
+            <div class="ac-delta-row">
+              <span class="ac-delta-course">ECON 6102 Quant Methods</span>
+              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:84%;--delay:140ms"></div></div>
+              <span class="ac-delta-val">+21pp</span>
+            </div>
+            <div class="ac-delta-row">
+              <span class="ac-delta-course">ECON 6101 Fin. Economics</span>
+              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:76%;--delay:210ms"></div></div>
+              <span class="ac-delta-val">+19pp</span>
+            </div>
+            <div class="ac-delta-row">
+              <span class="ac-delta-course">ECON 6202 Corp Finance</span>
+              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:64%;--delay:280ms"></div></div>
+              <span class="ac-delta-val">+16pp</span>
+            </div>
+            <div class="ac-delta-row">
+              <span class="ac-delta-course">ECON 6103 Microeconomics</span>
+              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:20%;--delay:350ms"></div></div>
+              <span class="ac-delta-val">+5pp</span>
+            </div>
+          </div>
+
+          <div class="ac-signature">
+            <div class="ac-sig-label">PERFORMANCE SIGNATURE</div>
+            <div class="ac-sig-text">STRONGEST · Quantitative Finance &amp; Derivatives · ALL 6 SUBJECTS ABOVE COHORT AVERAGE</div>
+          </div>
+        </div>
+
+        <!-- FORECAST TAB -->
+        <div class="ac-tab-panel" id="actab-forecast" role="tabpanel">
+          <div class="ac-section-title">GPA TRAJECTORY</div>
+          <div class="ac-trajectory-wrap">
+            <svg class="ac-trajectory" viewBox="0 0 300 130" preserveAspectRatio="xMidYMid meet">
+              <!-- grid lines -->
+              <line x1="30" y1="49" x2="270" y2="49" class="ac-traj-grid"/>
+              <line x1="30" y1="76" x2="270" y2="76" class="ac-traj-threshold"/>
+              <line x1="30" y1="115" x2="270" y2="115" class="ac-traj-grid"/>
+              <!-- y-axis labels -->
+              <text x="4" y="53" class="ac-traj-label">3.70</text>
+              <text x="4" y="80" class="ac-traj-label">3.50</text>
+              <!-- honours label -->
+              <text x="200" y="73" class="ac-traj-honours-label">HONOURS MIN</text>
+              <!-- projected confidence band (S2 to S6) -->
+              <polygon class="ac-traj-band" points="78,39 126,28 174,22 222,18 270,16 270,32 222,34 174,38 126,40 78,39"/>
+              <!-- actual solid line S1-S2 -->
+              <polyline class="ac-traj-actual" points="30,56 78,39"/>
+              <!-- projected dashed line S2-S6 -->
+              <polyline class="ac-traj-projected" points="78,39 126,34 174,30 222,26 270,23"/>
+              <!-- actual dots -->
+              <circle cx="30" cy="56" r="4.5" class="ac-traj-dot" style="--delay:900ms"/>
+              <circle cx="78" cy="39" r="4.5" class="ac-traj-dot" style="--delay:1000ms"/>
+              <!-- projected dots (hollow) -->
+              <circle cx="126" cy="34" r="3" class="ac-traj-dot-proj" style="--delay:1200ms"/>
+              <circle cx="174" cy="30" r="3" class="ac-traj-dot-proj" style="--delay:1400ms"/>
+              <circle cx="222" cy="26" r="3" class="ac-traj-dot-proj" style="--delay:1600ms"/>
+              <circle cx="270" cy="23" r="3" class="ac-traj-dot-proj" style="--delay:1800ms"/>
+            </svg>
+            <div class="ac-traj-x-labels">
+              <span>S1</span><span>S2</span><span>S3</span><span>S4</span><span>S5</span><span>S6</span>
+            </div>
+          </div>
+
+          <div class="ac-forecast-grid">
+            <div class="ac-forecast-card">
+              <div class="ac-fc-label">HONOURS STATUS</div>
+              <div class="ac-fc-val ac-fc-green">ON TRACK</div>
+              <div class="ac-fc-sub">+0.28 above threshold</div>
+            </div>
+            <div class="ac-forecast-card">
+              <div class="ac-fc-label">PROJECTED GPA</div>
+              <div class="ac-fc-val">3.88 – 3.92</div>
+              <div class="ac-fc-sub">Based on trajectory</div>
+            </div>
+            <div class="ac-forecast-card">
+              <div class="ac-fc-label">GRADUATION</div>
+              <div class="ac-fc-val">May 2027</div>
+              <div class="ac-fc-sub">On schedule</div>
+            </div>
+            <div class="ac-forecast-card">
+              <div class="ac-fc-label">RISK FLAGS</div>
+              <div class="ac-fc-val ac-fc-green">NONE</div>
+              <div class="ac-fc-sub">All subjects above avg</div>
+            </div>
+          </div>
+
+          <div class="ac-credits-path">
+            <span class="ac-cp-label">CREDITS TO GRADUATION</span>
+            <span class="ac-cp-val">18 / 30 completed · 12 remaining · Est. 4 semesters</span>
+          </div>
+
+          <div class="ac-section-title" style="margin-top:16px">UPCOMING COURSES — SEM 3 (PLANNED)</div>
+          <div class="ac-upcoming-list">
+            <div class="ac-upcoming-row">
+              <span class="ac-upcoming-code">ECON 6301</span>
+              <span class="ac-upcoming-name">Fixed Income &amp; Credit Markets</span>
+              <span class="ac-upcoming-cr">3 cr</span>
+            </div>
+            <div class="ac-upcoming-row">
+              <span class="ac-upcoming-code">ECON 6302</span>
+              <span class="ac-upcoming-name">International Finance</span>
+              <span class="ac-upcoming-cr">3 cr</span>
+            </div>
+            <div class="ac-upcoming-row">
+              <span class="ac-upcoming-code">ECON 6303</span>
+              <span class="ac-upcoming-name">Financial Modelling</span>
+              <span class="ac-upcoming-cr">3 cr</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.ac-tab-content -->
 
     </div>
   </div>
