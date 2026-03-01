@@ -2999,11 +2999,7 @@ html[lang="en"] .sp-stat-key {
 
 /* ── Athlete profile summary card ── */
 .sp-profile-summary {
-  background: linear-gradient(135deg, rgba(222, 93, 142, 0.06) 0%, rgba(184, 133, 42, 0.06) 100%);
-  border: 1px solid rgba(222, 93, 142, 0.14);
-  border-radius: 12px;
-  padding: 12px 13px;
-  margin-top: 10px;
+  padding: 4px 0 16px;
 }
 
 .sp-profile-header {
