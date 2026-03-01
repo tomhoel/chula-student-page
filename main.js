@@ -651,3 +651,31 @@ function showToast(msg) {
     }
   }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
 })();
+
+
+/* ═══════════════════════════════════════════════════════
+   ATHLETIC PROFILE — SP TAB SWITCHING
+═══════════════════════════════════════════════════════ */
+(function () {
+  var sheet = document.getElementById('sheet-activities');
+  if (!sheet) return;
+
+  sheet.addEventListener('click', function (e) {
+    var tab = e.target.closest('.sp-tab');
+    if (!tab) return;
+    var target = tab.dataset.spTab;
+
+    sheet.querySelectorAll('.sp-tab').forEach(function (t) {
+      t.classList.remove('sp-tab--active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    sheet.querySelectorAll('.sp-tab-content').forEach(function (c) {
+      c.classList.remove('active');
+    });
+
+    tab.classList.add('sp-tab--active');
+    tab.setAttribute('aria-selected', 'true');
+    var content = document.getElementById('sptab-' + target);
+    if (content) content.classList.add('active');
+  });
+})();
