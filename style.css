@@ -3198,32 +3198,6 @@ html[lang="en"] .sp-profile-text {
 
 html[lang="en"] .sp-sport-card-role { font-family: var(--f); }
 
-.sp-sport-card-rating {
-  display: flex;
-  align-items: baseline;
-  gap: 3px;
-  margin-top: 2px;
-}
-
-.sp-sport-card-num {
-  font: 800 24px / 1 var(--f);
-  color: var(--cu);
-  letter-spacing: -0.03em;
-}
-
-.sp-sport-card-num--blue { color: #0ea5e9; }
-
-.sp-sport-card-denom {
-  font: 500 11px / 1 var(--f);
-  color: var(--t3);
-}
-
-.sp-sport-card-rlbl {
-  font: 500 9px / 1 var(--f);
-  color: var(--t3);
-  margin-left: 2px;
-}
-
 .sp-sport-card-stats {
   display: flex;
   gap: 0;
