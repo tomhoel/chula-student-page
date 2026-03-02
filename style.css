@@ -5403,9 +5403,8 @@ html[lang="en"] .ag-future-desc {
 
 .ac-timeline-dot {
   position: absolute;
-  left: -20px;
-  top: 50%;
-  transform: translateY(-50%);
+  left: -22px;
+  top: 20px;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -5456,6 +5455,117 @@ html[lang="en"] .ag-future-desc {
   font: 700 10px / 1 var(--f);
   color: var(--t1);
   min-width: 90px;
+}
+
+/* Collapsible Timeline Sections */
+.ac-timeline-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  gap: 8px;
+}
+
+.ac-timeline-toggle:hover {
+  background: rgba(222,93,142,0.03);
+  border-radius: 6px;
+}
+
+.ac-timeline-chevron {
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1);
+  color: var(--t3);
+  flex-shrink: 0;
+}
+
+.ac-timeline-toggle[aria-expanded="true"] .ac-timeline-chevron {
+  transform: rotate(180deg);
+}
+
+.ac-timeline-details {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+
+.ac-timeline-content.is-open .ac-timeline-details {
+  grid-template-rows: 1fr;
+}
+
+.ac-timeline-details > * {
+  overflow: hidden;
+}
+
+/* Detail courses styling */
+.ac-detail-courses {
+  padding: 12px;
+  background: rgba(0,0,0,0.02);
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.ac-detail-label {
+  display: block;
+  font: 600 9px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.ac-detail-course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ac-detail-course {
+  display: grid;
+  grid-template-columns: 70px 1fr 28px 40px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.ac-dc-code {
+  font: 600 9px / 1 var(--f);
+  color: var(--t3);
+}
+
+.ac-dc-name {
+  font: 500 11px / 1.2 var(--f);
+  color: var(--t1);
+}
+
+.ac-dc-grade {
+  font: 700 10px / 1 var(--f);
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.ac-dc-a {
+  background: rgba(34,197,94,0.12);
+  color: #16a34a;
+}
+
+.ac-dc-b {
+  background: rgba(59,130,246,0.12);
+  color: #2563eb;
+}
+
+.ac-dc-score {
+  font: 600 10px / 1 var(--f);
+  color: var(--t2);
+  text-align: right;
 }
 
 .ac-timeline-status {
@@ -7097,5 +7207,18 @@ html[lang="en"] .ag-future-desc {
   
   .ac-course-card {
     transition: none;
+  }
+  
+  /* Collapsible timeline reduced motion */
+  .ac-timeline-details {
+    transition: none;
+  }
+  
+  .ac-timeline-chevron {
+    transition: none;
+  }
+  
+  .ac-timeline-toggle:hover {
+    transform: none;
   }
 }

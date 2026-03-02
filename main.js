@@ -705,7 +705,13 @@ function showToast(msg) {
 
   acTabBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      switchAcTab(this.dataset.actab);
+      var tabId = this.dataset.actab;
+      switchAcTab(tabId);
+      
+      /* run animations when PROGRESS tab is selected */
+      if (tabId === 'actab-progress') {
+        runProgressAnimations();
+      }
     });
   });
 
@@ -741,7 +747,7 @@ function showToast(msg) {
           } else {
             resetAcRing();
             /* reset tab to RECORD on close */
-            switchAcTab('actab-record');
+            switchAcTab('actab-info');
           }
         }
       });
@@ -759,8 +765,9 @@ function showToast(msg) {
     }
   }
 
-  /* --- Count up animations for RECORD tab --- */
+  /* --- Count up animations --- */
   var countUpAnimated = false;
+  var progressAnimated = false;
   
   function countUp(el, duration, suffix) {
     suffix = suffix || '';
@@ -785,53 +792,105 @@ function showToast(msg) {
     requestAnimationFrame(step);
   }
 
-  function animateRecordCounts() {
+  /* INFORMATION tab animations */
+  function animateInfoCounts() {
     if (countUpAnimated) return;
     countUpAnimated = true;
     
     // GPA ring value
-    var gpaVal = document.querySelector('#actab-record .ac-gpa-ring-val[data-count]');
+    var gpaVal = document.querySelector('#actab-info .ac-gpa-ring-val[data-count]');
     if (gpaVal) {
       setTimeout(function() { countUp(gpaVal, 1500); }, 300);
     }
     
     // Course scores
-    var courseScores = document.querySelectorAll('#actab-record .ac-course-score-val[data-count]');
+    var courseScores = document.querySelectorAll('#actab-info .ac-course-score-val[data-count]');
     courseScores.forEach(function(el, i) {
       setTimeout(function() { countUp(el, 1000); }, 500 + i * 150);
     });
   }
 
-  function resetCountUp() {
+  function resetInfoCountUp() {
     countUpAnimated = false;
   }
 
-  /* trigger count-up when RECORD tab becomes active */
-  var recordTab = document.getElementById('actab-record');
-  if (recordTab && acSheet) {
+  /* PROGRESS tab animations */
+  function runProgressAnimations() {
+    if (progressAnimated) return;
+    progressAnimated = true;
+    
+    // Animate distribution bars
+    var distBars = document.querySelectorAll('#actab-progress .ac-dist-bar');
+    distBars.forEach(function(bar, i) {
+      bar.style.animation = 'none';
+      setTimeout(function() {
+        bar.style.animation = '';
+      }, i * 80);
+    });
+    
+    // Animate threshold fill
+    var thresholdFill = document.querySelector('#actab-progress .ac-threshold-fill');
+    if (thresholdFill) {
+      thresholdFill.style.animation = 'none';
+      setTimeout(function() {
+        thresholdFill.style.animation = '';
+      }, 200);
+    }
+    
+    // Animate radar chart
+    var radarData = document.querySelector('#actab-progress .ac-radar-data');
+    if (radarData) {
+      radarData.style.animation = 'none';
+      setTimeout(function() {
+        radarData.style.animation = '';
+      }, 300);
+    }
+  }
+
+  function resetProgressAnimations() {
+    progressAnimated = false;
+  }
+
+  /* trigger count-up when INFORMATION tab becomes active */
+  var infoTab = document.getElementById('actab-info');
+  if (infoTab && acSheet) {
     var countObserver = new MutationObserver(function(mutations) {
       mutations.forEach(function(m) {
         if (m.attributeName === 'class') {
-          if (recordTab.classList.contains('active')) {
-            animateRecordCounts();
+          if (infoTab.classList.contains('active')) {
+            animateInfoCounts();
           } else {
-            resetCountUp();
+            resetInfoCountUp();
           }
         }
       });
     });
-    countObserver.observe(recordTab, { attributes: true });
+    countObserver.observe(infoTab, { attributes: true });
     
     /* Also trigger when sheet opens */
     var sheetOpenObserver = new MutationObserver(function(mutations) {
       mutations.forEach(function(m) {
         if (m.attributeName === 'class' && acSheet.classList.contains('open')) {
-          if (recordTab.classList.contains('active')) {
-            animateRecordCounts();
+          if (infoTab.classList.contains('active')) {
+            animateInfoCounts();
           }
         }
       });
     });
     sheetOpenObserver.observe(acSheet, { attributes: true });
   }
+
+  /* --- Collapsible Timeline --- */
+  var timelineToggles = document.querySelectorAll('.ac-timeline-toggle');
+  timelineToggles.forEach(function(toggle) {
+    toggle.addEventListener('click', function() {
+      var content = this.closest('.ac-timeline-content');
+      var isOpen = content.classList.contains('is-open');
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      
+      // Toggle current section
+      content.classList.toggle('is-open', !isOpen);
+      this.setAttribute('aria-expanded', !expanded);
+    });
+  });
 }());

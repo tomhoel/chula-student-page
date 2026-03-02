@@ -506,19 +506,69 @@
 
       <!-- ── AC TABS ────────────────────────────────── -->
       <div class="ac-tabs" role="tablist">
-        <button class="ac-tab active" data-actab="actab-record"   role="tab" aria-selected="true">RECORD</button>
-        <button class="ac-tab"        data-actab="actab-metrics"  role="tab" aria-selected="false">METRICS</button>
-        <button class="ac-tab"        data-actab="actab-analysis" role="tab" aria-selected="false">ANALYSIS</button>
-        <button class="ac-tab"        data-actab="actab-forecast" role="tab" aria-selected="false">FORECAST</button>
+        <button class="ac-tab active" data-actab="actab-info"     role="tab" aria-selected="true">INFORMATION</button>
+        <button class="ac-tab"        data-actab="actab-progress" role="tab" aria-selected="false">PROGRESS</button>
       </div>
 
       <!-- ── AC TAB CONTENT ─────────────────────────── -->
       <div class="ac-tab-content">
 
-        <!-- RECORD TAB -->
-        <div class="ac-tab-panel active" id="actab-record" role="tabpanel">
+        <!-- INFORMATION TAB -->
+        <div class="ac-tab-panel active" id="actab-info" role="tabpanel">
+          <!-- Degree Program Info Box -->
+          <div class="ac-degree-card">
+            <div class="ac-degree-header">
+              <div class="ac-degree-badge">M.Sc. PROGRAM</div>
+              <div class="ac-degree-status">
+                <span class="ac-status-dot"></span>
+                <span class="ac-status-text">Active Enrollment</span>
+              </div>
+            </div>
+            <div class="ac-degree-body">
+              <div class="ac-degree-title">
+                <h3>Master of Science in Finance</h3>
+                <span class="ac-degree-th">สาขาวิชาการเงิน</span>
+              </div>
+              <div class="ac-degree-faculty">
+                <span class="ac-faculty-name">Faculty of Economics</span>
+                <span class="ac-faculty-th">คณะเศรษฐศาสตร์</span>
+              </div>
+              <div class="ac-degree-meta">
+                <div class="ac-meta-item">
+                  <span class="ac-meta-label">Cohort</span>
+                  <span class="ac-meta-value">9562</span>
+                </div>
+                <div class="ac-meta-item">
+                  <span class="ac-meta-label">Track</span>
+                  <span class="ac-meta-value">Financial Economics</span>
+                </div>
+                <div class="ac-meta-item">
+                  <span class="ac-meta-label">Advisor</span>
+                  <span class="ac-meta-value">A.Prof.Dr. Suree T.</span>
+                </div>
+                <div class="ac-meta-item">
+                  <span class="ac-meta-label">Duration</span>
+                  <span class="ac-meta-value">2 Years</span>
+                </div>
+              </div>
+              <div class="ac-degree-progress">
+                <div class="ac-progress-header">
+                  <span>Program Progress</span>
+                  <span class="ac-progress-pct">60%</span>
+                </div>
+                <div class="ac-progress-bar">
+                  <div class="ac-progress-fill" style="--progress:60%"></div>
+                </div>
+                <div class="ac-progress-stats">
+                  <span>18 of 30 credits completed</span>
+                  <span>Expected: May 2027</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- GPA Overview -->
-          <div class="ac-section-title">GPA Overview</div>
+          <div class="ac-section-title">Academic Performance</div>
           <div class="ac-gpa-ring-section">
             <div class="ac-gpa-ring-container">
               <svg class="ac-gpa-ring" viewBox="0 0 120 120">
@@ -564,301 +614,182 @@
           <div class="ac-timeline-vertical">
             <div class="ac-timeline-line"></div>
             
-            <div class="ac-timeline-item ac-timeline-item--future">
+            <!-- Semester 6 - Future -->
+            <div class="ac-timeline-item ac-timeline-item--future" data-sem="6">
               <div class="ac-timeline-dot"></div>
               <div class="ac-timeline-content">
-                <span class="ac-timeline-sem">SEMESTER 6</span>
-                <span class="ac-timeline-status">Projected</span>
-                <span class="ac-timeline-gpa">~3.88</span>
+                <button class="ac-timeline-toggle" aria-expanded="false">
+                  <span class="ac-timeline-sem">SEMESTER 6</span>
+                  <span class="ac-timeline-status">Projected</span>
+                  <span class="ac-timeline-gpa">~3.88</span>
+                  <svg class="ac-timeline-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div class="ac-timeline-details">
+                  <div class="ac-detail-item">
+                    <span class="ac-detail-label">Status</span>
+                    <span class="ac-detail-value">Projected Graduation</span>
+                  </div>
+                  <div class="ac-detail-item">
+                    <span class="ac-detail-label">Credits</span>
+                    <span class="ac-detail-value">6 credits remaining</span>
+                  </div>
+                </div>
               </div>
             </div>
             
-            <div class="ac-timeline-item ac-timeline-item--future">
+            <!-- Semester 5 - Future -->
+            <div class="ac-timeline-item ac-timeline-item--future" data-sem="5">
               <div class="ac-timeline-dot"></div>
               <div class="ac-timeline-content">
-                <span class="ac-timeline-sem">SEMESTER 5</span>
-                <span class="ac-timeline-status">Upcoming</span>
-                <span class="ac-timeline-gpa">—</span>
+                <button class="ac-timeline-toggle" aria-expanded="false">
+                  <span class="ac-timeline-sem">SEMESTER 5</span>
+                  <span class="ac-timeline-status">Upcoming</span>
+                  <span class="ac-timeline-gpa">—</span>
+                  <svg class="ac-timeline-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div class="ac-timeline-details">
+                  <div class="ac-detail-item">
+                    <span class="ac-detail-label">Status</span>
+                    <span class="ac-detail-value">Not Started</span>
+                  </div>
+                </div>
               </div>
             </div>
             
-            <div class="ac-timeline-item ac-timeline-item--future">
+            <!-- Semester 4 - Future -->
+            <div class="ac-timeline-item ac-timeline-item--future" data-sem="4">
               <div class="ac-timeline-dot"></div>
               <div class="ac-timeline-content">
-                <span class="ac-timeline-sem">SEMESTER 4</span>
-                <span class="ac-timeline-status">Upcoming</span>
-                <span class="ac-timeline-gpa">—</span>
+                <button class="ac-timeline-toggle" aria-expanded="false">
+                  <span class="ac-timeline-sem">SEMESTER 4</span>
+                  <span class="ac-timeline-status">Upcoming</span>
+                  <span class="ac-timeline-gpa">—</span>
+                  <svg class="ac-timeline-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div class="ac-timeline-details">
+                  <div class="ac-detail-item">
+                    <span class="ac-detail-label">Status</span>
+                    <span class="ac-detail-value">Not Started</span>
+                  </div>
+                </div>
               </div>
             </div>
             
-            <div class="ac-timeline-item ac-timeline-item--future">
+            <!-- Semester 3 - Future -->
+            <div class="ac-timeline-item ac-timeline-item--future" data-sem="3">
               <div class="ac-timeline-dot"></div>
               <div class="ac-timeline-content">
-                <span class="ac-timeline-sem">SEMESTER 3</span>
-                <span class="ac-timeline-status">Next</span>
-                <span class="ac-timeline-gpa">—</span>
+                <button class="ac-timeline-toggle" aria-expanded="false">
+                  <span class="ac-timeline-sem">SEMESTER 3</span>
+                  <span class="ac-timeline-status">Next</span>
+                  <span class="ac-timeline-gpa">—</span>
+                  <svg class="ac-timeline-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div class="ac-timeline-details">
+                  <div class="ac-detail-courses">
+                    <span class="ac-detail-label">Planned Courses</span>
+                    <ul>
+                      <li>ECON 6301 — Fixed Income</li>
+                      <li>ECON 6302 — International Finance</li>
+                      <li>ECON 6303 — Financial Modelling</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
             
-            <div class="ac-timeline-item ac-timeline-item--active">
+            <!-- Semester 2 - Active (OPEN by default) -->
+            <div class="ac-timeline-item ac-timeline-item--active" data-sem="2">
               <div class="ac-timeline-dot"></div>
-              <div class="ac-timeline-content">
-                <span class="ac-timeline-sem">SEMESTER 2</span>
-                <span class="ac-timeline-status">Active</span>
-                <span class="ac-timeline-gpa">3.78 ↑</span>
+              <div class="ac-timeline-content is-open">
+                <button class="ac-timeline-toggle" aria-expanded="true">
+                  <span class="ac-timeline-sem">SEMESTER 2</span>
+                  <span class="ac-timeline-status">Active</span>
+                  <span class="ac-timeline-gpa">3.78 ↑</span>
+                  <svg class="ac-timeline-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div class="ac-timeline-details">
+                  <div class="ac-detail-courses">
+                    <span class="ac-detail-label">Current Courses</span>
+                    <div class="ac-detail-course-list">
+                      <div class="ac-detail-course">
+                        <span class="ac-dc-code">ECON 6201</span>
+                        <span class="ac-dc-name">Portfolio Theory</span>
+                        <span class="ac-dc-grade ac-dc-a">A</span>
+                        <span class="ac-dc-score">96%</span>
+                      </div>
+                      <div class="ac-detail-course">
+                        <span class="ac-dc-code">ECON 6202</span>
+                        <span class="ac-dc-name">Corporate Finance</span>
+                        <span class="ac-dc-grade ac-dc-a">A−</span>
+                        <span class="ac-dc-score">90%</span>
+                      </div>
+                      <div class="ac-detail-course">
+                        <span class="ac-dc-code">ECON 6203</span>
+                        <span class="ac-dc-name">Derivatives</span>
+                        <span class="ac-dc-grade ac-dc-a">A</span>
+                        <span class="ac-dc-score">93%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             
-            <div class="ac-timeline-item ac-timeline-item--complete">
+            <!-- Semester 1 - Complete -->
+            <div class="ac-timeline-item ac-timeline-item--complete" data-sem="1">
               <div class="ac-timeline-dot"></div>
               <div class="ac-timeline-content">
-                <span class="ac-timeline-sem">SEMESTER 1</span>
-                <span class="ac-timeline-status">Complete</span>
-                <span class="ac-timeline-gpa">3.65</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Active Courses -->
-          <div class="ac-section-title">Active Courses — Semester 2</div>
-          
-          <div class="ac-course-card" style="--card-index: 0">
-            <div class="ac-course-header">
-              <span class="ac-grade-badge ac-grade-badge--gradient ac-grade-a">A</span>
-              <div class="ac-course-title">
-                <div class="ac-course-code">ECON 6201</div>
-                <div class="ac-course-name">Portfolio Theory</div>
-              </div>
-              <div class="ac-course-score-display">
-                <span class="ac-course-score-val" data-count="96">0</span>
-                <span class="ac-course-score-pct">%</span>
-              </div>
-            </div>
-            <div class="ac-course-bars">
-              <div class="ac-bar-comparison">
-                <span class="ac-bar-label">Your Performance</span>
-                <div class="ac-bar-container">
-                  <div class="ac-bar-track">
-                    <div class="ac-bar-fill ac-bar-fill--you" style="--fill-width: 96%"></div>
+                <button class="ac-timeline-toggle" aria-expanded="false">
+                  <span class="ac-timeline-sem">SEMESTER 1</span>
+                  <span class="ac-timeline-status">Complete</span>
+                  <span class="ac-timeline-gpa">3.65</span>
+                  <svg class="ac-timeline-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div class="ac-timeline-details">
+                  <div class="ac-detail-courses">
+                    <span class="ac-detail-label">Completed Courses</span>
+                    <div class="ac-detail-course-list">
+                      <div class="ac-detail-course">
+                        <span class="ac-dc-code">ECON 6101</span>
+                        <span class="ac-dc-name">Financial Economics</span>
+                        <span class="ac-dc-grade ac-dc-a">A</span>
+                        <span class="ac-dc-score">95%</span>
+                      </div>
+                      <div class="ac-detail-course">
+                        <span class="ac-dc-code">ECON 6102</span>
+                        <span class="ac-dc-name">Quantitative Methods</span>
+                        <span class="ac-dc-grade ac-dc-a">A</span>
+                        <span class="ac-dc-score">92%</span>
+                      </div>
+                      <div class="ac-detail-course">
+                        <span class="ac-dc-code">ECON 6103</span>
+                        <span class="ac-dc-name">Microeconomics</span>
+                        <span class="ac-dc-grade ac-dc-b">B+</span>
+                        <span class="ac-dc-score">84%</span>
+                      </div>
+                    </div>
                   </div>
-                  <span class="ac-bar-value">96%</span>
                 </div>
               </div>
-              <div class="ac-bar-comparison">
-                <span class="ac-bar-label">Class Average</span>
-                <div class="ac-bar-container">
-                  <div class="ac-bar-track">
-                    <div class="ac-bar-fill ac-bar-fill--avg" style="--fill-width: 72%"></div>
-                  </div>
-                  <span class="ac-bar-value">72%</span>
-                </div>
-              </div>
-            </div>
-            <div class="ac-course-delta ac-course-delta--positive">
-              <span class="ac-delta-icon">↑</span>
-              <span class="ac-delta-text">+24pp above cohort</span>
-            </div>
-          </div>
-
-          <div class="ac-course-card" style="--card-index: 1">
-            <div class="ac-course-header">
-              <span class="ac-grade-badge ac-grade-badge--gradient ac-grade-a-minus">A−</span>
-              <div class="ac-course-title">
-                <div class="ac-course-code">ECON 6202</div>
-                <div class="ac-course-name">Corporate Finance</div>
-              </div>
-              <div class="ac-course-score-display">
-                <span class="ac-course-score-val" data-count="90">0</span>
-                <span class="ac-course-score-pct">%</span>
-              </div>
-            </div>
-            <div class="ac-course-bars">
-              <div class="ac-bar-comparison">
-                <span class="ac-bar-label">Your Performance</span>
-                <div class="ac-bar-container">
-                  <div class="ac-bar-track">
-                    <div class="ac-bar-fill ac-bar-fill--you" style="--fill-width: 90%"></div>
-                  </div>
-                  <span class="ac-bar-value">90%</span>
-                </div>
-              </div>
-              <div class="ac-bar-comparison">
-                <span class="ac-bar-label">Class Average</span>
-                <div class="ac-bar-container">
-                  <div class="ac-bar-track">
-                    <div class="ac-bar-fill ac-bar-fill--avg" style="--fill-width: 74%"></div>
-                  </div>
-                  <span class="ac-bar-value">74%</span>
-                </div>
-              </div>
-            </div>
-            <div class="ac-course-delta ac-course-delta--positive">
-              <span class="ac-delta-icon">↑</span>
-              <span class="ac-delta-text">+16pp above cohort</span>
-            </div>
-          </div>
-
-          <div class="ac-course-card" style="--card-index: 2">
-            <div class="ac-course-header">
-              <span class="ac-grade-badge ac-grade-badge--gradient ac-grade-a">A</span>
-              <div class="ac-course-title">
-                <div class="ac-course-code">ECON 6203</div>
-                <div class="ac-course-name">Derivatives</div>
-              </div>
-              <div class="ac-course-score-display">
-                <span class="ac-course-score-val" data-count="93">0</span>
-                <span class="ac-course-score-pct">%</span>
-              </div>
-            </div>
-            <div class="ac-course-bars">
-              <div class="ac-bar-comparison">
-                <span class="ac-bar-label">Your Performance</span>
-                <div class="ac-bar-container">
-                  <div class="ac-bar-track">
-                    <div class="ac-bar-fill ac-bar-fill--you" style="--fill-width: 93%"></div>
-                  </div>
-                  <span class="ac-bar-value">93%</span>
-                </div>
-              </div>
-              <div class="ac-bar-comparison">
-                <span class="ac-bar-label">Class Average</span>
-                <div class="ac-bar-container">
-                  <div class="ac-bar-track">
-                    <div class="ac-bar-fill ac-bar-fill--avg" style="--fill-width: 68%"></div>
-                  </div>
-                  <span class="ac-bar-value">68%</span>
-                </div>
-              </div>
-            </div>
-            <div class="ac-course-delta ac-course-delta--positive">
-              <span class="ac-delta-icon">↑</span>
-              <span class="ac-delta-text">+25pp above cohort</span>
-            </div>
-          </div>
-
-          <!-- Completed Courses -->
-          <div class="ac-section-title">Completed — Semester 1</div>
-
-          <div class="ac-course-card ac-course-card--completed" style="--card-index: 3">
-            <div class="ac-course-header">
-              <span class="ac-grade-badge ac-grade-badge--gradient ac-grade-a">A</span>
-              <div class="ac-course-title">
-                <div class="ac-course-code">ECON 6101</div>
-                <div class="ac-course-name">Financial Economics</div>
-              </div>
-              <div class="ac-course-score-display">
-                <span class="ac-course-score-val" data-count="95">0</span>
-                <span class="ac-course-score-pct">%</span>
-                <span class="ac-course-check">✓</span>
-              </div>
-            </div>
-            <div class="ac-course-bars">
-              <div class="ac-bar-comparison">
-                <span class="ac-bar-label">Your Performance</span>
-                <div class="ac-bar-container">
-                  <div class="ac-bar-track">
-                    <div class="ac-bar-fill ac-bar-fill--you" style="--fill-width: 95%"></div>
-                  </div>
-                  <span class="ac-bar-value">95%</span>
-                </div>
-              </div>
-              <div class="ac-bar-comparison">
-                <span class="ac-bar-label">Class Average</span>
-                <div class="ac-bar-container">
-                  <div class="ac-bar-track">
-                    <div class="ac-bar-fill ac-bar-fill--avg" style="--fill-width: 76%"></div>
-                  </div>
-                  <span class="ac-bar-value">76%</span>
-                </div>
-              </div>
-            </div>
-            <div class="ac-course-delta ac-course-delta--positive">
-              <span class="ac-delta-icon">↑</span>
-              <span class="ac-delta-text">+19pp above cohort</span>
-            </div>
-          </div>
-
-          <div class="ac-course-card ac-course-card--completed" style="--card-index: 4">
-            <div class="ac-course-header">
-              <span class="ac-grade-badge ac-grade-badge--gradient ac-grade-a">A</span>
-              <div class="ac-course-title">
-                <div class="ac-course-code">ECON 6102</div>
-                <div class="ac-course-name">Quantitative Methods</div>
-              </div>
-              <div class="ac-course-score-display">
-                <span class="ac-course-score-val" data-count="92">0</span>
-                <span class="ac-course-score-pct">%</span>
-                <span class="ac-course-check">✓</span>
-              </div>
-            </div>
-            <div class="ac-course-bars">
-              <div class="ac-bar-comparison">
-                <span class="ac-bar-label">Your Performance</span>
-                <div class="ac-bar-container">
-                  <div class="ac-bar-track">
-                    <div class="ac-bar-fill ac-bar-fill--you" style="--fill-width: 92%"></div>
-                  </div>
-                  <span class="ac-bar-value">92%</span>
-                </div>
-              </div>
-              <div class="ac-bar-comparison">
-                <span class="ac-bar-label">Class Average</span>
-                <div class="ac-bar-container">
-                  <div class="ac-bar-track">
-                    <div class="ac-bar-fill ac-bar-fill--avg" style="--fill-width: 71%"></div>
-                  </div>
-                  <span class="ac-bar-value">71%</span>
-                </div>
-              </div>
-            </div>
-            <div class="ac-course-delta ac-course-delta--positive">
-              <span class="ac-delta-icon">↑</span>
-              <span class="ac-delta-text">+21pp above cohort</span>
-            </div>
-          </div>
-
-          <div class="ac-course-card ac-course-card--completed" style="--card-index: 5">
-            <div class="ac-course-header">
-              <span class="ac-grade-badge ac-grade-badge--gradient ac-grade-b-plus">B+</span>
-              <div class="ac-course-title">
-                <div class="ac-course-code">ECON 6103</div>
-                <div class="ac-course-name">Microeconomics</div>
-              </div>
-              <div class="ac-course-score-display">
-                <span class="ac-course-score-val" data-count="84">0</span>
-                <span class="ac-course-score-pct">%</span>
-                <span class="ac-course-check">✓</span>
-              </div>
-            </div>
-            <div class="ac-course-bars">
-              <div class="ac-bar-comparison">
-                <span class="ac-bar-label">Your Performance</span>
-                <div class="ac-bar-container">
-                  <div class="ac-bar-track">
-                    <div class="ac-bar-fill ac-bar-fill--you" style="--fill-width: 84%"></div>
-                  </div>
-                  <span class="ac-bar-value">84%</span>
-                </div>
-              </div>
-              <div class="ac-bar-comparison">
-                <span class="ac-bar-label">Class Average</span>
-                <div class="ac-bar-container">
-                  <div class="ac-bar-track">
-                    <div class="ac-bar-fill ac-bar-fill--avg" style="--fill-width: 78%"></div>
-                  </div>
-                  <span class="ac-bar-value">78%</span>
-                </div>
-              </div>
-            </div>
-            <div class="ac-course-delta ac-course-delta--positive">
-              <span class="ac-delta-icon">↑</span>
-              <span class="ac-delta-text">+6pp above cohort</span>
             </div>
           </div>
         </div>
 
-        <!-- METRICS TAB -->
-        <div class="ac-tab-panel" id="actab-metrics" role="tabpanel">
+        <!-- PROGRESS TAB (merged METRICS + FORECAST) -->
+        <div class="ac-tab-panel" id="actab-progress" role="tabpanel">
           <!-- Subject Balance Radar Chart -->
           <div class="ac-section-title">SUBJECT BALANCE RADAR</div>
           <div class="ac-radar-container">
@@ -1003,153 +934,7 @@
               <span class="ac-threshold-gap">+0.28 above threshold</span>
             </div>
           </div>
-        </div>
 
-        <!-- ANALYSIS TAB -->
-        <div class="ac-tab-panel" id="actab-analysis" role="tabpanel">
-          <!-- Learning DNA - Learning Style Profile -->
-          <div class="ac-section-title">LEARNING DNA</div>
-          <div class="ac-learning-dna">
-            <svg class="ac-dna-chart" viewBox="0 0 200 120">
-              <defs>
-                <linearGradient id="dnaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:var(--cu);stop-opacity:0.3" />
-                  <stop offset="100%" style="stop-color:#ff8fab;stop-opacity:0.1" />
-                </linearGradient>
-              </defs>
-              <!-- Background quadrants -->
-              <rect x="0" y="0" width="100" height="60" fill="rgba(222,93,142,0.05)" rx="4"/>
-              <rect x="100" y="0" width="100" height="60" fill="rgba(59,130,246,0.05)" rx="4"/>
-              <rect x="0" y="60" width="100" height="60" fill="rgba(245,158,11,0.05)" rx="4"/>
-              <rect x="100" y="60" width="100" height="60" fill="rgba(34,197,94,0.05)" rx="4"/>
-              <!-- Axes -->
-              <line x1="100" y1="10" x2="100" y2="110" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
-              <line x1="20" y1="60" x2="180" y2="60" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
-              <!-- Data point -->
-              <circle cx="145" cy="35" r="8" fill="var(--cu)" filter="drop-shadow(0 0 4px rgba(222,93,142,0.5))"/>
-              <!-- Labels -->
-              <text x="50" y="25" text-anchor="middle" class="ac-dna-label">THEORETICAL</text>
-              <text x="150" y="25" text-anchor="middle" class="ac-dna-label">QUANTITATIVE</text>
-              <text x="50" y="105" text-anchor="middle" class="ac-dna-label">PRACTICAL</text>
-              <text x="150" y="105" text-anchor="middle" class="ac-dna-label">QUALITATIVE</text>
-            </svg>
-            <div class="ac-dna-profile">
-              <div class="ac-dna-dominant">
-                <span class="ac-dna-tag">DOMINANT</span>
-                <span class="ac-dna-type">Quantitative Analyst</span>
-              </div>
-              <div class="ac-dna-desc">Strong preference for data-driven analysis, mathematical modeling, and systematic approaches to problem-solving.</div>
-            </div>
-          </div>
-
-          <!-- Enhanced Subject Affinity with 3D Hex Grid -->
-          <div class="ac-section-title">SUBJECT AFFINITY MATRIX</div>
-          <div class="ac-hex-grid">
-            <div class="ac-hex" style="--intensity:0.95;--stagger:0ms" data-subject="Portfolio Theory">
-              <div class="ac-hex-content">
-                <div class="ac-hex-name">Portfolio<br>Theory</div>
-                <div class="ac-hex-score">96%</div>
-              </div>
-            </div>
-            <div class="ac-hex" style="--intensity:0.75;--stagger:60ms" data-subject="Corp Finance">
-              <div class="ac-hex-content">
-                <div class="ac-hex-name">Corp<br>Finance</div>
-                <div class="ac-hex-score">90%</div>
-              </div>
-            </div>
-            <div class="ac-hex" style="--intensity:0.88;--stagger:120ms" data-subject="Derivatives">
-              <div class="ac-hex-content">
-                <div class="ac-hex-name">Derivatives</div>
-                <div class="ac-hex-score">93%</div>
-              </div>
-            </div>
-            <div class="ac-hex" style="--intensity:0.92;--stagger:180ms" data-subject="Fin Economics">
-              <div class="ac-hex-content">
-                <div class="ac-hex-name">Financial<br>Economics</div>
-                <div class="ac-hex-score">95%</div>
-              </div>
-            </div>
-            <div class="ac-hex" style="--intensity:0.80;--stagger:240ms" data-subject="Quant Methods">
-              <div class="ac-hex-content">
-                <div class="ac-hex-name">Quant<br>Methods</div>
-                <div class="ac-hex-score">92%</div>
-              </div>
-            </div>
-            <div class="ac-hex" style="--intensity:0.45;--stagger:300ms" data-subject="Microeconomics">
-              <div class="ac-hex-content">
-                <div class="ac-hex-name">Micro-<br>economics</div>
-                <div class="ac-hex-score">84%</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Enhanced Score vs Cohort Comparison -->
-          <div class="ac-section-title">PERFORMANCE vs COHORT</div>
-          <div class="ac-delta-table">
-            <div class="ac-delta-row" style="--row-index:0">
-              <div class="ac-delta-rank">#1</div>
-              <span class="ac-delta-course">ECON 6203 Derivatives</span>
-              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:100%"></div></div>
-              <span class="ac-delta-val ac-delta-val--top">+25pp</span>
-            </div>
-            <div class="ac-delta-row" style="--row-index:1">
-              <div class="ac-delta-rank">#2</div>
-              <span class="ac-delta-course">ECON 6201 Portfolio Theory</span>
-              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:96%"></div></div>
-              <span class="ac-delta-val ac-delta-val--top">+24pp</span>
-            </div>
-            <div class="ac-delta-row" style="--row-index:2">
-              <div class="ac-delta-rank">#3</div>
-              <span class="ac-delta-course">ECON 6102 Quant Methods</span>
-              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:84%"></div></div>
-              <span class="ac-delta-val ac-delta-val--high">+21pp</span>
-            </div>
-            <div class="ac-delta-row" style="--row-index:3">
-              <div class="ac-delta-rank">#4</div>
-              <span class="ac-delta-course">ECON 6101 Fin. Economics</span>
-              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:76%"></div></div>
-              <span class="ac-delta-val ac-delta-val--high">+19pp</span>
-            </div>
-            <div class="ac-delta-row" style="--row-index:4">
-              <div class="ac-delta-rank">#5</div>
-              <span class="ac-delta-course">ECON 6202 Corp Finance</span>
-              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:64%"></div></div>
-              <span class="ac-delta-val ac-delta-val--good">+16pp</span>
-            </div>
-            <div class="ac-delta-row" style="--row-index:5">
-              <div class="ac-delta-rank">#6</div>
-              <span class="ac-delta-course">ECON 6103 Microeconomics</span>
-              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:20%"></div></div>
-              <span class="ac-delta-val ac-delta-val--avg">+5pp</span>
-            </div>
-          </div>
-
-          <!-- Enhanced Performance Signature -->
-          <div class="ac-signature">
-            <div class="ac-sig-header">
-              <div class="ac-sig-badge">ANALYSIS</div>
-              <div class="ac-sig-label">PERFORMANCE SIGNATURE</div>
-            </div>
-            <div class="ac-sig-content">
-              <div class="ac-sig-strength">
-                <span class="ac-sig-icon">⚡</span>
-                <span class="ac-sig-strong">Quantitative Finance</span>
-              </div>
-              <div class="ac-sig-stats">
-                <span class="ac-sig-stat">
-                  <strong>6/6</strong> subjects above average
-                </span>
-                <span class="ac-sig-divider">|</span>
-                <span class="ac-sig-stat">
-                  <strong>+18pp</strong> average advantage
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- FORECAST TAB -->
-        <div class="ac-tab-panel" id="actab-forecast" role="tabpanel">
           <div class="ac-section-title">GPA TRAJECTORY</div>
           <div class="ac-trajectory-wrap">
             <svg class="ac-trajectory" viewBox="0 0 300 130" preserveAspectRatio="xMidYMid meet">
@@ -1319,7 +1104,6 @@
               <span class="ac-upcoming-cr">3 cr</span>
             </div>
           </div>
-        </div>
 
       </div><!-- /.ac-tab-content -->
 
