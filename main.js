@@ -360,38 +360,8 @@ function showToast(msg) {
   });
 })();
 
-/* ── GYROSCOPE PARALLAX ──────────────────────────────── */
-(function () {
-  const photo = document.getElementById('profile-photo');
-  if (!photo) return;
-
-  function onOrientation(e) {
-    if (e.gamma === null || e.beta === null) return;
-    /* gamma = left/right tilt, beta = front/back tilt
-       Normalise beta: typical phone held upright ≈ 45-70°   */
-    const x = Math.max(-28, Math.min(28, e.gamma));
-    const y = Math.max(-28, Math.min(28, e.beta - 50));
-    /* scale(1.05) gives overflow room; id-card clips via overflow:hidden */
-    photo.style.transform = `translate(${(x * 0.38).toFixed(2)}px, ${(y * 0.28).toFixed(2)}px) scale(1.05)`;
-  }
-
-  function startGyro() {
-    window.addEventListener('deviceorientation', onOrientation, { passive: true });
-  }
-
-  if (typeof DeviceOrientationEvent !== 'undefined' &&
-      typeof DeviceOrientationEvent.requestPermission === 'function') {
-    /* iOS 13+ — request on first user touch anywhere on the page */
-    document.addEventListener('touchstart', function ask() {
-      document.removeEventListener('touchstart', ask);
-      DeviceOrientationEvent.requestPermission()
-        .then(s => { if (s === 'granted') startGyro(); })
-        .catch(() => {});
-    }, { once: true, passive: true });
-  } else if (typeof DeviceOrientationEvent !== 'undefined') {
-    startGyro();
-  }
-})();
+/* ── PROFILE PHOTO STATIC (no parallax) ───────────────── */
+/* Photo remains completely static - no movement effects */
 
 /* ── BAR ANIMATION — re-animate fills on each sheet open ── */
 (function () {

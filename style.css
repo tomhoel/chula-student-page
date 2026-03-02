@@ -1534,11 +1534,6 @@ a.card {
 /* ══════════════════════════════════════════════════════
    GYROSCOPE PARALLAX — photo shifts on device tilt
 ══════════════════════════════════════════════════════ */
-.id-photo {
-  will-change: transform;
-  transition: transform 0.12s ease-out;
-}
-
 /* ══════════════════════════════════════════════════════
    3D CARD SHEET — INFO ABOVE & BELOW
 ══════════════════════════════════════════════════════ */
@@ -5233,14 +5228,18 @@ html[lang="en"] .ag-future-desc {
   to   { opacity: 1; transform: translateY(0); }
 }
 .ac-section-title {
-  font: 700 8.5px / 1 var(--f);
+  font: 600 10px / 1 var(--f);
   color: var(--t3);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+html[lang="th"] .ac-section-title {
+  font-family: var(--f-th);
 }
 
 .ac-section-title::after {
@@ -5277,13 +5276,16 @@ html[lang="en"] .ag-future-desc {
 }
 
 .ac-stat-val {
-  font: 700 18px / 1 var(--f);
-  color: var(--t1);
+  font: 700 15px / 1 var(--f);
+  color: var(--cu);
+  letter-spacing: -0.01em;
 }
 
 .ac-stat-lbl {
-  font: 500 10px / 1 var(--f-th);
+  font: 400 9px / 1 var(--f-th);
   color: var(--t3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 html[lang="en"] .ac-stat-lbl {
@@ -5333,9 +5335,10 @@ html[lang="en"] .ac-stat-lbl {
 }
 
 .ac-panel-key {
-  font: 500 12px / 1 var(--f-th);
+  font: 500 11px / 1 var(--f-th);
   color: var(--t3);
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
 html[lang="en"] .ac-panel-key {
@@ -5343,7 +5346,7 @@ html[lang="en"] .ac-panel-key {
 }
 
 .ac-panel-val {
-  font: 500 12px / 1.3 var(--f-th);
+  font: 500 11px / 1.3 var(--f-th);
   color: var(--t1);
   text-align: right;
 }
