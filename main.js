@@ -139,6 +139,7 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
   };
   const frontImg = document.getElementById('c3d-front-img');
   const backImg  = document.getElementById('c3d-back-img');
+  const fadeEl   = document.getElementById('card3d-fade');
 
   /* ── Generate Z-stacked slices for smooth 3D rounded corners ── */
   (function generateSlices() {
@@ -308,42 +309,50 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
   }, { passive: true });
 
   /* ── Switch between cards ── */
-  function switchCard(type) {
-    const c = CARDS[type];
-    if (!c || !frontImg || !backImg) return;
-    frontImg.src = c.front;
-    backImg.src  = c.back;
-    card.style.setProperty('--cw', c.w + 'px');
-    card.style.setProperty('--ch', c.h + 'px');
-    scene.style.setProperty('--cw', c.w + 'px');
-    scene.style.setProperty('--ch', c.h + 'px');
-    flipped = false;
-    stopIdle();
-    rotX = 8; rotY = 0;
-    render('transform 0.4s ease');
-    clearTimeout(idleTimerId);
-    idleTimerId = setTimeout(startIdleNow, 450);
-    /* Toggle info panels */
-    document.querySelectorAll('.idc-info').forEach(function (p) { p.hidden = true; });
-    var infoEl = document.getElementById('idc-info-' + type);
-    if (infoEl) infoEl.hidden = false;
-    /* Update picker active state */
-    document.querySelectorAll('.idc-pick-btn').forEach(function (b) {
-      b.classList.toggle('idc-pick-btn--active', b.dataset.card === type);
+  function switchCard(type, instant) {
+    var c = CARDS[type];
+    if (!c) return;
+    /* Update tab active state immediately */
+    document.querySelectorAll('.idc-tab').forEach(function (b) {
+      b.classList.toggle('idc-tab--active', b.dataset.card === type);
     });
+    var doSwitch = function () {
+      if (frontImg) frontImg.src = c.front;
+      if (backImg)  backImg.src  = c.back;
+      card.style.setProperty('--cw', c.w + 'px');
+      card.style.setProperty('--ch', c.h + 'px');
+      scene.style.setProperty('--cw', c.w + 'px');
+      scene.style.setProperty('--ch', c.h + 'px');
+      flipped = false; stopIdle();
+      rotX = 8; rotY = 0;
+      render('none');
+      /* Toggle info panels */
+      document.querySelectorAll('.idc-info').forEach(function (p) { p.hidden = true; });
+      var infoEl = document.getElementById('idc-info-' + type);
+      if (infoEl) infoEl.hidden = false;
+      /* Fade back in */
+      if (fadeEl) fadeEl.classList.remove('fading');
+      clearTimeout(idleTimerId);
+      idleTimerId = setTimeout(startIdleNow, 200);
+    };
+    if (instant || !fadeEl) {
+      doSwitch();
+    } else {
+      if (fadeEl) fadeEl.classList.add('fading');
+      clearTimeout(idleTimerId);
+      idleTimerId = setTimeout(doSwitch, 165);
+    }
   }
 
-  /* ── Picker click handlers ── */
-  document.querySelectorAll('.idc-pick-btn').forEach(function (btn) {
+  /* ── Tab click handlers ── */
+  document.querySelectorAll('.idc-tab').forEach(function (btn) {
     btn.addEventListener('click', function () { switchCard(btn.dataset.card); });
   });
 
   /* ── Sheet open / close ── */
-  new MutationObserver(() => {
+  new MutationObserver(function () {
     if (sheet.classList.contains('open')) {
-      /* Reset to student card on every open */
-      switchCard('student');
-      setTimeout(() => { if (!isDragging) startIdleNow(); }, 40);
+      switchCard('student', true);
     } else {
       clearTimeout(idleTimerId);
       stopIdle();

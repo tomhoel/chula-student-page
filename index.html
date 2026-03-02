@@ -1974,47 +1974,65 @@
     <div class="sheet-panel sheet-panel-card">
       <div class="sheet-handle"></div>
 
-      <!-- Header -->
-      <div class="idc-header">
-        <div class="idc-header-left">
-          <svg class="idc-header-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            <path d="M9 12l2 2 4-4" />
-          </svg>
-          <div>
-            <h2 class="idc-title">IDENTITY WALLET</h2>
-            <p class="idc-subtitle">Korawit Chamkrai · 2 documents</p>
+      <!-- Dark header band + tabs -->
+      <div class="idc-band">
+        <div class="idc-band-head">
+          <div class="idc-band-left">
+            <svg class="idc-band-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <path d="M9 12l2 2 4-4" />
+            </svg>
+            <div>
+              <h2 class="idc-band-title">IDENTITY WALLET</h2>
+              <p class="idc-band-sub">Korawit Chamkrai · 2 verified documents</p>
+            </div>
           </div>
+          <button class="idc-band-close sheet-close" data-close aria-label="Close">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
         </div>
-        <button class="sheet-close" data-close aria-label="Close">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        </button>
+
+        <div class="idc-tabs">
+          <button class="idc-tab idc-tab--active" data-card="student" type="button">
+            <div class="idc-tab-thumb idc-tab-thumb--portrait">
+              <img src="id_front.png" alt="">
+            </div>
+            <div class="idc-tab-info">
+              <span class="idc-tab-name">STUDENT ID</span>
+              <span class="idc-tab-org">Chulalongkorn Univ.</span>
+            </div>
+            <div class="idc-tab-badge">
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"
+                stroke-linecap="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+          </button>
+          <button class="idc-tab" data-card="national" type="button">
+            <div class="idc-tab-thumb idc-tab-thumb--landscape">
+              <img src="thaiid_front.png" alt="">
+            </div>
+            <div class="idc-tab-info">
+              <span class="idc-tab-name">NATIONAL ID</span>
+              <span class="idc-tab-org">ประเทศไทย · THA</span>
+            </div>
+            <div class="idc-tab-badge">
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"
+                stroke-linecap="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+          </button>
+        </div>
       </div>
 
-      <!-- Card picker -->
-      <div class="idc-picker">
-        <button class="idc-pick-btn idc-pick-btn--active" data-card="student" type="button">
-          <div class="idc-pick-thumb idc-pick-thumb--portrait">
-            <img src="id_front.png" alt="Student ID">
-          </div>
-          <span class="idc-pick-label">STUDENT ID</span>
-          <span class="idc-pick-org">Chulalongkorn Univ.</span>
-        </button>
-        <button class="idc-pick-btn" data-card="national" type="button">
-          <div class="idc-pick-thumb idc-pick-thumb--landscape">
-            <img src="thaiid_front.png" alt="National ID">
-          </div>
-          <span class="idc-pick-label">NATIONAL ID</span>
-          <span class="idc-pick-org">ประเทศไทย · Thailand</span>
-        </button>
-      </div>
-
-      <!-- Shared 3D scene -->
+      <!-- Shared 3D scene (wrapped for fade transition) -->
+      <div class="card3d-fade" id="card3d-fade">
       <div class="card3d-stage" id="card3d-stage">
         <div class="card3d-scene" id="card3d-scene">
           <div class="card3d" id="card3d">
@@ -2034,6 +2052,7 @@
           </div>
         </div>
       </div>
+      </div><!-- /card3d-fade -->
 
       <p class="card3d-hint">
         <span class="l-th">ลากเพื่อหมุน · ดับเบิลแทปเพื่อพลิก</span>
