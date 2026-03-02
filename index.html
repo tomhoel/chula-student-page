@@ -779,304 +779,258 @@
         <!-- ════════ PROGRESS TAB ════════ -->
         <div class="ac-tab-panel" id="actab-progress" role="tabpanel">
 
-          <!-- Quick Dashboard -->
-          <div class="acp-dash">
-            <div class="acp-dc">
-              <div class="acp-dc-val acp-dc-val--pink">3.78</div>
-              <div class="acp-dc-lbl">CUM GPA</div>
-              <div class="acp-dc-sub">&#8593; from 3.65</div>
-            </div>
-            <div class="acp-dc">
-              <div class="acp-dc-val">5th</div>
-              <div class="acp-dc-lbl">COHORT RANK</div>
-              <div class="acp-dc-sub">of 42 students</div>
-            </div>
-            <div class="acp-dc">
-              <div class="acp-dc-val acp-dc-val--gold">18</div>
-              <div class="acp-dc-lbl">CREDITS DONE</div>
-              <div class="acp-dc-sub">12 remaining</div>
-            </div>
-            <div class="acp-dc">
-              <div class="acp-dc-val acp-dc-val--green">33%</div>
-              <div class="acp-dc-lbl">DEGREE DONE</div>
-              <div class="acp-dc-sub">2 of 6 semesters</div>
-            </div>
-          </div>
-
-          <!-- GPA Trajectory Chart -->
-          <div class="aci-section-label">GPA TRAJECTORY &amp; PROJECTION</div>
-          <div class="acp-chart-wrap">
-            <svg class="acp-chart" viewBox="0 0 300 128" preserveAspectRatio="xMidYMid meet">
-              <defs>
-                <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#de5d8e" stop-opacity="0.22"/>
-                  <stop offset="100%" stop-color="#de5d8e" stop-opacity="0.02"/>
-                </linearGradient>
-                <linearGradient id="projAreaGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#b8852a" stop-opacity="0.12"/>
-                  <stop offset="100%" stop-color="#b8852a" stop-opacity="0.01"/>
-                </linearGradient>
-              </defs>
-              <!-- Grid lines -->
-              <line x1="32" y1="18" x2="285" y2="18" class="acp-grid"/>
-              <line x1="32" y1="43" x2="285" y2="43" class="acp-grid"/>
-              <line x1="32" y1="68" x2="285" y2="68" class="acp-grid"/>
-              <line x1="32" y1="93" x2="285" y2="93" class="acp-grid"/>
-              <!-- Honours threshold -->
-              <line x1="32" y1="56" x2="285" y2="56" class="acp-threshold"/>
-              <text x="168" y="53" class="acp-thresh-lbl">HONOURS MIN 3.50</text>
-              <!-- Y axis labels -->
-              <text x="4" y="21" class="acp-ylabel">4.00</text>
-              <text x="4" y="46" class="acp-ylabel">3.75</text>
-              <text x="4" y="71" class="acp-ylabel">3.50</text>
-              <text x="4" y="96" class="acp-ylabel">3.25</text>
-              <!-- Actual area fill -->
-              <polygon class="acp-area" points="32,43 82,30 82,93 32,93" style="fill:url(#areaGrad)"/>
-              <!-- Projected area -->
-              <polygon class="acp-proj-area" points="82,30 132,22 182,16 232,11 282,7 282,93 232,93 182,93 132,93 82,93" style="fill:url(#projAreaGrad)"/>
-              <!-- Confidence band -->
-              <polygon class="acp-band" points="82,26 132,18 182,12 232,7 282,3 282,13 232,17 182,22 132,28 82,36"/>
-              <!-- Actual solid line -->
-              <polyline class="acp-actual" points="32,43 82,30"/>
-              <!-- Projected dashed line -->
-              <polyline class="acp-projected" points="82,30 132,22 182,16 232,11 282,7"/>
-              <!-- X axis labels -->
-              <text x="32" y="112" class="acp-xlabel" text-anchor="middle">S1</text>
-              <text x="82" y="112" class="acp-xlabel" text-anchor="middle">S2</text>
-              <text x="132" y="112" class="acp-xlabel" text-anchor="middle">S3</text>
-              <text x="182" y="112" class="acp-xlabel" text-anchor="middle">S4</text>
-              <text x="232" y="112" class="acp-xlabel" text-anchor="middle">S5</text>
-              <text x="282" y="112" class="acp-xlabel" text-anchor="middle">S6</text>
-              <!-- Actual data dots -->
-              <circle class="acp-dot" cx="32" cy="43" r="4.5"/>
-              <circle class="acp-dot" cx="82" cy="30" r="4.5"/>
-              <!-- Projected dots (hollow) -->
-              <circle class="acp-dot-proj" cx="132" cy="22" r="3"/>
-              <circle class="acp-dot-proj" cx="182" cy="16" r="3"/>
-              <circle class="acp-dot-proj" cx="232" cy="11" r="3"/>
-              <circle class="acp-dot-proj" cx="282" cy="7" r="3"/>
-              <!-- Value labels on dots -->
-              <text x="32" y="39" class="acp-dot-lbl" text-anchor="middle">3.65</text>
-              <text x="82" y="26" class="acp-dot-lbl" text-anchor="middle">3.78</text>
-              <text x="282" y="3" class="acp-dot-lbl acp-dot-lbl--proj" text-anchor="middle">~3.92</text>
-            </svg>
-          </div>
-
-          <!-- Credit Progress -->
-          <div class="aci-section-label">CREDIT PROGRESS</div>
-          <div class="acp-credits-row">
-            <div class="acp-donut-wrap">
-              <svg class="acp-donut" viewBox="0 0 100 100">
-                <defs>
-                  <linearGradient id="donutGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#de5d8e"/>
-                    <stop offset="55%" stop-color="#ff8fab"/>
-                    <stop offset="100%" stop-color="#b8852a"/>
-                  </linearGradient>
-                </defs>
-                <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="11"/>
-                <circle class="acp-donut-ring" cx="50" cy="50" r="38" fill="none" stroke="url(#donutGrad)" stroke-width="11" stroke-linecap="round" stroke-dasharray="238.76" stroke-dashoffset="238.76"/>
-                <text x="50" y="46" text-anchor="middle" class="acp-donut-num">18</text>
-                <text x="50" y="57" text-anchor="middle" class="acp-donut-sub">/ 30 cr</text>
-              </svg>
-            </div>
-            <div class="acp-credit-legend">
-              <div class="acp-cl-row">
-                <span class="acp-cl-dot acp-cl-dot--pink"></span>
-                <div class="acp-cl-info">
-                  <span class="acp-cl-label"><span class="l-th">วิชาบังคับ</span><span class="l-en">Core Subjects</span></span>
-                  <div class="acp-cl-bar-wrap"><div class="acp-cl-bar acp-cl-bar--pink" style="--clw:66.7%"></div></div>
-                </div>
-                <span class="acp-cl-val">12/18</span>
+          <!-- ── Performance Snapshot ── -->
+          <div class="aci-section-label">ACADEMIC PERFORMANCE SNAPSHOT</div>
+          <div class="apr-snap">
+            <div class="apr-snap-row">
+              <div class="apr-snap-cell">
+                <span class="apr-snap-lbl">Cum. GPA</span>
+                <span class="apr-snap-val apr-snap-pink">3.780</span>
+                <span class="apr-snap-hint">+0.219 sem-on-sem</span>
               </div>
-              <div class="acp-cl-row">
-                <span class="acp-cl-dot acp-cl-dot--gold"></span>
-                <div class="acp-cl-info">
-                  <span class="acp-cl-label"><span class="l-th">วิชาเลือก</span><span class="l-en">Electives</span></span>
-                  <div class="acp-cl-bar-wrap"><div class="acp-cl-bar acp-cl-bar--gold" style="--clw:100%"></div></div>
-                </div>
-                <span class="acp-cl-val">6/6</span>
+              <div class="apr-snap-div"></div>
+              <div class="apr-snap-cell">
+                <span class="apr-snap-lbl">Class Rank</span>
+                <span class="apr-snap-val">5th / 42</span>
+                <span class="apr-snap-hint">↑ 2 from Sem I</span>
               </div>
-              <div class="acp-cl-row">
-                <span class="acp-cl-dot acp-cl-dot--gray"></span>
-                <div class="acp-cl-info">
-                  <span class="acp-cl-label"><span class="l-th">วิทยานิพนธ์</span><span class="l-en">Thesis</span></span>
-                  <div class="acp-cl-bar-wrap"><div class="acp-cl-bar acp-cl-bar--gray" style="--clw:0%"></div></div>
-                </div>
-                <span class="acp-cl-val">0/6</span>
+              <div class="apr-snap-div"></div>
+              <div class="apr-snap-cell">
+                <span class="apr-snap-lbl">Z-score</span>
+                <span class="apr-snap-val apr-snap-pink">+1.43σ</span>
+                <span class="apr-snap-hint">above cohort mean</span>
               </div>
-              <div class="acp-cl-total">
-                <span><span class="l-th">คงเหลือ</span><span class="l-en">Remaining</span></span>
-                <span class="acp-cl-remain">12 cr</span>
+            </div>
+            <div class="apr-snap-rule"></div>
+            <div class="apr-snap-row">
+              <div class="apr-snap-cell">
+                <span class="apr-snap-lbl">Credits</span>
+                <span class="apr-snap-val">18 / 30</span>
+                <span class="apr-snap-hint">12 remaining · Sem 2/6</span>
+              </div>
+              <div class="apr-snap-div"></div>
+              <div class="apr-snap-cell">
+                <span class="apr-snap-lbl">GPA Velocity</span>
+                <span class="apr-snap-val apr-snap-green">+0.219</span>
+                <span class="apr-snap-hint">per semester trend</span>
+              </div>
+              <div class="apr-snap-div"></div>
+              <div class="apr-snap-cell">
+                <span class="apr-snap-lbl">Hons. Prob.</span>
+                <span class="apr-snap-val apr-snap-green">94.7%</span>
+                <span class="apr-snap-hint">min. 3.50 required</span>
               </div>
             </div>
           </div>
 
-          <!-- Cohort Rank Visualization -->
-          <div class="aci-section-label">COHORT POSITIONING · 42 STUDENTS</div>
-          <div class="acp-rank-wrap">
-            <div class="acp-rank-grid" id="acpRankGrid"></div>
-            <div class="acp-rank-meta">
-              <span class="acp-rank-hero">5<sup>th</sup></span>
-              <span class="acp-rank-of">of 42</span>
-              <div class="acp-rank-trend">
-                <span class="acp-trend-up">&#8593; +2</span>
-                <span class="acp-trend-lbl">vs last semester</span>
-              </div>
+          <!-- ── Academic Transcript ── -->
+          <div class="aci-section-label">ACADEMIC TRANSCRIPT — 18 CR. EARNED</div>
+          <div class="apr-transcript">
+            <div class="apr-sem-hd">
+              <span class="apr-sem-title">SEMESTER I</span>
+              <span class="apr-sem-meta">9 credits · GPA 3.670 · Rank 8th/42</span>
+            </div>
+            <div class="apr-course-row">
+              <span class="apr-cr-code">FECO 6101</span>
+              <span class="apr-cr-name">Adv. Microeconomic Theory</span>
+              <span class="apr-cr-badge apr-cr-badge--core">Core</span>
+              <span class="apr-cr-cr">3</span>
+              <span class="apr-gr apr-gr--a">A</span>
+              <span class="apr-cr-pts">4.00</span>
+              <span class="apr-cr-rank">#4</span>
+            </div>
+            <div class="apr-course-row">
+              <span class="apr-cr-code">FECO 6102</span>
+              <span class="apr-cr-name">Macroeconomic Analysis I</span>
+              <span class="apr-cr-badge apr-cr-badge--core">Core</span>
+              <span class="apr-cr-cr">3</span>
+              <span class="apr-gr apr-gr--am">A−</span>
+              <span class="apr-cr-pts">3.70</span>
+              <span class="apr-cr-rank">#6</span>
+            </div>
+            <div class="apr-course-row">
+              <span class="apr-cr-code">FECO 6103</span>
+              <span class="apr-cr-name">Applied Econometrics I</span>
+              <span class="apr-cr-badge apr-cr-badge--core">Core</span>
+              <span class="apr-cr-cr">3</span>
+              <span class="apr-gr apr-gr--bp">B+</span>
+              <span class="apr-cr-pts">3.30</span>
+              <span class="apr-cr-rank">#14</span>
+            </div>
+            <div class="apr-sem-hd">
+              <span class="apr-sem-title">SEMESTER II</span>
+              <span class="apr-sem-meta">9 credits · GPA 3.889 · Rank 3rd/42</span>
+            </div>
+            <div class="apr-course-row">
+              <span class="apr-cr-code">FECO 6201</span>
+              <span class="apr-cr-name">Financial Economics Theory</span>
+              <span class="apr-cr-badge apr-cr-badge--core">Core</span>
+              <span class="apr-cr-cr">3</span>
+              <span class="apr-gr apr-gr--a">A</span>
+              <span class="apr-cr-pts">4.00</span>
+              <span class="apr-cr-rank">#3</span>
+            </div>
+            <div class="apr-course-row">
+              <span class="apr-cr-code">FECO 6202</span>
+              <span class="apr-cr-name">Monetary Theory & Policy</span>
+              <span class="apr-cr-badge apr-cr-badge--core">Core</span>
+              <span class="apr-cr-cr">3</span>
+              <span class="apr-gr apr-gr--a">A</span>
+              <span class="apr-cr-pts">4.00</span>
+              <span class="apr-cr-rank">#4</span>
+            </div>
+            <div class="apr-course-row">
+              <span class="apr-cr-code">FECO 6302</span>
+              <span class="apr-cr-name">Intl. Financial Markets</span>
+              <span class="apr-cr-badge apr-cr-badge--elec">Elec.</span>
+              <span class="apr-cr-cr">3</span>
+              <span class="apr-gr apr-gr--a">A</span>
+              <span class="apr-cr-pts">4.00</span>
+              <span class="apr-cr-rank apr-cr-rank--top">#1 ★</span>
+            </div>
+            <div class="apr-transcript-foot">
+              <span>CUMULATIVE</span>
+              <span>18 cr · GPA 3.780 · Rank 5th/42 · Honours eligible</span>
             </div>
           </div>
 
-          <!-- Grade Distribution -->
-          <div class="aci-section-label">GRADE DISTRIBUTION · COHORT 9562</div>
-          <div class="acp-grade-dist">
-            <div class="acp-gd-row" style="--gd-delay:0ms">
-              <span class="acp-gd-grade acp-gd-a">A</span>
-              <div class="acp-gd-track">
-                <div class="acp-gd-bar acp-gd-bar--a" style="--gd-w:85%"></div>
-                <span class="acp-gd-you">YOU</span>
-              </div>
-              <span class="acp-gd-count">12</span>
+          <!-- ── Cohort Statistical Analysis ── -->
+          <div class="aci-section-label">COHORT STATISTICAL ANALYSIS — N=42</div>
+          <div class="apr-stats">
+            <div class="apr-stats-row apr-stats-hd">
+              <span class="apr-stats-param">Parameter</span>
+              <span class="apr-stats-stu">Student</span>
+              <span class="apr-stats-coh">Cohort μ</span>
+              <span class="apr-stats-delta">Δ / σ</span>
             </div>
-            <div class="acp-gd-row" style="--gd-delay:60ms">
-              <span class="acp-gd-grade acp-gd-b-plus">B+</span>
-              <div class="acp-gd-track"><div class="acp-gd-bar acp-gd-bar--b-plus" style="--gd-w:64%"></div></div>
-              <span class="acp-gd-count">9</span>
+            <div class="apr-stats-row">
+              <span class="apr-stats-param">Cumulative GPA</span>
+              <span class="apr-stats-stu apr-stats-accent">3.780</span>
+              <span class="apr-stats-coh">3.212</span>
+              <span class="apr-stats-delta apr-stats-pos">+0.568</span>
             </div>
-            <div class="acp-gd-row" style="--gd-delay:120ms">
-              <span class="acp-gd-grade acp-gd-b">B</span>
-              <div class="acp-gd-track"><div class="acp-gd-bar acp-gd-bar--b" style="--gd-w:50%"></div></div>
-              <span class="acp-gd-count">7</span>
+            <div class="apr-stats-row">
+              <span class="apr-stats-param">Semester I GPA</span>
+              <span class="apr-stats-stu">3.670</span>
+              <span class="apr-stats-coh">3.089</span>
+              <span class="apr-stats-delta apr-stats-pos">+0.581</span>
             </div>
-            <div class="acp-gd-row" style="--gd-delay:180ms">
-              <span class="acp-gd-grade acp-gd-c-plus">C+</span>
-              <div class="acp-gd-track"><div class="acp-gd-bar acp-gd-bar--c-plus" style="--gd-w:36%"></div></div>
-              <span class="acp-gd-count">5</span>
+            <div class="apr-stats-row">
+              <span class="apr-stats-param">Semester II GPA</span>
+              <span class="apr-stats-stu">3.889</span>
+              <span class="apr-stats-coh">3.341</span>
+              <span class="apr-stats-delta apr-stats-pos">+0.548</span>
             </div>
-            <div class="acp-gd-row" style="--gd-delay:240ms">
-              <span class="acp-gd-grade acp-gd-c">C</span>
-              <div class="acp-gd-track"><div class="acp-gd-bar acp-gd-bar--c" style="--gd-w:21%"></div></div>
-              <span class="acp-gd-count">3</span>
+            <div class="apr-stats-row">
+              <span class="apr-stats-param">Std. deviations above μ</span>
+              <span class="apr-stats-stu apr-stats-accent">+1.43σ</span>
+              <span class="apr-stats-coh">σ = 0.398</span>
+              <span class="apr-stats-delta">—</span>
             </div>
-            <div class="acp-gd-row" style="--gd-delay:300ms">
-              <span class="acp-gd-grade acp-gd-other">D–F</span>
-              <div class="acp-gd-track"><div class="acp-gd-bar acp-gd-bar--other" style="--gd-w:14%"></div></div>
-              <span class="acp-gd-count">2</span>
+            <div class="apr-stats-row">
+              <span class="apr-stats-param">Percentile rank</span>
+              <span class="apr-stats-stu">88.1%</span>
+              <span class="apr-stats-coh">—</span>
+              <span class="apr-stats-delta apr-stats-pos">top 12%</span>
             </div>
-          </div>
-
-          <!-- Honours Threshold -->
-          <div class="aci-section-label">GPA vs HONOURS THRESHOLD</div>
-          <div class="acp-honours">
-            <div class="acp-honours-track">
-              <div class="acp-honours-fill" style="--hw:94.5%"></div>
-              <div class="acp-honours-marker" style="--hm:87.5%">
-                <div class="acp-hm-line"></div>
-                <span class="acp-hm-label">3.50 min</span>
-              </div>
+            <div class="apr-stats-row">
+              <span class="apr-stats-param">Grade A ratio</span>
+              <span class="apr-stats-stu">83.3%</span>
+              <span class="apr-stats-coh">28.6%</span>
+              <span class="apr-stats-delta apr-stats-pos">+2.9×</span>
             </div>
-            <div class="acp-honours-meta">
-              <div>
-                <span class="acp-honours-val">3.78</span>
-                <span class="acp-honours-sub">Current GPA</span>
-              </div>
-              <div class="acp-honours-gap-wrap">
-                <span class="acp-honours-gap">+0.28</span>
-                <span class="acp-honours-sub">above threshold</span>
-              </div>
+            <div class="apr-stats-row">
+              <span class="apr-stats-param">Weighted grade points</span>
+              <span class="apr-stats-stu">68.04</span>
+              <span class="apr-stats-coh">57.82</span>
+              <span class="apr-stats-delta apr-stats-pos">+10.22</span>
             </div>
           </div>
 
-          <!-- Grade Simulator -->
-          <div class="aci-section-label">GRADE SIMULATOR — SEM 3</div>
-          <div class="acp-whatif">
-            <div class="acp-wi-courses">
-              <div class="acp-wi-course">
-                <div class="acp-wi-info">
-                  <span class="acp-wi-code">ECON 6301</span>
-                  <span class="acp-wi-name">Fixed Income</span>
-                </div>
-                <select class="acp-wi-select" data-course="6301">
-                  <option value="4.0">A</option>
-                  <option value="3.7">A−</option>
-                  <option value="3.3" selected>B+</option>
-                  <option value="3.0">B</option>
-                  <option value="2.7">B−</option>
-                  <option value="2.3">C+</option>
-                  <option value="2.0">C</option>
-                </select>
-              </div>
-              <div class="acp-wi-course">
-                <div class="acp-wi-info">
-                  <span class="acp-wi-code">ECON 6302</span>
-                  <span class="acp-wi-name">Int'l Finance</span>
-                </div>
-                <select class="acp-wi-select" data-course="6302">
-                  <option value="4.0" selected>A</option>
-                  <option value="3.7">A−</option>
-                  <option value="3.3">B+</option>
-                  <option value="3.0">B</option>
-                  <option value="2.7">B−</option>
-                  <option value="2.3">C+</option>
-                  <option value="2.0">C</option>
-                </select>
-              </div>
-              <div class="acp-wi-course">
-                <div class="acp-wi-info">
-                  <span class="acp-wi-code">ECON 6303</span>
-                  <span class="acp-wi-name">Fin. Modelling</span>
-                </div>
-                <select class="acp-wi-select" data-course="6303">
-                  <option value="4.0" selected>A</option>
-                  <option value="3.7">A−</option>
-                  <option value="3.3">B+</option>
-                  <option value="3.0">B</option>
-                  <option value="2.7">B−</option>
-                  <option value="2.3">C+</option>
-                  <option value="2.0">C</option>
-                </select>
-              </div>
+          <!-- ── Program Requirements ── -->
+          <div class="aci-section-label">PROGRAM REQUIREMENTS — M.Sc. FIN. ECON.</div>
+          <div class="apr-req">
+            <div class="apr-req-row apr-req-done">
+              <span class="apr-req-ico">✓</span>
+              <span class="apr-req-name">Core subjects (18 cr)</span>
+              <span class="apr-req-status">Complete</span>
+              <span class="apr-req-detail">9/9 courses passed</span>
             </div>
-            <div class="acp-wi-result">
-              <div class="acp-wi-result-lbl">PROJECTED GPA</div>
-              <div class="acp-wi-result-val" id="acpWiGpa">3.86</div>
-              <div class="acp-wi-result-range">3.82 – 3.90</div>
+            <div class="apr-req-row apr-req-done">
+              <span class="apr-req-ico">✓</span>
+              <span class="apr-req-name">Qualifying examination</span>
+              <span class="apr-req-status">Passed</span>
+              <span class="apr-req-detail">87/100 · Oct 2025</span>
+            </div>
+            <div class="apr-req-row apr-req-done">
+              <span class="apr-req-ico">✓</span>
+              <span class="apr-req-name">Thesis supervisor</span>
+              <span class="apr-req-status">Assigned</span>
+              <span class="apr-req-detail">Asst. Prof. Karnchana V.</span>
+            </div>
+            <div class="apr-req-row apr-req-active">
+              <span class="apr-req-ico">◉</span>
+              <span class="apr-req-name">Elective subjects (6 cr)</span>
+              <span class="apr-req-status apr-req-status--active">In Progress</span>
+              <span class="apr-req-detail">3/6 cr · 1 remaining</span>
+            </div>
+            <div class="apr-req-row apr-req-active">
+              <span class="apr-req-ico">◉</span>
+              <span class="apr-req-name">Research proposal</span>
+              <span class="apr-req-status apr-req-status--active">Under Review</span>
+              <span class="apr-req-detail">Submitted 12 Nov 2025</span>
+            </div>
+            <div class="apr-req-row apr-req-pending">
+              <span class="apr-req-ico">○</span>
+              <span class="apr-req-name">Thesis (6 cr)</span>
+              <span class="apr-req-status apr-req-status--pending">Pending</span>
+              <span class="apr-req-detail">Due Nov 2026</span>
+            </div>
+            <div class="apr-req-row apr-req-pending">
+              <span class="apr-req-ico">○</span>
+              <span class="apr-req-name">Final oral defense</span>
+              <span class="apr-req-status apr-req-status--pending">Pending</span>
+              <span class="apr-req-detail">Target Feb 2027</span>
+            </div>
+            <div class="apr-req-row apr-req-pending">
+              <span class="apr-req-ico">○</span>
+              <span class="apr-req-name">Degree conferral</span>
+              <span class="apr-req-status apr-req-status--pending">Scheduled</span>
+              <span class="apr-req-detail">May 2027</span>
             </div>
           </div>
 
-          <!-- Forecast Cards -->
-          <div class="aci-section-label">ACADEMIC FORECAST</div>
-          <div class="acp-forecast">
-            <div class="acp-fc-card">
-              <div class="acp-fc-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <div class="acp-fc-lbl">HONOURS STATUS</div>
-              <div class="acp-fc-val acp-fc-val--green">ON TRACK</div>
-              <div class="acp-fc-sub">+0.28 above min</div>
+          <!-- ── Outcome Projections ── -->
+          <div class="aci-section-label">OUTCOME PROJECTIONS — 12 CR. REMAINING</div>
+          <div class="apr-proj">
+            <div class="apr-proj-hd">
+              <span>Scenario</span>
+              <span>Threshold</span>
+              <span>Probability</span>
             </div>
-            <div class="acp-fc-card">
-              <div class="acp-fc-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-              </div>
-              <div class="acp-fc-lbl">PROJECTED GPA</div>
-              <div class="acp-fc-val">3.88–3.92</div>
-              <div class="acp-fc-sub">Based on trajectory</div>
+            <div class="apr-proj-row">
+              <span class="apr-proj-scenario">First-class Honours</span>
+              <span class="apr-proj-thresh">≥ 3.50</span>
+              <span class="apr-proj-prob apr-proj-high">97.3%</span>
             </div>
-            <div class="acp-fc-card">
-              <div class="acp-fc-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-              </div>
-              <div class="acp-fc-lbl">GRADUATION</div>
-              <div class="acp-fc-val">May 2027</div>
-              <div class="acp-fc-sub">On schedule</div>
+            <div class="apr-proj-row">
+              <span class="apr-proj-scenario">Graduate above 3.80</span>
+              <span class="apr-proj-thresh">≥ 3.80</span>
+              <span class="apr-proj-prob apr-proj-high">71.2%</span>
             </div>
-            <div class="acp-fc-card">
-              <div class="acp-fc-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              </div>
-              <div class="acp-fc-lbl">RISK FLAGS</div>
-              <div class="acp-fc-val acp-fc-val--green">NONE</div>
-              <div class="acp-fc-sub">All subjects above avg</div>
+            <div class="apr-proj-row">
+              <span class="apr-proj-scenario">Graduate above 3.90</span>
+              <span class="apr-proj-thresh">≥ 3.90</span>
+              <span class="apr-proj-prob apr-proj-mid">38.5%</span>
+            </div>
+            <div class="apr-proj-row">
+              <span class="apr-proj-scenario">On-time graduation</span>
+              <span class="apr-proj-thresh">—</span>
+              <span class="apr-proj-prob apr-proj-high">99.1%</span>
+            </div>
+            <div class="apr-proj-foot">
+              <span class="apr-proj-range-lbl">Projected final GPA range (95% CI)</span>
+              <span class="apr-proj-range-val">3.81 – 3.96</span>
             </div>
           </div>
 
