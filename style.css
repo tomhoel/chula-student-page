@@ -253,6 +253,8 @@ html[lang="en"] .lang-stable>.l-th {
   border-right: 1px solid rgba(0, 0, 0, 0.08);
   position: relative;
   overflow: hidden;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
 }
 
 /* ── Holographic photo effect ───────────────────────── */
@@ -264,6 +266,7 @@ html[lang="en"] .lang-stable>.l-th {
   left: -100%;
   width: 55%;
   height: 140%;
+  opacity: 0;
   background: linear-gradient(
     to right,
     transparent                   0%,
@@ -472,10 +475,10 @@ html[lang="th"] .verified-ribbon-bd {
   color: #22c55e;
 }
 
-/* Two-column field row (DOB + Blood side by side) */
+/* Two-column field row (DOB + Nationality side by side) */
 .id-row2 {
   display: flex;
-  gap: 10px;
+  gap: 22px;
 }
 
 .id-row2 .id-field {
@@ -9179,4 +9182,314 @@ html[lang="en"] .ac-panel-val {
   color: var(--cu);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════════════════
+   SPR — Athletic Panel Data-Table Component System
+   Mirrors apr-* design pattern for sport stat tables
+══════════════════════════════════════════════════════ */
+
+/* ── Card container ──────────────────────────────────── */
+.spr-card {
+  margin: 0 18px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.spr-card-hd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 12px;
+  background: rgba(0, 0, 0, 0.025);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  gap: 8px;
+}
+
+.spr-card-title {
+  font: 600 8.5px / 1 var(--f);
+  letter-spacing: 0.09em;
+  color: var(--t2);
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.spr-card-meta {
+  font: 400 8.5px / 1 var(--f);
+  color: var(--t3);
+  text-align: right;
+}
+
+/* ── Snapshot 3-across grid ──────────────────────────── */
+.spr-snap-row {
+  display: flex;
+  align-items: stretch;
+}
+
+.spr-snap-cell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 9px 11px 8px;
+}
+
+.spr-snap-div {
+  width: 1px;
+  background: rgba(0, 0, 0, 0.06);
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+.spr-snap-rule {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.spr-snap-lbl {
+  font: 400 8px / 1 var(--f);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--t3);
+}
+
+.spr-snap-val {
+  font: 500 12.5px / 1.2 var(--f);
+  color: var(--t1);
+  font-variant-numeric: tabular-nums;
+}
+
+.spr-snap-den {
+  font-size: 0.72em;
+  font-weight: 400;
+  color: var(--t3);
+}
+
+.spr-snap-sub {
+  font: 400 8.5px / 1.3 var(--f);
+  color: var(--t3);
+}
+
+/* ── Table header row ────────────────────────────────── */
+.spr-tbl-hd {
+  display: flex;
+  align-items: center;
+  padding: 4px 12px 3px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(0, 0, 0, 0.018);
+  gap: 4px;
+}
+
+.spr-th {
+  flex: 1;
+  font: 500 7.5px / 1 var(--f);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--t3);
+}
+
+.spr-th--num {
+  flex: 1;
+  text-align: right;
+  min-width: 38px;
+  max-width: 52px;
+}
+
+.spr-th--tag {
+  width: 46px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+/* ── Data rows ───────────────────────────────────────── */
+.spr-tbl-row {
+  display: flex;
+  align-items: center;
+  padding: 5.5px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  gap: 4px;
+}
+
+.spr-tbl-row:last-child,
+.spr-tbl-row--last {
+  border-bottom: none;
+}
+
+.spr-td {
+  flex: 1;
+  font: 400 10px / 1.35 var(--f);
+  color: var(--t1);
+}
+
+.spr-td-num {
+  flex: 1;
+  font: 400 10.5px / 1 var(--f);
+  color: var(--t1);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  min-width: 38px;
+  max-width: 52px;
+  white-space: nowrap;
+}
+
+.spr-td-tag {
+  width: 46px;
+  flex-shrink: 0;
+  text-align: right;
+  font: 500 7.5px / 1 var(--f);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+/* ── Accent colours ──────────────────────────────────── */
+.spr-pink   { color: var(--cu); }
+.spr-blue   { color: #0284c7; }
+.spr-green  { color: #16a34a; }
+.spr-gold   { color: #b8852a; }
+.spr-silver { color: #5b6a82; }
+
+/* ── Tier / status badge fills ───────────────────────── */
+.spr-tag-elite {
+  color: var(--cu);
+  background: rgba(222, 93, 142, 0.09);
+}
+
+.spr-tag-high {
+  color: #1c63c2;
+  background: rgba(28, 99, 194, 0.09);
+}
+
+.spr-tag-good {
+  color: #16a34a;
+  background: rgba(22, 163, 74, 0.09);
+}
+
+/* ── Match record rows ───────────────────────────────── */
+.spr-match-row {
+  display: flex;
+  align-items: center;
+  padding: 5.5px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  gap: 7px;
+}
+
+.spr-match-row:last-child,
+.spr-match-row--last {
+  border-bottom: none;
+}
+
+.spr-match-badge {
+  width: 46px;
+  flex-shrink: 0;
+  font: 600 8px / 1 var(--f);
+  padding: 3px 5px;
+  border-radius: 3px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.spr-match-w { background: rgba(22, 163, 74, 0.10);  color: #15803d; }
+.spr-match-d { background: rgba(59, 130, 246, 0.09); color: #1d4ed8; }
+.spr-match-l { background: rgba(239, 68,  68, 0.09); color: #b91c1c; }
+
+.spr-match-opp {
+  flex: 3;
+  font: 400 10px / 1.3 var(--f);
+  color: var(--t1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spr-match-comp {
+  flex: 2;
+  font: 400 8.5px / 1.3 var(--f);
+  color: var(--t3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spr-match-contrib {
+  flex: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  justify-content: flex-end;
+}
+
+.spr-mc-item {
+  font: 400 8px / 1 var(--f);
+  color: var(--t3);
+  white-space: nowrap;
+}
+
+.spr-mc-motm {
+  font: 600 7.5px / 1 var(--f);
+  color: var(--cu);
+  background: rgba(222, 93, 142, 0.09);
+  padding: 2px 4px;
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+}
+
+/* ── Honours / Award ledger rows ─────────────────────── */
+.spr-award-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 7px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.spr-award-row:last-child,
+.spr-award-row--last {
+  border-bottom: none;
+}
+
+.spr-award-ico {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 8px / 1 var(--f);
+  margin-top: 1px;
+}
+
+.spr-award-gold   { background: rgba(184, 133, 42, 0.12); color: #b8852a; }
+.spr-award-silver { background: rgba(91, 106, 130, 0.10); color: #5b6a82; }
+.spr-award-pink   { background: rgba(222, 93, 142, 0.10); color: var(--cu); }
+
+.spr-award-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.spr-award-name {
+  font: 500 10px / 1.3 var(--f);
+  color: var(--t1);
+}
+
+.spr-award-meta {
+  font: 400 8.5px / 1.3 var(--f);
+  color: var(--t3);
+}
+
+.spr-award-yr {
+  flex-shrink: 0;
+  font: 400 8.5px / 1 var(--f);
+  color: var(--t3);
+  font-variant-numeric: tabular-nums;
+  margin-top: 2px;
 }
