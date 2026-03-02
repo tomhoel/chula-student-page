@@ -619,7 +619,7 @@ function showToast(msg) {
       t.classList.remove('sp-tab--active');
       t.setAttribute('aria-selected', 'false');
     });
-    sheet.querySelectorAll('.sp-tab-content').forEach(function (c) {
+    sheet.querySelectorAll('.sp-tab-panel').forEach(function (c) {
       c.classList.remove('active');
     });
 

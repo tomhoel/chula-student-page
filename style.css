@@ -2402,7 +2402,7 @@ html[lang="en"] .card3d-access-item {
   to   { transform: translateX(-50%); }
 }
 
-/* ── Athlete Banner (mirrors ac-student-banner) ── */
+/* ── Athlete Banner (edge-to-edge, mirrors ac-student-banner) ── */
 .sp-athlete-banner {
   display: flex;
   align-items: center;
@@ -2565,18 +2565,27 @@ html[lang="en"] .card3d-access-item {
   border-bottom-color: var(--cu);
 }
 
-/* ── Tab content panels ── */
+/* ── Tab scroll wrapper (single child of flex-column panel) ── */
 .sp-tab-content {
-  display: none;
-  padding: 8px 18px;
+  overflow-y: auto;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
 }
 
-.sp-tab-content.active {
+/* ── Individual tab panels (shown/hidden) ── */
+.sp-tab-panel {
+  display: none;
+  padding: 4px 18px max(env(safe-area-inset-bottom), 36px);
+}
+
+.sp-tab-panel.active {
   display: block;
-  flex: 1;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: max(env(safe-area-inset-bottom), 36px);
+  animation: spPanelIn 0.25s ease;
+}
+
+@keyframes spPanelIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Player Card (photo 1/3 | info 2/3) ── */
@@ -3571,6 +3580,380 @@ html[lang="en"] .sp-award-name {
 .sp-award-meta {
   font: 400 10px / 1 var(--f);
   color: var(--t3);
+}
+
+/* ── Dual-Sport Index grid ── */
+.sp-dsi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.sp-dsi-cell {
+  background: rgba(0,0,0,0.02);
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sp-dsi-cell--composite {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(222,93,142,0.04);
+  border-color: rgba(222,93,142,0.15);
+}
+
+.sp-dsi-key {
+  font: 600 7.5px / 1 var(--f);
+  color: var(--t3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sp-dsi-val {
+  font: 700 18px / 1 var(--f);
+  color: var(--t1);
+  letter-spacing: -0.02em;
+}
+
+.sp-dsi-val--pink { color: var(--cu); }
+
+.sp-dsi-sub {
+  font: 500 8px / 1 var(--f);
+  color: var(--t3);
+}
+
+.sp-dsi-bar-track {
+  height: 3px;
+  background: rgba(0,0,0,0.07);
+  border-radius: 999px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+.sp-dsi-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--cu);
+  width: var(--dw, 0%);
+}
+
+/* ── CUSAT Competitive Standing grid ── */
+.sp-standing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.sp-standing-cell {
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: rgba(0,0,0,0.01);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sp-standing-cell--gold {
+  background: rgba(184,133,42,0.05);
+  border-color: rgba(184,133,42,0.18);
+}
+
+.sp-standing-cell--pink {
+  background: rgba(222,93,142,0.04);
+  border-color: rgba(222,93,142,0.15);
+}
+
+.sp-standing-key {
+  font: 600 7.5px / 1 var(--f);
+  color: var(--t3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sp-standing-val {
+  font: 800 22px / 1 var(--f);
+  color: var(--t1);
+  letter-spacing: -0.03em;
+}
+
+.sp-standing-val--gold { color: #b8852a; }
+.sp-standing-val--pink { color: var(--cu); }
+
+.sp-standing-den {
+  font: 600 10px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: -0.01em;
+}
+
+.sp-standing-sub {
+  font: 500 8px / 1 var(--f);
+  color: var(--t3);
+  margin-top: 2px;
+}
+
+/* ── Tactical comparison bars (Football) ── */
+.sp-tac-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.sp-tac-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sp-tac-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.sp-tac-name {
+  font: 600 9.5px / 1 var(--f);
+  color: var(--t2);
+}
+
+.sp-tac-vals {
+  display: flex;
+  gap: 6px;
+  font: 600 9px / 1 var(--f);
+}
+
+.sp-tac-you { color: var(--cu); }
+.sp-tac-avg { color: var(--t3); }
+
+.sp-tac-track {
+  height: 5px;
+  background: rgba(0,0,0,0.06);
+  border-radius: 999px;
+  position: relative;
+  overflow: visible;
+}
+
+.sp-tac-bar-avg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.14);
+  width: var(--avg-w, 0%);
+}
+
+.sp-tac-bar-you {
+  position: absolute;
+  left: 0;
+  top: -1px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--cu);
+  width: var(--you-w, 0%);
+}
+
+/* ── Match Intelligence Grid ── */
+.sp-intel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.sp-intel-cell {
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  padding: 8px 10px;
+  background: rgba(0,0,0,0.01);
+}
+
+.sp-intel-key {
+  font: 600 7.5px / 1 var(--f);
+  color: var(--t3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.sp-intel-val {
+  font: 700 17px / 1 var(--f);
+  color: var(--t1);
+  letter-spacing: -0.02em;
+}
+
+.sp-intel-unit {
+  font: 500 9px / 1 var(--f);
+  color: var(--t3);
+  margin-left: 2px;
+}
+
+/* ── Conditioning Metrics (Swimming) ── */
+.sp-cond-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.sp-cond-cell {
+  border: 1px solid rgba(14,165,233,0.12);
+  border-radius: 10px;
+  padding: 8px 10px;
+  background: rgba(14,165,233,0.03);
+}
+
+.sp-cond-key {
+  font: 600 7.5px / 1 var(--f);
+  color: var(--t3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.sp-cond-val {
+  font: 700 16px / 1 var(--f);
+  color: #0284c7;
+  letter-spacing: -0.02em;
+}
+
+.sp-cond-sub {
+  font: 400 8.5px / 1.3 var(--f);
+  color: var(--t3);
+  display: block;
+  margin-top: 2px;
+}
+
+/* ── 50m Split Analysis (Swimming) ── */
+.sp-split-display {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.sp-split-phase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.sp-split-phase-head {
+  width: 100%;
+  text-align: center;
+}
+
+.sp-split-phase-lbl {
+  font: 600 7px / 1 var(--f);
+  color: var(--t3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.sp-split-phase-dist {
+  font: 500 8px / 1 var(--f);
+  color: var(--t3);
+}
+
+.sp-split-bar-wrap {
+  width: 20px;
+  height: 56px;
+  background: rgba(14,165,233,0.08);
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.sp-split-bar {
+  width: 100%;
+  border-radius: 4px;
+  background: linear-gradient(to top, #0ea5e9, #38bdf8);
+  height: var(--sh, 0%);
+}
+
+.sp-split-phase-foot {
+  text-align: center;
+}
+
+.sp-split-time {
+  font: 700 11px / 1 var(--f);
+  color: var(--t1);
+  letter-spacing: -0.01em;
+  display: block;
+}
+
+.sp-split-tag {
+  display: inline-block;
+  margin-top: 3px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font: 600 7px / 1 var(--f);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sp-split-tag--best {
+  background: rgba(184,133,42,0.12);
+  color: #b8852a;
+  border: 1px solid rgba(184,133,42,0.22);
+}
+
+.sp-split-tag--ok {
+  background: rgba(14,165,233,0.10);
+  color: #0284c7;
+  border: 1px solid rgba(14,165,233,0.20);
+}
+
+.sp-split-tag--fade {
+  background: rgba(107,114,128,0.08);
+  color: #6b7280;
+  border: 1px solid rgba(107,114,128,0.15);
+}
+
+/* ── Section title note (inline tag) ── */
+.sp-section-note {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(0,0,0,0.05);
+  font: 600 7.5px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.04em;
+  text-transform: none;
+  vertical-align: middle;
+}
+
+/* ── Value color helpers ── */
+.sp-val-green { color: #16a34a; }
+.sp-val-gold  { color: #b8852a; }
+
+/* ── MOTM badge on match contrib ── */
+.sp-match-contrib-item--motm {
+  background: rgba(184,133,42,0.12);
+  color: #b8852a;
+  border: 1px solid rgba(184,133,42,0.22);
+  border-radius: 4px;
+  padding: 2px 5px;
+  font: 700 7.5px / 1 var(--f);
+  letter-spacing: 0.04em;
 }
 
 /* ══════════════════════════════════════════════════════
