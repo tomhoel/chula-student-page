@@ -1224,6 +1224,97 @@
             <span class="ac-cp-val">18 / 30 completed · 12 remaining · Est. 4 semesters</span>
           </div>
 
+          <!-- What If Scenario -->
+          <div class="ac-section-title">WHAT IF SCENARIO</div>
+          <div class="ac-whatif-container">
+            <div class="ac-whatif-intro">
+              "If I get these grades next semester:"
+            </div>
+            
+            <div class="ac-whatif-courses">
+              <div class="ac-whatif-course">
+                <span class="ac-whatif-code">ECON 6301</span>
+                <span class="ac-whatif-name">Fixed Income</span>
+                <select class="ac-whatif-select" data-course="6301">
+                  <option value="4.0">A</option>
+                  <option value="3.7">A-</option>
+                  <option value="3.3" selected>B+</option>
+                  <option value="3.0">B</option>
+                  <option value="2.7">B-</option>
+                  <option value="2.3">C+</option>
+                  <option value="2.0">C</option>
+                </select>
+              </div>
+              
+              <div class="ac-whatif-course">
+                <span class="ac-whatif-code">ECON 6302</span>
+                <span class="ac-whatif-name">Int'l Finance</span>
+                <select class="ac-whatif-select" data-course="6302">
+                  <option value="4.0" selected>A</option>
+                  <option value="3.7">A-</option>
+                  <option value="3.3">B+</option>
+                  <option value="3.0">B</option>
+                  <option value="2.7">B-</option>
+                  <option value="2.3">C+</option>
+                  <option value="2.0">C</option>
+                </select>
+              </div>
+              
+              <div class="ac-whatif-course">
+                <span class="ac-whatif-code">ECON 6303</span>
+                <span class="ac-whatif-name">Risk Management</span>
+                <select class="ac-whatif-select" data-course="6303">
+                  <option value="4.0" selected>A</option>
+                  <option value="3.7">A-</option>
+                  <option value="3.3">B+</option>
+                  <option value="3.0">B</option>
+                  <option value="2.7">B-</option>
+                  <option value="2.3">C+</option>
+                  <option value="2.0">C</option>
+                </select>
+              </div>
+              
+              <div class="ac-whatif-course">
+                <span class="ac-whatif-code">ECON 6304</span>
+                <span class="ac-whatif-name">FinTech</span>
+                <select class="ac-whatif-select" data-course="6304">
+                  <option value="4.0">A</option>
+                  <option value="3.7" selected>A-</option>
+                  <option value="3.3">B+</option>
+                  <option value="3.0">B</option>
+                  <option value="2.7">B-</option>
+                  <option value="2.3">C+</option>
+                  <option value="2.0">C</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="ac-whatif-results">
+              <div class="ac-whatif-result-card">
+                <div class="ac-whatif-result-label">PROJECTED GPA</div>
+                <div class="ac-whatif-result-value" id="acWhatIfGpa">3.86</div>
+                <div class="ac-whatif-result-range">3.82 – 3.90</div>
+              </div>
+              
+              <div class="ac-whatif-probability">
+                <div class="ac-whatif-prob-row">
+                  <span class="ac-whatif-prob-label">Honours</span>
+                  <div class="ac-whatif-prob-bar">
+                    <div class="ac-whatif-prob-fill" style="--prob:95%"></div>
+                  </div>
+                  <span class="ac-whatif-prob-val">95%</span>
+                </div>
+                <div class="ac-whatif-prob-row">
+                  <span class="ac-whatif-prob-label">High Distinction</span>
+                  <div class="ac-whatif-prob-bar">
+                    <div class="ac-whatif-prob-fill" style="--prob:65%"></div>
+                  </div>
+                  <span class="ac-whatif-prob-val">65%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="ac-section-title" style="margin-top:16px">UPCOMING COURSES — SEM 3 (PLANNED)</div>
           <div class="ac-upcoming-list">
             <div class="ac-upcoming-row">
@@ -2719,6 +2810,58 @@
   </div>
 
   <script src="main.js"></script>
+  <script>
+    // What If Scenario Calculator
+    (function() {
+      const selects = document.querySelectorAll('.ac-whatif-select');
+      const gpaDisplay = document.getElementById('acWhatIfGpa');
+      
+      if (!selects.length || !gpaDisplay) return;
+      
+      function calculateGPA() {
+        let totalPoints = 0;
+        let count = 0;
+        
+        selects.forEach(select => {
+          const value = parseFloat(select.value);
+          if (!isNaN(value)) {
+            totalPoints += value;
+            count++;
+          }
+        });
+        
+        const currentGPA = 3.78;
+        const currentCredits = 18;
+        const newCredits = 6; // 4 courses x 1.5 credits each (assuming)
+        
+        const avgNewPoints = count > 0 ? totalPoints / count : 3.3;
+        const projectedGPA = ((currentGPA * currentCredits) + (avgNewPoints * newCredits)) / (currentCredits + newCredits);
+        
+        gpaDisplay.textContent = projectedGPA.toFixed(2);
+        
+        // Update probability bars
+        const probFills = document.querySelectorAll('.ac-whatif-prob-fill');
+        if (probFills.length >= 2) {
+          // Honours probability (3.50+)
+          const honoursProb = Math.min(95, Math.round((projectedGPA - 3.30) / (3.70 - 3.30) * 100));
+          probFills[0].style.setProperty('--prob', Math.max(50, honoursProb) + '%');
+          probFills[0].parentElement.nextElementSibling.textContent = Math.max(50, honoursProb) + '%';
+          
+          // High Distinction probability (3.70+)
+          const hdProb = Math.min(85, Math.round((projectedGPA - 3.50) / (3.90 - 3.50) * 100));
+          probFills[1].style.setProperty('--prob', Math.max(20, hdProb) + '%');
+          probFills[1].parentElement.nextElementSibling.textContent = Math.max(20, hdProb) + '%';
+        }
+      }
+      
+      selects.forEach(select => {
+        select.addEventListener('change', calculateGPA);
+      });
+      
+      // Initial calculation
+      calculateGPA();
+    })();
+  </script>
 </body>
 
 </html>
