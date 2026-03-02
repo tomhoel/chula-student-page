@@ -391,6 +391,22 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
 
       clearTimeout(idleTimerId);
       idleTimerId = setTimeout(startIdleNow, 200);
+
+      /* Animate tab-specific cards */
+      if (type === 'national') {
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            var fill = document.querySelector('.idw-ncard-v-fill');
+            if (fill) fill.style.width = '45%'; /* ~5 of 11 years remaining */
+          });
+        });
+      } else if (type === 'student') {
+        if (window.idwAnimateAcard) window.idwAnimateAcard();
+      } else {
+        /* reset national card bar when leaving */
+        var fill = document.querySelector('.idw-ncard-v-fill');
+        if (fill) fill.style.width = '0%';
+      }
     }
 
     if (instant || !fadeEl) {
@@ -447,13 +463,83 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
       var zone = document.getElementById('idc-card-zone');
       if (zone) zone.classList.remove('morphed');
       switchCard('student', true);
+      idwAnimateAcard();
     } else {
       clearTimeout(idleTimerId);
       clearTimeout(switchTimer);
       stopIdle();
       cancelAnimationFrame(rafId);
+      idwResetAcard();
+      var fill = document.querySelector('.idw-ncard-v-fill');
+      if (fill) fill.style.width = '0%';
     }
   }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
+})();
+
+/* ── IDENTITY WALLET — Academic card animations ───────── */
+(function () {
+  var GPA      = 3.78;
+  var GPA_MAX  = 4.00;
+  var CREDITS  = 18;
+  var CR_MAX   = 30;
+  var CIRC     = 2 * Math.PI * 28; // r=28
+
+  function idwAnimateAcard() {
+    window.idwAnimateAcard();
+  }
+  function idwResetAcard() {
+    window.idwResetAcard();
+  }
+
+  window.idwAnimateAcard = function () {
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        // GPA arc
+        var arc = document.querySelector('.idw-gpa-arc');
+        if (arc) {
+          var pct = GPA / GPA_MAX;
+          arc.style.strokeDashoffset = (CIRC * (1 - pct)).toFixed(2);
+        }
+
+        // Credits bar
+        var fill   = document.getElementById('idw-cred-fill');
+        var done   = document.getElementById('idw-cred-done');
+        var pctEl  = document.getElementById('idw-cred-pct');
+        var track  = fill && fill.parentElement;
+        var pctVal = Math.round((CREDITS / CR_MAX) * 100);
+        if (fill) { fill.style.width = pctVal + '%'; }
+        if (track) { track.classList.add('idw-anim'); }
+
+        // Count-up for credits number
+        if (done) {
+          var start = 0;
+          var dur   = 900;
+          var t0    = performance.now();
+          function tick(now) {
+            var p = Math.min((now - t0) / dur, 1);
+            var ease = 1 - Math.pow(1 - p, 3);
+            done.textContent = Math.round(ease * CREDITS);
+            if (pctEl) pctEl.textContent = Math.round(ease * pctVal) + '%';
+            if (p < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        }
+      });
+    });
+  };
+
+  window.idwResetAcard = function () {
+    var arc = document.querySelector('.idw-gpa-arc');
+    if (arc) arc.style.strokeDashoffset = CIRC;
+    var fill  = document.getElementById('idw-cred-fill');
+    var done  = document.getElementById('idw-cred-done');
+    var pctEl = document.getElementById('idw-cred-pct');
+    var track = fill && fill.parentElement;
+    if (fill)  fill.style.width = '0%';
+    if (track) track.classList.remove('idw-anim');
+    if (done)  done.textContent = '0';
+    if (pctEl) pctEl.textContent = '0%';
+  };
 })();
 
 /* ── TOAST ───────────────────────────────────────────── */

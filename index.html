@@ -2100,27 +2100,90 @@
       <!-- Tab panel: Student ID info -->
       <div class="idc-tab-panel active" id="idc-panel-student">
 
-        <!-- Stat rail -->
-        <div class="idw-stat-rail">
-          <div class="idw-stat-item">
-            <span class="idw-stat-val">2025</span>
-            <span class="idw-stat-key">ENROLLED</span>
+        <!-- Academic status card -->
+        <div class="idw-acard" id="idw-acard">
+
+          <!-- Top row: GPA dial + live status -->
+          <div class="idw-acard-top">
+            <div class="idw-gpa-dial">
+              <svg class="idw-gpa-svg" viewBox="0 0 72 72">
+                <circle class="idw-gpa-track" cx="36" cy="36" r="28" fill="none" stroke="rgba(222,93,142,0.12)" stroke-width="5"/>
+                <circle class="idw-gpa-arc"   cx="36" cy="36" r="28" fill="none" stroke="var(--cu)" stroke-width="5"
+                  stroke-linecap="round"
+                  stroke-dasharray="175.93"
+                  stroke-dashoffset="175.93"
+                  transform="rotate(-90 36 36)"/>
+                <text class="idw-gpa-num" x="36" y="33" text-anchor="middle" dominant-baseline="middle">3.78</text>
+                <text class="idw-gpa-lbl" x="36" y="47" text-anchor="middle">GPA</text>
+              </svg>
+              <div class="idw-gpa-max">/ 4.00</div>
+            </div>
+            <div class="idw-acard-meta">
+              <div class="idw-acard-pill idw-acard-pill--live">
+                <span class="idw-acard-dot"></span>ACTIVE ENROLLMENT
+              </div>
+              <div class="idw-acard-programme">M.Sc. Financial Economics</div>
+              <div class="idw-acard-faculty">Faculty of Economics · CU</div>
+              <div class="idw-acard-honours">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Honours Track · Dean's List
+              </div>
+            </div>
           </div>
-          <div class="idw-stat-div"></div>
-          <div class="idw-stat-item">
-            <span class="idw-stat-val">3.78</span>
-            <span class="idw-stat-key">GPA</span>
+
+          <!-- Credits bar -->
+          <div class="idw-credits-row">
+            <div class="idw-credits-label">
+              <span class="idw-credits-title">CREDITS COMPLETED</span>
+              <span class="idw-credits-count"><span class="idw-credits-done" id="idw-cred-done">0</span><span class="idw-credits-total">/30</span></span>
+            </div>
+            <div class="idw-credits-track">
+              <div class="idw-credits-fill" id="idw-cred-fill"></div>
+              <div class="idw-credits-pulse"></div>
+            </div>
+            <div class="idw-credits-pct" id="idw-cred-pct">0%</div>
           </div>
-          <div class="idw-stat-div"></div>
-          <div class="idw-stat-item">
-            <span class="idw-stat-val">18<span class="idw-stat-unit">/30</span></span>
-            <span class="idw-stat-key">CREDITS</span>
+
+          <!-- Timeline row -->
+          <div class="idw-timeline">
+            <div class="idw-tl-node idw-tl-node--done">
+              <div class="idw-tl-dot">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="idw-tl-line"></div>
+              <div class="idw-tl-label">
+                <span class="idw-tl-year">2025</span>
+                <span class="idw-tl-txt">Enrolled</span>
+              </div>
+            </div>
+            <div class="idw-tl-node idw-tl-node--now">
+              <div class="idw-tl-dot">
+                <span class="idw-tl-now-ring"></span>
+              </div>
+              <div class="idw-tl-line"></div>
+              <div class="idw-tl-label">
+                <span class="idw-tl-year">2026</span>
+                <span class="idw-tl-txt">Now · Sem 2</span>
+              </div>
+            </div>
+            <div class="idw-tl-node idw-tl-node--future">
+              <div class="idw-tl-dot"></div>
+              <div class="idw-tl-line idw-tl-line--last"></div>
+              <div class="idw-tl-label">
+                <span class="idw-tl-year">2027</span>
+                <span class="idw-tl-txt">Graduation</span>
+              </div>
+            </div>
+            <div class="idw-tl-node idw-tl-node--future">
+              <div class="idw-tl-dot"></div>
+              <div class="idw-tl-line idw-tl-line--none"></div>
+              <div class="idw-tl-label">
+                <span class="idw-tl-year">2029</span>
+                <span class="idw-tl-txt">ID Expires</span>
+              </div>
+            </div>
           </div>
-          <div class="idw-stat-div"></div>
-          <div class="idw-stat-item">
-            <span class="idw-stat-val">2029</span>
-            <span class="idw-stat-key">EXPIRES</span>
-          </div>
+
         </div>
 
         <!-- Credential + barcode block -->
@@ -2131,8 +2194,8 @@
           </div>
           <div class="idw-barcode-wrap">
             <svg class="idw-barcode-svg" viewBox="0 0 120 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-              <rect fill="#0c0e12" width="120" height="40"/>
-              <g fill="rgba(255,255,255,0.88)">
+              <rect fill="rgba(222,93,142,0.06)" width="120" height="40"/>
+              <g fill="rgba(222,93,142,0.55)">
                 <rect x="2"   y="4" width="2" height="26"/>
                 <rect x="6"   y="4" width="1" height="26"/>
                 <rect x="8"   y="4" width="2" height="26"/>
@@ -2293,31 +2356,48 @@
           </div>
         </div>
 
+
       </div><!-- /idc-panel-student -->
 
       <!-- Tab panel: National ID info -->
       <div class="idc-tab-panel" id="idc-panel-national">
 
-        <!-- Stat rail -->
-        <div class="idw-stat-rail">
-          <div class="idw-stat-item">
-            <span class="idw-stat-val">29</span>
-            <span class="idw-stat-key">AGE</span>
+        <!-- National ID stat card -->
+        <div class="idw-ncard">
+          <div class="idw-ncard-pill">
+            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            VERIFIED · KINGDOM OF THAILAND
           </div>
-          <div class="idw-stat-div"></div>
-          <div class="idw-stat-item">
-            <span class="idw-stat-val">2020</span>
-            <span class="idw-stat-key">ISSUED</span>
+          <div class="idw-ncard-grid">
+            <div class="idw-ncard-cell">
+              <span class="idw-ncard-val">29</span>
+              <span class="idw-ncard-key">AGE</span>
+            </div>
+            <div class="idw-ncard-sep"></div>
+            <div class="idw-ncard-cell">
+              <span class="idw-ncard-val">2020</span>
+              <span class="idw-ncard-key">ISSUED</span>
+            </div>
+            <div class="idw-ncard-sep"></div>
+            <div class="idw-ncard-cell">
+              <span class="idw-ncard-val">2031</span>
+              <span class="idw-ncard-key">EXPIRES</span>
+            </div>
+            <div class="idw-ncard-sep"></div>
+            <div class="idw-ncard-cell">
+              <span class="idw-ncard-val idw-ncard-val--sm">THA</span>
+              <span class="idw-ncard-key">NATION</span>
+            </div>
           </div>
-          <div class="idw-stat-div"></div>
-          <div class="idw-stat-item">
-            <span class="idw-stat-val">2031</span>
-            <span class="idw-stat-key">EXPIRES</span>
-          </div>
-          <div class="idw-stat-div"></div>
-          <div class="idw-stat-item">
-            <span class="idw-stat-val" style="font-size:10px;letter-spacing:0">THA</span>
-            <span class="idw-stat-key">NATION</span>
+          <!-- Validity bar: years remaining out of 11-year term -->
+          <div class="idw-ncard-validity">
+            <div class="idw-ncard-v-label">
+              <span>VALIDITY REMAINING</span>
+              <span class="idw-ncard-v-yr">5 yrs · 2031</span>
+            </div>
+            <div class="idw-ncard-v-track">
+              <div class="idw-ncard-v-fill"></div>
+            </div>
           </div>
         </div>
 
@@ -2403,7 +2483,7 @@
           <div class="idw-chip-inner">
             <div class="idw-chip-diagram">
               <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2" y="2" width="60" height="60" rx="4" fill="#1a1a2e" stroke="rgba(222,93,142,0.28)" stroke-width="1"/>
+                <rect x="2" y="2" width="60" height="60" rx="4" fill="rgba(222,93,142,0.06)" stroke="rgba(222,93,142,0.28)" stroke-width="1"/>
                 <rect x="8"  y="10" width="16" height="10" rx="1.5" fill="rgba(222,93,142,0.35)" stroke="rgba(222,93,142,0.65)" stroke-width="0.8"/>
                 <rect x="28" y="10" width="16" height="10" rx="1.5" fill="rgba(222,93,142,0.35)" stroke="rgba(222,93,142,0.65)" stroke-width="0.8"/>
                 <rect x="48" y="10" width="10" height="10" rx="1.5" fill="rgba(222,93,142,0.15)" stroke="rgba(222,93,142,0.35)" stroke-width="0.8"/>
