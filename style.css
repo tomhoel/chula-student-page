@@ -253,8 +253,6 @@ html[lang="en"] .lang-stable>.l-th {
   border-right: 1px solid rgba(0, 0, 0, 0.08);
   position: relative;
   overflow: hidden;
-  border-top-left-radius: 14px;
-  border-bottom-left-radius: 14px;
 }
 
 /* ── Holographic photo effect ───────────────────────── */
@@ -2616,7 +2614,7 @@ html[lang="en"] .card3d-access-item {
 /* ── Individual tab panels (shown/hidden) ── */
 .sp-tab-panel {
   display: none;
-  padding: 18px 18px max(env(safe-area-inset-bottom), 36px);
+  padding: 18px 0 max(env(safe-area-inset-bottom), 36px);
 }
 
 .sp-tab-panel.active {
@@ -9300,7 +9298,7 @@ html[lang="en"] .ac-panel-val {
 .spr-th--tag {
   width: 46px;
   flex-shrink: 0;
-  text-align: right;
+  text-align: center;
 }
 
 /* ── Data rows ───────────────────────────────────────── */
@@ -9337,7 +9335,7 @@ html[lang="en"] .ac-panel-val {
 .spr-td-tag {
   width: 46px;
   flex-shrink: 0;
-  text-align: right;
+  text-align: center;
   font: 500 7.5px / 1 var(--f);
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -9492,4 +9490,236 @@ html[lang="en"] .ac-panel-val {
   color: var(--t3);
   font-variant-numeric: tabular-nums;
   margin-top: 2px;
+}
+
+/* ══════════════════════════════════════════════════════
+   SPR PHOTO CARD — Sport identity card with photo left
+   Used in Football + Swimming tabs
+══════════════════════════════════════════════════════ */
+
+.spr-photo-card {
+  margin: 0 18px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  height: 170px;
+  background: rgba(255, 255, 255, 0.55);
+  position: relative;
+}
+
+/* ── Photo column ──────────────────────────────────── */
+.spr-pc-photo {
+  flex: 0 0 40%;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.spr-pc-photo picture,
+.spr-pc-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* CRT scanlines on photo */
+.spr-pc-photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.022) 3px,
+    rgba(0, 0, 0, 0.022) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Bottom gradient overlay */
+.spr-pc-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spr-photo-card--fb .spr-pc-photo::after {
+  background: linear-gradient(
+    to top,
+    rgba(110, 16, 56, 0.78) 0%,
+    rgba(222, 93, 142, 0.22) 48%,
+    transparent 72%
+  );
+}
+
+.spr-photo-card--sw .spr-pc-photo::after {
+  background: linear-gradient(
+    to top,
+    rgba(1, 55, 105, 0.80) 0%,
+    rgba(2, 132, 199, 0.22) 48%,
+    transparent 72%
+  );
+}
+
+/* Sport badge pinned above bottom gradient */
+.spr-pc-badge {
+  position: absolute;
+  bottom: 7px;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  pointer-events: none;
+}
+
+.spr-pc-badge-sport {
+  font: 700 7px / 1 var(--f);
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.88);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.spr-pc-badge-tier {
+  font: 500 6.5px / 1 var(--f);
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.56);
+  text-transform: uppercase;
+}
+
+/* ── Data column ───────────────────────────────────── */
+.spr-pc-data {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 11px 12px 0;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.spr-pc-club {
+  font: 600 7.5px / 1 var(--f);
+  letter-spacing: 0.11em;
+  color: var(--t3);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.spr-pc-role {
+  font: 500 9.5px / 1.25 var(--f);
+  color: var(--t1);
+  letter-spacing: 0.02em;
+  margin-bottom: 7px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Key stat (rating or PB) */
+.spr-pc-stat-row {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  margin-bottom: 7px;
+  line-height: 1;
+}
+
+.spr-pc-stat-val {
+  font: 600 26px / 1 var(--f);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.spr-photo-card--fb .spr-pc-stat-val { color: var(--cu); }
+.spr-photo-card--sw .spr-pc-stat-val { color: #0284c7; }
+
+.spr-pc-stat-den {
+  font: 400 12px / 1 var(--f);
+  color: var(--t3);
+}
+
+.spr-pc-stat-lbl {
+  font: 400 7.5px / 1 var(--f);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--t3);
+  align-self: flex-end;
+  margin-bottom: 2px;
+  margin-left: 2px;
+}
+
+/* Form dots row */
+.spr-pc-form-row {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-bottom: 10px;
+}
+
+.spr-pc-form-lbl {
+  font: 500 7px / 1 var(--f);
+  letter-spacing: 0.09em;
+  color: var(--t3);
+  text-transform: uppercase;
+  margin-right: 2px;
+  flex-shrink: 0;
+}
+
+.spr-form-dot {
+  width: 17px;
+  height: 17px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 7.5px / 1 var(--f);
+}
+
+.spr-form-w { background: rgba(22,  163, 74,  0.11); color: #15803d; }
+.spr-form-d { background: rgba(59,  130, 246, 0.10); color: #1d4ed8; }
+.spr-form-l { background: rgba(239, 68,  68,  0.10); color: #b91c1c; }
+
+/* Bottom metric strip */
+.spr-pc-metrics {
+  display: flex;
+  margin-top: auto;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.spr-pc-metric {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 0 8px;
+}
+
+.spr-pc-metric + .spr-pc-metric {
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
+  padding-left: 8px;
+}
+
+.spr-pc-metric-val {
+  font: 600 13px / 1 var(--f);
+  font-variant-numeric: tabular-nums;
+}
+
+.spr-photo-card--fb .spr-pc-metric-val { color: var(--cu); }
+.spr-photo-card--sw .spr-pc-metric-val { color: #0284c7; }
+
+.spr-pc-metric-lbl {
+  font: 400 7px / 1 var(--f);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--t3);
 }
