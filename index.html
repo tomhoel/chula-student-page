@@ -522,53 +522,6 @@
         <!-- ════════ INFORMATION TAB ════════ -->
         <div class="ac-tab-panel active" id="actab-info" role="tabpanel">
 
-          <!-- Hero GPA Ring -->
-          <div class="aci-hero">
-            <div class="aci-ring-wrap">
-              <svg class="aci-ring-svg" viewBox="0 0 140 140">
-                <defs>
-                  <linearGradient id="gpaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#de5d8e"/>
-                    <stop offset="100%" stop-color="#ff8fab"/>
-                  </linearGradient>
-                  <filter id="ringGlow">
-                    <feGaussianBlur stdDeviation="2.5" result="blur"/>
-                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                  </filter>
-                </defs>
-                <circle cx="70" cy="70" r="58" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="10"/>
-                <circle cx="70" cy="70" r="44" fill="none" stroke="rgba(222,93,142,0.07)" stroke-width="1" stroke-dasharray="4 5"/>
-                <circle class="aci-ring-fill" cx="70" cy="70" r="58" fill="none" stroke="url(#gpaGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="364.42" stroke-dashoffset="364.42" filter="url(#ringGlow)"/>
-              </svg>
-              <div class="aci-ring-center">
-                <div class="aci-gpa-num" data-count="3.78">0.00</div>
-                <div class="aci-gpa-den">/ 4.00 GPA</div>
-                <div class="aci-gpa-badge">HONOURS TRACK</div>
-              </div>
-            </div>
-            <div class="aci-hero-stats">
-              <div class="aci-hstat">
-                <div class="aci-hstat-val">5th</div>
-                <div class="aci-hstat-lbl">RANK</div>
-              </div>
-              <div class="aci-hstat-sep"></div>
-              <div class="aci-hstat">
-                <div class="aci-hstat-val">Top 12%</div>
-                <div class="aci-hstat-lbl">PERCENTILE</div>
-              </div>
-              <div class="aci-hstat-sep"></div>
-              <div class="aci-hstat">
-                <div class="aci-hstat-val">18/30</div>
-                <div class="aci-hstat-lbl">CREDITS</div>
-              </div>
-              <div class="aci-hstat-sep"></div>
-              <div class="aci-hstat">
-                <div class="aci-hstat-val">2/6</div>
-                <div class="aci-hstat-lbl">SEMESTERS</div>
-              </div>
-            </div>
-          </div>
-
           <!-- Achievement Chips -->
           <div class="aci-achieve-scroll">
             <div class="aci-achieve-row">
@@ -733,38 +686,66 @@
 
           <!-- Degree Roadmap -->
           <div class="aci-section-label"><span class="l-th">เส้นทางปริญญา</span><span class="l-en">DEGREE ROADMAP</span></div>
-          <div class="aci-roadmap-wrap">
-            <div class="aci-roadmap">
-              <div class="aci-road-item aci-road-item--done">
-                <div class="aci-ri-track"><div class="aci-ri-dot"></div><div class="aci-ri-line"></div></div>
-                <div class="aci-ri-sem">SEM 1</div>
-                <div class="aci-ri-gpa">3.65</div>
+          <div class="aci-rm">
+            <div class="aci-rm-stop aci-rm-stop--done">
+              <div class="aci-rm-node">
+                <div class="aci-rm-seg aci-rm-seg--blank"></div>
+                <div class="aci-rm-dot"></div>
+                <div class="aci-rm-seg aci-rm-seg--done"></div>
               </div>
-              <div class="aci-road-item aci-road-item--current">
-                <div class="aci-ri-track"><div class="aci-ri-dot"></div><div class="aci-ri-line"></div></div>
-                <div class="aci-ri-sem">SEM 2</div>
-                <div class="aci-ri-gpa">3.78</div>
+              <div class="aci-rm-sem">SEM 1</div>
+              <div class="aci-rm-gpa">3.65</div>
+              <div class="aci-rm-tag aci-rm-tag--done">DONE</div>
+            </div>
+            <div class="aci-rm-stop aci-rm-stop--current">
+              <div class="aci-rm-node">
+                <div class="aci-rm-seg aci-rm-seg--done"></div>
+                <div class="aci-rm-dot"></div>
+                <div class="aci-rm-seg aci-rm-seg--future"></div>
               </div>
-              <div class="aci-road-item aci-road-item--next">
-                <div class="aci-ri-track"><div class="aci-ri-dot"></div><div class="aci-ri-line"></div></div>
-                <div class="aci-ri-sem">SEM 3</div>
-                <div class="aci-ri-gpa">—</div>
+              <div class="aci-rm-sem">SEM 2</div>
+              <div class="aci-rm-gpa">3.78</div>
+              <div class="aci-rm-tag aci-rm-tag--now">NOW</div>
+            </div>
+            <div class="aci-rm-stop aci-rm-stop--next">
+              <div class="aci-rm-node">
+                <div class="aci-rm-seg aci-rm-seg--future"></div>
+                <div class="aci-rm-dot"></div>
+                <div class="aci-rm-seg aci-rm-seg--future"></div>
               </div>
-              <div class="aci-road-item">
-                <div class="aci-ri-track"><div class="aci-ri-dot"></div><div class="aci-ri-line"></div></div>
-                <div class="aci-ri-sem">SEM 4</div>
-                <div class="aci-ri-gpa">—</div>
+              <div class="aci-rm-sem">SEM 3</div>
+              <div class="aci-rm-gpa">—</div>
+              <div class="aci-rm-tag aci-rm-tag--next">NEXT</div>
+            </div>
+            <div class="aci-rm-stop">
+              <div class="aci-rm-node">
+                <div class="aci-rm-seg aci-rm-seg--future"></div>
+                <div class="aci-rm-dot"></div>
+                <div class="aci-rm-seg aci-rm-seg--future"></div>
               </div>
-              <div class="aci-road-item">
-                <div class="aci-ri-track"><div class="aci-ri-dot"></div><div class="aci-ri-line"></div></div>
-                <div class="aci-ri-sem">SEM 5</div>
-                <div class="aci-ri-gpa">—</div>
+              <div class="aci-rm-sem">SEM 4</div>
+              <div class="aci-rm-gpa">—</div>
+              <div class="aci-rm-tag"></div>
+            </div>
+            <div class="aci-rm-stop">
+              <div class="aci-rm-node">
+                <div class="aci-rm-seg aci-rm-seg--future"></div>
+                <div class="aci-rm-dot"></div>
+                <div class="aci-rm-seg aci-rm-seg--future"></div>
               </div>
-              <div class="aci-road-item aci-road-item--grad">
-                <div class="aci-ri-track"><div class="aci-ri-dot"></div></div>
-                <div class="aci-ri-sem">GRAD</div>
-                <div class="aci-ri-gpa">~3.88</div>
+              <div class="aci-rm-sem">SEM 5</div>
+              <div class="aci-rm-gpa">—</div>
+              <div class="aci-rm-tag"></div>
+            </div>
+            <div class="aci-rm-stop aci-rm-stop--grad">
+              <div class="aci-rm-node">
+                <div class="aci-rm-seg aci-rm-seg--future"></div>
+                <div class="aci-rm-dot"></div>
+                <div class="aci-rm-seg aci-rm-seg--blank"></div>
               </div>
+              <div class="aci-rm-sem">GRAD</div>
+              <div class="aci-rm-gpa">~3.88</div>
+              <div class="aci-rm-tag aci-rm-tag--grad">2027</div>
             </div>
           </div>
 

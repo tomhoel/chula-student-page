@@ -5004,8 +5004,8 @@ html[lang="en"] .ag-future-desc {
   display: flex;
   gap: 14px;
   padding: 14px 18px;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  background: linear-gradient(135deg, rgba(222,93,142,0.05) 0%, rgba(184,133,42,0.03) 60%, transparent 100%);
+  border-bottom: 1px solid rgba(222,93,142,0.10);
+  background: linear-gradient(180deg, rgba(222,93,142,0.07) 0%, rgba(222,93,142,0.04) 100%);
   flex-shrink: 0;
 }
 
@@ -5279,7 +5279,9 @@ html[lang="en"] .ag-future-desc {
   flex-shrink: 0;
   position: sticky;
   top: 0;
-  background: #fff;
+  background: rgba(253,249,252,0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 10;
 }
 .ac-tabs::-webkit-scrollbar { display: none; }
@@ -7804,6 +7806,126 @@ html[lang="en"] .ac-panel-val {
 }
 .aci-road-item--grad .aci-ri-sem { color: #8a6200; font-weight: 800; }
 .aci-road-item--grad .aci-ri-gpa { color: #8a6200; }
+
+/* ── Degree Roadmap Redesign — aci-rm-* ─────────────── */
+.aci-rm {
+  display: flex;
+  padding: 6px 18px 18px;
+}
+
+.aci-rm-stop {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Node row: half-line · dot · half-line */
+.aci-rm-node {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 22px;
+}
+
+.aci-rm-seg {
+  flex: 1;
+  height: 2px;
+}
+.aci-rm-seg--blank  { background: transparent; }
+.aci-rm-seg--done   { background: #22a55b; }
+.aci-rm-seg--future {
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(0,0,0,0.16) 0,
+    rgba(0,0,0,0.16) 3px,
+    transparent 3px,
+    transparent 7px
+  );
+}
+
+.aci-rm-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: rgba(0,0,0,0.09);
+  border: 2px solid rgba(253,249,252,0.97);
+  box-shadow: 0 0 0 1.5px rgba(0,0,0,0.12);
+  z-index: 1;
+}
+
+.aci-rm-sem {
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--t3);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: var(--f);
+}
+
+.aci-rm-gpa {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--t2);
+  text-align: center;
+  font-family: var(--f);
+}
+
+.aci-rm-tag {
+  font-size: 7px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  color: transparent;
+  font-family: var(--f);
+  min-height: 10px;
+}
+
+/* ── State: done ── */
+.aci-rm-stop--done .aci-rm-dot {
+  background: #22a55b;
+  border-color: rgba(253,249,252,0.97);
+  box-shadow: 0 0 0 1.5px #22a55b;
+}
+.aci-rm-stop--done .aci-rm-sem { color: #1a7a48; }
+.aci-rm-stop--done .aci-rm-gpa { color: #1a7a48; font-weight: 800; }
+.aci-rm-tag--done { color: #22a55b; }
+
+/* ── State: current ── */
+.aci-rm-stop--current .aci-rm-dot {
+  background: var(--cu);
+  border-color: rgba(253,249,252,0.97);
+  box-shadow: 0 0 0 3px rgba(222,93,142,0.18), 0 0 0 1.5px var(--cu);
+  animation: aciPulse 2s infinite;
+}
+.aci-rm-stop--current .aci-rm-sem { color: var(--cu); font-weight: 800; }
+.aci-rm-stop--current .aci-rm-gpa { color: var(--cu); font-weight: 800; }
+.aci-rm-tag--now { color: var(--cu); }
+
+/* ── State: next ── */
+.aci-rm-stop--next .aci-rm-dot {
+  border: 1.5px dashed rgba(0,0,0,0.25);
+  background: rgba(0,0,0,0.03);
+  box-shadow: none;
+}
+.aci-rm-tag--next { color: var(--t3); }
+
+/* ── State: grad ── */
+.aci-rm-stop--grad .aci-rm-dot {
+  background: linear-gradient(135deg, #b8852a, #f5c842);
+  border-color: rgba(253,249,252,0.97);
+  box-shadow: 0 0 0 1.5px #b8852a, 0 0 7px rgba(184,133,42,0.35);
+}
+.aci-rm-stop--grad .aci-rm-sem { color: #8a6200; font-weight: 800; }
+.aci-rm-stop--grad .aci-rm-gpa { color: #8a6200; }
+.aci-rm-tag--grad { color: #b8852a; }
 
 
 /* ══════════════════════════════════════════════════════
