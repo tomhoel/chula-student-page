@@ -1145,6 +1145,9 @@ html[lang="en"] .act-desc {
 
 .sheet-panel-card {
   max-height: 92dvh;
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
   padding-bottom: max(env(safe-area-inset-bottom), 28px);
   overflow-y: auto;
   overflow-x: hidden;
@@ -9742,20 +9745,42 @@ html[lang="en"] .ac-panel-val {
 
 
 /* ══════════════════════════════════════════════════════
-   IDENTITY WALLET — dark band + tabs
+   IDENTITY WALLET — v2 (segmented control + edge-to-edge band)
 ══════════════════════════════════════════════════════ */
 
-/* ── Dark header band ── */
+/* ── Dark band (fills panel edge-to-edge) ── */
 .idc-band {
-  background: linear-gradient(160deg, #1c1218 0%, #241c22 100%);
-  padding: 14px 18px 0;
+  background: linear-gradient(175deg, #100e18 0%, #1a1528 50%, #1e1830 100%);
+  padding: 0 20px 0;
+  position: relative;
+  overflow: hidden;
 }
 
+.idc-band::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 90px;
+  background: radial-gradient(ellipse, rgba(222, 93, 142, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Handle inside the dark band */
+.idc-band .sheet-handle {
+  background: rgba(255, 255, 255, 0.2);
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* Header row */
 .idc-band-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 14px;
+  padding-bottom: 18px;
 }
 
 .idc-band-left {
@@ -9767,130 +9792,164 @@ html[lang="en"] .ac-panel-val {
 .idc-band-icon {
   color: var(--cu);
   flex-shrink: 0;
+  filter: drop-shadow(0 0 5px rgba(222, 93, 142, 0.45));
 }
 
 .idc-band-title {
-  font: 600 13px / 1 var(--f);
-  letter-spacing: 0.1em;
+  font: 700 11.5px / 1 var(--f);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #fff;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 
 .idc-band-sub {
-  font: 400 9.5px / 1 var(--f-th);
-  color: rgba(255, 255, 255, 0.38);
+  font: 400 9px / 1 var(--f-th);
+  color: rgba(255, 255, 255, 0.32);
+  letter-spacing: 0.02em;
 }
 
 .idc-band-close {
-  background: none;
-  border: none;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
   cursor: pointer;
-  padding: 6px;
-  color: rgba(255, 255, 255, 0.5);
-  border-radius: 6px;
-  line-height: 0;
+  color: rgba(255, 255, 255, 0.6);
+  transition: background 0.18s;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* ── Card tabs ── */
-.idc-tabs {
-  display: flex;
-  gap: 8px;
-  align-items: flex-end;
+.idc-band-close:active {
+  background: rgba(255, 255, 255, 0.15);
 }
 
-.idc-tab {
+/* ── Segmented control (iOS-style sliding pill) ── */
+.idc-segs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 13px;
+  padding: 3px;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+/* Sliding white pill indicator */
+.idc-segs-pill {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  height: calc(100% - 6px);
+  width: calc(50% - 3px);
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.idc-segs[data-active="national"] .idc-segs-pill {
+  transform: translateX(calc(100% + 2px));
+}
+
+/* Each segment button */
+.idc-seg {
   flex: 1;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 12px 13px;
-  border-radius: 10px 10px 0 0;
-  border: 1.5px solid rgba(255, 255, 255, 0.07);
-  border-bottom: none;
-  background: rgba(255, 255, 255, 0.04);
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: none;
+  border: none;
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.45);
-  transition: background 0.22s, color 0.22s, border-color 0.22s;
+  color: rgba(255, 255, 255, 0.38);
+  transition: color 0.22s;
+  position: relative;
+  z-index: 1;
   -webkit-tap-highlight-color: transparent;
+  min-width: 0;
 }
 
-.idc-tab--active {
-  background: #fdf9fc;
-  border-color: rgba(222, 93, 142, 0.22);
-  color: var(--t1);
-  box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.22);
+.idc-seg--active {
+  color: #15101e;
 }
 
-.idc-tab-thumb {
-  border-radius: 4px;
-  overflow: hidden;
+/* Card thumbnail inside segment */
+.idc-seg-thumb {
   flex-shrink: 0;
-  box-shadow:
-    0 1px 5px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(0, 0, 0, 0.12);
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
-.idc-tab-thumb--portrait  { width: 30px; height: 47px; }
-.idc-tab-thumb--landscape { width: 47px; height: 30px; }
+.idc-seg-thumb--portrait  { width: 22px; height: 35px; }
+.idc-seg-thumb--landscape { width: 35px; height: 22px; }
 
-.idc-tab-thumb img {
+.idc-seg-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.idc-tab-info {
+/* Text info */
+.idc-seg-info {
   display: flex;
   flex-direction: column;
   gap: 3px;
-  flex: 1;
   min-width: 0;
-  text-align: left;
 }
 
-.idc-tab-name {
-  font: 600 9px / 1 var(--f);
-  letter-spacing: 0.07em;
+.idc-seg-name {
+  font: 700 9px / 1 var(--f);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.idc-tab-org {
+.idc-seg-org {
   font: 400 8px / 1.2 var(--f-th);
-  opacity: 0.65;
+  opacity: 0.6;
+  white-space: nowrap;
 }
 
-.idc-tab--active .idc-tab-org {
-  opacity: 0.5;
-  color: var(--t2);
+.idc-seg--active .idc-seg-org {
+  opacity: 0.45;
 }
 
-.idc-tab-badge {
+/* Verified check badge */
+.idc-seg-check {
+  margin-left: auto;
   flex-shrink: 0;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.09);
+  background: var(--cu);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.22s;
-}
-
-.idc-tab--active .idc-tab-badge {
-  background: var(--cu);
-}
-
-.idc-tab-badge svg {
-  color: white;
   opacity: 0;
-  transition: opacity 0.18s;
+  transition: opacity 0.2s;
 }
 
-.idc-tab--active .idc-tab-badge svg {
+.idc-seg--active .idc-seg-check {
   opacity: 1;
+}
+
+.idc-seg-check svg {
+  color: #fff;
+}
+
+/* ── Card content area — restore horizontal padding below the dark band ── */
+.card3d-hint {
+  padding: 0 20px;
 }
 
 /* ── Card switching fade wrapper ── */
@@ -9903,7 +9962,12 @@ html[lang="en"] .ac-panel-val {
   transition: opacity 0.16s ease;
 }
 
-/* ── Info panel visibility ── */
+/* ── Info panel visibility (class-toggled to avoid [hidden] UA stylesheet conflict) ── */
 .idc-info {
+  display: none;
+  padding: 0 20px;
+}
+
+.idc-info.active {
   display: block;
 }

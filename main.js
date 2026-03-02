@@ -312,10 +312,12 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
   function switchCard(type, instant) {
     var c = CARDS[type];
     if (!c) return;
-    /* Update tab active state immediately */
-    document.querySelectorAll('.idc-tab').forEach(function (b) {
-      b.classList.toggle('idc-tab--active', b.dataset.card === type);
+    /* Update segmented control immediately */
+    document.querySelectorAll('.idc-seg').forEach(function (b) {
+      b.classList.toggle('idc-seg--active', b.dataset.card === type);
     });
+    var segsEl = document.querySelector('.idc-segs');
+    if (segsEl) segsEl.dataset.active = type;
     var doSwitch = function () {
       if (frontImg) frontImg.src = c.front;
       if (backImg)  backImg.src  = c.back;
@@ -326,10 +328,10 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
       flipped = false; stopIdle();
       rotX = 8; rotY = 0;
       render('none');
-      /* Toggle info panels */
-      document.querySelectorAll('.idc-info').forEach(function (p) { p.hidden = true; });
+      /* Toggle info panels via .active class (avoids [hidden] CSS conflict) */
+      document.querySelectorAll('.idc-info').forEach(function (p) { p.classList.remove('active'); });
       var infoEl = document.getElementById('idc-info-' + type);
-      if (infoEl) infoEl.hidden = false;
+      if (infoEl) infoEl.classList.add('active');
       /* Fade back in */
       if (fadeEl) fadeEl.classList.remove('fading');
       clearTimeout(idleTimerId);
@@ -344,8 +346,8 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
     }
   }
 
-  /* ── Tab click handlers ── */
-  document.querySelectorAll('.idc-tab').forEach(function (btn) {
+  /* ── Segment click handlers ── */
+  document.querySelectorAll('.idc-seg').forEach(function (btn) {
     btn.addEventListener('click', function () { switchCard(btn.dataset.card); });
   });
 

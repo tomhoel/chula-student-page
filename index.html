@@ -1972,10 +1972,11 @@
   <div class="sheet" id="sheet-idcard" role="dialog" aria-modal="true">
     <div class="sheet-scrim" data-close></div>
     <div class="sheet-panel sheet-panel-card">
-      <div class="sheet-handle"></div>
 
-      <!-- Dark header band + tabs -->
+      <!-- Dark header band (edge-to-edge, handle inside) -->
       <div class="idc-band">
+        <div class="sheet-handle"></div>
+
         <div class="idc-band-head">
           <div class="idc-band-left">
             <svg class="idc-band-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1997,32 +1998,34 @@
           </button>
         </div>
 
-        <div class="idc-tabs">
-          <button class="idc-tab idc-tab--active" data-card="student" type="button">
-            <div class="idc-tab-thumb idc-tab-thumb--portrait">
+        <!-- iOS-style segmented control with sliding white pill -->
+        <div class="idc-segs" data-active="student">
+          <div class="idc-segs-pill"></div>
+          <button class="idc-seg idc-seg--active" data-card="student" type="button">
+            <div class="idc-seg-thumb idc-seg-thumb--portrait">
               <img src="id_front.png" alt="">
             </div>
-            <div class="idc-tab-info">
-              <span class="idc-tab-name">STUDENT ID</span>
-              <span class="idc-tab-org">Chulalongkorn Univ.</span>
+            <div class="idc-seg-info">
+              <span class="idc-seg-name">STUDENT ID</span>
+              <span class="idc-seg-org">Chulalongkorn Univ.</span>
             </div>
-            <div class="idc-tab-badge">
-              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"
+            <div class="idc-seg-check">
+              <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"
                 stroke-linecap="round">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>
           </button>
-          <button class="idc-tab" data-card="national" type="button">
-            <div class="idc-tab-thumb idc-tab-thumb--landscape">
+          <button class="idc-seg" data-card="national" type="button">
+            <div class="idc-seg-thumb idc-seg-thumb--landscape">
               <img src="thaiid_front.png" alt="">
             </div>
-            <div class="idc-tab-info">
-              <span class="idc-tab-name">NATIONAL ID</span>
-              <span class="idc-tab-org">ประเทศไทย · THA</span>
+            <div class="idc-seg-info">
+              <span class="idc-seg-name">NATIONAL ID</span>
+              <span class="idc-seg-org">ประเทศไทย · THA</span>
             </div>
-            <div class="idc-tab-badge">
-              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"
+            <div class="idc-seg-check">
+              <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"
                 stroke-linecap="round">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
@@ -2060,7 +2063,7 @@
       </p>
 
       <!-- ── STUDENT ID INFO ── -->
-      <div id="idc-info-student" class="idc-info">
+      <div id="idc-info-student" class="idc-info active">
 
         <div class="card3d-above">
           <div class="card3d-stats">
@@ -2205,7 +2208,7 @@
       </div>
 
       <!-- ── NATIONAL ID INFO ── -->
-      <div id="idc-info-national" class="idc-info" hidden>
+      <div id="idc-info-national" class="idc-info">
 
         <div class="card3d-above">
           <div class="card3d-stats">
