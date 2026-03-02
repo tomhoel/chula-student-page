@@ -98,37 +98,36 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
 
 /* ── PROFILE PHOTO LIGHTBOX ─────────────────────────── */
 (function () {
-  function initLightbox() {
-    const trigger  = document.getElementById('profile-photo');
-    const lightbox = document.getElementById('lightbox-photo');
-    if (!trigger || !lightbox) return;
+  const lightbox = document.getElementById('lightbox-photo');
+  if (!lightbox) return;
 
-    function open(e) {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      lightbox.classList.add('open');
-      console.log('Lightbox opened');
+  function open() { 
+    lightbox.classList.add('open'); 
+  }
+  function close() { 
+    lightbox.classList.remove('open'); 
+  }
+
+  // Delegate click on document - check if click is on photo
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.id-photo-col')) {
+      open();
     }
-    function close() { lightbox.classList.remove('open'); }
-
-    // Use capturing phase to handle click before cheat panel
-    trigger.addEventListener('click', open, true);
-    trigger.addEventListener('keydown', e => { 
+  });
+  
+  // Keyboard accessibility
+  const photo = document.getElementById('profile-photo');
+  if (photo) {
+    photo.addEventListener('keydown', e => { 
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        open(e);
+        open();
       }
     });
-    lightbox.addEventListener('click', close);
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
   }
-
-  // Run immediately if DOM is ready, or wait for DOMContentLoaded
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initLightbox);
-  } else {
-    initLightbox();
-  }
+  
+  lightbox.addEventListener('click', close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 })();
 
 /* ── 3D CARD VIEWER ─────────────────────────────────── */
