@@ -252,6 +252,58 @@ html[lang="en"] .lang-stable>.l-th {
   display: flex;
   border-right: 1px solid rgba(0, 0, 0, 0.08);
   position: relative;
+  overflow: hidden;
+}
+
+/* ── Holographic photo effect ───────────────────────── */
+/* Rainbow sweep that passes across the photo */
+.id-photo-col::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -100%;
+  width: 55%;
+  height: 140%;
+  background: linear-gradient(
+    to right,
+    transparent                   0%,
+    rgba(255,  0, 100, 0.12)     12%,
+    rgba(255, 160,  0, 0.12)     26%,
+    rgba( 60, 255, 120, 0.12)    40%,
+    rgba(  0, 180, 255, 0.12)    54%,
+    rgba(140,   0, 255, 0.12)    68%,
+    rgba(255,   0, 200, 0.12)    82%,
+    transparent                  100%
+  );
+  transform: skewX(-12deg);
+  mix-blend-mode: screen;
+  animation: holoPass 5s cubic-bezier(0.4,0,0.6,1) infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes holoPass {
+  0%   { left: -100%; opacity: 0; }
+  6%   { opacity: 1; }
+  50%  { left: 170%; }
+  56%  { opacity: 0; }
+  100% { left: -100%; opacity: 0; }
+}
+
+/* Subtle scanlines (CRT-style depth) */
+.id-photo-col::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.028) 3px,
+    rgba(0, 0, 0, 0.028) 4px
+  );
+  pointer-events: none;
+  z-index: 3;
 }
 
 .id-photo {
@@ -2324,7 +2376,7 @@ html[lang="en"] .card3d-access-item {
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 88dvh;
-  padding: 0 0 max(env(safe-area-inset-bottom), 32px);
+  padding: 12px 0 max(env(safe-area-inset-bottom), 32px);
 }
 
 /* ── SP Header (matches cp-header) ── */
@@ -2551,7 +2603,7 @@ html[lang="en"] .card3d-access-item {
 /* ── Individual tab panels (shown/hidden) ── */
 .sp-tab-panel {
   display: none;
-  padding: 4px 18px max(env(safe-area-inset-bottom), 36px);
+  padding: 18px 18px max(env(safe-area-inset-bottom), 36px);
 }
 
 .sp-tab-panel.active {
@@ -4944,7 +4996,7 @@ html[lang="en"] .ag-future-desc {
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 88dvh;
-  padding: 0 0 max(env(safe-area-inset-bottom), 32px);
+  padding: 12px 0 max(env(safe-area-inset-bottom), 32px);
 }
 
 /* ── HEADER ─────────────────────────────────────────── */
@@ -5487,7 +5539,7 @@ html[lang="en"] .ag-future-desc {
 }
 .ac-tab-panel {
   display: none;
-  padding: 4px 0 28px;
+  padding: 18px 0 28px;
 }
 .ac-tab-panel.active {
   display: block;
