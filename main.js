@@ -758,4 +758,59 @@ function showToast(msg) {
       rankStrip.appendChild(dot);
     }
   }
+
+  /* --- Count up animations for RECORD tab --- */
+  function countUp(el, duration) {
+    var target = parseFloat(el.dataset.count);
+    var isFloat = target % 1 !== 0;
+    var decimals = isFloat ? 2 : 0;
+    var start = 0;
+    var startTime = null;
+    
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      var current = start + (target - start) * eased;
+      el.textContent = current.toFixed(decimals);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  function animateRecordCounts() {
+    var countElements = document.querySelectorAll('#actab-record [data-count]');
+    countElements.forEach(function(el, index) {
+      setTimeout(function() {
+        countUp(el, 1200);
+      }, index * 100 + 300);
+    });
+  }
+
+  /* trigger count-up when RECORD tab becomes active */
+  var recordTab = document.getElementById('actab-record');
+  if (recordTab && acSheet) {
+    var countObserver = new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        if (m.attributeName === 'class' && recordTab.classList.contains('active')) {
+          animateRecordCounts();
+        }
+      });
+    });
+    countObserver.observe(recordTab, { attributes: true });
+    
+    /* Also trigger when sheet opens on RECORD tab */
+    var sheetOpenObserver = new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        if (m.attributeName === 'class' && acSheet.classList.contains('open')) {
+          if (recordTab.classList.contains('active')) {
+            animateRecordCounts();
+          }
+        }
+      });
+    });
+    sheetOpenObserver.observe(acSheet, { attributes: true });
+  }
 }());
