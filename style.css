@@ -2376,7 +2376,11 @@ html[lang="en"] .card3d-access-item {
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 88dvh;
-  padding: 12px 0 max(env(safe-area-inset-bottom), 32px);
+  padding: 0 0 max(env(safe-area-inset-bottom), 32px);
+}
+
+.sheet-panel-activities .sheet-handle {
+  margin-top: 12px;
 }
 
 /* ── SP Header (matches cp-header) ── */
@@ -4996,7 +5000,11 @@ html[lang="en"] .ag-future-desc {
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 88dvh;
-  padding: 12px 0 max(env(safe-area-inset-bottom), 32px);
+  padding: 0 0 max(env(safe-area-inset-bottom), 32px);
+}
+
+.sheet-panel-academic .sheet-handle {
+  margin-top: 12px;
 }
 
 /* ── HEADER ─────────────────────────────────────────── */
@@ -5054,179 +5062,148 @@ html[lang="en"] .ag-future-desc {
 .ac-close:hover { background: rgba(0,0,0,0.06); }
 
 /* ══════════════════════════════════════════════════════
-   SHARED PANEL BANNER — pb-* (Academic + Athletic)
+   UNIFIED BANNER — ub-* compact university credential
 ══════════════════════════════════════════════════════ */
 
-/* Theme tokens set per panel modifier */
-.pb-banner--academic {
-  --pb-accent:        var(--cu);
-  --pb-accent-rgb:    222, 93, 142;
-  --pb-bg-top:        rgba(222, 93, 142, 0.08);
-  --pb-bg-bot:        rgba(222, 93, 142, 0.03);
-  --pb-border:        rgba(222, 93, 142, 0.14);
-  --pb-metric-border: rgba(222, 93, 142, 0.20);
-  --pb-metric-bg:     rgba(222, 93, 142, 0.06);
+.ub-banner--academic {
+  --ub-accent:     var(--cu);
+  --ub-accent-rgb: 222, 93, 142;
+  --ub-rule-c:     rgba(222, 93, 142, 0.25);
+  --ub-seal-c:     rgba(222, 93, 142, 0.65);
+  --ub-border-l:   rgba(222, 93, 142, 0.40);
+  --ub-bg:         rgba(222, 93, 142, 0.04);
 }
 
-.pb-banner--athletic {
-  --pb-accent:        #2271de;
-  --pb-accent-rgb:    34, 113, 222;
-  --pb-bg-top:        rgba(34, 113, 222, 0.08);
-  --pb-bg-bot:        rgba(34, 113, 222, 0.03);
-  --pb-border:        rgba(34, 113, 222, 0.14);
-  --pb-metric-border: rgba(34, 113, 222, 0.20);
-  --pb-metric-bg:     rgba(34, 113, 222, 0.06);
+.ub-banner--athletic {
+  --ub-accent:     #1c63c2;
+  --ub-accent-rgb: 28, 99, 194;
+  --ub-rule-c:     rgba(28, 99, 194, 0.22);
+  --ub-seal-c:     rgba(28, 99, 194, 0.60);
+  --ub-border-l:   rgba(28, 99, 194, 0.38);
+  --ub-bg:         rgba(28, 99, 194, 0.03);
 }
 
-/* Shared banner container */
-.pb-banner {
-  padding: 14px 18px 16px;
-  border-bottom: 1px solid var(--pb-border, rgba(0,0,0,0.08));
-  background: linear-gradient(180deg, var(--pb-bg-top) 0%, var(--pb-bg-bot) 100%);
+.ub-banner {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px 10px 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  border-left: 2.5px solid var(--ub-border-l);
+  background: linear-gradient(to right, var(--ub-bg) 0%, transparent 65%);
   flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  gap: 0;
 }
 
-/* ── Top row: metric box + info block ─────────────── */
-.pb-top {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.pb-metric {
+/* Emblem / seal area */
+.ub-seal {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  padding: 12px 10px;
-  background: var(--pb-metric-bg);
-  border: 1px solid var(--pb-metric-border);
-  border-radius: 14px;
+  gap: 3px;
+  width: 38px;
   flex-shrink: 0;
-  min-width: 82px;
+  color: var(--ub-seal-c);
 }
 
-.pb-metric-score {
-  display: flex;
-  align-items: baseline;
-  gap: 1px;
+.ub-seal-img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  opacity: 0.82;
+  display: block;
 }
 
-.pb-metric-num {
-  font: 800 30px / 1 var(--f);
-  color: var(--pb-accent);
-  letter-spacing: -0.05em;
-}
-
-.pb-metric-den {
-  font: 500 12px / 1 var(--f);
-  color: var(--t3);
-  letter-spacing: -0.01em;
-}
-
-.pb-metric-lbl {
-  font: 700 7.5px / 1 var(--f);
-  color: var(--pb-accent);
-  letter-spacing: 0.08em;
+.ub-seal-txt {
+  font: 600 6px / 1 var(--f);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  text-align: center;
-  opacity: 0.75;
+  color: var(--ub-seal-c);
 }
 
-/* ── Info block (right of metric) ─────────────────── */
-.pb-info {
+/* Vertical rule */
+.ub-rule {
+  width: 1px;
+  min-height: 44px;
+  align-self: stretch;
+  background: var(--ub-rule-c);
+  margin: 0 11px 0 8px;
+  flex-shrink: 0;
+}
+
+/* Text body */
+.ub-body {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 3px;
-  justify-content: center;
-  padding-top: 2px;
 }
 
-.pb-info-name {
-  font: 700 13px / 1.2 var(--f);
+/* Top row: programme name + score */
+.ub-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.ub-title {
+  font: 500 11px / 1.3 var(--f);
   color: var(--t1);
-  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0;
 }
 
-.pb-info-sub {
-  font: 400 10px / 1.35 var(--f);
+.ub-score {
+  font: 400 10px / 1 var(--f);
   color: var(--t3);
-}
-
-/* ── Status chips ──────────────────────────────────── */
-.pb-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 5px;
-}
-
-.pb-chip {
-  display: inline-block;
-  padding: 2px 7px;
-  border-radius: 20px;
-  font: 700 7.5px / 1.4 var(--f);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  border: 1px solid;
-}
-
-.pb-chip--gold   { background: rgba(184,133,42,0.10);  color: #8a6200; border-color: rgba(184,133,42,0.28); }
-.pb-chip--pink   { background: rgba(222,93,142,0.10);  color: #c4447a; border-color: rgba(222,93,142,0.28); }
-.pb-chip--green  { background: rgba(34,148,83,0.10);   color: #1a7a48; border-color: rgba(34,148,83,0.28);  }
-.pb-chip--blue   { background: rgba(34,113,222,0.10);  color: #1d4ed8; border-color: rgba(34,113,222,0.28); }
-
-/* ── Stats row ─────────────────────────────────────── */
-.pb-stats {
-  display: flex;
-  align-items: stretch;
-  background: rgba(255,255,255,0.65);
-  border: 1px solid rgba(0,0,0,0.07);
-  border-radius: 12px;
-  padding: 10px 0;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.pb-stat {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.pb-stat-div {
-  width: 1px;
-  background: rgba(0,0,0,0.08);
+  white-space: nowrap;
   flex-shrink: 0;
-  align-self: stretch;
-  margin: 2px 0;
 }
 
-.pb-stat-val {
-  font: 800 14px / 1 var(--f);
-  color: var(--t1);
-  letter-spacing: -0.02em;
-  text-align: center;
+.ub-mark {
+  font-weight: 600;
+  color: var(--ub-accent);
+  font-style: normal;
+  background: none;
 }
 
-.pb-stat-accent { color: var(--pb-accent); }
-.pb-stat-green  { color: #22a55b; }
-
-.pb-stat-lbl {
-  font: 600 7px / 1 var(--f);
+/* Sub-line */
+.ub-meta {
+  font: 400 9.5px / 1.35 var(--f);
   color: var(--t3);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
+/* Tag row */
+.ub-tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: nowrap;
+  margin-top: 1px;
+  overflow: hidden;
+}
+
+.ub-tag {
+  font: 400 8.5px / 1 var(--f);
+  letter-spacing: 0.04em;
+  padding: 2px 6px 2.5px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--t3);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ub-tag--gold   { background: rgba(185,147,30,0.09);              color: #7e6215; border-color: rgba(185,147,30,0.22); }
+.ub-tag--green  { background: rgba(22,163,74,0.08);               color: #15803d; border-color: rgba(22,163,74,0.20);  }
+.ub-tag--accent { background: rgba(var(--ub-accent-rgb), 0.08);   color: var(--ub-accent); border-color: rgba(var(--ub-accent-rgb), 0.22); }
 
 /* ── STUDENT BANNER ─────────────────────────────────── */
 .ac-student-banner {
