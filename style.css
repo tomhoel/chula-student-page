@@ -2321,11 +2321,11 @@ html[lang="en"] .card3d-access-item {
 ══════════════════════════════════════════════════════ */
 
 .sheet-panel-activities {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  display: block;
+  overflow-y: auto;
+  overflow-x: hidden;
   max-height: 93dvh;
-  padding: 0;
+  padding: 0 0 max(env(safe-area-inset-bottom), 32px);
 }
 
 /* ── SP Header (matches cp-header) ── */
@@ -2538,11 +2538,9 @@ html[lang="en"] .card3d-access-item {
   border-bottom-color: var(--cu);
 }
 
-/* ── Tab scroll wrapper (single child of flex-column panel) ── */
+/* ── Tab scroll wrapper ── */
 .sp-tab-content {
-  overflow-y: auto;
-  flex: 1;
-  -webkit-overflow-scrolling: touch;
+  display: block;
 }
 
 /* ── Individual tab panels (shown/hidden) ── */
@@ -4778,10 +4776,11 @@ html[lang="en"] .ag-future-desc {
 ══════════════════════════════════════════════════════ */
 
 .sheet-panel-academic {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  overflow: hidden;
+  display: block;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 93dvh;
+  padding: 0 0 max(env(safe-area-inset-bottom), 32px);
 }
 
 /* ── HEADER ─────────────────────────────────────────── */
@@ -4975,9 +4974,7 @@ html[lang="en"] .ag-future-desc {
   border-bottom-color: var(--cu);
 }
 .ac-tab-content {
-  overflow-y: auto;
-  flex: 1;
-  -webkit-overflow-scrolling: touch;
+  display: block;
 }
 .ac-tab-panel {
   display: none;
