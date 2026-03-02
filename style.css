@@ -2324,7 +2324,7 @@ html[lang="en"] .card3d-access-item {
   display: block;
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 93dvh;
+  max-height: 88dvh;
   padding: 0 0 max(env(safe-area-inset-bottom), 32px);
 }
 
@@ -2513,6 +2513,10 @@ html[lang="en"] .card3d-access-item {
   overflow-x: auto;
   scrollbar-width: none;
   flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
 }
 
 .sp-tabs::-webkit-scrollbar { display: none; }
@@ -4779,7 +4783,7 @@ html[lang="en"] .ag-future-desc {
   display: block;
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 93dvh;
+  max-height: 88dvh;
   padding: 0 0 max(env(safe-area-inset-bottom), 32px);
 }
 
@@ -4951,6 +4955,10 @@ html[lang="en"] .ag-future-desc {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
 }
 .ac-tabs::-webkit-scrollbar { display: none; }
 .ac-tab {
