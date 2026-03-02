@@ -517,156 +517,343 @@
 
         <!-- RECORD TAB -->
         <div class="ac-tab-panel active" id="actab-record"   role="tabpanel">
-          <div class="ac-section-title">GPA PROGRESSION</div>
-          <div class="ac-gpa-compare">
-            <div class="ac-gpa-bar-row">
-              <span class="ac-gpa-sem">SEM 1</span>
-              <div class="ac-gpa-bar-wrap">
-                <div class="ac-gpa-bar" style="--target: 91.25%"></div>
+          <!-- GPA Ring Performance -->
+          <div class="ac-gpa-ring-section">
+            <div class="ac-gpa-ring-container">
+              <svg class="ac-gpa-ring" viewBox="0 0 120 120">
+                <defs>
+                  <linearGradient id="gpaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:var(--cu);stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#ff8fab;stop-opacity:1" />
+                  </linearGradient>
+                  <filter id="gpaGlow">
+                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                    <feMerge>
+                      <feMergeNode in="coloredBlur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+                <circle class="ac-gpa-ring-bg" cx="60" cy="60" r="50"/>
+                <circle class="ac-gpa-ring-fill" cx="60" cy="60" r="50" style="--gpa-percent: 94.5"/>
+              </svg>
+              <div class="ac-gpa-ring-inner">
+                <span class="ac-gpa-ring-val">3.78</span>
+                <span class="ac-gpa-ring-den">/4.00</span>
               </div>
-              <span class="ac-gpa-val">3.65</span>
             </div>
-            <div class="ac-gpa-bar-row">
-              <span class="ac-gpa-sem">SEM 2</span>
-              <div class="ac-gpa-bar-wrap">
-                <div class="ac-gpa-bar" style="--target: 94.5%"></div>
+            <div class="ac-gpa-ring-stats">
+              <div class="ac-gpa-ring-stat">
+                <span class="ac-gpa-ring-stat-val">94.5%</span>
+                <span class="ac-gpa-ring-stat-lbl">MAX</span>
               </div>
-              <span class="ac-gpa-val">3.78 <span class="ac-delta-badge">+0.13 ↑</span></span>
+              <div class="ac-gpa-ring-stat ac-gpa-ring-stat--highlight">
+                <span class="ac-gpa-ring-stat-val">Top 12%</span>
+                <span class="ac-gpa-ring-stat-lbl">RANK</span>
+              </div>
+              <div class="ac-gpa-ring-stat">
+                <span class="ac-gpa-ring-stat-val">Honours</span>
+                <span class="ac-gpa-ring-stat-lbl">TRACK</span>
+              </div>
             </div>
           </div>
 
-          <div class="ac-section-title">SEMESTER 2 — ACTIVE <span class="ac-sem-gpa">GPA 3.78</span></div>
+          <!-- Academic Timeline (Vertical) -->
+          <div class="ac-section-title">ACADEMIC TIMELINE</div>
+          <div class="ac-timeline-vertical">
+            <div class="ac-timeline-line"></div>
+            
+            <div class="ac-timeline-item ac-timeline-item--future">
+              <div class="ac-timeline-dot"></div>
+              <div class="ac-timeline-content">
+                <span class="ac-timeline-sem">SEMESTER 6</span>
+                <span class="ac-timeline-status">Projected</span>
+                <span class="ac-timeline-gpa">~3.88</span>
+              </div>
+            </div>
+            
+            <div class="ac-timeline-item ac-timeline-item--future">
+              <div class="ac-timeline-dot"></div>
+              <div class="ac-timeline-content">
+                <span class="ac-timeline-sem">SEMESTER 5</span>
+                <span class="ac-timeline-status">Upcoming</span>
+                <span class="ac-timeline-gpa">—</span>
+              </div>
+            </div>
+            
+            <div class="ac-timeline-item ac-timeline-item--future">
+              <div class="ac-timeline-dot"></div>
+              <div class="ac-timeline-content">
+                <span class="ac-timeline-sem">SEMESTER 4</span>
+                <span class="ac-timeline-status">Upcoming</span>
+                <span class="ac-timeline-gpa">—</span>
+              </div>
+            </div>
+            
+            <div class="ac-timeline-item ac-timeline-item--future">
+              <div class="ac-timeline-dot"></div>
+              <div class="ac-timeline-content">
+                <span class="ac-timeline-sem">SEMESTER 3</span>
+                <span class="ac-timeline-status">Next</span>
+                <span class="ac-timeline-gpa">—</span>
+              </div>
+            </div>
+            
+            <div class="ac-timeline-item ac-timeline-item--active">
+              <div class="ac-timeline-dot"></div>
+              <div class="ac-timeline-content">
+                <span class="ac-timeline-sem">SEMESTER 2</span>
+                <span class="ac-timeline-status">Active</span>
+                <span class="ac-timeline-gpa">3.78 ↑</span>
+              </div>
+            </div>
+            
+            <div class="ac-timeline-item ac-timeline-item--complete">
+              <div class="ac-timeline-dot"></div>
+              <div class="ac-timeline-content">
+                <span class="ac-timeline-sem">SEMESTER 1</span>
+                <span class="ac-timeline-status">Complete</span>
+                <span class="ac-timeline-gpa">3.65</span>
+              </div>
+            </div>
+          </div>
 
-          <div class="ac-course-card">
-            <div class="ac-course-head">
-              <span class="ac-grade-badge ac-grade-a">A</span>
-              <div class="ac-course-info">
+          <!-- Active Courses -->
+          <div class="ac-section-title">ACTIVE COURSES — SEMESTER 2</div>
+          
+          <div class="ac-course-card" style="--card-index: 0">
+            <div class="ac-course-header">
+              <span class="ac-grade-badge ac-grade-badge--gradient ac-grade-a">A</span>
+              <div class="ac-course-title">
                 <div class="ac-course-code">ECON 6201</div>
                 <div class="ac-course-name">Portfolio Theory</div>
               </div>
-              <div class="ac-course-score">96%</div>
-            </div>
-            <div class="ac-bars">
-              <div class="ac-bar-row">
-                <span class="ac-bar-label">You</span>
-                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-you" style="--w:96%;--delay:0ms"></div></div>
-                <span class="ac-bar-pct">96</span>
-              </div>
-              <div class="ac-bar-row">
-                <span class="ac-bar-label">Avg</span>
-                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-avg" style="--w:72%;--delay:60ms"></div></div>
-                <span class="ac-bar-pct">72</span>
+              <div class="ac-course-score-display">
+                <span class="ac-course-score-val">96</span>
+                <span class="ac-course-score-pct">%</span>
               </div>
             </div>
-            <div class="ac-course-delta">+24pp above cohort</div>
+            <div class="ac-course-bars">
+              <div class="ac-bar-comparison">
+                <span class="ac-bar-label">Your Performance</span>
+                <div class="ac-bar-container">
+                  <div class="ac-bar-track">
+                    <div class="ac-bar-fill ac-bar-fill--you" style="--fill-width: 96%"></div>
+                  </div>
+                  <span class="ac-bar-value">96%</span>
+                </div>
+              </div>
+              <div class="ac-bar-comparison">
+                <span class="ac-bar-label">Class Average</span>
+                <div class="ac-bar-container">
+                  <div class="ac-bar-track">
+                    <div class="ac-bar-fill ac-bar-fill--avg" style="--fill-width: 72%"></div>
+                  </div>
+                  <span class="ac-bar-value">72%</span>
+                </div>
+              </div>
+            </div>
+            <div class="ac-course-delta ac-course-delta--positive">
+              <span class="ac-delta-icon">↑</span>
+              <span class="ac-delta-text">+24pp above cohort</span>
+            </div>
           </div>
 
-          <div class="ac-course-card">
-            <div class="ac-course-head">
-              <span class="ac-grade-badge ac-grade-a-minus">A−</span>
-              <div class="ac-course-info">
+          <div class="ac-course-card" style="--card-index: 1">
+            <div class="ac-course-header">
+              <span class="ac-grade-badge ac-grade-badge--gradient ac-grade-a-minus">A−</span>
+              <div class="ac-course-title">
                 <div class="ac-course-code">ECON 6202</div>
                 <div class="ac-course-name">Corporate Finance</div>
               </div>
-              <div class="ac-course-score">90%</div>
-            </div>
-            <div class="ac-bars">
-              <div class="ac-bar-row">
-                <span class="ac-bar-label">You</span>
-                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-you" style="--w:90%;--delay:80ms"></div></div>
-                <span class="ac-bar-pct">90</span>
-              </div>
-              <div class="ac-bar-row">
-                <span class="ac-bar-label">Avg</span>
-                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-avg" style="--w:74%;--delay:140ms"></div></div>
-                <span class="ac-bar-pct">74</span>
+              <div class="ac-course-score-display">
+                <span class="ac-course-score-val">90</span>
+                <span class="ac-course-score-pct">%</span>
               </div>
             </div>
-            <div class="ac-course-delta">+16pp above cohort</div>
+            <div class="ac-course-bars">
+              <div class="ac-bar-comparison">
+                <span class="ac-bar-label">Your Performance</span>
+                <div class="ac-bar-container">
+                  <div class="ac-bar-track">
+                    <div class="ac-bar-fill ac-bar-fill--you" style="--fill-width: 90%"></div>
+                  </div>
+                  <span class="ac-bar-value">90%</span>
+                </div>
+              </div>
+              <div class="ac-bar-comparison">
+                <span class="ac-bar-label">Class Average</span>
+                <div class="ac-bar-container">
+                  <div class="ac-bar-track">
+                    <div class="ac-bar-fill ac-bar-fill--avg" style="--fill-width: 74%"></div>
+                  </div>
+                  <span class="ac-bar-value">74%</span>
+                </div>
+              </div>
+            </div>
+            <div class="ac-course-delta ac-course-delta--positive">
+              <span class="ac-delta-icon">↑</span>
+              <span class="ac-delta-text">+16pp above cohort</span>
+            </div>
           </div>
 
-          <div class="ac-course-card">
-            <div class="ac-course-head">
-              <span class="ac-grade-badge ac-grade-a">A</span>
-              <div class="ac-course-info">
+          <div class="ac-course-card" style="--card-index: 2">
+            <div class="ac-course-header">
+              <span class="ac-grade-badge ac-grade-badge--gradient ac-grade-a">A</span>
+              <div class="ac-course-title">
                 <div class="ac-course-code">ECON 6203</div>
                 <div class="ac-course-name">Derivatives</div>
               </div>
-              <div class="ac-course-score">93%</div>
-            </div>
-            <div class="ac-bars">
-              <div class="ac-bar-row">
-                <span class="ac-bar-label">You</span>
-                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-you" style="--w:93%;--delay:160ms"></div></div>
-                <span class="ac-bar-pct">93</span>
-              </div>
-              <div class="ac-bar-row">
-                <span class="ac-bar-label">Avg</span>
-                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-avg" style="--w:68%;--delay:220ms"></div></div>
-                <span class="ac-bar-pct">68</span>
+              <div class="ac-course-score-display">
+                <span class="ac-course-score-val">93</span>
+                <span class="ac-course-score-pct">%</span>
               </div>
             </div>
-            <div class="ac-course-delta">+25pp above cohort</div>
+            <div class="ac-course-bars">
+              <div class="ac-bar-comparison">
+                <span class="ac-bar-label">Your Performance</span>
+                <div class="ac-bar-container">
+                  <div class="ac-bar-track">
+                    <div class="ac-bar-fill ac-bar-fill--you" style="--fill-width: 93%"></div>
+                  </div>
+                  <span class="ac-bar-value">93%</span>
+                </div>
+              </div>
+              <div class="ac-bar-comparison">
+                <span class="ac-bar-label">Class Average</span>
+                <div class="ac-bar-container">
+                  <div class="ac-bar-track">
+                    <div class="ac-bar-fill ac-bar-fill--avg" style="--fill-width: 68%"></div>
+                  </div>
+                  <span class="ac-bar-value">68%</span>
+                </div>
+              </div>
+            </div>
+            <div class="ac-course-delta ac-course-delta--positive">
+              <span class="ac-delta-icon">↑</span>
+              <span class="ac-delta-text">+25pp above cohort</span>
+            </div>
           </div>
 
-          <div class="ac-section-title">SEMESTER 1 — COMPLETE <span class="ac-sem-gpa">GPA 3.65</span></div>
+          <!-- Completed Courses -->
+          <div class="ac-section-title">COMPLETED — SEMESTER 1</div>
 
-          <div class="ac-course-card ac-course-card--done">
-            <div class="ac-course-head">
-              <span class="ac-grade-badge ac-grade-a">A</span>
-              <div class="ac-course-info">
+          <div class="ac-course-card ac-course-card--completed" style="--card-index: 3">
+            <div class="ac-course-header">
+              <span class="ac-grade-badge ac-grade-badge--gradient ac-grade-a">A</span>
+              <div class="ac-course-title">
                 <div class="ac-course-code">ECON 6101</div>
                 <div class="ac-course-name">Financial Economics</div>
               </div>
-              <div class="ac-course-score">95%</div>
-            </div>
-            <div class="ac-bars">
-              <div class="ac-bar-row">
-                <span class="ac-bar-label">You</span>
-                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-you" style="--w:95%;--delay:240ms"></div></div>
-                <span class="ac-bar-pct">95</span>
-              </div>
-              <div class="ac-bar-row">
-                <span class="ac-bar-label">Avg</span>
-                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-avg" style="--w:76%;--delay:300ms"></div></div>
-                <span class="ac-bar-pct">76</span>
+              <div class="ac-course-score-display">
+                <span class="ac-course-score-val">95</span>
+                <span class="ac-course-score-pct">%</span>
+                <span class="ac-course-check">✓</span>
               </div>
             </div>
-            <div class="ac-course-delta">+19pp above cohort</div>
+            <div class="ac-course-bars">
+              <div class="ac-bar-comparison">
+                <span class="ac-bar-label">Your Performance</span>
+                <div class="ac-bar-container">
+                  <div class="ac-bar-track">
+                    <div class="ac-bar-fill ac-bar-fill--you" style="--fill-width: 95%"></div>
+                  </div>
+                  <span class="ac-bar-value">95%</span>
+                </div>
+              </div>
+              <div class="ac-bar-comparison">
+                <span class="ac-bar-label">Class Average</span>
+                <div class="ac-bar-container">
+                  <div class="ac-bar-track">
+                    <div class="ac-bar-fill ac-bar-fill--avg" style="--fill-width: 76%"></div>
+                  </div>
+                  <span class="ac-bar-value">76%</span>
+                </div>
+              </div>
+            </div>
+            <div class="ac-course-delta ac-course-delta--positive">
+              <span class="ac-delta-icon">↑</span>
+              <span class="ac-delta-text">+19pp above cohort</span>
+            </div>
           </div>
 
-          <div class="ac-course-card ac-course-card--done">
-            <div class="ac-course-head">
-              <span class="ac-grade-badge ac-grade-a">A</span>
-              <div class="ac-course-info">
+          <div class="ac-course-card ac-course-card--completed" style="--card-index: 4">
+            <div class="ac-course-header">
+              <span class="ac-grade-badge ac-grade-badge--gradient ac-grade-a">A</span>
+              <div class="ac-course-title">
                 <div class="ac-course-code">ECON 6102</div>
                 <div class="ac-course-name">Quantitative Methods</div>
               </div>
-              <div class="ac-course-score">92%</div>
-            </div>
-            <div class="ac-bars">
-              <div class="ac-bar-row">
-                <span class="ac-bar-label">You</span>
-                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-you" style="--w:92%;--delay:320ms"></div></div>
-                <span class="ac-bar-pct">92</span>
-              </div>
-              <div class="ac-bar-row">
-                <span class="ac-bar-label">Avg</span>
-                <div class="ac-bar-wrap"><div class="ac-bar ac-bar-avg" style="--w:71%;--delay:380ms"></div></div>
-                <span class="ac-bar-pct">71</span>
+              <div class="ac-course-score-display">
+                <span class="ac-course-score-val">92</span>
+                <span class="ac-course-score-pct">%</span>
+                <span class="ac-course-check">✓</span>
               </div>
             </div>
-            <div class="ac-course-delta">+21pp above cohort</div>
+            <div class="ac-course-bars">
+              <div class="ac-bar-comparison">
+                <span class="ac-bar-label">Your Performance</span>
+                <div class="ac-bar-container">
+                  <div class="ac-bar-track">
+                    <div class="ac-bar-fill ac-bar-fill--you" style="--fill-width: 92%"></div>
+                  </div>
+                  <span class="ac-bar-value">92%</span>
+                </div>
+              </div>
+              <div class="ac-bar-comparison">
+                <span class="ac-bar-label">Class Average</span>
+                <div class="ac-bar-container">
+                  <div class="ac-bar-track">
+                    <div class="ac-bar-fill ac-bar-fill--avg" style="--fill-width: 71%"></div>
+                  </div>
+                  <span class="ac-bar-value">71%</span>
+                </div>
+              </div>
+            </div>
+            <div class="ac-course-delta ac-course-delta--positive">
+              <span class="ac-delta-icon">↑</span>
+              <span class="ac-delta-text">+21pp above cohort</span>
+            </div>
           </div>
 
-          <div class="ac-course-card ac-course-card--done">
-            <div class="ac-course-head">
-              <span class="ac-grade-badge ac-grade-b-plus">B+</span>
-              <div class="ac-course-info">
+          <div class="ac-course-card ac-course-card--completed" style="--card-index: 5">
+            <div class="ac-course-header">
+              <span class="ac-grade-badge ac-grade-badge--gradient ac-grade-b-plus">B+</span>
+              <div class="ac-course-title">
                 <div class="ac-course-code">ECON 6103</div>
                 <div class="ac-course-name">Microeconomics</div>
               </div>
-              <div class="ac-course-score">84%</div>
+              <div class="ac-course-score-display">
+                <span class="ac-course-score-val">84</span>
+                <span class="ac-course-score-pct">%</span>
+                <span class="ac-course-check">✓</span>
+              </div>
+            </div>
+            <div class="ac-course-bars">
+              <div class="ac-bar-comparison">
+                <span class="ac-bar-label">Your Performance</span>
+                <div class="ac-bar-container">
+                  <div class="ac-bar-track">
+                    <div class="ac-bar-fill ac-bar-fill--you" style="--fill-width: 84%"></div>
+                  </div>
+                  <span class="ac-bar-value">84%</span>
+                </div>
+              </div>
+              <div class="ac-bar-comparison">
+                <span class="ac-bar-label">Class Average</span>
+                <div class="ac-bar-container">
+                  <div class="ac-bar-track">
+                    <div class="ac-bar-fill ac-bar-fill--avg" style="--fill-width: 78%"></div>
+                  </div>
+                  <span class="ac-bar-value">78%</span>
+                </div>
+              </div>
+            </div>
+            <div class="ac-course-delta ac-course-delta--positive">
+              <span class="ac-delta-icon">↑</span>
+              <span class="ac-delta-text">+6pp above cohort</span>
+            </div>
+          </div>
             </div>
             <div class="ac-bars">
               <div class="ac-bar-row">
