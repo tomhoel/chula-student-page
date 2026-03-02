@@ -97,19 +97,23 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
 });
 
 /* ── PROFILE PHOTO LIGHTBOX ─────────────────────────── */
-(function () {
+document.addEventListener('DOMContentLoaded', function () {
   const trigger  = document.getElementById('profile-photo');
   const lightbox = document.getElementById('lightbox-photo');
   if (!trigger || !lightbox) return;
 
-  function open()  { lightbox.classList.add('open'); }
+  function open(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    lightbox.classList.add('open');
+  }
   function close() { lightbox.classList.remove('open'); }
 
   trigger.addEventListener('click', open);
-  trigger.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') open(); });
+  trigger.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') open(e); });
   lightbox.addEventListener('click', close);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-})();
+});
 
 /* ── 3D CARD VIEWER ─────────────────────────────────── */
 (function () {
