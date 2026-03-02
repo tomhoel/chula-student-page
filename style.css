@@ -9817,15 +9817,15 @@ html[lang="en"] .ac-panel-val {
   margin: 14px 18px 4px;
   background: rgba(0,0,0,0.022);
   border: 1px solid rgba(0,0,0,0.05);
-  min-height: 340px;
+  height: 360px;
   display: flex; align-items: center; justify-content: center;
 }
 
-/* Override card3d-stage inside identity wallet (no own bg, no own margin) */
+/* Override card3d-stage inside identity wallet — fills clip exactly */
 .sheet-panel-card .card3d-stage {
   margin: 0; background: none; border-radius: 0;
-  padding: 20px 0 16px;
-  min-height: 310px;
+  padding: 0; width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
 }
 
 /* ── card3d-fade directional slide ── */
@@ -9888,7 +9888,7 @@ html[lang="en"] .ac-panel-val {
 .idc-morph-tags { display: flex; gap: 4px; margin-top: 3px; flex-wrap: wrap; }
 
 /* ── Tab panels (info content, fade in) ── */
-.idc-tab-panel { display: none; padding: 0 0 max(env(safe-area-inset-bottom), 36px); }
+.idc-tab-panel { display: none; padding: 0 18px max(env(safe-area-inset-bottom), 36px); }
 .idc-tab-panel.active { display: block; animation: idcPanelIn 0.25s ease; }
 
 @keyframes idcPanelIn {
@@ -9898,3 +9898,248 @@ html[lang="en"] .ac-panel-val {
 
 /* ── Morph sentinel (zero-height trigger) ── */
 #idc-morph-sentinel { height: 0; }
+
+/* ══════════════════════════════════════════════════════
+   IDW — Identity Document Components (v3 redesign)
+══════════════════════════════════════════════════════ */
+
+/* ── Stat rail ── */
+.idw-stat-rail {
+  display: flex; align-items: center; gap: 0;
+  background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 12px; padding: 10px 0; margin-top: 10px;
+  overflow-x: auto; scrollbar-width: none;
+}
+.idw-stat-rail::-webkit-scrollbar { display: none; }
+.idw-stat-item {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 4px; min-width: 56px;
+}
+.idw-stat-val { font: 700 15px/1 var(--f); color: var(--cu); letter-spacing: -0.01em; }
+.idw-stat-unit { font-size: 10px; opacity: 0.5; }
+.idw-stat-key { font: 600 8px/1 var(--f); color: var(--t3); letter-spacing: 0.10em; text-transform: uppercase; }
+.idw-stat-div { width: 1px; height: 28px; background: rgba(0,0,0,0.08); flex-shrink: 0; }
+
+/* ── Shared labels & dots ── */
+.idw-section-lbl {
+  font: 600 9px/1 var(--f); color: var(--t3); letter-spacing: 0.10em; text-transform: uppercase;
+}
+.idw-dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.idw-dot--green { background: #22c55e; }
+.idw-dot--pulse { background: var(--cu); animation: idwPulse 2s ease-in-out infinite; }
+@keyframes idwPulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%     { opacity: 0.4; transform: scale(0.65); }
+}
+.idw-cred-status { display: inline-flex; align-items: center; gap: 4px; font: 700 8px/1 var(--f); color: #22c55e; letter-spacing: 0.08em; }
+
+/* ── Dark credential / barcode block ── */
+.idw-cred-block {
+  background: #111318; border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  margin-top: 10px; overflow: hidden;
+}
+.idw-cred-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 12px 8px;
+}
+.idw-cred-badge {
+  font: 600 8px/1 var(--f); color: rgba(255,255,255,0.32);
+  letter-spacing: 0.10em; text-transform: uppercase;
+}
+.idw-barcode-wrap {
+  position: relative; background: #0c0e12; padding: 10px 14px 6px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.idw-barcode-svg { width: 100%; height: 48px; display: block; }
+.idw-barcode-scan { animation: idwScan 3.2s linear infinite; }
+@keyframes idwScan {
+  0%   { transform: translateY(0);    opacity: 0.75; }
+  88%  { transform: translateY(42px); opacity: 0.75; }
+  100% { transform: translateY(42px); opacity: 0; }
+}
+.idw-barcode-num {
+  font: 400 8px/1 'SF Mono','Menlo','Consolas',monospace;
+  color: rgba(255,255,255,0.28); letter-spacing: 0.08em;
+  text-align: center; margin-top: 5px;
+}
+.idw-cred-rows { padding: 8px 12px 10px; }
+.idw-cred-row {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+  padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.idw-cred-row:last-child { border-bottom: none; }
+.idw-cred-key { font: 500 9.5px/1 var(--f); color: rgba(255,255,255,0.32); white-space: nowrap; flex-shrink: 0; }
+.idw-cred-val { font: 400 9.5px/1 var(--f); color: rgba(255,255,255,0.72); text-align: right; }
+.idw-mono { font-family: 'SF Mono','Menlo','Consolas',monospace !important; font-size: 9px !important; letter-spacing: 0.04em; }
+
+/* ── NFC antenna block ── */
+.idw-nfc-block {
+  background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 12px; padding: 10px 12px 12px; margin-top: 10px;
+}
+.idw-nfc-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.idw-nfc-status { display: inline-flex; align-items: center; gap: 4px; font: 700 8px/1 var(--f); color: var(--cu); letter-spacing: 0.08em; }
+.idw-nfc-inner { display: flex; gap: 12px; align-items: flex-start; }
+.idw-nfc-diagram { flex-shrink: 0; width: 72px; height: 72px; }
+.idw-nfc-diagram svg { width: 100%; height: 100%; }
+.idw-nfc-data { flex: 1; display: flex; flex-direction: column; }
+.idw-nfc-row {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 6px;
+  padding: 5px 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.idw-nfc-row:last-child { border-bottom: none; }
+.idw-nfc-k { font: 500 9.5px/1 var(--f); color: var(--t3); white-space: nowrap; flex-shrink: 0; }
+.idw-nfc-v { font: 400 9.5px/1 var(--f); color: var(--t1); text-align: right; }
+
+/* ── Campus access matrix ── */
+.idw-access-block { margin-top: 10px; }
+.idw-access-block > .idw-section-lbl { display: block; margin-bottom: 8px; }
+.idw-access-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.idw-access-cell {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 10px; border-radius: 9px;
+  border: 1px solid transparent;
+  font: 500 9.5px/1.2 var(--f);
+}
+.idw-access-cell > svg { flex-shrink: 0; }
+.idw-access-cell > span:first-of-type { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.idw-access--granted  { background: rgba(34,197,94,0.07);  border-color: rgba(34,197,94,0.2);  color: #15803d; }
+.idw-access--granted svg { color: #22c55e; }
+.idw-access--restricted { background: rgba(239,68,68,0.06); border-color: rgba(239,68,68,0.18); color: #b91c1c; }
+.idw-access--restricted svg { color: #ef4444; }
+.idw-access-lvl { font: 700 7px/1 var(--f); letter-spacing: 0.06em; opacity: 0.5; flex-shrink: 0; }
+
+/* ── Cryptographic integrity block ── */
+.idw-crypto-block {
+  background: #111318; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; padding: 10px 12px 12px; margin-top: 10px;
+}
+.idw-crypto-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.idw-verify-badge {
+  font: 700 8px/1 var(--f); color: #22c55e;
+  background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.25);
+  border-radius: 4px; padding: 2px 6px; letter-spacing: 0.06em;
+}
+.idw-hash-row {
+  display: flex; align-items: baseline; gap: 8px;
+  padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.idw-hash-row:last-of-type { margin-bottom: 8px; }
+.idw-hash-label { font: 600 8px/1 var(--f); color: rgba(255,255,255,0.28); letter-spacing: 0.08em; flex-shrink: 0; min-width: 72px; }
+.idw-hash-val { font: 400 8px/1.4 'SF Mono','Menlo','Consolas',monospace; color: rgba(255,255,255,0.52); letter-spacing: 0.04em; word-break: break-all; }
+.idw-cert-chain { display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
+.idw-cert-node {
+  display: flex; align-items: center; gap: 6px; padding: 5px 8px;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 7px;
+}
+.idw-cert-node--leaf { background: rgba(222,93,142,0.08); border-color: rgba(222,93,142,0.2); }
+.idw-cert-connector { width: 1px; height: 6px; background: rgba(255,255,255,0.1); margin-left: 14px; }
+.idw-cert-icon { font-size: 8px; color: rgba(255,255,255,0.28); flex-shrink: 0; line-height: 1; }
+.idw-cert-node--leaf .idw-cert-icon { color: var(--cu); }
+.idw-cert-name { font: 400 9px/1 var(--f); color: rgba(255,255,255,0.65); flex: 1; }
+.idw-cert-ok { font: 700 7px/1 var(--f); color: #22c55e; letter-spacing: 0.06em; flex-shrink: 0; }
+
+/* ── MRZ block ── */
+.idw-mrz-block {
+  background: #111318; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; padding: 10px 12px; margin-top: 10px; overflow: hidden;
+}
+.idw-mrz-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.idw-mrz-strip {
+  background: #1c1c24; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px; padding: 10px; margin-bottom: 10px;
+  position: relative; overflow: hidden;
+}
+.idw-mrz-strip::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
+  pointer-events: none;
+}
+.idw-mrz-line {
+  font: 400 9px/1.9 'SF Mono','Menlo','Consolas',monospace;
+  color: rgba(255,255,255,0.8); letter-spacing: 0.10em; word-break: break-all;
+}
+.idw-mrz-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.idw-mrz-field {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 6px 8px; background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05); border-radius: 7px;
+}
+.idw-mrz-k { font: 600 7.5px/1 var(--f); color: rgba(255,255,255,0.28); letter-spacing: 0.08em; text-transform: uppercase; }
+.idw-mrz-v { font: 400 9px/1.2 var(--f); color: rgba(255,255,255,0.7); margin-top: 2px; }
+
+/* ── Biometric block ── */
+.idw-bio-block {
+  background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 12px; padding: 10px 12px 12px; margin-top: 10px;
+}
+.idw-bio-block > .idw-section-lbl { display: block; margin-bottom: 10px; }
+.idw-bio-inner { display: flex; gap: 12px; align-items: flex-start; }
+.idw-fp-wrap { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.idw-fp-svg { width: 62px; height: 74px; }
+.idw-fp-scan { animation: idwFpScan 2.6s ease-in-out infinite; }
+@keyframes idwFpScan {
+  0%   { transform: translateY(0);    opacity: 0.85; }
+  85%  { transform: translateY(52px); opacity: 0.85; }
+  100% { transform: translateY(52px); opacity: 0; }
+}
+.idw-fp-score { display: block; font: 700 13px/1 var(--f); color: var(--cu); text-align: center; }
+.idw-fp-label { display: block; font: 600 7px/1 var(--f); color: var(--t3); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; text-align: center; }
+.idw-bio-rows { flex: 1; display: flex; flex-direction: column; }
+.idw-bio-row {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 6px;
+  padding: 5px 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.idw-bio-row:last-child { border-bottom: none; }
+.idw-bio-k { font: 500 9.5px/1 var(--f); color: var(--t3); flex-shrink: 0; }
+.idw-bio-v { font: 400 9.5px/1 var(--f); color: var(--t1); text-align: right; }
+
+/* ── Smart chip block ── */
+.idw-chip-block {
+  background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 12px; padding: 10px 12px 12px; margin-top: 10px;
+}
+.idw-chip-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.idw-chip-gen {
+  font: 700 8px/1 var(--f); color: var(--cu);
+  background: rgba(222,93,142,0.1); border: 1px solid rgba(222,93,142,0.25);
+  border-radius: 4px; padding: 2px 6px; letter-spacing: 0.06em;
+}
+.idw-chip-inner { display: flex; gap: 12px; align-items: flex-start; }
+.idw-chip-diagram { flex-shrink: 0; width: 68px; height: 68px; }
+.idw-chip-diagram svg { width: 100%; height: 100%; }
+.idw-chip-data { flex: 1; display: flex; flex-direction: column; }
+.idw-chip-row {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 6px;
+  padding: 5px 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.idw-chip-row:last-child { border-bottom: none; }
+.idw-chip-k { font: 500 9.5px/1 var(--f); color: var(--t3); flex-shrink: 0; }
+.idw-chip-v { font: 400 9.5px/1 var(--f); color: var(--t1); text-align: right; }
+
+/* ── Geo / address block ── */
+.idw-geo-block {
+  background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 12px; padding: 10px 12px 12px; margin-top: 10px;
+}
+.idw-geo-block > .idw-section-lbl { display: block; margin-bottom: 10px; }
+.idw-geo-inner { display: flex; gap: 12px; }
+.idw-geo-rows { flex: 1; display: flex; flex-direction: column; }
+.idw-geo-row {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 6px;
+  padding: 5px 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.idw-geo-row:last-child { border-bottom: none; }
+.idw-geo-k { font: 500 9.5px/1 var(--f); color: var(--t3); flex-shrink: 0; }
+.idw-geo-v { font: 400 9.5px/1 var(--f-th); color: var(--t1); text-align: right; }
+.idw-geo-aside { flex-shrink: 0; width: 70px; display: flex; flex-direction: column; gap: 6px; padding-top: 2px; }
+.idw-coord-item { display: flex; flex-direction: column; gap: 2px; }
+.idw-coord-label { font: 600 7px/1 var(--f); color: var(--t3); letter-spacing: 0.08em; text-transform: uppercase; }
+.idw-coord-val { font: 400 8.5px/1 'SF Mono','Menlo','Consolas',monospace; color: var(--t2); }
+.idw-geo-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 3px; margin-top: 6px; }
+.idw-geo-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(0,0,0,0.08); }
+.idw-geo-dot--hi  { background: var(--cu); opacity: 0.75; }
+.idw-geo-dot--mid { background: var(--cu); opacity: 0.3; }
