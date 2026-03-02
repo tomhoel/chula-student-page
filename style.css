@@ -2582,146 +2582,192 @@ html[lang="en"] .card3d-access-item {
   background: rgba(0, 0, 0, 0.06);
 }
 
-/* ── Player Card (photo 1/3 | info 2/3) ── */
-.sp-player-card {
+/* ── Profile Card (redesigned intelligence system style) ── */
+.sp-profile-card {
   display: flex;
-  align-items: stretch;
   width: 100%;
   margin: 0 0 14px;
-  min-height: 172px;
   border: 1px solid rgba(0,0,0,0.07);
   border-radius: 12px;
   background: #fff;
   overflow: hidden;
 }
-.sp-player-card--football { border-left: 3px solid var(--cu); }
-.sp-player-card--swim     { border-left: 3px solid #0ea5e9; }
+.sp-profile-card--football { border-left: 3px solid var(--cu); }
+.sp-profile-card--swim     { border-left: 3px solid #0ea5e9; }
 
-.sp-player-photo {
-  width: 33.33%;
+/* Left side - Photo */
+.sp-profile-visual {
+  width: 36%;
   flex-shrink: 0;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   background: #111;
   position: relative;
 }
 
-.sp-player-photo picture,
-.sp-player-photo img {
+.sp-profile-photo {
+  flex: 1;
+  min-height: 120px;
+  max-height: 140px;
+  overflow: hidden;
+  position: relative;
+}
+
+.sp-profile-photo picture,
+.sp-profile-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 8%;
+  object-position: center 15%;
   display: block;
 }
 
-.sp-player-info {
+.sp-profile-badge {
+  padding: 5px 8px;
+  background: var(--cu);
+  color: #fff;
+  font: 700 7px / 1 var(--f);
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.sp-profile-badge--blue { background: #0ea5e9; }
+
+/* Right side - Data panel */
+.sp-profile-data {
   flex: 1;
   min-width: 0;
-  padding: 13px 14px 12px;
+  padding: 11px 12px 10px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
   border-left: 1px solid rgba(0, 0, 0, 0.07);
 }
 
-.sp-player-sport-tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 2px 7px;
-  border-radius: 4px;
-  font: 800 7px / 1 var(--f);
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  align-self: flex-start;
+.sp-profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
 }
 
-.sp-player-sport-tag--football {
+.sp-profile-club {
+  font: 700 10px / 1 var(--f);
+  color: var(--t1);
+  letter-spacing: 0.02em;
+  margin-bottom: 2px;
+}
+
+.sp-profile-role {
+  font: 600 8px / 1.2 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.06em;
+}
+
+.sp-profile-tier {
+  padding: 2px 6px;
   background: var(--cu);
   color: #fff;
+  font: 700 7px / 1 var(--f);
+  letter-spacing: 0.08em;
+  border-radius: 3px;
+  text-transform: uppercase;
+  flex-shrink: 0;
 }
+.sp-profile-tier--blue { background: #0ea5e9; }
 
-.sp-player-sport-tag--swim {
-  background: #0ea5e9;
-  color: #fff;
-}
-
-.sp-player-club {
-  font: 600 11px / 1 var(--f);
-  color: var(--t1);
-  margin-bottom: 1px;
-}
-
-.sp-player-position {
-  font: 400 10px / 1 var(--f-th);
-  color: var(--t3);
-}
-
-html[lang="en"] .sp-player-position {
-  font-family: var(--f);
-}
-
-.sp-player-rating-row {
+/* Main stat block */
+.sp-profile-main-stat {
   display: flex;
-  align-items: baseline;
-  gap: 3px;
-  margin-top: 1px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  background: rgba(0,0,0,0.025);
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
-.sp-player-rating-num {
-  font: 800 26px / 1 var(--f);
+.sp-profile-stat-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sp-profile-stat-label {
+  font: 600 7px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sp-profile-stat-val {
+  font: 800 24px / 1 var(--f);
   letter-spacing: -0.03em;
+  color: var(--t1);
 }
+.sp-profile-stat-val--pink { color: var(--cu); }
+.sp-profile-stat-val--blue { color: #0ea5e9; }
 
-.sp-player-rating-num--pink { color: var(--cu); }
-.sp-player-rating-num--blue { color: #0ea5e9; }
-
-.sp-player-rating-denom {
-  font: 500 11px / 1 var(--f);
+.sp-profile-stat-den {
+  font: 500 10px / 1 var(--f);
   color: var(--t3);
-}
-
-.sp-player-rating-lbl {
-  font: 500 9px / 1 var(--f);
-  color: var(--t3);
-  letter-spacing: 0.02em;
   margin-left: 1px;
 }
 
-.sp-player-mini-stats {
+.sp-profile-season {
   display: flex;
-  gap: 0;
-  margin-top: auto;
-  padding-top: 9px;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
 }
 
-.sp-mini-stat {
+.sp-profile-season-label {
+  font: 500 7px / 1 var(--f);
+  color: var(--t3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sp-profile-season-form {
+  font: 700 9px / 1 monospace;
+  color: var(--t2);
+  letter-spacing: 0.15em;
+}
+
+/* Metrics grid */
+.sp-profile-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.sp-profile-metric {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
-  flex: 1;
+  gap: 2px;
+  padding: 5px 2px;
+  background: rgba(0,0,0,0.02);
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.04);
 }
 
-.sp-mini-stat:not(:last-child) {
-  border-right: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.sp-mini-val {
-  font: 700 14px / 1 var(--f);
+.sp-profile-metric-val {
+  font: 700 13px / 1 var(--f);
   color: var(--t1);
   letter-spacing: -0.02em;
 }
+.sp-profile-metric-val--pink { color: var(--cu); }
+.sp-profile-metric-val--blue { color: #0ea5e9; }
+.sp-profile-metric-val--gold { color: #b8852a; }
 
-.sp-mini-val--pink { color: var(--cu); }
-.sp-mini-val--blue { color: #0ea5e9; }
-.sp-mini-val--gold { color: #b8852a; }
-
-.sp-mini-lbl {
-  font: 600 7px / 1 var(--f);
+.sp-profile-metric-lbl {
+  font: 600 6px / 1 var(--f);
   color: var(--t3);
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  text-align: center;
 }
 
 /* ── Stat grid (cp-data-cell style) ── */
