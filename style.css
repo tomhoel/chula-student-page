@@ -7220,3 +7220,1176 @@ html[lang="en"] .ac-panel-val {
     transition: none;
   }
 }
+
+
+/* ══════════════════════════════════════════════════════
+   ACADEMIC INFORMATION TAB — aci-* components
+══════════════════════════════════════════════════════ */
+
+/* ── Hero GPA Ring ──────────────────────────────────── */
+.aci-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 18px 18px;
+  background: linear-gradient(180deg, rgba(222,93,142,0.06) 0%, transparent 100%);
+}
+
+.aci-ring-wrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+}
+
+.aci-ring-svg {
+  width: 140px;
+  height: 140px;
+  transform: rotate(-90deg);
+  overflow: visible;
+}
+
+.aci-ring-fill {
+  transition: stroke-dashoffset 1.3s cubic-bezier(0.16,1,0.3,1);
+}
+
+.aci-ring-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.aci-gpa-num {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--cu);
+  letter-spacing: -0.04em;
+  font-family: var(--f);
+}
+
+.aci-gpa-den {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--t3);
+  letter-spacing: 0.02em;
+  font-family: var(--f);
+}
+
+.aci-gpa-badge {
+  margin-top: 5px;
+  padding: 3px 7px;
+  background: linear-gradient(135deg, var(--cu), #ff8fab);
+  color: #fff;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.09em;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-family: var(--f);
+}
+
+/* ── Hero Stats Row ─────────────────────────────────── */
+.aci-hero-stats {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  padding: 10px 0;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.aci-hstat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.aci-hstat-sep {
+  width: 1px;
+  height: 28px;
+  background: rgba(0,0,0,0.08);
+  flex-shrink: 0;
+}
+
+.aci-hstat-val {
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--t1);
+  letter-spacing: -0.02em;
+  font-family: var(--f);
+}
+
+.aci-hstat-lbl {
+  font-size: 7.5px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--t3);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-family: var(--f);
+}
+
+/* ── Achievement Chips ──────────────────────────────── */
+.aci-achieve-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 4px 18px 6px;
+}
+.aci-achieve-scroll::-webkit-scrollbar { display: none; }
+
+.aci-achieve-row {
+  display: flex;
+  gap: 6px;
+  width: max-content;
+}
+
+.aci-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid;
+  font-family: var(--f);
+}
+
+.aci-chip--gold  { background: rgba(184,133,42,0.10); color: #8a6200; border-color: rgba(184,133,42,0.25); }
+.aci-chip--pink  { background: rgba(222,93,142,0.10); color: #c4447a; border-color: rgba(222,93,142,0.25); }
+.aci-chip--green { background: rgba(34,148,83,0.10);  color: #1a7a48; border-color: rgba(34,148,83,0.25); }
+.aci-chip--blue  { background: rgba(59,130,246,0.10); color: #1d4ed8; border-color: rgba(59,130,246,0.25); }
+.aci-chip--purple { background: rgba(139,92,246,0.10); color: #6d28d9; border-color: rgba(139,92,246,0.25); }
+.aci-chip--teal  { background: rgba(20,184,166,0.10); color: #0f766e; border-color: rgba(20,184,166,0.25); }
+
+/* ── Section Label ──────────────────────────────────── */
+.aci-section-label {
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--t3);
+  padding: 14px 18px 7px;
+  font-family: var(--f);
+}
+
+/* ── Meta Card (Program Details) ────────────────────── */
+.aci-meta-card {
+  margin: 0 18px;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.aci-meta-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.aci-meta-row:last-child { border-bottom: none; }
+
+.aci-meta-k {
+  flex: 0 0 70px;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--t3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-family: var(--f);
+}
+
+.aci-meta-v {
+  flex: 1;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--t1);
+  font-family: var(--f);
+}
+
+.aci-badge-inline {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.07);
+  color: var(--t2);
+  font-family: var(--f);
+}
+.aci-badge-inline--gold {
+  background: rgba(184,133,42,0.14);
+  color: #8a6200;
+}
+
+/* ── Academic Status Card ───────────────────────────── */
+.aci-status-card {
+  margin: 0 18px;
+  border: 1px solid rgba(34,148,83,0.22);
+  border-radius: 10px;
+  background: rgba(34,148,83,0.04);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(34,148,83,0.06);
+}
+
+.aci-status-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+}
+
+.aci-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.aci-status-dot--green {
+  background: #22a55b;
+  animation: aciPulse 2s infinite;
+}
+
+@keyframes aciPulse {
+  0%   { box-shadow: 0 0 0 0   rgba(34,165,91,0.55); }
+  70%  { box-shadow: 0 0 0 5px rgba(34,165,91,0);    }
+  100% { box-shadow: 0 0 0 0   rgba(34,165,91,0);    }
+}
+
+.aci-status-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.aci-status-title {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  color: #1a7a48;
+  font-family: var(--f);
+}
+.aci-status-sub {
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--t3);
+  font-family: var(--f);
+}
+
+.aci-status-code {
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  color: #1a7a48;
+  background: rgba(34,148,83,0.12);
+  padding: 3px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+  font-family: monospace;
+  flex-shrink: 0;
+}
+
+.aci-status-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 0 12px 10px;
+}
+
+.aci-spill {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  font-family: var(--f);
+}
+.aci-spill--green { background: rgba(34,148,83,0.10); color: #1a7a48; }
+.aci-spill--gold  { background: rgba(184,133,42,0.12); color: #8a6200; }
+
+/* ── Course Cards ───────────────────────────────────── */
+.aci-courses {
+  display: flex;
+  flex-direction: column;
+  margin: 0 18px;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.aci-course-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  animation: aciSlideIn 0.4s cubic-bezier(0.16,1,0.3,1) both;
+  animation-delay: calc(var(--ci, 0) * 65ms + 0.08s);
+}
+.aci-course-card:last-child { border-bottom: none; }
+
+@keyframes aciSlideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.aci-course-card--done    { background: rgba(0,0,0,0.015); }
+.aci-course-card--planned { background: rgba(0,0,0,0.012); opacity: 0.82; }
+
+.aci-cc-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.aci-cc-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.aci-cc-code {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--cu);
+  letter-spacing: 0.05em;
+  font-family: var(--f);
+}
+.aci-cc-name {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--t1);
+  font-family: var(--f);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.aci-cc-meta {
+  font-size: 9.5px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--t3);
+  font-family: var(--f);
+}
+.aci-cc-pts {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--t3);
+  font-family: var(--f);
+}
+
+/* ── Grade Pills ────────────────────────────────────── */
+.aci-grade-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  font-family: var(--f);
+}
+.aci-grade-pill--a      { background: linear-gradient(135deg, #de5d8e, #ff8fab); color: #fff; }
+.aci-grade-pill--a-minus { background: rgba(222,93,142,0.14); color: #c4447a; }
+.aci-grade-pill--b-plus  { background: rgba(184,133,42,0.14); color: #8a6200; }
+.aci-grade-pill--plan    { background: rgba(0,0,0,0.07); color: var(--t3); }
+
+/* ── Degree Roadmap ─────────────────────────────────── */
+.aci-roadmap-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 2px 18px 8px;
+}
+.aci-roadmap-wrap::-webkit-scrollbar { display: none; }
+
+.aci-roadmap {
+  display: flex;
+  width: max-content;
+  align-items: flex-start;
+  padding: 4px 0;
+}
+
+.aci-road-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-width: 58px;
+}
+
+.aci-ri-track {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.aci-ri-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.11);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1.5px rgba(0,0,0,0.12);
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.aci-ri-line {
+  flex: 1;
+  height: 2px;
+  background: rgba(0,0,0,0.09);
+}
+
+.aci-ri-sem {
+  font-size: 8.5px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--t3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: var(--f);
+}
+
+.aci-ri-gpa {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--t2);
+  text-align: center;
+  font-family: var(--f);
+}
+
+/* roadmap states */
+.aci-road-item--done .aci-ri-dot  { background: #22a55b; box-shadow: 0 0 0 1.5px #22a55b; }
+.aci-road-item--done .aci-ri-line { background: #22a55b; }
+.aci-road-item--done .aci-ri-sem  { color: #1a7a48; }
+.aci-road-item--done .aci-ri-gpa  { color: #1a7a48; }
+
+.aci-road-item--current .aci-ri-dot {
+  background: var(--cu);
+  box-shadow: 0 0 0 1.5px var(--cu);
+  animation: aciPulse 2s infinite;
+}
+.aci-road-item--current .aci-ri-line { background: linear-gradient(90deg, var(--cu), rgba(0,0,0,0.09)); }
+.aci-road-item--current .aci-ri-sem  { color: var(--cu); }
+.aci-road-item--current .aci-ri-gpa  { color: var(--cu); font-weight: 800; }
+
+.aci-road-item--next .aci-ri-dot  { border: 2px dashed rgba(0,0,0,0.2); background: rgba(0,0,0,0.03); box-shadow: none; }
+.aci-road-item--next .aci-ri-line { background: repeating-linear-gradient(90deg, rgba(0,0,0,0.12) 0, rgba(0,0,0,0.12) 4px, transparent 4px, transparent 8px); }
+
+.aci-road-item--grad .aci-ri-dot {
+  background: linear-gradient(135deg, #b8852a, #f5c842);
+  box-shadow: 0 0 0 1.5px #b8852a, 0 0 6px rgba(184,133,42,0.4);
+  width: 14px; height: 14px;
+}
+.aci-road-item--grad .aci-ri-sem { color: #8a6200; font-weight: 800; }
+.aci-road-item--grad .aci-ri-gpa { color: #8a6200; }
+
+
+/* ══════════════════════════════════════════════════════
+   ACADEMIC PROGRESS TAB — acp-* components
+══════════════════════════════════════════════════════ */
+
+/* ── Quick Dashboard ────────────────────────────────── */
+.acp-dash {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0 18px;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.acp-dc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 12px 6px;
+  border-right: 1px solid rgba(0,0,0,0.06);
+  text-align: center;
+}
+.acp-dc:last-child { border-right: none; }
+
+.acp-dc-val {
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--t1);
+  letter-spacing: -0.03em;
+  font-family: var(--f);
+}
+.acp-dc-val--pink  { color: var(--cu); }
+.acp-dc-val--gold  { color: #b8852a; }
+.acp-dc-val--green { color: #22a55b; }
+
+.acp-dc-lbl {
+  font-size: 7px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--t3);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-family: var(--f);
+}
+
+.acp-dc-sub {
+  font-size: 8.5px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--t3);
+  font-family: var(--f);
+}
+
+/* ── GPA Trajectory Chart ───────────────────────────── */
+.acp-chart-wrap {
+  margin: 0 18px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  padding: 10px 6px 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.acp-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.acp-grid      { stroke: rgba(0,0,0,0.06); stroke-width: 0.5; fill: none; }
+.acp-threshold { stroke: rgba(184,133,42,0.5); stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+
+.acp-thresh-lbl {
+  font-size: 6px;
+  font-weight: 700;
+  fill: rgba(184,133,42,0.8);
+  letter-spacing: 0.04em;
+  font-family: var(--f);
+}
+
+.acp-ylabel {
+  font-size: 7px;
+  font-weight: 500;
+  fill: rgba(0,0,0,0.32);
+  font-family: var(--f);
+}
+.acp-xlabel {
+  font-size: 8px;
+  font-weight: 700;
+  fill: rgba(0,0,0,0.38);
+  font-family: var(--f);
+}
+
+.acp-band     { fill: rgba(184,133,42,0.07); stroke: none; }
+.acp-actual   { fill: none; stroke: #de5d8e; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.acp-projected { fill: none; stroke: #b8852a; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 5 3; }
+
+.acp-dot      { fill: #de5d8e; stroke: #fff; stroke-width: 2; }
+.acp-dot-proj { fill: #fff; stroke: #b8852a; stroke-width: 1.5; }
+
+.acp-dot-lbl {
+  font-size: 7.5px;
+  font-weight: 700;
+  fill: #de5d8e;
+  font-family: var(--f);
+}
+.acp-dot-lbl--proj { fill: #b8852a; }
+
+/* ── Credit Donut ───────────────────────────────────── */
+.acp-credits-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 18px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.acp-donut-wrap { flex-shrink: 0; }
+
+.acp-donut {
+  width: 90px;
+  height: 90px;
+  display: block;
+  overflow: visible;
+}
+
+/* Rotate only the ring circle (not the text) to start arc at 12 o'clock */
+.acp-donut-ring {
+  transform-origin: 50px 50px;
+  transform: rotate(-90deg);
+  transition: stroke-dashoffset 1.1s cubic-bezier(0.16,1,0.3,1) 0.1s;
+}
+
+.acp-donut-num {
+  font-size: 18px;
+  font-weight: 800;
+  fill: var(--t1);
+  font-family: var(--f);
+}
+.acp-donut-sub {
+  font-size: 9px;
+  font-weight: 500;
+  fill: var(--t3);
+  font-family: var(--f);
+}
+
+.acp-credit-legend {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.acp-cl-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.acp-cl-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.acp-cl-dot--pink { background: #de5d8e; }
+.acp-cl-dot--gold { background: #b8852a; }
+.acp-cl-dot--gray { background: rgba(0,0,0,0.20); }
+
+.acp-cl-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.acp-cl-label {
+  font-size: 9.5px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--t2);
+  font-family: var(--f);
+}
+
+.acp-cl-bar-wrap {
+  height: 4px;
+  background: rgba(0,0,0,0.07);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.acp-cl-bar {
+  height: 100%;
+  width: var(--clw, 0%);
+  border-radius: 2px;
+  transition: width 0.9s cubic-bezier(0.16,1,0.3,1) 0.35s;
+}
+.acp-cl-bar--pink { background: linear-gradient(90deg, #de5d8e, #ff8fab); }
+.acp-cl-bar--gold { background: linear-gradient(90deg, #b8852a, #f5c842); }
+.acp-cl-bar--gray { background: rgba(0,0,0,0.20); }
+
+.acp-cl-val {
+  font-size: 9.5px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--t3);
+  flex-shrink: 0;
+  min-width: 28px;
+  text-align: right;
+  font-family: var(--f);
+}
+
+.acp-cl-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--t3);
+  font-family: var(--f);
+}
+.acp-cl-remain {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--t1);
+  font-family: var(--f);
+}
+
+/* ── Cohort Rank Grid ───────────────────────────────── */
+.acp-rank-wrap {
+  margin: 0 18px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.acp-rank-grid {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-content: flex-start;
+}
+
+.acp-rank-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.08);
+}
+.acp-rank-dot--me {
+  background: linear-gradient(135deg, #de5d8e, #ff8fab);
+  box-shadow: 0 0 0 2px rgba(222,93,142,0.22);
+  animation: aciPulse 2s infinite;
+}
+
+.acp-rank-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  gap: 2px;
+}
+
+.acp-rank-hero {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--cu);
+  letter-spacing: -0.05em;
+  font-family: var(--f);
+}
+.acp-rank-hero sup {
+  font-size: 12px;
+  vertical-align: super;
+  font-weight: 700;
+}
+
+.acp-rank-of {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--t3);
+  font-family: var(--f);
+}
+
+.acp-rank-trend {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 5px;
+  gap: 1px;
+}
+.acp-trend-up {
+  font-size: 11px;
+  font-weight: 700;
+  color: #22a55b;
+  font-family: var(--f);
+}
+.acp-trend-lbl {
+  font-size: 8.5px;
+  font-weight: 400;
+  color: var(--t3);
+  font-family: var(--f);
+}
+
+/* ── Grade Distribution ─────────────────────────────── */
+.acp-grade-dist {
+  margin: 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  padding: 12px 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.acp-gd-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.acp-gd-grade {
+  flex: 0 0 22px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-align: center;
+  font-family: var(--f);
+}
+.acp-gd-a     { color: #de5d8e; }
+.acp-gd-b-plus { color: #b8852a; }
+.acp-gd-b     { color: #2271de; }
+.acp-gd-c-plus { color: #22a55b; }
+.acp-gd-c     { color: #6d28d9; }
+.acp-gd-other { color: var(--t3); }
+
+.acp-gd-track {
+  flex: 1;
+  height: 9px;
+  background: rgba(0,0,0,0.06);
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.acp-gd-bar {
+  height: 100%;
+  width: var(--gd-w, 0%);
+  border-radius: 5px;
+  transition: width 0.8s cubic-bezier(0.16,1,0.3,1) var(--gd-delay, 0ms);
+}
+.acp-gd-bar--a      { background: linear-gradient(90deg, #de5d8e, #ff8fab); }
+.acp-gd-bar--b-plus { background: linear-gradient(90deg, #b8852a, #f5c842); }
+.acp-gd-bar--b      { background: linear-gradient(90deg, #2271de, #60a5fa); }
+.acp-gd-bar--c-plus { background: linear-gradient(90deg, #22a55b, #4ade80); }
+.acp-gd-bar--c      { background: linear-gradient(90deg, #6d28d9, #a78bfa); }
+.acp-gd-bar--other  { background: rgba(0,0,0,0.14); }
+
+.acp-gd-you {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  font-size: 6.5px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.07em;
+  pointer-events: none;
+  font-family: var(--f);
+}
+
+.acp-gd-count {
+  flex: 0 0 16px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--t3);
+  text-align: right;
+  font-family: var(--f);
+}
+
+/* ── Honours Threshold Bar ──────────────────────────── */
+.acp-honours {
+  margin: 0 18px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  padding: 12px 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.acp-honours-track {
+  position: relative;
+  height: 12px;
+  background: rgba(0,0,0,0.06);
+  border-radius: 6px;
+  overflow: visible;
+  margin-bottom: 10px;
+}
+
+.acp-honours-fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: var(--hw, 0%);
+  background: linear-gradient(90deg, #de5d8e, #ff8fab);
+  border-radius: 6px;
+  transition: width 1s cubic-bezier(0.16,1,0.3,1) 0.15s;
+  overflow: hidden;
+}
+
+/* Shimmer on fill */
+.acp-honours-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.35) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: acpShimmer 2.2s ease-in-out 1.2s infinite;
+}
+@keyframes acpShimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.acp-honours-marker {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: var(--hm, 87.5%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.acp-hm-line {
+  width: 2px;
+  height: 20px;
+  background: #b8852a;
+  border-radius: 1px;
+}
+.acp-hm-label {
+  font-size: 7.5px;
+  font-weight: 700;
+  color: #8a6200;
+  white-space: nowrap;
+  margin-top: 2px;
+  letter-spacing: 0.04em;
+  font-family: var(--f);
+}
+
+.acp-honours-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.acp-honours-val {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--cu);
+  letter-spacing: -0.04em;
+  font-family: var(--f);
+}
+.acp-honours-sub {
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--t3);
+  margin-top: 2px;
+  font-family: var(--f);
+}
+
+.acp-honours-gap-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+.acp-honours-gap {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1;
+  color: #22a55b;
+  letter-spacing: -0.03em;
+  font-family: var(--f);
+}
+
+/* ── Grade Simulator ────────────────────────────────── */
+.acp-whatif {
+  margin: 0 18px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.acp-wi-courses { border-bottom: 1px solid rgba(0,0,0,0.06); }
+
+.acp-wi-course {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.acp-wi-course:last-child { border-bottom: none; }
+
+.acp-wi-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.acp-wi-code {
+  font-size: 9.5px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--cu);
+  letter-spacing: 0.04em;
+  font-family: var(--f);
+}
+.acp-wi-name {
+  font-size: 10.5px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--t2);
+  font-family: var(--f);
+}
+
+.acp-wi-select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: rgba(222,93,142,0.07);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23de5d8e' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  border: 1px solid rgba(222,93,142,0.25);
+  border-radius: 6px;
+  padding: 5px 26px 5px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--cu);
+  cursor: pointer;
+  font-family: var(--f);
+  flex-shrink: 0;
+}
+.acp-wi-select:focus {
+  outline: none;
+  border-color: var(--cu);
+  box-shadow: 0 0 0 2px rgba(222,93,142,0.15);
+}
+
+.acp-wi-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 16px 12px;
+  background: linear-gradient(180deg, rgba(222,93,142,0.05) 0%, rgba(222,93,142,0.02) 100%);
+}
+
+.acp-wi-result-lbl {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  color: var(--t3);
+  text-transform: uppercase;
+  font-family: var(--f);
+}
+.acp-wi-result-val {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--cu);
+  letter-spacing: -0.05em;
+  font-family: var(--f);
+}
+.acp-wi-result-range {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--t3);
+  font-family: var(--f);
+}
+
+/* ── Forecast Cards ─────────────────────────────────── */
+.acp-forecast {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: 0 18px;
+  padding-bottom: 8px;
+}
+
+.acp-fc-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.acp-fc-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(222,93,142,0.09);
+  color: var(--cu);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+
+.acp-fc-lbl {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  color: var(--t3);
+  text-transform: uppercase;
+  font-family: var(--f);
+}
+.acp-fc-val {
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--t1);
+  letter-spacing: -0.01em;
+  font-family: var(--f);
+}
+.acp-fc-val--green { color: #22a55b; }
+.acp-fc-sub {
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--t3);
+  font-family: var(--f);
+}

@@ -101,31 +101,24 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
   const lightbox = document.getElementById('lightbox-photo');
   if (!lightbox) return;
 
-  function open() { 
-    lightbox.classList.add('open'); 
-  }
-  function close() { 
-    lightbox.classList.remove('open'); 
-  }
+  function open() { lightbox.classList.add('open'); }
+  function close() { lightbox.classList.remove('open'); }
 
-  // Delegate click on document - check if click is on photo
-  document.addEventListener('click', function(e) {
-    if (e.target.closest('.id-photo-col')) {
-      open();
-    }
-  });
-  
-  // Keyboard accessibility
+  /* Direct listener on the photo — stopPropagation prevents cheat panel */
   const photo = document.getElementById('profile-photo');
   if (photo) {
-    photo.addEventListener('keydown', e => { 
+    photo.addEventListener('click', function (e) {
+      e.stopPropagation();
+      open();
+    });
+    photo.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         open();
       }
     });
   }
-  
+
   lightbox.addEventListener('click', close);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 })();
@@ -710,21 +703,32 @@ function showToast(msg) {
     var acRingAnimated = false;
 
     function animateAcRing() {
-      var ring = acSheet.querySelector('.ac-ring-fill');
-      if (ring && !acRingAnimated) {
-        acRingAnimated = true;
+      if (acRingAnimated) return;
+      acRingAnimated = true;
+      var ring = acSheet.querySelector('.aci-ring-fill');
+      if (ring) {
         setTimeout(function () {
-          ring.style.strokeDashoffset = '11.06'; /* 3.78/4.00 = 94.5% filled */
-        }, 120);
+          ring.style.transition = 'stroke-dashoffset 1.3s cubic-bezier(0.16,1,0.3,1)';
+          ring.style.strokeDashoffset = '20.04'; /* 3.78/4.00 = 94.5% of 364.42 */
+        }, 200);
       }
+      /* GPA counter */
+      var gpaNum = acSheet.querySelector('.aci-gpa-num');
+      if (gpaNum) countUp(gpaNum, 1200);
     }
 
     function resetAcRing() {
-      var ring = acSheet.querySelector('.ac-ring-fill');
+      var ring = acSheet.querySelector('.aci-ring-fill');
       if (ring) {
-        ring.style.strokeDashoffset = '201.06';
+        ring.style.strokeDashoffset = '364.42';
         acRingAnimated = false;
       }
+      var gpaNum = acSheet.querySelector('.aci-gpa-num');
+      if (gpaNum) gpaNum.textContent = '0.00';
+      /* reset donut so it re-animates on next open */
+      var donut = document.querySelector('.acp-donut-ring');
+      if (donut) { donut.style.transition = 'none'; donut.style.strokeDashoffset = '238.76'; }
+      resetProgressAnimations();
     }
 
     /* watch for .open class being added/removed */
@@ -744,13 +748,14 @@ function showToast(msg) {
     acObs.observe(acSheet, { attributes: true });
   }
 
-  /* --- build rank strip (42 dots, dot #5 highlighted) --- */
-  var rankStrip = document.getElementById('acRankStrip');
-  if (rankStrip) {
+  /* --- build cohort rank grid (42 dots, dot #5 highlighted) --- */
+  var rankGrid = document.getElementById('acpRankGrid');
+  if (rankGrid) {
     for (var i = 1; i <= 42; i++) {
       var dot = document.createElement('div');
-      dot.className = 'ac-rank-dot' + (i === 5 ? ' me' : '');
-      rankStrip.appendChild(dot);
+      dot.className = 'acp-rank-dot' + (i === 5 ? ' acp-rank-dot--me' : '');
+      if (i === 5) dot.title = 'You · #5 of 42';
+      rankGrid.appendChild(dot);
     }
   }
 
@@ -806,33 +811,39 @@ function showToast(msg) {
   function runProgressAnimations() {
     if (progressAnimated) return;
     progressAnimated = true;
-    
-    // Animate distribution bars
-    var distBars = document.querySelectorAll('#actab-progress .ac-dist-bar');
-    distBars.forEach(function(bar, i) {
-      bar.style.animation = 'none';
-      setTimeout(function() {
-        bar.style.animation = '';
-      }, i * 80);
+
+    /* Animate credit donut ring: 18/30 = 60%, circumference 238.76, fill 143.26 */
+    var donut = document.querySelector('.acp-donut-ring');
+    if (donut) {
+      setTimeout(function () {
+        donut.style.transition = 'stroke-dashoffset 1.1s cubic-bezier(0.16,1,0.3,1) 0.1s';
+        donut.style.strokeDashoffset = '95.5'; /* 238.76 × (1 - 0.60) */
+      }, 100);
+    }
+
+    /* Animate honours fill */
+    var honoursFill = document.querySelector('.acp-honours-fill');
+    if (honoursFill) {
+      honoursFill.style.width = '0';
+      setTimeout(function () {
+        honoursFill.style.width = '';
+      }, 80);
+    }
+
+    /* Animate grade distribution bars by re-triggering CSS transition */
+    var gdBars = document.querySelectorAll('.acp-gd-bar');
+    gdBars.forEach(function (bar) {
+      bar.style.transition = 'none';
+      bar.style.width = '0';
     });
-    
-    // Animate threshold fill
-    var thresholdFill = document.querySelector('#actab-progress .ac-threshold-fill');
-    if (thresholdFill) {
-      thresholdFill.style.animation = 'none';
-      setTimeout(function() {
-        thresholdFill.style.animation = '';
-      }, 200);
-    }
-    
-    // Animate radar chart
-    var radarData = document.querySelector('#actab-progress .ac-radar-data');
-    if (radarData) {
-      radarData.style.animation = 'none';
-      setTimeout(function() {
-        radarData.style.animation = '';
-      }, 300);
-    }
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        gdBars.forEach(function (bar) {
+          bar.style.transition = '';
+          bar.style.width = '';
+        });
+      });
+    });
   }
 
   function resetProgressAnimations() {
