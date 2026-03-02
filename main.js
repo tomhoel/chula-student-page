@@ -134,9 +134,35 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
 
   /* ── Card data ── */
   const CARDS = {
-    student:  { front: 'id_front.png',     back: 'id_back.png',     w: 190, h: 301 },
-    national: { front: 'thaiid_front.png', back: 'thaiid_back.png', w: 280, h: 177 }
+    student:  { front: 'id_front.png',     back: 'id_back.png',     w: 190, h: 301, order: 0 },
+    national: { front: 'thaiid_front.png', back: 'thaiid_back.png', w: 280, h: 177, order: 1 }
   };
+
+  const MORPH_DATA = {
+    student: {
+      portrait: true,
+      name: 'Korawit Chamkrai',
+      rows: [
+        { k: 'Student ID', v: '6501-70006-4' },
+        { k: 'Program',    v: 'M.Sc. Finance' },
+        { k: 'Expires',    v: 'Dec 2029' }
+      ],
+      tags: ['Active Enrollment', 'CU']
+    },
+    national: {
+      portrait: false,
+      name: 'Mr. Korawit Chamkrai',
+      rows: [
+        { k: 'ID Number', v: '1-6501-00094-20-4' },
+        { k: 'DOB',       v: '27 Dec 1996' },
+        { k: 'Expires',   v: '26 Dec 2031' }
+      ],
+      tags: ['THA', 'Valid']
+    }
+  };
+
+  var currentType = 'student';
+
   const frontImg = document.getElementById('c3d-front-img');
   const backImg  = document.getElementById('c3d-back-img');
   const fadeEl   = document.getElementById('card3d-fade');
@@ -308,55 +334,122 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
     onTap(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
   }, { passive: true });
 
-  /* ── Switch between cards ── */
+  /* ── Morph data update ── */
+  function updateMorphData(type) {
+    var d = MORPH_DATA[type];
+    if (!d) return;
+    var thumb = document.getElementById('idc-morph-thumb');
+    var img   = document.getElementById('idc-morph-img');
+    var data  = document.getElementById('idc-morph-data');
+    if (thumb) {
+      thumb.className = 'idc-morph-thumb idc-morph-thumb--' + (d.portrait ? 'portrait' : 'landscape');
+    }
+    if (img) img.src = CARDS[type].front;
+    if (data) {
+      var html = '<div class="idc-morph-name">' + d.name + '</div>';
+      html += '<div class="idc-morph-rows">';
+      d.rows.forEach(function(r) {
+        html += '<div class="idc-morph-kv"><span class="idc-morph-key">' + r.k + '</span><span class="idc-morph-val">' + r.v + '</span></div>';
+      });
+      html += '</div>';
+      html += '<div class="idc-morph-tags">';
+      d.tags.forEach(function(t) {
+        html += '<span class="ub-tag">' + t + '</span>';
+      });
+      html += '</div>';
+      data.innerHTML = html;
+    }
+  }
+
+  /* ── Switch between cards (directional slide) ── */
+  var switchTimer = null;
   function switchCard(type, instant) {
     var c = CARDS[type];
     if (!c) return;
-    /* Update segmented control immediately */
-    document.querySelectorAll('.idc-seg').forEach(function (b) {
-      b.classList.toggle('idc-seg--active', b.dataset.card === type);
+
+    /* Update tabs */
+    document.querySelectorAll('.idc-tab').forEach(function(b) {
+      b.classList.toggle('idc-tab--active', b.dataset.card === type);
     });
-    var segsEl = document.querySelector('.idc-segs');
-    if (segsEl) segsEl.dataset.active = type;
-    var doSwitch = function () {
+
+    function doSwitch() {
       if (frontImg) frontImg.src = c.front;
       if (backImg)  backImg.src  = c.back;
       card.style.setProperty('--cw', c.w + 'px');
       card.style.setProperty('--ch', c.h + 'px');
       scene.style.setProperty('--cw', c.w + 'px');
       scene.style.setProperty('--ch', c.h + 'px');
-      flipped = false; stopIdle();
-      rotX = 8; rotY = 0;
-      render('none');
-      /* Toggle info panels via .active class (avoids [hidden] CSS conflict) */
-      document.querySelectorAll('.idc-info').forEach(function (p) { p.classList.remove('active'); });
-      var infoEl = document.getElementById('idc-info-' + type);
-      if (infoEl) infoEl.classList.add('active');
-      /* Fade back in */
-      if (fadeEl) fadeEl.classList.remove('fading');
+      flipped = false; stopIdle(); rotX = 8; rotY = 0; render('none');
+
+      /* Tab panel info switch */
+      document.querySelectorAll('.idc-tab-panel').forEach(function(p) { p.classList.remove('active'); });
+      var panel = document.getElementById('idc-panel-' + type);
+      if (panel) panel.classList.add('active');
+
+      currentType = type;
+      updateMorphData(type);
+
       clearTimeout(idleTimerId);
       idleTimerId = setTimeout(startIdleNow, 200);
-    };
+    }
+
     if (instant || !fadeEl) {
       doSwitch();
-    } else {
-      if (fadeEl) fadeEl.classList.add('fading');
-      clearTimeout(idleTimerId);
-      idleTimerId = setTimeout(doSwitch, 165);
+      return;
     }
+
+    /* Directional slide */
+    var prevOrder = CARDS[currentType] ? CARDS[currentType].order : 0;
+    var nextOrder = c.order;
+    var outDir = (prevOrder <= nextOrder) ? 'left' : 'right';
+    var inDir  = outDir === 'left' ? 'right' : 'left';
+
+    clearTimeout(switchTimer);
+    fadeEl.classList.add('slide-out-' + outDir);
+
+    switchTimer = setTimeout(function() {
+      fadeEl.classList.add('no-anim');
+      fadeEl.classList.remove('slide-out-' + outDir);
+      fadeEl.classList.add('slide-in-temp-' + inDir);
+      doSwitch();
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          fadeEl.classList.remove('no-anim', 'slide-in-temp-' + inDir);
+        });
+      });
+    }, 220);
   }
 
-  /* ── Segment click handlers ── */
-  document.querySelectorAll('.idc-seg').forEach(function (btn) {
-    btn.addEventListener('click', function () { switchCard(btn.dataset.card); });
+  /* ── Tab click handlers ── */
+  document.querySelectorAll('.idc-tab').forEach(function(btn) {
+    btn.addEventListener('click', function() { switchCard(btn.dataset.card); });
   });
 
+  /* ── Scroll morph (IntersectionObserver on sentinel) ── */
+  (function() {
+    var morphZone = document.getElementById('idc-card-zone');
+    var sentinel  = document.getElementById('idc-morph-sentinel');
+    if (!morphZone || !sentinel) return;
+    new IntersectionObserver(function(entries) {
+      var e = entries[0];
+      if (!e.isIntersecting && e.boundingClientRect.top < 0) {
+        morphZone.classList.add('morphed');
+      } else if (e.isIntersecting) {
+        morphZone.classList.remove('morphed');
+      }
+    }, { threshold: 0 }).observe(sentinel);
+  })();
+
   /* ── Sheet open / close ── */
-  new MutationObserver(function () {
+  new MutationObserver(function() {
     if (sheet.classList.contains('open')) {
+      currentType = 'student';
+      var zone = document.getElementById('idc-card-zone');
+      if (zone) zone.classList.remove('morphed');
       switchCard('student', true);
     } else {
       clearTimeout(idleTimerId);
+      clearTimeout(switchTimer);
       stopIdle();
       cancelAnimationFrame(rafId);
     }

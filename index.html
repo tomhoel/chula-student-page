@@ -1973,97 +1973,134 @@
     <div class="sheet-scrim" data-close></div>
     <div class="sheet-panel sheet-panel-card">
 
-      <!-- Dark header band (edge-to-edge, handle inside) -->
-      <div class="idc-band">
-        <div class="sheet-handle"></div>
-
-        <div class="idc-band-head">
-          <div class="idc-band-left">
-            <svg class="idc-band-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              <path d="M9 12l2 2 4-4" />
-            </svg>
-            <div>
-              <h2 class="idc-band-title">IDENTITY WALLET</h2>
-              <p class="idc-band-sub">Korawit Chamkrai · 2 verified documents</p>
-            </div>
-          </div>
-          <button class="idc-band-close sheet-close" data-close aria-label="Close">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-              stroke-linecap="round">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          </button>
+      <!-- Header -->
+      <div class="idc-header">
+        <span class="idc-badge">VERIFIED</span>
+        <div class="idc-title-block">
+          <span class="idc-title">IDENTITY WALLET</span>
+          <span class="idc-subtitle">Korawit Chamkrai · 2 verified documents</span>
         </div>
-
-        <!-- iOS-style segmented control with sliding white pill -->
-        <div class="idc-segs" data-active="student">
-          <div class="idc-segs-pill"></div>
-          <button class="idc-seg idc-seg--active" data-card="student" type="button">
-            <div class="idc-seg-thumb idc-seg-thumb--portrait">
-              <img src="id_front.png" alt="">
-            </div>
-            <div class="idc-seg-info">
-              <span class="idc-seg-name">STUDENT ID</span>
-              <span class="idc-seg-org">Chulalongkorn Univ.</span>
-            </div>
-            <div class="idc-seg-check">
-              <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"
-                stroke-linecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-            </div>
-          </button>
-          <button class="idc-seg" data-card="national" type="button">
-            <div class="idc-seg-thumb idc-seg-thumb--landscape">
-              <img src="thaiid_front.png" alt="">
-            </div>
-            <div class="idc-seg-info">
-              <span class="idc-seg-name">NATIONAL ID</span>
-              <span class="idc-seg-org">ประเทศไทย · THA</span>
-            </div>
-            <div class="idc-seg-check">
-              <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"
-                stroke-linecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-            </div>
-          </button>
-        </div>
+        <button class="idc-close sheet-close" data-close aria-label="Close">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
       </div>
 
-      <!-- Shared 3D scene (wrapped for fade transition) -->
-      <div class="card3d-fade" id="card3d-fade">
-      <div class="card3d-stage" id="card3d-stage">
-        <div class="card3d-scene" id="card3d-scene">
-          <div class="card3d" id="card3d">
-            <div class="card3d-core"></div>
-            <div class="card3d-face card3d-front">
-              <img id="c3d-front-img" src="id_front.png" alt="ID Front" draggable="false">
-              <div class="card3d-gloss"></div>
-            </div>
-            <div class="card3d-face card3d-back">
-              <img id="c3d-back-img" src="id_back.png" alt="ID Back" draggable="false">
-              <div class="card3d-gloss"></div>
-            </div>
-            <div class="card3d-edge card3d-edge-right"></div>
-            <div class="card3d-edge card3d-edge-left"></div>
-            <div class="card3d-edge card3d-edge-top"></div>
-            <div class="card3d-edge card3d-edge-bottom"></div>
+      <!-- Unified banner (pink theme) -->
+      <div class="ub-banner" style="
+        --ub-accent:var(--cu);--ub-accent-rgb:222,93,142;
+        --ub-border-l:rgba(222,93,142,0.40);--ub-bg:rgba(222,93,142,0.04);
+        --ub-rule-c:rgba(222,93,142,0.25);--ub-seal-c:rgba(222,93,142,0.65)">
+        <div class="ub-seal">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+            style="color:var(--ub-seal-c)">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+          <span class="ub-seal-txt">SECURE</span>
+        </div>
+        <div class="ub-rule"></div>
+        <div class="ub-body">
+          <div class="ub-head">
+            <span class="ub-title">Korawit Chamkrai</span>
+            <span class="ub-score"><span class="ub-mark">Verified</span></span>
+          </div>
+          <p class="ub-meta">M.Sc. Finance · Chulalongkorn University</p>
+          <div class="ub-tags">
+            <span class="ub-tag ub-tag--accent">Student ID</span>
+            <span class="ub-tag ub-tag--green">National ID</span>
+            <span class="ub-tag">THA</span>
+            <span class="ub-tag">ISO 7810</span>
           </div>
         </div>
       </div>
-      </div><!-- /card3d-fade -->
 
-      <p class="card3d-hint">
-        <span class="l-th">ลากเพื่อหมุน · ดับเบิลแทปเพื่อพลิก</span>
-        <span class="l-en">Drag to spin · Double-tap to flip</span>
-      </p>
+      <!-- Sysbar -->
+      <div class="idc-sysbar">
+        <div class="idc-sysbar-item">
+          <span class="idc-sysbar-key">Status</span>
+          <span class="idc-sysbar-dot"></span>
+          <span class="idc-sysbar-val">Active</span>
+        </div>
+        <div class="idc-sysbar-item">
+          <span class="idc-sysbar-key">DOB</span>
+          <span class="idc-sysbar-dot"></span>
+          <span class="idc-sysbar-val">27 Dec 1996</span>
+        </div>
+        <div class="idc-sysbar-item">
+          <span class="idc-sysbar-key">Nationality</span>
+          <span class="idc-sysbar-dot"></span>
+          <span class="idc-sysbar-val">THA</span>
+        </div>
+        <div class="idc-sysbar-item">
+          <span class="idc-sysbar-key">Enrolled</span>
+          <span class="idc-sysbar-dot"></span>
+          <span class="idc-sysbar-val">2025</span>
+        </div>
+        <div class="idc-sysbar-item">
+          <span class="idc-sysbar-key">GPA</span>
+          <span class="idc-sysbar-dot"></span>
+          <span class="idc-sysbar-val">3.78</span>
+        </div>
+      </div>
 
-      <!-- ── STUDENT ID INFO ── -->
-      <div id="idc-info-student" class="idc-info active">
+      <!-- Tabs (sticky) -->
+      <div class="idc-tabs">
+        <button class="idc-tab idc-tab--active" data-card="student" type="button">STUDENT ID</button>
+        <button class="idc-tab" data-card="national" type="button">NATIONAL ID</button>
+      </div>
+
+      <!-- Shared card zone (outside tab panels) -->
+      <div class="idc-card-zone" id="idc-card-zone">
+        <div class="idc-card-clip">
+          <div class="card3d-fade" id="card3d-fade">
+            <div class="card3d-stage" id="card3d-stage">
+              <div class="card3d-scene" id="card3d-scene">
+                <div class="card3d" id="card3d">
+                  <div class="card3d-core"></div>
+                  <div class="card3d-face card3d-front">
+                    <img id="c3d-front-img" src="id_front.png" alt="ID Front" draggable="false">
+                    <div class="card3d-gloss"></div>
+                  </div>
+                  <div class="card3d-face card3d-back">
+                    <img id="c3d-back-img" src="id_back.png" alt="ID Back" draggable="false">
+                    <div class="card3d-gloss"></div>
+                  </div>
+                  <div class="card3d-edge card3d-edge-right"></div>
+                  <div class="card3d-edge card3d-edge-left"></div>
+                  <div class="card3d-edge card3d-edge-top"></div>
+                  <div class="card3d-edge card3d-edge-bottom"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="card3d-hint">
+          <span class="l-th">ลากเพื่อหมุน · ดับเบิลแทปเพื่อพลิก</span>
+          <span class="l-en">Drag to spin · Double-tap to flip</span>
+        </p>
+
+        <!-- Morph row (revealed by IntersectionObserver) -->
+        <div class="idc-morph-row" id="idc-morph-row">
+          <div class="idc-morph-thumb idc-morph-thumb--portrait" id="idc-morph-thumb">
+            <img id="idc-morph-img" src="id_front.png" alt="">
+          </div>
+          <div class="idc-morph-data" id="idc-morph-data">
+            <!-- Populated by JS updateMorphData(type) -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Sentinel: zero-height element after card zone, triggers scroll morph -->
+      <div id="idc-morph-sentinel"></div>
+
+      <!-- Tab panel: Student ID info -->
+      <div class="idc-tab-panel active" id="idc-panel-student">
 
         <div class="card3d-above">
           <div class="card3d-stats">
@@ -2205,15 +2242,15 @@
           </div>
 
         </div>
-      </div>
+      </div><!-- /idc-panel-student -->
 
-      <!-- ── NATIONAL ID INFO ── -->
-      <div id="idc-info-national" class="idc-info">
+      <!-- Tab panel: National ID info -->
+      <div class="idc-tab-panel" id="idc-panel-national">
 
         <div class="card3d-above">
           <div class="card3d-stats">
             <div class="card3d-stat">
-              <span class="card3d-stat-val">27</span>
+              <span class="card3d-stat-val">29</span>
               <span class="card3d-stat-lbl"><span class="l-th">อายุ (ปี)</span><span class="l-en">Age</span></span>
             </div>
             <div class="card3d-stat-sep"></div>
@@ -2337,7 +2374,7 @@
           </div>
 
         </div>
-      </div>
+      </div><!-- /idc-panel-national -->
 
     </div>
   </div>

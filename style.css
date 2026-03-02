@@ -1145,12 +1145,9 @@ html[lang="en"] .act-desc {
 
 .sheet-panel-card {
   max-height: 92dvh;
-  padding-top: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: max(env(safe-area-inset-bottom), 28px);
-  overflow-y: auto;
+  padding: 0 0 max(env(safe-area-inset-bottom), 28px);
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* Stage: centres the scene */
@@ -9745,229 +9742,159 @@ html[lang="en"] .ac-panel-val {
 
 
 /* ══════════════════════════════════════════════════════
-   IDENTITY WALLET — v2 (segmented control + edge-to-edge band)
+   IDENTITY WALLET — v3 (theme-aligned, scroll morph, directional slide)
 ══════════════════════════════════════════════════════ */
 
-/* ── Dark band (fills panel edge-to-edge) ── */
-.idc-band {
-  background: linear-gradient(175deg, #100e18 0%, #1a1528 50%, #1e1830 100%);
-  padding: 0 20px 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.idc-band::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 260px;
-  height: 90px;
-  background: radial-gradient(ellipse, rgba(222, 93, 142, 0.2) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-/* Handle inside the dark band */
-.idc-band .sheet-handle {
-  background: rgba(255, 255, 255, 0.2);
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
-/* Header row */
-.idc-band-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 18px;
-}
-
-.idc-band-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.idc-band-icon {
-  color: var(--cu);
+/* ── Header (= sp-header) ── */
+.idc-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 13px 18px 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
   flex-shrink: 0;
-  filter: drop-shadow(0 0 5px rgba(222, 93, 142, 0.45));
+}
+.idc-badge {
+  background: var(--cu); color: #fff;
+  padding: 3px 8px; font: 700 9px/1 var(--f);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  border-radius: 3px; flex-shrink: 0;
+}
+.idc-title-block { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.idc-title {
+  font: 700 11px/1 var(--f); color: var(--t1);
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.idc-subtitle { font: 400 9px/1 var(--f-th); color: var(--t3); letter-spacing: 0.04em; }
+.idc-close {
+  width: 26px; height: 26px; border-radius: 4px; border: none; background: none;
+  cursor: pointer; color: var(--t2); display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s; -webkit-tap-highlight-color: transparent; flex-shrink: 0;
+}
+.idc-close:active { background: rgba(0,0,0,0.06); }
+
+/* ── Sysbar (= sp-sysbar) ── */
+.idc-sysbar {
+  background: rgba(0,0,0,0.025); border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 7px 18px; flex-shrink: 0;
+  display: flex; align-items: center; gap: 10px;
+  overflow-x: auto; scrollbar-width: none;
+}
+.idc-sysbar::-webkit-scrollbar { display: none; }
+.idc-sysbar-item { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.idc-sysbar-key { font: 600 10px/1 var(--f); color: var(--t3); letter-spacing: 0.06em; }
+.idc-sysbar-val { font: 500 10px/1 var(--f); color: var(--t1); letter-spacing: 0.04em; }
+.idc-sysbar-dot {
+  width: 3px; height: 3px; border-radius: 50%;
+  background: rgba(0,0,0,0.2); flex-shrink: 0;
 }
 
-.idc-band-title {
-  font: 700 11.5px / 1 var(--f);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #fff;
-  margin-bottom: 4px;
+/* ── Tabs (= sp-tabs, NO spring) ── */
+.idc-tabs {
+  display: flex; padding: 0 18px;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  overflow-x: auto; scrollbar-width: none; flex-shrink: 0;
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(253,249,252,0.97);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
-
-.idc-band-sub {
-  font: 400 9px / 1 var(--f-th);
-  color: rgba(255, 255, 255, 0.32);
-  letter-spacing: 0.02em;
-}
-
-.idc-band-close {
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  cursor: pointer;
-  color: rgba(255, 255, 255, 0.6);
-  transition: background 0.18s;
+.idc-tabs::-webkit-scrollbar { display: none; }
+.idc-tab {
+  padding: 10px 14px; font: 700 9px/1 var(--f);
+  letter-spacing: 0.10em; text-transform: uppercase;
+  color: var(--t3); border: none; background: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer; flex-shrink: 0;
+  transition: color 0.15s ease, border-color 0.15s ease;
   -webkit-tap-highlight-color: transparent;
 }
+.idc-tab.idc-tab--active { color: var(--cu); border-bottom-color: var(--cu); }
 
-.idc-band-close:active {
-  background: rgba(255, 255, 255, 0.15);
-}
+/* ── Card zone (fixed tray + slide clip) ── */
+.idc-card-zone { position: relative; }
 
-/* ── Segmented control (iOS-style sliding pill) ── */
-.idc-segs {
-  display: flex;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 13px;
-  padding: 3px;
-  margin-bottom: 18px;
-  position: relative;
-}
-
-/* Sliding white pill indicator */
-.idc-segs-pill {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  height: calc(100% - 6px);
-  width: calc(50% - 3px);
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(0, 0, 0, 0.04);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  pointer-events: none;
-  will-change: transform;
-}
-
-.idc-segs[data-active="national"] .idc-segs-pill {
-  transform: translateX(calc(100% + 2px));
-}
-
-/* Each segment button */
-.idc-seg {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
-  border-radius: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: rgba(255, 255, 255, 0.38);
-  transition: color 0.22s;
-  position: relative;
-  z-index: 1;
-  -webkit-tap-highlight-color: transparent;
-  min-width: 0;
-}
-
-.idc-seg--active {
-  color: #15101e;
-}
-
-/* Card thumbnail inside segment */
-.idc-seg-thumb {
-  flex-shrink: 0;
-  border-radius: 3px;
+.idc-card-clip {
   overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin: 14px 18px 4px;
+  background: rgba(0,0,0,0.022);
+  border: 1px solid rgba(0,0,0,0.05);
+  min-height: 340px;
+  display: flex; align-items: center; justify-content: center;
 }
 
-.idc-seg-thumb--portrait  { width: 22px; height: 35px; }
-.idc-seg-thumb--landscape { width: 35px; height: 22px; }
-
-.idc-seg-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+/* Override card3d-stage inside identity wallet (no own bg, no own margin) */
+.sheet-panel-card .card3d-stage {
+  margin: 0; background: none; border-radius: 0;
+  padding: 20px 0 16px;
+  min-height: 310px;
 }
 
-/* Text info */
-.idc-seg-info {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  min-width: 0;
-}
-
-.idc-seg-name {
-  font: 700 9px / 1 var(--f);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.idc-seg-org {
-  font: 400 8px / 1.2 var(--f-th);
-  opacity: 0.6;
-  white-space: nowrap;
-}
-
-.idc-seg--active .idc-seg-org {
-  opacity: 0.45;
-}
-
-/* Verified check badge */
-.idc-seg-check {
-  margin-left: auto;
-  flex-shrink: 0;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--cu);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.idc-seg--active .idc-seg-check {
-  opacity: 1;
-}
-
-.idc-seg-check svg {
-  color: #fff;
-}
-
-/* ── Card content area — restore horizontal padding below the dark band ── */
-.card3d-hint {
-  padding: 0 20px;
-}
-
-/* ── Card switching fade wrapper ── */
+/* ── card3d-fade directional slide ── */
 .card3d-fade {
-  transition: opacity 0.18s ease;
+  will-change: transform, opacity;
+  transition: transform 0.26s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.22s ease;
+}
+.card3d-fade.slide-out-left {
+  transform: translateX(-110%); opacity: 0;
+  transition: transform 0.22s cubic-bezier(0.4,0,1,1), opacity 0.18s ease;
+}
+.card3d-fade.slide-out-right {
+  transform: translateX(110%); opacity: 0;
+  transition: transform 0.22s cubic-bezier(0.4,0,1,1), opacity 0.18s ease;
+}
+.card3d-fade.slide-in-temp-right { transform: translateX(110%); opacity: 0; }
+.card3d-fade.slide-in-temp-left  { transform: translateX(-110%); opacity: 0; }
+.card3d-fade.no-anim             { transition: none !important; }
+
+/* ── Scroll morph ── */
+.idc-morph-row { display: none; }
+
+#idc-card-zone.morphed .idc-card-clip,
+#idc-card-zone.morphed .card3d-hint { display: none; }
+
+#idc-card-zone.morphed .idc-morph-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 18px 6px;
+  animation: idcMorphIn 0.42s cubic-bezier(0.16,1,0.3,1) both;
 }
 
-.card3d-fade.fading {
-  opacity: 0;
-  transition: opacity 0.16s ease;
+@keyframes idcMorphIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.97); }
+  to   { opacity: 1; transform: none; }
 }
 
-/* ── Info panel visibility (class-toggled to avoid [hidden] UA stylesheet conflict) ── */
-.idc-info {
-  display: none;
-  padding: 0 20px;
+.idc-morph-thumb {
+  flex-shrink: 0; border-radius: 6px; overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.14), 0 0 0 1px rgba(0,0,0,0.08);
+}
+.idc-morph-thumb--portrait  { width: 52px; height: 82px; }
+.idc-morph-thumb--landscape { width: 82px; height: 52px; }
+.idc-morph-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.idc-morph-data {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.idc-morph-name {
+  font: 600 12px/1.2 var(--f); color: var(--t1);
+  letter-spacing: -0.01em; margin-bottom: 2px;
+}
+.idc-morph-kv   { display: flex; align-items: baseline; gap: 5px; }
+.idc-morph-key  {
+  font: 600 8px/1 var(--f); color: var(--t3);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  flex-shrink: 0; min-width: 50px;
+}
+.idc-morph-val  { font: 400 9.5px/1.3 var(--f-th); color: var(--t1); }
+.idc-morph-tags { display: flex; gap: 4px; margin-top: 3px; flex-wrap: wrap; }
+
+/* ── Tab panels (info content, fade in) ── */
+.idc-tab-panel { display: none; padding: 0 0 max(env(safe-area-inset-bottom), 36px); }
+.idc-tab-panel.active { display: block; animation: idcPanelIn 0.25s ease; }
+
+@keyframes idcPanelIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
 }
 
-.idc-info.active {
-  display: block;
-}
+/* ── Morph sentinel (zero-height trigger) ── */
+#idc-morph-sentinel { height: 0; }
