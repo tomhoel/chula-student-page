@@ -2591,9 +2591,18 @@ html[lang="en"] .card3d-access-item {
   border-radius: 12px;
   background: #fff;
   overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 1px 2px rgba(0,0,0,0.02),
+    0 4px 8px rgba(0,0,0,0.02);
 }
-.sp-profile-card--football { border-left: 3px solid var(--cu); }
-.sp-profile-card--swim     { border-left: 3px solid #0ea5e9; }
+
+.sp-profile-card:hover {
+  box-shadow: 
+    0 4px 12px rgba(0,0,0,0.05),
+    0 16px 32px rgba(0,0,0,0.04);
+  transform: translateY(-1px);
+}
 
 /* Left side - Photo */
 .sp-profile-visual {
@@ -2611,6 +2620,25 @@ html[lang="en"] .card3d-access-item {
   max-height: 140px;
   overflow: hidden;
   position: relative;
+}
+
+.sp-profile-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255,255,255,0.1) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
 }
 
 .sp-profile-photo picture,
@@ -2637,11 +2665,11 @@ html[lang="en"] .card3d-access-item {
 .sp-profile-data {
   flex: 1;
   min-width: 0;
-  padding: 11px 12px 10px;
+  padding: 10px 12px 8px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  border-left: 1px solid rgba(0, 0, 0, 0.07);
+  gap: 6px;
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .sp-profile-header {
@@ -2666,26 +2694,47 @@ html[lang="en"] .card3d-access-item {
 
 .sp-profile-tier {
   padding: 2px 6px;
-  background: var(--cu);
+  background: linear-gradient(135deg, var(--cu) 0%, #c4447a 100%);
   color: #fff;
   font: 700 7px / 1 var(--f);
   letter-spacing: 0.08em;
   border-radius: 3px;
   text-transform: uppercase;
   flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(222,93,142,0.25);
 }
-.sp-profile-tier--blue { background: #0ea5e9; }
+.sp-profile-tier--blue { 
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  box-shadow: 0 2px 4px rgba(14,165,233,0.25);
+}
 
-/* Main stat block */
+/* Main stat block - Glassmorphism effect */
 .sp-profile-main-stat {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
   padding: 8px 10px;
-  background: rgba(0,0,0,0.025);
-  border-radius: 8px;
-  border: 1px solid rgba(0,0,0,0.05);
+  background: linear-gradient(135deg, rgba(222,93,142,0.06) 0%, rgba(222,93,142,0.02) 100%);
+  border-radius: 10px;
+  border: 1px solid rgba(222,93,142,0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.sp-profile-card--swim .sp-profile-main-stat {
+  background: linear-gradient(135deg, rgba(14,165,233,0.06) 0%, rgba(14,165,233,0.02) 100%);
+  border-color: rgba(14,165,233,0.12);
+}
+
+.sp-profile-main-stat::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
 }
 
 .sp-profile-stat-block {
@@ -2704,10 +2753,23 @@ html[lang="en"] .card3d-access-item {
 .sp-profile-stat-val {
   font: 800 24px / 1 var(--f);
   letter-spacing: -0.03em;
-  color: var(--t1);
+  background: linear-gradient(135deg, var(--t1) 0%, var(--t2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.sp-profile-stat-val--pink { color: var(--cu); }
-.sp-profile-stat-val--blue { color: #0ea5e9; }
+.sp-profile-stat-val--pink { 
+  background: linear-gradient(135deg, var(--cu) 0%, #ff8fab 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.sp-profile-stat-val--blue { 
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 .sp-profile-stat-den {
   font: 500 10px / 1 var(--f);
@@ -2735,11 +2797,11 @@ html[lang="en"] .card3d-access-item {
   letter-spacing: 0.15em;
 }
 
-/* Metrics grid */
+/* Metrics grid - with micro-interactions */
 .sp-profile-metrics {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
+  gap: 5px;
 }
 
 .sp-profile-metric {
@@ -2747,20 +2809,71 @@ html[lang="en"] .card3d-access-item {
   flex-direction: column;
   align-items: center;
   gap: 2px;
-  padding: 5px 2px;
-  background: rgba(0,0,0,0.02);
-  border-radius: 6px;
-  border: 1px solid rgba(0,0,0,0.04);
+  padding: 6px 2px 5px;
+  background: rgba(0,0,0,0.015);
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+  position: relative;
+}
+
+.sp-profile-metric:hover {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+}
+
+.sp-profile-metric::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cu), transparent);
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.sp-profile-card--swim .sp-profile-metric::after {
+  background: linear-gradient(90deg, transparent, #0ea5e9, transparent);
+}
+
+.sp-profile-metric:hover::after {
+  opacity: 1;
 }
 
 .sp-profile-metric-val {
-  font: 700 13px / 1 var(--f);
-  color: var(--t1);
+  font: 800 13px / 1 var(--f);
   letter-spacing: -0.02em;
+  transition: transform 0.2s ease;
 }
-.sp-profile-metric-val--pink { color: var(--cu); }
-.sp-profile-metric-val--blue { color: #0ea5e9; }
-.sp-profile-metric-val--gold { color: #b8852a; }
+
+.sp-profile-metric:hover .sp-profile-metric-val {
+  transform: scale(1.08);
+}
+
+.sp-profile-metric-val--pink { 
+  background: linear-gradient(135deg, var(--cu) 0%, #ff8fab 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.sp-profile-metric-val--blue { 
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.sp-profile-metric-val--gold { 
+  background: linear-gradient(135deg, #b8852a 0%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 .sp-profile-metric-lbl {
   font: 600 6px / 1 var(--f);
