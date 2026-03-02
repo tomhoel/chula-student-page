@@ -5250,261 +5250,334 @@ html[lang="en"] .ag-future-desc {
   background: rgba(0, 0, 0, 0.06);
 }
 
-/* ── RECORD TAB ──────────────────────────────────────── */
+/* ── ACADEMIC PANEL ─────────────────────────────────── */
 
-/* GPA Ring Section */
-.ac-gpa-ring-section {
+/* Academic Panel — ID Card Inspired Design */
+
+/* Quick Stats Bar (like card3d-stats) */
+.ac-stats-bar {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 16px;
-  margin-bottom: 16px;
-  background: linear-gradient(135deg, rgba(222,93,142,0.06) 0%, rgba(222,93,142,0.02) 100%);
-  border: 1px solid rgba(222,93,142,0.15);
-  border-radius: 16px;
-  position: relative;
-  overflow: hidden;
+  justify-content: center;
+  gap: 0;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 12px;
+  padding: 12px 8px;
+  margin-bottom: 14px;
 }
 
-.ac-gpa-ring-container {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  flex-shrink: 0;
-}
-
-.ac-gpa-ring {
-  width: 100%;
-  height: 100%;
-  transform: rotate(-90deg);
-}
-
-.ac-gpa-ring-bg {
-  fill: none;
-  stroke: rgba(222,93,142,0.15);
-  stroke-width: 8;
-}
-
-.ac-gpa-ring-fill {
-  fill: none;
-  stroke: url(#gpaGradient);
-  stroke-width: 8;
-  stroke-linecap: round;
-  stroke-dasharray: 314.16;
-  stroke-dashoffset: 314.16;
-  filter: url(#gpaGlow);
-  transition: stroke-dashoffset 1.5s cubic-bezier(0.16,1,0.3,1);
-}
-
-#actab-record.active .ac-gpa-ring-fill {
-  stroke-dashoffset: calc(314.16 - (314.16 * var(--gpa-percent) / 100));
-}
-
-.ac-gpa-ring-inner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.ac-gpa-ring-val {
-  font: 800 28px / 1 var(--f);
-  letter-spacing: -0.03em;
-  background: linear-gradient(135deg, var(--cu) 0%, #ff8fab 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: block;
-}
-
-.ac-gpa-ring-den {
-  font: 500 11px / 1 var(--f);
-  color: var(--t3);
-}
-
-.ac-gpa-ring-stats {
-  flex: 1;
+.ac-stat-item {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-}
-
-.ac-gpa-ring-stat {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 6px 10px;
-  background: rgba(255,255,255,0.5);
-  border-radius: 8px;
-  border: 1px solid rgba(0,0,0,0.05);
-  backdrop-filter: blur(4px);
+  gap: 4px;
+  padding: 0 10px;
+  flex: 1;
 }
 
-.ac-gpa-ring-stat--highlight {
-  background: linear-gradient(90deg, rgba(222,93,142,0.1), rgba(222,93,142,0.05));
-  border-color: rgba(222,93,142,0.2);
-}
-
-.ac-gpa-ring-stat-val {
-  font: 700 14px / 1 var(--f);
+.ac-stat-val {
+  font: 700 18px / 1 var(--f);
   color: var(--t1);
 }
 
-.ac-gpa-ring-stat-lbl {
-  font: 600 8px / 1 var(--f);
+.ac-stat-lbl {
+  font: 500 10px / 1 var(--f-th);
   color: var(--t3);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
-/* Vertical Timeline */
-.ac-timeline-vertical {
-  position: relative;
-  padding-left: 24px;
-  margin-bottom: 20px;
+html[lang="en"] .ac-stat-lbl {
+  font-family: var(--f);
 }
 
-.ac-timeline-line {
-  position: absolute;
-  left: 6px;
-  top: 8px;
-  bottom: 8px;
-  width: 2px;
-  background: linear-gradient(180deg, 
-    rgba(222,93,142,0.3) 0%,
-    rgba(222,93,142,0.1) 30%,
-    rgba(222,93,142,0.1) 70%,
-    rgba(0,0,0,0.05) 100%
-  );
-  border-radius: 1px;
+.ac-stat-sep {
+  width: 1px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.08);
 }
 
-.ac-timeline-item {
-  position: relative;
+/* Panel Box (like card3d-panel) */
+.ac-panel {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 13px;
+  padding: 14px;
   margin-bottom: 12px;
+}
+
+.ac-panel-title {
+  font: 600 11px / 1 var(--f);
+  color: var(--t3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 12px 0;
+}
+
+.ac-panel-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ac-panel-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.ac-panel-row:last-child {
+  border-bottom: none;
+}
+
+.ac-panel-key {
+  font: 500 12px / 1 var(--f-th);
+  color: var(--t3);
+  flex-shrink: 0;
+}
+
+html[lang="en"] .ac-panel-key {
+  font-family: var(--f);
+}
+
+.ac-panel-val {
+  font: 500 12px / 1.3 var(--f-th);
+  color: var(--t1);
+  text-align: right;
+}
+
+html[lang="en"] .ac-panel-val {
+  font-family: var(--f);
+}
+
+/* Status indicators */
+.ac-val--active {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #16a34a;
+}
+
+.ac-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+}
+
+.ac-val--good {
+  color: #16a34a;
+}
+
+/* Semester Grid (mobile-optimized cards) */
+.ac-sem-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.ac-sem-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ac-sem-card:active {
+  transform: scale(0.98);
+}
+
+.ac-sem-card--active {
+  border-color: rgba(222, 93, 142, 0.25);
+  box-shadow: 0 2px 8px rgba(222, 93, 142, 0.08);
+}
+
+.ac-sem-card--complete {
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+.ac-sem-card--upcoming {
+  opacity: 0.7;
+}
+
+.ac-sem-card--grad {
+  border-color: rgba(245, 158, 11, 0.25);
+  background: linear-gradient(135deg, #fff 0%, rgba(245,158,11,0.03) 100%);
+}
+
+.ac-sem-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.ac-sem-card--active .ac-sem-header {
+  background: linear-gradient(90deg, rgba(222,93,142,0.08), rgba(222,93,142,0.02));
+}
+
+.ac-sem-card--complete .ac-sem-header {
+  background: rgba(34, 197, 94, 0.05);
+}
+
+.ac-sem-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ac-sem-num {
+  font: 700 13px / 1 var(--f);
+  color: var(--t1);
+}
+
+.ac-sem-status {
+  font: 600 9px / 1 var(--f);
+  color: var(--t3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 7px;
+  background: rgba(0,0,0,0.05);
+  border-radius: 20px;
+}
+
+.ac-sem-card--active .ac-sem-status {
+  background: rgba(222, 93, 142, 0.12);
+  color: var(--cu);
+}
+
+.ac-sem-card--complete .ac-sem-status {
+  background: rgba(34, 197, 94, 0.12);
+  color: #16a34a;
+}
+
+.ac-sem-gpa {
+  font: 700 15px / 1 var(--f);
+  color: var(--t1);
+}
+
+.ac-sem-card--active .ac-sem-gpa {
+  color: var(--cu);
+}
+
+.ac-sem-card--complete .ac-sem-gpa {
+  color: #16a34a;
+}
+
+/* Semester Body with Course List */
+.ac-sem-body {
+  padding: 12px 14px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.ac-course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ac-course-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ac-course-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ac-course-code {
+  font: 600 10px / 1 var(--f);
+  color: var(--t3);
+}
+
+.ac-course-name {
+  font: 500 12px / 1.3 var(--f);
+  color: var(--t1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ac-course-grade {
+  font: 700 12px / 1 var(--f);
+  padding: 4px 10px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.ac-grade-a {
+  background: rgba(34, 197, 94, 0.12);
+  color: #16a34a;
+}
+
+.ac-grade-b {
+  background: rgba(59, 130, 246, 0.12);
+  color: #2563eb;
+}
+
+/* Entrance animations for new academic panel */
+.ac-stats-bar {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: statsBarIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes statsBarIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ac-panel {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: panelIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.ac-panel:nth-of-type(2) {
+  animation-delay: 0.1s;
+}
+
+@keyframes panelIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ac-sem-card {
   opacity: 0;
   transform: translateX(-10px);
-  animation: timelineItemIn 0.5s cubic-bezier(0.16,1,0.3,1) forwards;
+  animation: semCardIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.ac-timeline-item:nth-child(2) { animation-delay: 0.1s; }
-.ac-timeline-item:nth-child(3) { animation-delay: 0.2s; }
-.ac-timeline-item:nth-child(4) { animation-delay: 0.3s; }
-.ac-timeline-item:nth-child(5) { animation-delay: 0.4s; }
-.ac-timeline-item:nth-child(6) { animation-delay: 0.5s; }
+.ac-sem-card:nth-child(1) { animation-delay: 0.15s; }
+.ac-sem-card:nth-child(2) { animation-delay: 0.2s; }
+.ac-sem-card:nth-child(3) { animation-delay: 0.25s; }
+.ac-sem-card:nth-child(4) { animation-delay: 0.3s; }
+.ac-sem-card:nth-child(5) { animation-delay: 0.35s; }
+.ac-sem-card:nth-child(6) { animation-delay: 0.4s; }
 
-@keyframes timelineItemIn {
+@keyframes semCardIn {
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-.ac-timeline-dot {
-  position: absolute;
-  left: -22px;
-  top: 20px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #fff;
-  border: 2px solid rgba(0,0,0,0.15);
-  transition: all 0.3s ease;
-}
-
-.ac-timeline-item--complete .ac-timeline-dot {
-  background: #22c55e;
-  border-color: #22c55e;
-}
-
-.ac-timeline-item--active .ac-timeline-dot {
-  background: var(--cu);
-  border-color: var(--cu);
-  box-shadow: 0 0 8px rgba(222,93,142,0.5);
-  animation: pulseDot 2s ease-in-out infinite;
-}
-
-@keyframes pulseDot {
-  0%, 100% { box-shadow: 0 0 8px rgba(222,93,142,0.5); }
-  50% { box-shadow: 0 0 16px rgba(222,93,142,0.8); }
-}
-
-.ac-timeline-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 12px;
-  background: rgba(0,0,0,0.02);
-  border-radius: 8px;
-  border: 1px solid rgba(0,0,0,0.04);
-  transition: all 0.2s ease;
-}
-
-.ac-timeline-item--active .ac-timeline-content {
-  background: linear-gradient(90deg, rgba(222,93,142,0.08), rgba(222,93,142,0.02));
-  border-color: rgba(222,93,142,0.15);
-}
-
-.ac-timeline-item:hover .ac-timeline-content {
-  transform: translateX(4px);
-  background: rgba(0,0,0,0.04);
-}
-
-.ac-timeline-sem {
-  font: 700 10px / 1 var(--f);
-  color: var(--t1);
-  min-width: 90px;
-}
-
-/* Collapsible Timeline Sections */
-.ac-timeline-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 8px 12px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font: inherit;
-  text-align: left;
-  gap: 8px;
-}
-
-.ac-timeline-toggle:hover {
-  background: rgba(222,93,142,0.03);
-  border-radius: 6px;
-}
-
-.ac-timeline-chevron {
-  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1);
-  color: var(--t3);
-  flex-shrink: 0;
-}
-
-.ac-timeline-toggle[aria-expanded="true"] .ac-timeline-chevron {
-  transform: rotate(180deg);
-}
-
-.ac-timeline-details {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s cubic-bezier(0.16,1,0.3,1);
-}
-
-.ac-timeline-content.is-open .ac-timeline-details {
-  grid-template-rows: 1fr;
-}
-
-.ac-timeline-details > * {
-  overflow: hidden;
-}
-
-/* Detail courses styling */
-.ac-detail-courses {
-  padding: 12px;
-  background: rgba(0,0,0,0.02);
+/* Remove old timeline styles that are no longer used */
   border-radius: 8px;
   margin-top: 8px;
 }
@@ -5568,27 +5641,7 @@ html[lang="en"] .ag-future-desc {
   text-align: right;
 }
 
-.ac-timeline-status {
-  font: 600 8px / 1 var(--f);
-  color: var(--t3);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 2px 6px;
-  background: rgba(0,0,0,0.05);
-  border-radius: 4px;
-}
-
-.ac-timeline-item--active .ac-timeline-status {
-  background: rgba(222,93,142,0.15);
-  color: var(--cu);
-}
-
-.ac-timeline-gpa {
-  font: 700 12px / 1 var(--f);
-  color: var(--t1);
-}
-
-/* Enhanced Course Cards */
+/* Course Cards (for PROGRESS tab) */
 .ac-course-card {
   border: 1px solid rgba(0,0,0,0.07);
   border-radius: 12px;
@@ -5775,7 +5828,7 @@ html[lang="en"] .ag-future-desc {
   50%, 100% { transform: translateX(100%); }
 }
 
-#actab-record.active .ac-bar-fill {
+#actab-info.active .ac-bar-fill {
   width: var(--fill-width);
 }
 
@@ -6970,17 +7023,10 @@ html[lang="en"] .ag-future-desc {
     transform: none;
   }
   
-  /* Record tab fallbacks */
-  .ac-timeline-item {
-    opacity: 1;
-    transform: none;
-    animation: none;
-  }
-  
-  .ac-timeline-dot {
-    animation: none;
-  }
-  
+  /* Academic panel fallbacks */
+  .ac-stats-bar,
+  .ac-panel,
+  .ac-sem-card,
   .ac-course-card {
     opacity: 1;
     transform: none;
@@ -6989,10 +7035,6 @@ html[lang="en"] .ag-future-desc {
   
   .ac-bar-fill::after {
     animation: none;
-  }
-  
-  .ac-gpa-ring-fill {
-    transition: none;
   }
   
   /* Radar chart fallbacks */
@@ -7111,43 +7153,7 @@ html[lang="en"] .ag-future-desc {
   left: 100%;
 }
 
-/* Timeline item entrance animations */
-.ac-timeline-item {
-  opacity: 0;
-  transform: translateX(-10px);
-  animation: timelineSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.ac-timeline-item:nth-child(2) { animation-delay: 0.05s; }
-.ac-timeline-item:nth-child(3) { animation-delay: 0.1s; }
-.ac-timeline-item:nth-child(4) { animation-delay: 0.15s; }
-.ac-timeline-item:nth-child(5) { animation-delay: 0.2s; }
-.ac-timeline-item:nth-child(6) { animation-delay: 0.25s; }
-
-@keyframes timelineSlideIn {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Enhanced timeline active dot pulse */
-.ac-timeline-item--active .ac-timeline-dot {
-  box-shadow: 0 0 0 0 rgba(222,93,142, 0.7);
-  animation: timelinePulse 2s infinite;
-}
-
-@keyframes timelinePulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(222,93,142, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(222,93,142, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(222,93,142, 0);
-  }
-}
+/* New Academic Panel entrance animations are defined earlier in the file */
 
 /* Course card staggered entrance */
 .ac-course-card {
@@ -7157,7 +7163,7 @@ html[lang="en"] .ag-future-desc {
   animation-delay: calc(var(--card-index, 0) * 0.1s);
 }
 
-#actab-record.active .ac-course-card {
+#actab-info.active .ac-course-card {
   animation-play-state: running;
 }
 
@@ -7189,36 +7195,21 @@ html[lang="en"] .ag-future-desc {
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .ac-timeline-item,
+  .ac-stats-bar,
+  .ac-panel,
+  .ac-sem-card,
   .ac-course-card {
     animation: none;
     opacity: 1;
     transform: none;
   }
   
-  .ac-timeline-item--active .ac-timeline-dot {
-    animation: none;
-    box-shadow: 0 0 8px rgba(222,93,142,0.5);
-  }
-  
   .ac-bar-fill::after {
     animation: none;
   }
   
-  .ac-course-card {
+  .ac-course-card,
+  .ac-sem-card {
     transition: none;
-  }
-  
-  /* Collapsible timeline reduced motion */
-  .ac-timeline-details {
-    transition: none;
-  }
-  
-  .ac-timeline-chevron {
-    transition: none;
-  }
-  
-  .ac-timeline-toggle:hover {
-    transform: none;
   }
 }

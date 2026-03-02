@@ -797,16 +797,15 @@ function showToast(msg) {
     if (countUpAnimated) return;
     countUpAnimated = true;
     
-    // GPA ring value
-    var gpaVal = document.querySelector('#actab-info .ac-gpa-ring-val[data-count]');
-    if (gpaVal) {
-      setTimeout(function() { countUp(gpaVal, 1500); }, 300);
-    }
-    
-    // Course scores
-    var courseScores = document.querySelectorAll('#actab-info .ac-course-score-val[data-count]');
-    courseScores.forEach(function(el, i) {
-      setTimeout(function() { countUp(el, 1000); }, 500 + i * 150);
+    // Stats bar animation - add subtle pulse to stats
+    var statItems = document.querySelectorAll('#actab-info .ac-stat-item');
+    statItems.forEach(function(item, i) {
+      setTimeout(function() {
+        item.style.transform = 'scale(1.05)';
+        setTimeout(function() {
+          item.style.transform = '';
+        }, 200);
+      }, i * 100);
     });
   }
 
@@ -880,17 +879,22 @@ function showToast(msg) {
     sheetOpenObserver.observe(acSheet, { attributes: true });
   }
 
-  /* --- Collapsible Timeline --- */
-  var timelineToggles = document.querySelectorAll('.ac-timeline-toggle');
-  timelineToggles.forEach(function(toggle) {
-    toggle.addEventListener('click', function() {
-      var content = this.closest('.ac-timeline-content');
-      var isOpen = content.classList.contains('is-open');
-      var expanded = this.getAttribute('aria-expanded') === 'true';
+  /* --- Semester Card Interactions --- */
+  var semCards = document.querySelectorAll('.ac-sem-card');
+  semCards.forEach(function(card) {
+    card.addEventListener('click', function() {
+      // Toggle expanded state
+      var isActive = this.classList.contains('ac-sem-card--active');
       
-      // Toggle current section
-      content.classList.toggle('is-open', !isOpen);
-      this.setAttribute('aria-expanded', !expanded);
+      // Close all cards
+      semCards.forEach(function(c) {
+        c.classList.remove('ac-sem-card--active');
+      });
+      
+      // Open clicked card if it wasn't active
+      if (!isActive) {
+        this.classList.add('ac-sem-card--active');
+      }
     });
   });
 }());

@@ -515,277 +515,182 @@
 
         <!-- INFORMATION TAB -->
         <div class="ac-tab-panel active" id="actab-info" role="tabpanel">
-          <!-- Degree Program Info Box -->
-          <div class="ac-degree-card">
-            <div class="ac-degree-header">
-              <div class="ac-degree-badge">M.Sc. PROGRAM</div>
-              <div class="ac-degree-status">
-                <span class="ac-status-dot"></span>
-                <span class="ac-status-text">Active Enrollment</span>
-              </div>
+          
+          <!-- Quick Stats Bar (ID Card style) -->
+          <div class="ac-stats-bar">
+            <div class="ac-stat-item">
+              <span class="ac-stat-val">3.78</span>
+              <span class="ac-stat-lbl"><span class="l-th">เกรดเฉลี่ย</span><span class="l-en">GPA</span></span>
             </div>
-            <div class="ac-degree-body">
-              <div class="ac-degree-title">
-                <h3>Master of Science in Finance</h3>
-                <span class="ac-degree-th">สาขาวิชาการเงิน</span>
+            <div class="ac-stat-sep"></div>
+            <div class="ac-stat-item">
+              <span class="ac-stat-val">18/30</span>
+              <span class="ac-stat-lbl"><span class="l-th">หน่วยกิต</span><span class="l-en">Credits</span></span>
+            </div>
+            <div class="ac-stat-sep"></div>
+            <div class="ac-stat-item">
+              <span class="ac-stat-val">60%</span>
+              <span class="ac-stat-lbl"><span class="l-th">ความคืบหน้า</span><span class="l-en">Progress</span></span>
+            </div>
+          </div>
+
+          <!-- Degree Program Panel (ID Card style) -->
+          <div class="ac-panel">
+            <p class="ac-panel-title">
+              <span class="l-th">ข้อมูลหลักสูตร</span>
+              <span class="l-en">Degree Program</span>
+            </p>
+            <div class="ac-panel-rows">
+              <div class="ac-panel-row">
+                <span class="ac-panel-key"><span class="l-th">หลักสูตร</span><span class="l-en">Program</span></span>
+                <span class="ac-panel-val">Master of Science in Finance</span>
               </div>
-              <div class="ac-degree-faculty">
-                <span class="ac-faculty-name">Faculty of Economics</span>
-                <span class="ac-faculty-th">คณะเศรษฐศาสตร์</span>
+              <div class="ac-panel-row">
+                <span class="ac-panel-key"><span class="l-th">สาขา</span><span class="l-en">Major</span></span>
+                <span class="ac-panel-val">Financial Economics</span>
               </div>
-              <div class="ac-degree-meta">
-                <div class="ac-meta-item">
-                  <span class="ac-meta-label">Cohort</span>
-                  <span class="ac-meta-value">9562</span>
-                </div>
-                <div class="ac-meta-item">
-                  <span class="ac-meta-label">Track</span>
-                  <span class="ac-meta-value">Financial Economics</span>
-                </div>
-                <div class="ac-meta-item">
-                  <span class="ac-meta-label">Advisor</span>
-                  <span class="ac-meta-value">A.Prof.Dr. Suree T.</span>
-                </div>
-                <div class="ac-meta-item">
-                  <span class="ac-meta-label">Duration</span>
-                  <span class="ac-meta-value">2 Years</span>
-                </div>
+              <div class="ac-panel-row">
+                <span class="ac-panel-key"><span class="l-th">คณะ</span><span class="l-en">Faculty</span></span>
+                <span class="ac-panel-val">Faculty of Economics</span>
               </div>
-              <div class="ac-degree-progress">
-                <div class="ac-progress-header">
-                  <span>Program Progress</span>
-                  <span class="ac-progress-pct">60%</span>
-                </div>
-                <div class="ac-progress-bar">
-                  <div class="ac-progress-fill" style="--progress:60%"></div>
-                </div>
-                <div class="ac-progress-stats">
-                  <span>18 of 30 credits completed</span>
-                  <span>Expected: May 2027</span>
-                </div>
+              <div class="ac-panel-row">
+                <span class="ac-panel-key"><span class="l-th">รุ่น</span><span class="l-en">Cohort</span></span>
+                <span class="ac-panel-val">9562</span>
+              </div>
+              <div class="ac-panel-row">
+                <span class="ac-panel-key"><span class="l-th">ที่ปรึกษา</span><span class="l-en">Advisor</span></span>
+                <span class="ac-panel-val">A.Prof.Dr. Suree T.</span>
               </div>
             </div>
           </div>
 
-          <!-- GPA Overview -->
-          <div class="ac-section-title">Academic Performance</div>
-          <div class="ac-gpa-ring-section">
-            <div class="ac-gpa-ring-container">
-              <svg class="ac-gpa-ring" viewBox="0 0 120 120">
-                <defs>
-                  <linearGradient id="gpaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:var(--cu);stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#ff8fab;stop-opacity:1" />
-                  </linearGradient>
-                  <filter id="gpaGlow">
-                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                    <feMerge>
-                      <feMergeNode in="coloredBlur"/>
-                      <feMergeNode in="SourceGraphic"/>
-                    </feMerge>
-                  </filter>
-                </defs>
-                <circle class="ac-gpa-ring-bg" cx="60" cy="60" r="50"/>
-                <circle class="ac-gpa-ring-fill" cx="60" cy="60" r="50" style="--gpa-percent: 94.5"/>
-              </svg>
-              <div class="ac-gpa-ring-inner">
-                <span class="ac-gpa-ring-val" data-count="3.78">0.00</span>
-                <span class="ac-gpa-ring-den">/4.00</span>
+          <!-- Academic Standing Panel (ID Card style) -->
+          <div class="ac-panel">
+            <p class="ac-panel-title">
+              <span class="l-th">สถานะทางวิชาการ</span>
+              <span class="l-en">Academic Standing</span>
+            </p>
+            <div class="ac-panel-rows">
+              <div class="ac-panel-row">
+                <span class="ac-panel-key"><span class="l-th">สถานะ</span><span class="l-en">Status</span></span>
+                <span class="ac-panel-val ac-val--active">
+                  <span class="ac-status-dot"></span>
+                  <span class="l-th">ลงทะเบียนแล้ว</span><span class="l-en">Active</span>
+                </span>
               </div>
-            </div>
-            <div class="ac-gpa-ring-stats">
-              <div class="ac-gpa-ring-stat">
-                <span class="ac-gpa-ring-stat-val" data-count="94.5">0</span><span class="ac-gpa-ring-stat-pct">%</span>
-                <span class="ac-gpa-ring-stat-lbl">Max</span>
+              <div class="ac-panel-row">
+                <span class="ac-panel-key"><span class="l-th">ระดับ</span><span class="l-en">Level</span></span>
+                <span class="ac-panel-val"><span class="l-th">ปริญญาโท</span><span class="l-en">Graduate</span></span>
               </div>
-              <div class="ac-gpa-ring-stat ac-gpa-ring-stat--highlight">
-                <span class="ac-gpa-ring-stat-val">Top <span data-count="12">0</span>%</span>
-                <span class="ac-gpa-ring-stat-lbl">Rank</span>
+              <div class="ac-panel-row">
+                <span class="ac-panel-key"><span class="l-th">ภาคการศึกษา</span><span class="l-en">Semester</span></span>
+                <span class="ac-panel-val"><span class="l-th">ภาค 2/2568</span><span class="l-en">Semester 2/2025</span></span>
               </div>
-              <div class="ac-gpa-ring-stat">
-                <span class="ac-gpa-ring-stat-val">Honours</span>
-                <span class="ac-gpa-ring-stat-lbl">Track</span>
+              <div class="ac-panel-row">
+                <span class="ac-panel-key"><span class="l-th">ผลการเรียน</span><span class="l-en">Standing</span></span>
+                <span class="ac-panel-val ac-val--good">
+                  <span class="l-th">ดีมาก</span><span class="l-en">Good Standing</span>
+                </span>
               </div>
             </div>
           </div>
 
-          <!-- Academic Timeline -->
-          <div class="ac-section-title">Academic Timeline</div>
-          <div class="ac-timeline-vertical">
-            <div class="ac-timeline-line"></div>
-            
-            <!-- Semester 6 - Future -->
-            <div class="ac-timeline-item ac-timeline-item--future" data-sem="6">
-              <div class="ac-timeline-dot"></div>
-              <div class="ac-timeline-content">
-                <button class="ac-timeline-toggle" aria-expanded="false">
-                  <span class="ac-timeline-sem">SEMESTER 6</span>
-                  <span class="ac-timeline-status">Projected</span>
-                  <span class="ac-timeline-gpa">~3.88</span>
-                  <svg class="ac-timeline-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <div class="ac-timeline-details">
-                  <div class="ac-detail-item">
-                    <span class="ac-detail-label">Status</span>
-                    <span class="ac-detail-value">Projected Graduation</span>
-                  </div>
-                  <div class="ac-detail-item">
-                    <span class="ac-detail-label">Credits</span>
-                    <span class="ac-detail-value">6 credits remaining</span>
-                  </div>
+          <!-- Semester Timeline (Redesigned for mobile) -->
+          <p class="ac-section-title">
+            <span class="l-th">ภาคการศึกษา</span>
+            <span class="l-en">Semesters</span>
+          </p>
+          
+          <div class="ac-sem-grid">
+            <!-- Current Semester - Expanded -->
+            <div class="ac-sem-card ac-sem-card--active">
+              <div class="ac-sem-header">
+                <div class="ac-sem-info">
+                  <span class="ac-sem-num">SEM 2</span>
+                  <span class="ac-sem-status">Current</span>
                 </div>
+                <span class="ac-sem-gpa">3.78</span>
               </div>
-            </div>
-            
-            <!-- Semester 5 - Future -->
-            <div class="ac-timeline-item ac-timeline-item--future" data-sem="5">
-              <div class="ac-timeline-dot"></div>
-              <div class="ac-timeline-content">
-                <button class="ac-timeline-toggle" aria-expanded="false">
-                  <span class="ac-timeline-sem">SEMESTER 5</span>
-                  <span class="ac-timeline-status">Upcoming</span>
-                  <span class="ac-timeline-gpa">—</span>
-                  <svg class="ac-timeline-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <div class="ac-timeline-details">
-                  <div class="ac-detail-item">
-                    <span class="ac-detail-label">Status</span>
-                    <span class="ac-detail-value">Not Started</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Semester 4 - Future -->
-            <div class="ac-timeline-item ac-timeline-item--future" data-sem="4">
-              <div class="ac-timeline-dot"></div>
-              <div class="ac-timeline-content">
-                <button class="ac-timeline-toggle" aria-expanded="false">
-                  <span class="ac-timeline-sem">SEMESTER 4</span>
-                  <span class="ac-timeline-status">Upcoming</span>
-                  <span class="ac-timeline-gpa">—</span>
-                  <svg class="ac-timeline-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <div class="ac-timeline-details">
-                  <div class="ac-detail-item">
-                    <span class="ac-detail-label">Status</span>
-                    <span class="ac-detail-value">Not Started</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Semester 3 - Future -->
-            <div class="ac-timeline-item ac-timeline-item--future" data-sem="3">
-              <div class="ac-timeline-dot"></div>
-              <div class="ac-timeline-content">
-                <button class="ac-timeline-toggle" aria-expanded="false">
-                  <span class="ac-timeline-sem">SEMESTER 3</span>
-                  <span class="ac-timeline-status">Next</span>
-                  <span class="ac-timeline-gpa">—</span>
-                  <svg class="ac-timeline-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <div class="ac-timeline-details">
-                  <div class="ac-detail-courses">
-                    <span class="ac-detail-label">Planned Courses</span>
-                    <ul>
-                      <li>ECON 6301 — Fixed Income</li>
-                      <li>ECON 6302 — International Finance</li>
-                      <li>ECON 6303 — Financial Modelling</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Semester 2 - Active (OPEN by default) -->
-            <div class="ac-timeline-item ac-timeline-item--active" data-sem="2">
-              <div class="ac-timeline-dot"></div>
-              <div class="ac-timeline-content is-open">
-                <button class="ac-timeline-toggle" aria-expanded="true">
-                  <span class="ac-timeline-sem">SEMESTER 2</span>
-                  <span class="ac-timeline-status">Active</span>
-                  <span class="ac-timeline-gpa">3.78 ↑</span>
-                  <svg class="ac-timeline-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <div class="ac-timeline-details">
-                  <div class="ac-detail-courses">
-                    <span class="ac-detail-label">Current Courses</span>
-                    <div class="ac-detail-course-list">
-                      <div class="ac-detail-course">
-                        <span class="ac-dc-code">ECON 6201</span>
-                        <span class="ac-dc-name">Portfolio Theory</span>
-                        <span class="ac-dc-grade ac-dc-a">A</span>
-                        <span class="ac-dc-score">96%</span>
-                      </div>
-                      <div class="ac-detail-course">
-                        <span class="ac-dc-code">ECON 6202</span>
-                        <span class="ac-dc-name">Corporate Finance</span>
-                        <span class="ac-dc-grade ac-dc-a">A−</span>
-                        <span class="ac-dc-score">90%</span>
-                      </div>
-                      <div class="ac-detail-course">
-                        <span class="ac-dc-code">ECON 6203</span>
-                        <span class="ac-dc-name">Derivatives</span>
-                        <span class="ac-dc-grade ac-dc-a">A</span>
-                        <span class="ac-dc-score">93%</span>
-                      </div>
+              <div class="ac-sem-body">
+                <div class="ac-course-list">
+                  <div class="ac-course-item">
+                    <div class="ac-course-main">
+                      <span class="ac-course-code">ECON 6201</span>
+                      <span class="ac-course-name">Portfolio Theory</span>
                     </div>
+                    <span class="ac-course-grade ac-grade-a">A</span>
+                  </div>
+                  <div class="ac-course-item">
+                    <div class="ac-course-main">
+                      <span class="ac-course-code">ECON 6202</span>
+                      <span class="ac-course-name">Corporate Finance</span>
+                    </div>
+                    <span class="ac-course-grade ac-grade-a">A−</span>
+                  </div>
+                  <div class="ac-course-item">
+                    <div class="ac-course-main">
+                      <span class="ac-course-code">ECON 6203</span>
+                      <span class="ac-course-name">Derivatives</span>
+                    </div>
+                    <span class="ac-course-grade ac-grade-a">A</span>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <!-- Semester 1 - Complete -->
-            <div class="ac-timeline-item ac-timeline-item--complete" data-sem="1">
-              <div class="ac-timeline-dot"></div>
-              <div class="ac-timeline-content">
-                <button class="ac-timeline-toggle" aria-expanded="false">
-                  <span class="ac-timeline-sem">SEMESTER 1</span>
-                  <span class="ac-timeline-status">Complete</span>
-                  <span class="ac-timeline-gpa">3.65</span>
-                  <svg class="ac-timeline-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <div class="ac-timeline-details">
-                  <div class="ac-detail-courses">
-                    <span class="ac-detail-label">Completed Courses</span>
-                    <div class="ac-detail-course-list">
-                      <div class="ac-detail-course">
-                        <span class="ac-dc-code">ECON 6101</span>
-                        <span class="ac-dc-name">Financial Economics</span>
-                        <span class="ac-dc-grade ac-dc-a">A</span>
-                        <span class="ac-dc-score">95%</span>
-                      </div>
-                      <div class="ac-detail-course">
-                        <span class="ac-dc-code">ECON 6102</span>
-                        <span class="ac-dc-name">Quantitative Methods</span>
-                        <span class="ac-dc-grade ac-dc-a">A</span>
-                        <span class="ac-dc-score">92%</span>
-                      </div>
-                      <div class="ac-detail-course">
-                        <span class="ac-dc-code">ECON 6103</span>
-                        <span class="ac-dc-name">Microeconomics</span>
-                        <span class="ac-dc-grade ac-dc-b">B+</span>
-                        <span class="ac-dc-score">84%</span>
-                      </div>
-                    </div>
-                  </div>
+            <div class="ac-sem-card ac-sem-card--complete">
+              <div class="ac-sem-header">
+                <div class="ac-sem-info">
+                  <span class="ac-sem-num">SEM 1</span>
+                  <span class="ac-sem-status">Complete</span>
                 </div>
+                <span class="ac-sem-gpa">3.65</span>
+              </div>
+            </div>
+
+            <!-- Upcoming Semesters -->
+            <div class="ac-sem-card ac-sem-card--upcoming">
+              <div class="ac-sem-header">
+                <div class="ac-sem-info">
+                  <span class="ac-sem-num">SEM 3</span>
+                  <span class="ac-sem-status">Next</span>
+                </div>
+                <span class="ac-sem-gpa">—</span>
+              </div>
+            </div>
+
+            <div class="ac-sem-card ac-sem-card--upcoming">
+              <div class="ac-sem-header">
+                <div class="ac-sem-info">
+                  <span class="ac-sem-num">SEM 4</span>
+                  <span class="ac-sem-status">Future</span>
+                </div>
+                <span class="ac-sem-gpa">—</span>
+              </div>
+            </div>
+
+            <div class="ac-sem-card ac-sem-card--upcoming">
+              <div class="ac-sem-header">
+                <div class="ac-sem-info">
+                  <span class="ac-sem-num">SEM 5</span>
+                  <span class="ac-sem-status">Future</span>
+                </div>
+                <span class="ac-sem-gpa">—</span>
+              </div>
+            </div>
+
+            <div class="ac-sem-card ac-sem-card--grad">
+              <div class="ac-sem-header">
+                <div class="ac-sem-info">
+                  <span class="ac-sem-num">SEM 6</span>
+                  <span class="ac-sem-status">Graduation</span>
+                </div>
+                <span class="ac-sem-gpa">~3.88</span>
               </div>
             </div>
           </div>
+
         </div>
 
         <!-- PROGRESS TAB (merged METRICS + FORECAST) -->
