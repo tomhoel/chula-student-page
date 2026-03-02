@@ -97,23 +97,39 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
 });
 
 /* ── PROFILE PHOTO LIGHTBOX ─────────────────────────── */
-document.addEventListener('DOMContentLoaded', function () {
-  const trigger  = document.getElementById('profile-photo');
-  const lightbox = document.getElementById('lightbox-photo');
-  if (!trigger || !lightbox) return;
+(function () {
+  function initLightbox() {
+    const trigger  = document.getElementById('profile-photo');
+    const lightbox = document.getElementById('lightbox-photo');
+    if (!trigger || !lightbox) return;
 
-  function open(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    lightbox.classList.add('open');
+    function open(e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      lightbox.classList.add('open');
+      console.log('Lightbox opened');
+    }
+    function close() { lightbox.classList.remove('open'); }
+
+    // Use capturing phase to handle click before cheat panel
+    trigger.addEventListener('click', open, true);
+    trigger.addEventListener('keydown', e => { 
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        open(e);
+      }
+    });
+    lightbox.addEventListener('click', close);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
   }
-  function close() { lightbox.classList.remove('open'); }
 
-  trigger.addEventListener('click', open);
-  trigger.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') open(e); });
-  lightbox.addEventListener('click', close);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-});
+  // Run immediately if DOM is ready, or wait for DOMContentLoaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLightbox);
+  } else {
+    initLightbox();
+  }
+})();
 
 /* ── 3D CARD VIEWER ─────────────────────────────────── */
 (function () {
