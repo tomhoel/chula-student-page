@@ -963,93 +963,43 @@
     <div class="sheet-panel sheet-panel-activities">
       <div class="sheet-handle"></div>
 
-      <!-- ── SP Header ── -->
+      <!-- Header -->
       <div class="sp-header">
-        <span class="sp-sport-badge">SPORT</span>
-        <span class="sp-header-title">CU ATHLETIC PERFORMANCE SYSTEM v2.1</span>
-        <button class="sp-header-close" data-close aria-label="Close">&times;</button>
-      </div>
-
-      <!-- ── SP Sysbar (scrolling ticker) ── -->
-      <div class="sp-sysbar">
-        <div class="sp-sysbar-track">
-          <span class="sp-sb-key">SPORTS</span><span class="sp-sb-sep">&middot;</span><span class="sp-sb-val">2</span>
-          <span class="sp-sb-div">|</span>
-          <span class="sp-sb-key">FITNESS</span><span class="sp-sb-sep">&middot;</span><span class="sp-sb-val">87/100</span>
-          <span class="sp-sb-div">|</span>
-          <span class="sp-sb-key">RANK</span><span class="sp-sb-sep">&middot;</span><span class="sp-sb-val sp-sb-val--pink">TOP 8%</span>
-          <span class="sp-sb-div">|</span>
-          <span class="sp-sb-key">SEASON</span><span class="sp-sb-sep">&middot;</span><span class="sp-sb-val">2025&ndash;26</span>
-          <span class="sp-sb-div">|</span>
-          <span class="sp-sb-key">DIV</span><span class="sp-sb-sep">&middot;</span><span class="sp-sb-val">GRAD</span>
-          <span class="sp-sb-div">|</span>
-          <span class="sp-sb-key">FOOTBALL</span><span class="sp-sb-sep">&middot;</span><span class="sp-sb-val">8.3 RATING</span>
-          <span class="sp-sb-div">|</span>
-          <span class="sp-sb-key">SWIMMING</span><span class="sp-sb-sep">&middot;</span><span class="sp-sb-val">26.4s PB</span>
-          <span class="sp-sb-div">|</span>
-          <span class="sp-sb-key">MEDALS</span><span class="sp-sb-sep">&middot;</span><span class="sp-sb-val">3</span>
-          <span class="sp-sb-div">|</span>
-          <!-- duplicate for seamless loop -->
-          <span class="sp-sb-key">SPORTS</span><span class="sp-sb-sep">&middot;</span><span class="sp-sb-val">2</span>
-          <span class="sp-sb-div">|</span>
-          <span class="sp-sb-key">FITNESS</span><span class="sp-sb-sep">&middot;</span><span class="sp-sb-val">87/100</span>
-          <span class="sp-sb-div">|</span>
-          <span class="sp-sb-key">RANK</span><span class="sp-sb-sep">&middot;</span><span class="sp-sb-val sp-sb-val--pink">TOP 8%</span>
-          <span class="sp-sb-div">|</span>
-          <span class="sp-sb-key">SEASON</span><span class="sp-sb-sep">&middot;</span><span class="sp-sb-val">2025&ndash;26</span>
-          <span class="sp-sb-div">|</span>
-          <span class="sp-sb-key">DIV</span><span class="sp-sb-sep">&middot;</span><span class="sp-sb-val">GRAD</span>
-          <span class="sp-sb-div">|</span>
-          <span class="sp-sb-key">FOOTBALL</span><span class="sp-sb-sep">&middot;</span><span class="sp-sb-val">8.3 RATING</span>
-          <span class="sp-sb-div">|</span>
-          <span class="sp-sb-key">SWIMMING</span><span class="sp-sb-sep">&middot;</span><span class="sp-sb-val">26.4s PB</span>
-          <span class="sp-sb-div">|</span>
-          <span class="sp-sb-key">MEDALS</span><span class="sp-sb-sep">&middot;</span><span class="sp-sb-val">3</span>
+        <div class="sp-badge">SPORT</div>
+        <div class="sp-title-block">
+          <span class="sp-sys-label">CU ATHLETIC PERFORMANCE SYSTEM v2.1</span>
+          <span class="sp-sys-subtitle">Dual-Sport Elite Athlete — Authorized Access Only</span>
         </div>
+        <button class="sp-close" data-close aria-label="Close">✕</button>
       </div>
 
-      <!-- ── Athlete Banner (edge-to-edge) ── -->
+      <!-- System bar -->
+      <div class="sp-sysbar">
+        <span class="sp-sysbar-item"><span class="sp-sysbar-key">SPORTS</span>&nbsp;<span class="sp-sysbar-val">2</span></span>
+        <span class="sp-sysbar-dot"></span>
+        <span class="sp-sysbar-item"><span class="sp-sysbar-key">FITNESS</span>&nbsp;<span class="sp-sysbar-val">87/100</span></span>
+        <span class="sp-sysbar-dot"></span>
+        <span class="sp-sysbar-item"><span class="sp-sysbar-key">RANK</span>&nbsp;<span class="sp-sysbar-val sp-val-pink">TOP 8%</span></span>
+        <span class="sp-sysbar-dot"></span>
+        <span class="sp-sysbar-item"><span class="sp-sysbar-key">SEASON</span>&nbsp;<span class="sp-sysbar-val">2025–26</span></span>
+        <span class="sp-sysbar-dot"></span>
+        <span class="sp-sysbar-item"><span class="sp-sysbar-key">MEDALS</span>&nbsp;<span class="sp-sysbar-val">3</span></span>
+      </div>
+
+      <!-- Athlete Banner -->
       <div class="sp-athlete-banner">
-        <div class="sp-score-block">
-          <div class="sp-fitness-ring-wrap">
-            <svg class="sp-fitness-ring" viewBox="0 0 80 80">
-              <circle class="sp-ring-bg" cx="40" cy="40" r="32"/>
-              <circle class="sp-ring-fill" cx="40" cy="40" r="32"/>
-            </svg>
-            <div class="sp-score-inner">
-              <div class="sp-score-val">87</div>
-              <div class="sp-score-denom">/100</div>
-            </div>
-          </div>
-          <div class="sp-athlete-status-label">
-            <span class="sp-status-dot"></span>ELITE ATHLETE
-          </div>
+        <div class="sp-score-box">
+          <div class="sp-score-label">FITNESS INDEX</div>
+          <div class="sp-score-main"><span class="sp-score-num">87</span><span class="sp-score-den">/100</span></div>
+          <div class="sp-score-sub">Top 8% · Elite Tier</div>
         </div>
         <div class="sp-athlete-meta">
-          <div class="sp-athlete-meta-row">
-            <span class="sp-athlete-meta-k">SPORT COUNT</span>
-            <span class="sp-athlete-meta-v">2</span>
-          </div>
-          <div class="sp-athlete-meta-row">
-            <span class="sp-athlete-meta-k">YEARS ACTIVE</span>
-            <span class="sp-athlete-meta-v">4+</span>
-          </div>
-          <div class="sp-athlete-meta-row">
-            <span class="sp-athlete-meta-k">RANK</span>
-            <span class="sp-athlete-meta-v sp-val-pink">TOP 8%</span>
-          </div>
-          <div class="sp-athlete-meta-row">
-            <span class="sp-athlete-meta-k">DIVISION</span>
-            <span class="sp-athlete-meta-v">GRAD STUDENT</span>
-          </div>
-          <div class="sp-athlete-meta-row">
-            <span class="sp-athlete-meta-k">SEASON</span>
-            <span class="sp-athlete-meta-v">2025&ndash;26</span>
-          </div>
-          <div class="sp-athlete-meta-row">
-            <span class="sp-athlete-meta-k">CU ATHLETE ID</span>
-            <span class="sp-athlete-meta-v sp-athlete-meta-v--mono">ATH-9562-0145</span>
-          </div>
+          <div class="sp-meta-row"><span class="sp-meta-k">SPORT COUNT</span><span class="sp-meta-v">2</span></div>
+          <div class="sp-meta-row"><span class="sp-meta-k">YEARS ACTIVE</span><span class="sp-meta-v">4+</span></div>
+          <div class="sp-meta-row"><span class="sp-meta-k">RANK</span><span class="sp-meta-v sp-val-pink">TOP 8%</span></div>
+          <div class="sp-meta-row"><span class="sp-meta-k">DIVISION</span><span class="sp-meta-v">GRAD STUDENT</span></div>
+          <div class="sp-meta-row"><span class="sp-meta-k">SEASON</span><span class="sp-meta-v">2025–26</span></div>
+          <div class="sp-meta-row"><span class="sp-meta-k">ATHLETE ID</span><span class="sp-meta-v">ATH-9562-0145</span></div>
         </div>
       </div>
 
@@ -1065,84 +1015,6 @@
 
         <!-- ══════════════════ OVERVIEW TAB ══════════════════ -->
         <div class="sp-tab-panel active" id="sptab-overview" role="tabpanel">
-
-          <!-- Sport Snapshot Cards -->
-          <div class="sp-sport-cards">
-
-            <!-- Football Card -->
-            <div class="sp-sport-card sp-sport-card--football">
-              <div class="sp-sport-card-photo">
-                <picture>
-                  <source srcset="football_photoshoot.webp?v=2" type="image/webp">
-                  <img src="football_photoshoot.png?v=2" alt="Korawit football" loading="lazy" decoding="async"
-                    onerror="this.onerror=null;this.parentElement.parentElement.style.background='linear-gradient(160deg,#de5d8e,#8b1a4a)';this.style.display='none'">
-                </picture>
-              </div>
-              <div class="sp-sport-card-body">
-                <div class="sp-sport-card-toprow">
-                  <span class="sp-sport-card-tag">FOOTBALL</span>
-                  <span class="sp-sport-card-rating-num">8.3<span class="sp-sport-card-rating-den">/10</span></span>
-                </div>
-                <p class="sp-sport-card-club">CU Economics FC</p>
-                <p class="sp-sport-card-role"><span class="l-th">กองกลางตัวรุก</span><span class="l-en">Attacking Midfielder</span></p>
-                <div class="sp-sport-card-stats">
-                  <span class="sp-sport-card-stat"><b>12</b><em>MTH</em></span>
-                  <span class="sp-sport-card-stat sp-sport-card-stat--acc"><b>4</b><em>GLS</em></span>
-                  <span class="sp-sport-card-stat sp-sport-card-stat--acc"><b>7</b><em>AST</em></span>
-                  <span class="sp-sport-card-stat"><b>75%</b><em>WIN</em></span>
-                </div>
-                <div class="sp-form-strip">
-                  <span class="sp-form-dot sp-form-w"></span>
-                  <span class="sp-form-dot sp-form-w"></span>
-                  <span class="sp-form-dot sp-form-d"></span>
-                  <span class="sp-form-dot sp-form-w"></span>
-                  <span class="sp-form-dot sp-form-l"></span>
-                  <span class="sp-form-dot sp-form-w"></span>
-                  <span class="sp-form-dot sp-form-w"></span>
-                  <span class="sp-form-dot sp-form-d"></span>
-                  <span class="sp-form-lbl">FORM</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Swimming Card -->
-            <div class="sp-sport-card sp-sport-card--swim">
-              <div class="sp-sport-card-photo">
-                <picture>
-                  <source srcset="svimming_photoshoot.webp?v=2" type="image/webp">
-                  <img src="svimming_photoshoot.png?v=2" alt="Korawit swimming" loading="lazy" decoding="async"
-                    onerror="this.onerror=null;this.parentElement.parentElement.style.background='linear-gradient(160deg,#0ea5e9,#1e3a8a)';this.style.display='none'">
-                </picture>
-              </div>
-              <div class="sp-sport-card-body">
-                <div class="sp-sport-card-toprow">
-                  <span class="sp-sport-card-tag sp-sport-card-tag--swim">SWIMMING</span>
-                  <span class="sp-sport-card-elite">ELITE</span>
-                  <span class="sp-sport-card-rating-num sp-sport-card-rating-num--blue">26.4<span class="sp-sport-card-rating-den">s PB</span></span>
-                </div>
-                <p class="sp-sport-card-club">CU Aquatic Society</p>
-                <p class="sp-sport-card-role">Freestyle &amp; IM</p>
-                <div class="sp-sport-card-stats">
-                  <span class="sp-sport-card-stat"><b>4&times;</b><em>WK</em></span>
-                  <span class="sp-sport-card-stat sp-sport-card-stat--blue"><b>3</b><em>MEDALS</em></span>
-                  <span class="sp-sport-card-stat sp-sport-card-stat--blue"><b>32</b><em>SWOLF</em></span>
-                  <span class="sp-sport-card-stat sp-sport-card-stat--gold"><b>168</b><em>MAX BPM</em></span>
-                </div>
-                <div class="sp-form-strip">
-                  <span class="sp-form-dot sp-form-pb"></span>
-                  <span class="sp-form-dot sp-form-good"></span>
-                  <span class="sp-form-dot sp-form-good"></span>
-                  <span class="sp-form-dot sp-form-pb"></span>
-                  <span class="sp-form-dot sp-form-good"></span>
-                  <span class="sp-form-dot sp-form-norm"></span>
-                  <span class="sp-form-dot sp-form-good"></span>
-                  <span class="sp-form-dot sp-form-norm"></span>
-                  <span class="sp-form-lbl">SESSIONS</span>
-                </div>
-              </div>
-            </div>
-
-          </div><!-- /.sp-sport-cards -->
 
           <!-- Season Activity Chart -->
           <div class="sp-section-box">
