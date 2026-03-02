@@ -1021,71 +1021,144 @@
 
         <!-- ANALYSIS TAB -->
         <div class="ac-tab-panel" id="actab-analysis" role="tabpanel">
-          <div class="ac-section-title">SUBJECT AFFINITY</div>
+          <!-- Learning DNA - Learning Style Profile -->
+          <div class="ac-section-title">LEARNING DNA</div>
+          <div class="ac-learning-dna">
+            <svg class="ac-dna-chart" viewBox="0 0 200 120">
+              <defs>
+                <linearGradient id="dnaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:var(--cu);stop-opacity:0.3" />
+                  <stop offset="100%" style="stop-color:#ff8fab;stop-opacity:0.1" />
+                </linearGradient>
+              </defs>
+              <!-- Background quadrants -->
+              <rect x="0" y="0" width="100" height="60" fill="rgba(222,93,142,0.05)" rx="4"/>
+              <rect x="100" y="0" width="100" height="60" fill="rgba(59,130,246,0.05)" rx="4"/>
+              <rect x="0" y="60" width="100" height="60" fill="rgba(245,158,11,0.05)" rx="4"/>
+              <rect x="100" y="60" width="100" height="60" fill="rgba(34,197,94,0.05)" rx="4"/>
+              <!-- Axes -->
+              <line x1="100" y1="10" x2="100" y2="110" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+              <line x1="20" y1="60" x2="180" y2="60" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+              <!-- Data point -->
+              <circle cx="145" cy="35" r="8" fill="var(--cu)" filter="drop-shadow(0 0 4px rgba(222,93,142,0.5))"/>
+              <!-- Labels -->
+              <text x="50" y="25" text-anchor="middle" class="ac-dna-label">THEORETICAL</text>
+              <text x="150" y="25" text-anchor="middle" class="ac-dna-label">QUANTITATIVE</text>
+              <text x="50" y="105" text-anchor="middle" class="ac-dna-label">PRACTICAL</text>
+              <text x="150" y="105" text-anchor="middle" class="ac-dna-label">QUALITATIVE</text>
+            </svg>
+            <div class="ac-dna-profile">
+              <div class="ac-dna-dominant">
+                <span class="ac-dna-tag">DOMINANT</span>
+                <span class="ac-dna-type">Quantitative Analyst</span>
+              </div>
+              <div class="ac-dna-desc">Strong preference for data-driven analysis, mathematical modeling, and systematic approaches to problem-solving.</div>
+            </div>
+          </div>
+
+          <!-- Enhanced Subject Affinity with 3D Hex Grid -->
+          <div class="ac-section-title">SUBJECT AFFINITY MATRIX</div>
           <div class="ac-hex-grid">
-            <div class="ac-hex" style="--intensity:0.95;--stagger:0ms">
-              <div class="ac-hex-name">Portfolio<br>Theory</div>
-              <div class="ac-hex-score">96%</div>
+            <div class="ac-hex" style="--intensity:0.95;--stagger:0ms" data-subject="Portfolio Theory">
+              <div class="ac-hex-content">
+                <div class="ac-hex-name">Portfolio<br>Theory</div>
+                <div class="ac-hex-score">96%</div>
+              </div>
             </div>
-            <div class="ac-hex" style="--intensity:0.75;--stagger:60ms">
-              <div class="ac-hex-name">Corp<br>Finance</div>
-              <div class="ac-hex-score">90%</div>
+            <div class="ac-hex" style="--intensity:0.75;--stagger:60ms" data-subject="Corp Finance">
+              <div class="ac-hex-content">
+                <div class="ac-hex-name">Corp<br>Finance</div>
+                <div class="ac-hex-score">90%</div>
+              </div>
             </div>
-            <div class="ac-hex" style="--intensity:0.88;--stagger:120ms">
-              <div class="ac-hex-name">Derivatives</div>
-              <div class="ac-hex-score">93%</div>
+            <div class="ac-hex" style="--intensity:0.88;--stagger:120ms" data-subject="Derivatives">
+              <div class="ac-hex-content">
+                <div class="ac-hex-name">Derivatives</div>
+                <div class="ac-hex-score">93%</div>
+              </div>
             </div>
-            <div class="ac-hex" style="--intensity:0.92;--stagger:180ms">
-              <div class="ac-hex-name">Financial<br>Economics</div>
-              <div class="ac-hex-score">95%</div>
+            <div class="ac-hex" style="--intensity:0.92;--stagger:180ms" data-subject="Fin Economics">
+              <div class="ac-hex-content">
+                <div class="ac-hex-name">Financial<br>Economics</div>
+                <div class="ac-hex-score">95%</div>
+              </div>
             </div>
-            <div class="ac-hex" style="--intensity:0.80;--stagger:240ms">
-              <div class="ac-hex-name">Quant<br>Methods</div>
-              <div class="ac-hex-score">92%</div>
+            <div class="ac-hex" style="--intensity:0.80;--stagger:240ms" data-subject="Quant Methods">
+              <div class="ac-hex-content">
+                <div class="ac-hex-name">Quant<br>Methods</div>
+                <div class="ac-hex-score">92%</div>
+              </div>
             </div>
-            <div class="ac-hex" style="--intensity:0.45;--stagger:300ms">
-              <div class="ac-hex-name">Micro-<br>economics</div>
-              <div class="ac-hex-score">84%</div>
+            <div class="ac-hex" style="--intensity:0.45;--stagger:300ms" data-subject="Microeconomics">
+              <div class="ac-hex-content">
+                <div class="ac-hex-name">Micro-<br>economics</div>
+                <div class="ac-hex-score">84%</div>
+              </div>
             </div>
           </div>
 
-          <div class="ac-section-title">SCORE vs COHORT AVERAGE</div>
+          <!-- Enhanced Score vs Cohort Comparison -->
+          <div class="ac-section-title">PERFORMANCE vs COHORT</div>
           <div class="ac-delta-table">
-            <div class="ac-delta-row">
+            <div class="ac-delta-row" style="--row-index:0">
+              <div class="ac-delta-rank">#1</div>
               <span class="ac-delta-course">ECON 6203 Derivatives</span>
-              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:100%;--delay:0ms"></div></div>
-              <span class="ac-delta-val">+25pp</span>
+              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:100%"></div></div>
+              <span class="ac-delta-val ac-delta-val--top">+25pp</span>
             </div>
-            <div class="ac-delta-row">
+            <div class="ac-delta-row" style="--row-index:1">
+              <div class="ac-delta-rank">#2</div>
               <span class="ac-delta-course">ECON 6201 Portfolio Theory</span>
-              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:96%;--delay:70ms"></div></div>
-              <span class="ac-delta-val">+24pp</span>
+              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:96%"></div></div>
+              <span class="ac-delta-val ac-delta-val--top">+24pp</span>
             </div>
-            <div class="ac-delta-row">
+            <div class="ac-delta-row" style="--row-index:2">
+              <div class="ac-delta-rank">#3</div>
               <span class="ac-delta-course">ECON 6102 Quant Methods</span>
-              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:84%;--delay:140ms"></div></div>
-              <span class="ac-delta-val">+21pp</span>
+              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:84%"></div></div>
+              <span class="ac-delta-val ac-delta-val--high">+21pp</span>
             </div>
-            <div class="ac-delta-row">
+            <div class="ac-delta-row" style="--row-index:3">
+              <div class="ac-delta-rank">#4</div>
               <span class="ac-delta-course">ECON 6101 Fin. Economics</span>
-              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:76%;--delay:210ms"></div></div>
-              <span class="ac-delta-val">+19pp</span>
+              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:76%"></div></div>
+              <span class="ac-delta-val ac-delta-val--high">+19pp</span>
             </div>
-            <div class="ac-delta-row">
+            <div class="ac-delta-row" style="--row-index:4">
+              <div class="ac-delta-rank">#5</div>
               <span class="ac-delta-course">ECON 6202 Corp Finance</span>
-              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:64%;--delay:280ms"></div></div>
-              <span class="ac-delta-val">+16pp</span>
+              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:64%"></div></div>
+              <span class="ac-delta-val ac-delta-val--good">+16pp</span>
             </div>
-            <div class="ac-delta-row">
+            <div class="ac-delta-row" style="--row-index:5">
+              <div class="ac-delta-rank">#6</div>
               <span class="ac-delta-course">ECON 6103 Microeconomics</span>
-              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:20%;--delay:350ms"></div></div>
-              <span class="ac-delta-val">+5pp</span>
+              <div class="ac-delta-bar-wrap"><div class="ac-delta-bar" style="--w:20%"></div></div>
+              <span class="ac-delta-val ac-delta-val--avg">+5pp</span>
             </div>
           </div>
 
+          <!-- Enhanced Performance Signature -->
           <div class="ac-signature">
-            <div class="ac-sig-label">PERFORMANCE SIGNATURE</div>
-            <div class="ac-sig-text">STRONGEST · Quantitative Finance &amp; Derivatives · ALL 6 SUBJECTS ABOVE COHORT AVERAGE</div>
+            <div class="ac-sig-header">
+              <div class="ac-sig-badge">ANALYSIS</div>
+              <div class="ac-sig-label">PERFORMANCE SIGNATURE</div>
+            </div>
+            <div class="ac-sig-content">
+              <div class="ac-sig-strength">
+                <span class="ac-sig-icon">⚡</span>
+                <span class="ac-sig-strong">Quantitative Finance</span>
+              </div>
+              <div class="ac-sig-stats">
+                <span class="ac-sig-stat">
+                  <strong>6/6</strong> subjects above average
+                </span>
+                <span class="ac-sig-divider">|</span>
+                <span class="ac-sig-stat">
+                  <strong>+18pp</strong> average advantage
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
