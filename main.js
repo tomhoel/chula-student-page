@@ -132,6 +132,14 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
 
   const faces = card.querySelectorAll('.card3d-gloss');
 
+  /* ── Card data ── */
+  const CARDS = {
+    student:  { front: 'id_front.png',     back: 'id_back.png',     w: 190, h: 301 },
+    national: { front: 'thaiid_front.png', back: 'thaiid_back.png', w: 280, h: 177 }
+  };
+  const frontImg = document.getElementById('c3d-front-img');
+  const backImg  = document.getElementById('c3d-back-img');
+
   /* ── Generate Z-stacked slices for smooth 3D rounded corners ── */
   (function generateSlices() {
     const HALF = 4;
@@ -299,12 +307,42 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
     onTap(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
   }, { passive: true });
 
+  /* ── Switch between cards ── */
+  function switchCard(type) {
+    const c = CARDS[type];
+    if (!c || !frontImg || !backImg) return;
+    frontImg.src = c.front;
+    backImg.src  = c.back;
+    card.style.setProperty('--cw', c.w + 'px');
+    card.style.setProperty('--ch', c.h + 'px');
+    scene.style.setProperty('--cw', c.w + 'px');
+    scene.style.setProperty('--ch', c.h + 'px');
+    flipped = false;
+    stopIdle();
+    rotX = 8; rotY = 0;
+    render('transform 0.4s ease');
+    clearTimeout(idleTimerId);
+    idleTimerId = setTimeout(startIdleNow, 450);
+    /* Toggle info panels */
+    document.querySelectorAll('.idc-info').forEach(function (p) { p.hidden = true; });
+    var infoEl = document.getElementById('idc-info-' + type);
+    if (infoEl) infoEl.hidden = false;
+    /* Update picker active state */
+    document.querySelectorAll('.idc-pick-btn').forEach(function (b) {
+      b.classList.toggle('idc-pick-btn--active', b.dataset.card === type);
+    });
+  }
+
+  /* ── Picker click handlers ── */
+  document.querySelectorAll('.idc-pick-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () { switchCard(btn.dataset.card); });
+  });
+
   /* ── Sheet open / close ── */
   new MutationObserver(() => {
     if (sheet.classList.contains('open')) {
-      /* Snap to front, then start sway immediately — no wait, no CSS spring */
-      rotX = 8; rotY = 0; flipped = false;
-      render();
+      /* Reset to student card on every open */
+      switchCard('student');
       setTimeout(() => { if (!isDragging) startIdleNow(); }, 40);
     } else {
       clearTimeout(idleTimerId);
