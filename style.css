@@ -2406,12 +2406,10 @@ html[lang="en"] .card3d-access-item {
 .sp-athlete-banner {
   display: flex;
   align-items: center;
-  padding: 14px;
+  padding: 14px 18px;
   gap: 16px;
-  margin: 10px 14px 0;
-  border: 1px solid rgba(0,0,0,0.07);
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(222,93,142,0.06) 0%, rgba(184,133,42,0.04) 100%);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  background: linear-gradient(135deg, rgba(222,93,142,0.04) 0%, transparent 60%);
   flex-shrink: 0;
 }
 .sp-score-block {
@@ -2570,7 +2568,7 @@ html[lang="en"] .card3d-access-item {
 /* ── Tab content panels ── */
 .sp-tab-content {
   display: none;
-  padding: 16px 18px;
+  padding: 8px 18px;
 }
 
 .sp-tab-content.active {
@@ -3249,7 +3247,7 @@ html[lang="en"] .sp-sport-card-role { font-family: var(--f); }
 .sp-section-box {
   border: 1px solid rgba(0,0,0,0.07);
   border-radius: 12px;
-  padding: 12px 14px 10px;
+  padding: 10px 10px 8px;
   background: rgba(0,0,0,0.01);
   margin-bottom: 12px;
   overflow: hidden;
@@ -3480,7 +3478,7 @@ html[lang="en"] .sp-acl-lbl { font-family: var(--f); }
 .sp-highlights {
   border: 1px solid rgba(0,0,0,0.07);
   border-radius: 12px;
-  padding: 12px 14px;
+  padding: 10px 10px;
   background: rgba(0,0,0,0.01);
   margin-bottom: 4px;
 }
