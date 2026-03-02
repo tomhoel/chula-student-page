@@ -507,7 +507,26 @@ html[lang="th"] .verified-ribbon-bd {
   flex-shrink: 0;
 }
 
-/* Base card — solid white, no backdrop-filter dark glass */
+/* ── Section divider ── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 24px 2px;
+  flex-shrink: 0;
+}
+.section-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(222,93,142,0.22), transparent);
+}
+.section-divider-gem {
+  flex-shrink: 0;
+  display: block;
+  filter: drop-shadow(0 0 3px rgba(222,93,142,0.35));
+}
+
+/* Base card — solid white, gradient bloom accent */
 .card {
   background: var(--card);
   border: 1px solid rgba(0, 0, 0, 0.07);
@@ -521,55 +540,104 @@ html[lang="th"] .verified-ribbon-bd {
   gap: 0;
   transition: transform 0.12s ease, box-shadow 0.12s ease;
   position: relative;
+  overflow: hidden;
   -webkit-tap-highlight-color: transparent;
   text-decoration: none;
   color: inherit;
+}
+
+/* Per-card gradient bloom in top-left corner */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--card-accent-rgb, 222,93,142), 0.11) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.18s ease;
+}
+.card:active::before {
+  opacity: 1.6;
+}
+
+/* Ensure card children sit above the bloom */
+.card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .card-sm {
   height: 118px;
 }
 
+/* Propagate accent color from icon child to card bloom */
+.card:has(.ci-pink)   { --card-accent-rgb: 222,93,142; }
+.card:has(.ci-gold)   { --card-accent-rgb: 214,158,46; }
+.card:has(.ci-green)  { --card-accent-rgb: 34,197,94; }
+.card:has(.ci-map)    { --card-accent-rgb: 59,130,246; }
+.card:has(.ci-indigo) { --card-accent-rgb: 99,102,241; }
+
 .card:active {
-  transform: scale(0.96);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transform: scale(0.97);
+  box-shadow:
+    0 1px 2px rgba(0,0,0,0.04),
+    0 0 0 3px rgba(var(--card-accent-rgb, 222,93,142), 0.10);
 }
 
 /* ── Icons ── */
 .card-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 9px;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 11px;
   flex-shrink: 0;
+  position: relative;
+}
+/* Soft inner glow ring on icon */
+.card-icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.55);
+  pointer-events: none;
 }
 
 .ci-pink {
-  background: var(--cu-tint);
+  background: linear-gradient(135deg, rgba(222,93,142,0.16) 0%, rgba(222,93,142,0.10) 100%);
   color: var(--cu);
+  --card-accent-rgb: 222,93,142;
 }
 
 .ci-gold {
-  background: var(--gold-tint);
+  background: linear-gradient(135deg, rgba(214,158,46,0.18) 0%, rgba(214,158,46,0.10) 100%);
   color: var(--gold);
+  --card-accent-rgb: 214,158,46;
 }
 
 .ci-green {
-  background: rgba(34, 197, 94, 0.10);
+  background: linear-gradient(135deg, rgba(34,197,94,0.16) 0%, rgba(34,197,94,0.09) 100%);
   color: #16a34a;
+  --card-accent-rgb: 34,197,94;
 }
 
 .ci-map {
-  background: rgba(59, 130, 246, 0.10);
+  background: linear-gradient(135deg, rgba(59,130,246,0.16) 0%, rgba(59,130,246,0.09) 100%);
   color: #2563eb;
+  --card-accent-rgb: 59,130,246;
 }
 
 .ci-indigo {
-  background: rgba(99, 102, 241, 0.10);
+  background: linear-gradient(135deg, rgba(99,102,241,0.16) 0%, rgba(99,102,241,0.09) 100%);
   color: #4f46e5;
+  --card-accent-rgb: 99,102,241;
 }
 
 /* In row-layout cards, the icon sits inline — remove column bottom margin */
@@ -585,8 +653,9 @@ html[lang="th"] .verified-ribbon-bd {
 }
 
 .card-label {
-  font: 600 13.5px / 1 var(--f-th);
+  font: 700 13.5px / 1 var(--f-th);
   color: var(--t1);
+  letter-spacing: -0.01em;
 }
 
 html[lang="en"] .card-label {
@@ -595,7 +664,7 @@ html[lang="en"] .card-label {
 
 .card-sub {
   font: 400 11px / 1.3 var(--f);
-  color: var(--t3);
+  color: var(--t2);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -606,7 +675,12 @@ html[lang="en"] .card-label {
   position: absolute;
   bottom: 12px;
   right: 12px;
-  color: var(--t3);
+  color: rgba(var(--card-accent-rgb, 0,0,0), 0.32);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+.card:active .card-arrow {
+  color: rgba(var(--card-accent-rgb, 0,0,0), 0.70);
+  transform: translate(1px, -1px);
 }
 
 /* ── View 3D card — mini-card thumbnail (right side) ── */
@@ -1047,6 +1121,11 @@ html[lang="en"] .act-desc {
   height: auto;
   gap: 12px;
 }
+.card-wide::before {
+  top: -18px;
+  left: auto;
+  right: -18px;
+}
 
 .card-wide .mini-card-wrap {
   margin-bottom: 0;
@@ -1467,6 +1546,10 @@ html[lang="en"] .card3d-hint {
 
 .id-card {
   animation: enter-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.section-divider {
+  animation: enter-up 0.5s 0.04s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .cards .card:nth-child(1) {
