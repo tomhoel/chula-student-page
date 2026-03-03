@@ -3093,30 +3093,28 @@
     <div class="pin-backdrop"></div>
     <div class="pin-card">
 
-      <!-- CU Logo + header -->
-      <div class="pin-header">
-        <img src="cu-logo.png" class="pin-cu-logo" alt="Chulalongkorn University" onerror="this.style.display='none'">
-        <div class="pin-title">Identity Wallet</div>
-        <div class="pin-sub">Chulalongkorn University</div>
-        <div class="pin-secure-badge">
-          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          Secure Access
+      <!-- Colour banner -->
+      <div class="pin-banner">
+        <img src="cu-logo.png" class="pin-logo" alt="" onerror="this.style.display='none'">
+        <div class="pin-banner-label">Identity Wallet</div>
+        <div class="pin-banner-hint">Enter PIN to unlock</div>
+        <button class="pin-x" id="pin-cancel" type="button" aria-label="Cancel">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Dot indicators + status -->
+      <div class="pin-mid">
+        <div class="pin-dots" id="pin-dots">
+          <div class="pin-dot" data-i="0"></div>
+          <div class="pin-dot" data-i="1"></div>
+          <div class="pin-dot" data-i="2"></div>
+          <div class="pin-dot" data-i="3"></div>
         </div>
+        <div class="pin-status" id="pin-status">&nbsp;</div>
       </div>
-
-      <!-- Separator -->
-      <div class="pin-sep"></div>
-
-      <!-- Dot indicators -->
-      <div class="pin-dots" id="pin-dots">
-        <div class="pin-dot" data-i="0"></div>
-        <div class="pin-dot" data-i="1"></div>
-        <div class="pin-dot" data-i="2"></div>
-        <div class="pin-dot" data-i="3"></div>
-      </div>
-
-      <!-- Status label -->
-      <div class="pin-status" id="pin-status">&nbsp;</div>
 
       <!-- Numpad -->
       <div class="pin-pad" id="pin-pad">
@@ -3132,147 +3130,140 @@
         <button class="pin-key pin-key--ghost" type="button" disabled></button>
         <button class="pin-key" data-n="0" type="button"><span class="pin-key-n">0</span></button>
         <button class="pin-key pin-key--del" id="pin-del" type="button" aria-label="Delete">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/>
             <line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/>
           </svg>
         </button>
       </div>
 
-      <!-- Cancel -->
-      <button class="pin-cancel" id="pin-cancel" type="button">Cancel</button>
     </div>
   </div>
 
   <style>
-  /* ── PIN Modal — centered popup, blurred app behind ── */
+  /* ── PIN Modal — compact centered popup ── */
   #pin-modal {
     position: fixed; inset: 0; z-index: 9000;
     display: flex; align-items: center; justify-content: center;
     padding: 24px;
     pointer-events: none; visibility: hidden;
-    transition: visibility 0s 0.30s;
+    transition: visibility 0s 0.28s;
   }
-  #pin-modal.open {
-    pointer-events: auto; visibility: visible;
-    transition: visibility 0s 0s;
-  }
+  #pin-modal.open { pointer-events: auto; visibility: visible; transition: visibility 0s; }
 
-  /* Blurred app backdrop — light, matches site tone */
   .pin-backdrop {
     position: absolute; inset: 0;
-    background: rgba(242, 240, 238, 0.60);
-    backdrop-filter: blur(14px) saturate(120%);
-    -webkit-backdrop-filter: blur(14px) saturate(120%);
-    opacity: 0; transition: opacity 0.28s ease;
+    background: rgba(18, 8, 14, 0.52);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    opacity: 0; transition: opacity 0.26s ease;
   }
   #pin-modal.open .pin-backdrop { opacity: 1; }
 
-  /* White card — matches site panel style */
+  /* Card */
   .pin-card {
     position: relative; z-index: 1;
-    width: 100%; max-width: 320px;
-    background: #fff;
-    border-radius: 22px;
-    border: 1px solid rgba(0,0,0,0.07);
-    box-shadow:
-      0 24px 64px rgba(0,0,0,0.13),
-      0 4px 16px rgba(0,0,0,0.07),
-      0 0 0 1px rgba(255,255,255,0.9) inset;
-    overflow: hidden;
-    opacity: 0;
-    transform: scale(0.92) translateY(10px);
-    transition: opacity 0.28s ease, transform 0.32s cubic-bezier(0.34,1.4,0.64,1);
-  }
-  /* CU pink top accent line */
-  .pin-card::before {
-    content: ''; display: block;
-    height: 3px;
-    background: linear-gradient(to right, #de5d8e, #b43b6b);
-  }
-  #pin-modal.open .pin-card {
-    opacity: 1; transform: scale(1) translateY(0);
-  }
-
-  /* ── Header ── */
-  .pin-header {
-    display: flex; flex-direction: column; align-items: center;
-    padding: 22px 24px 14px; text-align: center; gap: 5px;
-  }
-  .pin-cu-logo {
-    width: 56px; height: 56px; object-fit: contain;
-    margin-bottom: 4px;
-    filter: drop-shadow(0 2px 6px rgba(222,93,142,0.18));
-  }
-  .pin-title {
-    font: 700 16px/1.2 var(--f);
-    color: var(--t1); letter-spacing: -0.02em;
-  }
-  .pin-sub {
-    font: 400 11px/1 var(--f);
-    color: var(--t3); letter-spacing: 0.01em;
-  }
-  .pin-secure-badge {
-    display: inline-flex; align-items: center; gap: 4px;
-    margin-top: 4px;
-    padding: 4px 10px;
-    background: rgba(222,93,142,0.08);
-    border: 1px solid rgba(222,93,142,0.20);
+    width: 100%; max-width: 272px;
+    background: #faf9f8;
     border-radius: 20px;
-    font: 600 9px/1 var(--f);
-    color: #de5d8e; letter-spacing: 0.07em; text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 28px 72px rgba(0,0,0,0.38), 0 4px 18px rgba(0,0,0,0.18);
+    overflow: hidden;
+    opacity: 0; transform: scale(0.90) translateY(14px);
+    transition: opacity 0.26s ease, transform 0.30s cubic-bezier(0.34, 1.48, 0.64, 1);
   }
+  #pin-modal.open .pin-card { opacity: 1; transform: scale(1) translateY(0); }
 
-  /* Separator */
-  .pin-sep {
-    height: 1px; background: rgba(0,0,0,0.06);
-    margin: 0 20px;
+  /* ── Banner ── */
+  .pin-banner {
+    position: relative;
+    background: linear-gradient(148deg, #c5235c 0%, #8c1540 48%, #1e0b16 100%);
+    padding: 22px 18px 20px;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; gap: 3px;
+    overflow: hidden;
   }
+  /* Decorative radial glow */
+  .pin-banner::before {
+    content: ''; position: absolute;
+    top: -30px; left: 50%; transform: translateX(-50%);
+    width: 180px; height: 130px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,100,150,0.22) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  /* Subtle mesh grid lines */
+  .pin-banner::after {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg,   transparent, transparent 23px, rgba(255,255,255,0.03) 23px, rgba(255,255,255,0.03) 24px),
+      repeating-linear-gradient(90deg,  transparent, transparent 23px, rgba(255,255,255,0.03) 23px, rgba(255,255,255,0.03) 24px);
+    pointer-events: none;
+  }
+  .pin-logo {
+    width: 38px; height: 38px; object-fit: contain;
+    filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(255,255,255,0.20));
+    position: relative; z-index: 1; margin-bottom: 6px;
+  }
+  .pin-banner-label {
+    font: 700 15px/1 var(--f);
+    color: #fff; letter-spacing: -0.01em;
+    position: relative; z-index: 1;
+  }
+  .pin-banner-hint {
+    font: 400 10px/1 var(--f);
+    color: rgba(255,255,255,0.52); letter-spacing: 0.02em;
+    position: relative; z-index: 1;
+  }
+  /* Close X */
+  .pin-x {
+    position: absolute; top: 10px; right: 10px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: rgba(255,255,255,0.12); border: none;
+    color: rgba(255,255,255,0.65);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; -webkit-tap-highlight-color: transparent;
+    transition: background 0.14s; z-index: 2;
+  }
+  .pin-x:active { background: rgba(255,255,255,0.22); }
 
-  /* ── PIN dots ── */
+  /* ── Dots + status mid-zone ── */
+  .pin-mid {
+    padding: 16px 20px 0;
+    display: flex; flex-direction: column; align-items: center; gap: 0;
+  }
   .pin-dots {
-    display: flex; align-items: center; justify-content: center; gap: 16px;
-    padding: 20px 24px 4px;
+    display: flex; align-items: center; gap: 14px;
   }
   .pin-dot {
-    width: 13px; height: 13px; border-radius: 50%;
+    width: 10px; height: 10px; border-radius: 50%;
     background: transparent;
-    border: 2px solid rgba(0,0,0,0.15);
-    transition: background 0.16s ease, border-color 0.16s ease,
-                transform 0.20s cubic-bezier(0.34,1.56,0.64,1),
-                box-shadow 0.16s ease;
+    border: 1.8px solid rgba(0,0,0,0.16);
+    transition: background 0.15s, border-color 0.15s,
+                transform 0.18s cubic-bezier(0.34,1.56,0.64,1),
+                box-shadow 0.15s;
   }
   .pin-dot.filled {
-    background: #de5d8e; border-color: #de5d8e;
-    transform: scale(1.18);
-    box-shadow: 0 2px 8px rgba(222,93,142,0.40);
+    background: #c5235c; border-color: #c5235c;
+    transform: scale(1.22);
+    box-shadow: 0 2px 8px rgba(197,35,92,0.45);
   }
-  .pin-dot.success {
-    background: #16a34a; border-color: #16a34a;
-    box-shadow: 0 2px 8px rgba(22,163,74,0.40);
-  }
-  .pin-dot.error {
-    background: #dc2626; border-color: #dc2626;
-    box-shadow: 0 2px 8px rgba(220,38,38,0.35);
-  }
+  .pin-dot.success { background: #16a34a; border-color: #16a34a; box-shadow: 0 2px 8px rgba(22,163,74,0.40); }
+  .pin-dot.error   { background: #dc2626; border-color: #dc2626; box-shadow: 0 2px 8px rgba(220,38,38,0.38); }
+
   @keyframes pin-shake {
     0%,100% { transform: translateX(0); }
-    16%     { transform: translateX(-8px); }
-    33%     { transform: translateX(7px); }
-    50%     { transform: translateX(-5px); }
-    67%     { transform: translateX(4px); }
-    83%     { transform: translateX(-2px); }
+    15%  { transform: translateX(-7px); }
+    30%  { transform: translateX(6px); }
+    45%  { transform: translateX(-5px); }
+    60%  { transform: translateX(4px); }
+    80%  { transform: translateX(-2px); }
   }
-  .pin-dots.shake { animation: pin-shake 0.42s ease; }
+  .pin-dots.shake { animation: pin-shake 0.38s ease; }
 
-  /* ── Status ── */
   .pin-status {
-    text-align: center; height: 18px;
-    font: 500 10.5px/1 var(--f);
-    letter-spacing: 0.05em; text-transform: uppercase;
-    padding: 5px 0 8px;
-    transition: color 0.18s;
-    color: transparent;
+    height: 16px; text-align: center;
+    font: 500 9.5px/1 var(--f); letter-spacing: 0.07em; text-transform: uppercase;
+    padding-top: 7px; color: transparent; transition: color 0.16s;
   }
   .pin-status.error   { color: #dc2626; }
   .pin-status.success { color: #16a34a; }
@@ -3280,49 +3271,37 @@
   /* ── Numpad ── */
   .pin-pad {
     display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 8px; padding: 4px 20px 6px;
+    gap: 6px; padding: 10px 14px 14px;
   }
   .pin-key {
-    aspect-ratio: 1; border-radius: 14px;
-    background: #F9F7F6; border: 1px solid rgba(0,0,0,0.07);
+    height: 48px; border-radius: 11px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
     color: var(--t1);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    cursor: pointer; -webkit-tap-highlight-color: transparent;
-    transition: background 0.10s, transform 0.10s, border-color 0.10s, box-shadow 0.10s;
-    gap: 1px;
+    gap: 1px; cursor: pointer; -webkit-tap-highlight-color: transparent;
+    transition: background 0.09s, transform 0.09s, border-color 0.09s, box-shadow 0.09s;
   }
   .pin-key:not(.pin-key--ghost):not(:disabled):active,
   .pin-key.pressed {
-    background: rgba(222,93,142,0.10);
-    border-color: rgba(222,93,142,0.28);
-    transform: scale(0.92);
-    box-shadow: 0 1px 4px rgba(222,93,142,0.15);
+    background: rgba(197,35,92,0.09);
+    border-color: rgba(197,35,92,0.26);
+    box-shadow: 0 1px 6px rgba(197,35,92,0.16);
+    transform: scale(0.94);
   }
-  .pin-key--ghost { background: transparent; border-color: transparent; cursor: default; }
-  .pin-key--del   { background: #F2F0EE; }
-  .pin-key:disabled { opacity: 0; }
+  .pin-key--ghost { background: transparent; border-color: transparent; box-shadow: none; cursor: default; }
+  .pin-key--del   { background: #f0eeed; }
+  .pin-key:disabled { opacity: 0; pointer-events: none; }
 
   .pin-key-n {
-    font: 300 24px/1 -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-    color: var(--t1); letter-spacing: -0.01em; display: block;
+    font: 300 21px/1 -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+    color: #1a1a1a; letter-spacing: -0.01em;
   }
   .pin-key-sub {
-    font: 600 6.5px/1 var(--f);
-    letter-spacing: 0.10em; color: var(--t3);
-    display: block; text-transform: uppercase;
+    font: 700 5.5px/1 var(--f); letter-spacing: 0.12em;
+    color: rgba(0,0,0,0.32); text-transform: uppercase;
   }
-
-  /* ── Cancel ── */
-  .pin-cancel {
-    display: block; width: 100%;
-    padding: 13px 24px 16px;
-    background: none; border: none;
-    font: 500 13px/1 var(--f);
-    color: var(--t3); letter-spacing: 0.01em;
-    cursor: pointer; -webkit-tap-highlight-color: transparent;
-    transition: color 0.14s;
-  }
-  .pin-cancel:active { color: var(--t2); }
   </style>
 
   <script>
