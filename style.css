@@ -7789,6 +7789,9 @@ html[lang="en"] .ac-panel-val {
   padding: 14px 18px 7px;
   font-family: var(--f);
 }
+.ac-tab-panel > .aci-section-label:first-child {
+  padding-top: 2px;
+}
 
 /* ── Meta Card (Program Details) ────────────────────── */
 .aci-meta-card {
