@@ -78,10 +78,11 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
     if (!dragging) return;
     const dy = e.touches[0].clientY - startY;
     if (dy > 0) {
+      e.preventDefault();
       panel.style.transform = `translateY(${Math.round(dy)}px)`;
       panel.style.transition = 'none';
     }
-  }, { passive: true });
+  }, { passive: false });
 
   panel.addEventListener('touchend', e => {
     if (!dragging) return;
