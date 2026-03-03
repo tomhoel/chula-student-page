@@ -8253,82 +8253,132 @@ html[lang="en"] .ac-panel-val {
 .exc-card {
   margin: 0 16px 20px;
   border-radius: 14px;
-  border: 1px solid rgba(12, 35, 64, 0.13);
+  border: 1px solid rgba(13,71,161,0.15);
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 4px 20px rgba(12,35,64,0.08), 0 1px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 6px 24px rgba(13,71,161,0.10), 0 1px 4px rgba(0,0,0,0.06);
 }
 
-/* Header */
-.exc-hd {
-  display: flex; align-items: center; gap: 12px;
-  padding: 14px 16px 12px;
-  background: linear-gradient(130deg, rgba(12,35,64,0.04) 0%, rgba(240,171,0,0.04) 100%);
-  border-bottom: 1px solid rgba(12,35,64,0.08);
+/* ── Top gradient bar ── */
+.exc-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 7px 14px;
+  background: linear-gradient(to right, #0D47A1 0%, #1565C0 50%, #42A5F5 100%);
 }
-
-/* BI logotype box */
-.exc-logo {
-  width: 44px; height: 44px; flex-shrink: 0;
-  border-radius: 10px;
-  background: linear-gradient(150deg, #0C2340 0%, #1B3A6B 100%);
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 3px 10px rgba(12,35,64,0.30);
-  position: relative; overflow: hidden;
+.exc-topbar-left {
+  display: flex; align-items: center; gap: 5px;
+  font: 600 9px/1 var(--f); color: rgba(255,255,255,0.85);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.exc-logo::after {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-  height: 3.5px; background: #F0AB00;
-}
-
-/* School identity */
-.exc-id { flex: 1; min-width: 0; }
-.exc-school { font: 700 13px/1.25 var(--f); color: var(--t1); letter-spacing: -0.01em; }
-.exc-sub { font: 400 10.5px/1.4 var(--f); color: var(--t3); margin-top: 2px; }
-
-/* Upcoming status badge */
-.exc-status {
-  flex-shrink: 0;
-  display: flex; align-items: center; gap: 4px;
-  padding: 4px 9px;
-  background: rgba(240,171,0,0.11);
-  color: #7a5800;
-  border: 1px solid rgba(240,171,0,0.30);
+.exc-topbar-left svg { color: rgba(255,255,255,0.70); flex-shrink: 0; }
+.exc-topbar-pill {
+  display: flex; align-items: center; gap: 5px; flex-shrink: 0;
+  padding: 3px 8px;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.30);
   border-radius: 20px;
-  font: 600 9px/1 var(--f); letter-spacing: 0.07em;
-  text-transform: uppercase;
+  font: 700 9px/1 var(--f); color: #fff;
+  letter-spacing: 0.06em; text-transform: uppercase;
 }
 
-/* Period bar */
-.exc-period {
+/* Live pulse dot */
+.exc-live-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #4ade80; flex-shrink: 0;
+  animation: exc-pulse 2.2s ease-in-out infinite;
+}
+@keyframes exc-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.55; transform: scale(0.75); }
+}
+
+/* ── School header ── */
+.exc-hd {
+  display: flex; align-items: center; gap: 13px;
+  padding: 14px 16px 13px;
+  border-bottom: 1px solid rgba(13,71,161,0.08);
+}
+
+/* BI SVG logo wrapper */
+.exc-logo {
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(13,71,161,0.22);
+  line-height: 0;
+}
+
+/* School identity — nowrap + ellipsis prevents wrapping on small screens */
+.exc-id { flex: 1; min-width: 0; }
+.exc-school {
+  font: 700 12.5px/1.2 var(--f); color: var(--t1);
+  letter-spacing: -0.015em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.exc-sub {
+  font: 400 10px/1.4 var(--f); color: var(--t3); margin-top: 3px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* ── Key info row ── */
+.exc-inforow {
   display: flex; align-items: stretch;
-  padding: 10px 16px;
-  background: rgba(12,35,64,0.025);
-  border-bottom: 1px solid rgba(12,35,64,0.07);
-  gap: 0;
+  padding: 9px 16px;
+  background: rgba(13,71,161,0.028);
+  border-bottom: 1px solid rgba(13,71,161,0.07);
 }
-.exc-period-col {
-  flex: 1; display: flex; flex-direction: column; gap: 3px;
-  align-items: center;
+.exc-ic {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
 }
-.exc-period-lbl { font: 500 9px/1 var(--f); color: var(--t3); letter-spacing: 0.05em; text-transform: uppercase; }
-.exc-period-val { font: 700 11px/1.2 var(--f); color: #0C2340; }
-.exc-period-div { width: 1px; background: rgba(12,35,64,0.10); align-self: stretch; margin: 0 2px; }
+.exc-ik {
+  font: 500 8.5px/1 var(--f); color: var(--t3);
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.exc-iv {
+  font: 700 11px/1 var(--f); color: #0D47A1;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.exc-isep {
+  width: 1px; background: rgba(13,71,161,0.10);
+  align-self: stretch; margin: 0 4px;
+}
 
-/* Stats strip */
+/* ── Progress bar ── */
+.exc-prog {
+  padding: 9px 16px 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.exc-prog-hd {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 6px;
+}
+.exc-prog-lbl { font: 500 9px/1 var(--f); color: var(--t3); letter-spacing: 0.04em; text-transform: uppercase; }
+.exc-prog-val { font: 600 9px/1 var(--f); color: #1565C0; }
+.exc-prog-track {
+  height: 4px; background: rgba(13,71,161,0.10);
+  border-radius: 99px; overflow: hidden;
+}
+.exc-prog-fill {
+  height: 100%; width: 40%;
+  background: linear-gradient(to right, #0D47A1, #42A5F5);
+  border-radius: 99px;
+}
+
+/* ── Stats band ── */
 .exc-stats {
   display: flex; align-items: center;
-  padding: 10px 16px;
+  padding: 9px 16px;
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 .exc-stat {
   flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
 }
-.exc-sv { font: 800 15px/1 var(--f); color: #0C2340; letter-spacing: -0.02em; }
+.exc-sv { font: 800 14px/1 var(--f); color: #0D47A1; letter-spacing: -0.025em; }
 .exc-sl { font: 400 9px/1 var(--f); color: var(--t3); letter-spacing: 0.03em; }
 .exc-sdiv { width: 1px; align-self: stretch; background: rgba(0,0,0,0.08); margin: 0 2px; }
 
-/* Courses section */
+/* ── Courses ── */
 .exc-courses-hd {
   padding: 10px 16px 6px;
   font: 600 9px/1 var(--f); color: var(--t3);
@@ -8343,15 +8393,17 @@ html[lang="en"] .ac-panel-val {
 .exc-course:last-child { border-bottom: none; }
 .exc-cc {
   font: 700 9px/1 var(--f); letter-spacing: 0.04em;
-  color: #1B3A6B;
-  background: rgba(12,35,64,0.08);
+  color: #1565C0; background: rgba(13,71,161,0.08);
   padding: 3px 6px; border-radius: 4px;
   flex-shrink: 0; white-space: nowrap;
 }
-.exc-cn { flex: 1; font: 400 11px/1.3 var(--f); color: var(--t2); }
+.exc-cn {
+  flex: 1; font: 400 11px/1.3 var(--f); color: var(--t2);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 .exc-cr { font: 600 10px/1 var(--f); color: var(--t3); flex-shrink: 0; white-space: nowrap; }
 
-/* Verified note */
+/* ── Verified note ── */
 .exc-verify {
   display: flex; align-items: center; gap: 6px;
   padding: 8px 16px;
@@ -8359,14 +8411,15 @@ html[lang="en"] .ac-panel-val {
   background: rgba(22,163,74,0.04);
   border-top: 1px solid rgba(22,163,74,0.10);
   border-bottom: 1px solid rgba(22,163,74,0.10);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .exc-verify svg { color: #22a55b; flex-shrink: 0; }
 
-/* Footer tags */
+/* ── Footer tags ── */
 .exc-foot {
   display: flex; gap: 5px; flex-wrap: wrap;
   padding: 10px 16px 12px;
-  background: rgba(12,35,64,0.025);
+  background: rgba(13,71,161,0.025);
 }
 .exc-tag {
   font: 500 9px/1 var(--f);
@@ -8375,18 +8428,9 @@ html[lang="en"] .ac-panel-val {
   border: 1px solid rgba(0,0,0,0.08);
   white-space: nowrap;
 }
-.exc-tag--bi {
-  background: rgba(12,35,64,0.08); color: #0C2340;
-  border-color: rgba(12,35,64,0.20);
-}
-.exc-tag--gold {
-  background: rgba(240,171,0,0.10); color: #7a5800;
-  border-color: rgba(240,171,0,0.28);
-}
-.exc-tag--equis {
-  background: rgba(0,120,200,0.08); color: #005a9e;
-  border-color: rgba(0,120,200,0.22);
-}
+.exc-tag--bi   { background: rgba(13,71,161,0.08); color: #0D47A1; border-color: rgba(13,71,161,0.20); }
+.exc-tag--gold { background: rgba(240,171,0,0.10); color: #7a5800; border-color: rgba(240,171,0,0.28); }
+.exc-tag--equis { background: rgba(0,120,200,0.08); color: #005a9e; border-color: rgba(0,120,200,0.22); }
 
 /* ══════════════════════════════════════════════════════
    ACADEMIC PROGRESS TAB — acp-* components
