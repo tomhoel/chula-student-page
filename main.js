@@ -131,7 +131,8 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
   const card  = document.getElementById('card3d');
   if (!sheet || !scene || !card) return;
 
-  const faces = card.querySelectorAll('.card3d-gloss');
+  const faces     = card.querySelectorAll('.card3d-gloss');
+  const frontFace = card.querySelector('.card3d-front');
 
   /* ── Card data ── */
   const CARDS = {
@@ -206,10 +207,21 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
     card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY + base}deg)`;
     const gx = 50 + rotY * 0.5;
     const gy = 50 - rotX * 1.2;
+    const gxC = `${Math.max(5, Math.min(95, gx))}%`;
+    const gyC = `${Math.max(5, Math.min(95, gy))}%`;
     faces.forEach(f => {
-      f.style.setProperty('--gx', `${Math.max(5, Math.min(95, gx))}%`);
-      f.style.setProperty('--gy', `${Math.max(5, Math.min(95, gy))}%`);
+      f.style.setProperty('--gx', gxC);
+      f.style.setProperty('--gy', gyC);
     });
+    /* Holographic sticker variables — drive rainbow & glint from rotation */
+    if (frontFace) {
+      const holoAngle = rotY * 3;
+      const holoHue   = ((rotY * 2 + rotX * 0.8) % 360 + 360) % 360;
+      frontFace.style.setProperty('--holo-angle', `${holoAngle}deg`);
+      frontFace.style.setProperty('--holo-hue',   `${holoHue}deg`);
+      frontFace.style.setProperty('--gx', gxC);
+      frontFace.style.setProperty('--gy', gyC);
+    }
   }
 
   /* ── Idle sway (immediate — used on sheet open) ── */
