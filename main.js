@@ -210,6 +210,9 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
       f.style.setProperty('--gx', `${Math.max(5, Math.min(95, gx))}%`);
       f.style.setProperty('--gy', `${Math.max(5, Math.min(95, gy))}%`);
     });
+    /* Drive holographic gradient angle via raw rotation values */
+    card.style.setProperty('--rot-y', (rotY + base).toFixed(1));
+    card.style.setProperty('--rot-x', rotX.toFixed(1));
   }
 
   /* ── Idle sway (immediate — used on sheet open) ── */

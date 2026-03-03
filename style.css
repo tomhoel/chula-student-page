@@ -1390,6 +1390,76 @@ html[lang="en"] .act-desc {
   mix-blend-mode: overlay;
 }
 
+/* ── Holographic security watermarks ─────────────────────────────────────
+   Two large semi-transparent CU logo overlays masked to the seal shape.
+   The rainbow gradient angle is driven by --rot-y (set in render() JS),
+   making the colours sweep visibly as the card spins/tilts — exactly like
+   a real ID-card / driver-licence holographic security feature.
+   No colour at rest is NOT the goal — real holograms ARE always coloured;
+   the key is that the colour palette and intensity visibly shifts with angle.
+──────────────────────────────────────────────────────────────────────── */
+.card3d-holo {
+  position: absolute; inset: 0;
+  border-radius: 10px; overflow: hidden;
+  pointer-events: none;
+  z-index: 2; /* above card image, below gloss */
+}
+
+/* Shared logo-mask + rainbow-gradient styles */
+.card3d-holo-a,
+.card3d-holo-b {
+  position: absolute;
+  width: 90%; aspect-ratio: 1;
+
+  /* Clip to the CU seal silhouette */
+  -webkit-mask-image: url(cu-logo.png);
+  -webkit-mask-size:     contain;
+  -webkit-mask-repeat:   no-repeat;
+  -webkit-mask-position: center;
+  mask-image:     url(cu-logo.png);
+  mask-size:     contain;
+  mask-repeat:   no-repeat;
+  mask-position: center;
+
+  /*
+    Gradient angle = f(--rot-y):
+    • idle swing is ±30° → angle shifts ±90° → vivid sweep across the logo
+    • user drag/spin → full 360° possible → full rainbow cycle
+    • double-copy rainbow (0→360) ensures smooth looping at any angle
+  */
+  background: linear-gradient(
+    calc(var(--rot-y, 0) * 3.0deg + var(--rot-x, 0) * 1.5deg + 70deg),
+    hsl(330, 100%, 60%)   0%,
+    hsl( 15, 100%, 58%)  14%,
+    hsl( 48, 100%, 54%)  28%,
+    hsl(140, 100%, 46%)  42%,
+    hsl(200, 100%, 54%)  56%,
+    hsl(265, 100%, 62%)  70%,
+    hsl(330, 100%, 60%)  84%,
+    hsl( 15, 100%, 58%) 100%
+  );
+
+  /* Semi-transparent so the card image shows through underneath */
+  opacity: 0.28;
+  /* saturate boosts colour without changing lightness */
+  filter: saturate(1.5) brightness(1.08);
+  /* screen: rainbow colour is added as light — vivid on mid/dark tones */
+  mix-blend-mode: screen;
+  transition: none; /* must be instant — JS drives every frame */
+}
+
+/* Logo A — upper-left, tilted left */
+.card3d-holo-a {
+  top: -14%; left: -18%;
+  transform: rotate(-8deg) scale(1.18);
+}
+
+/* Logo B — lower-right, tilted right */
+.card3d-holo-b {
+  bottom: -14%; right: -18%;
+  transform: rotate(10deg) scale(1.18);
+}
+
 /* ── Hint ── */
 .card3d-hint {
   text-align: center;
