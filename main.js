@@ -393,6 +393,10 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
       currentType = type;
       updateMorphData(type);
 
+      /* Show holographic watermarks on student ID only */
+      var holoEl = card.querySelector('.card3d-holo');
+      if (holoEl) holoEl.classList.toggle('card3d-holo--off', type !== 'student');
+
       clearTimeout(idleTimerId);
       idleTimerId = setTimeout(startIdleNow, 200);
 

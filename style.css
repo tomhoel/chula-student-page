@@ -1440,12 +1440,14 @@ html[lang="en"] .act-desc {
   );
 
   /* Semi-transparent so the card image shows through underneath */
-  opacity: 0.28;
-  /* saturate boosts colour without changing lightness */
-  filter: saturate(1.5) brightness(1.08);
-  /* screen: rainbow colour is added as light — vivid on mid/dark tones */
+  opacity: 0.16;
+  filter: saturate(1.1) brightness(1.04);
   mix-blend-mode: screen;
   transition: none; /* must be instant — JS drives every frame */
+}
+
+.card3d-holo--off {
+  display: none;
 }
 
 /* Logo A — upper-left, tilted left */
