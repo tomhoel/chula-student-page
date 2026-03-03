@@ -2489,59 +2489,6 @@ html[lang="en"] .card3d-access-item {
   margin-top: 12px;
 }
 
-/* ── SP Header (matches cp-header) ── */
-.sp-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 13px 18px 10px;
-  border-bottom: 1px solid rgba(0,0,0,0.07);
-  flex-shrink: 0;
-}
-.sp-badge {
-  flex-shrink: 0;
-  padding: 3px 8px;
-  background: var(--cu);
-  color: #fff;
-  font: 700 9px / 1 var(--f);
-  letter-spacing: 0.08em;
-  border-radius: 3px;
-  text-transform: uppercase;
-}
-.sp-title-block {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.sp-sys-label {
-  font: 700 11px / 1 var(--f);
-  letter-spacing: 0.06em;
-  color: var(--t1);
-  text-transform: uppercase;
-}
-.sp-sys-subtitle {
-  font: 400 9px / 1 var(--f);
-  color: var(--t3);
-  letter-spacing: 0.04em;
-}
-.sp-close {
-  flex-shrink: 0;
-  width: 26px;
-  height: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  background: none;
-  border: none;
-  color: var(--t3);
-  font-size: 15px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-.sp-close:hover { background: rgba(0,0,0,0.06); }
-
 /* ── SP Sysbar (static like cp-sysbar) ── */
 .sp-sysbar {
   background: rgba(0,0,0,0.025);
@@ -5113,81 +5060,133 @@ html[lang="en"] .ag-future-desc {
   margin-top: 12px;
 }
 
-/* ── HEADER ─────────────────────────────────────────── */
-.ac-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 13px 18px 10px;
+/* ══════════════════════════════════════════════════════
+   PANEL HERO — unified header for Academic, Sport, IDW
+   Replaces *-header + ub-banner per panel
+   --ph-accent / --ph-accent-rgb: brand colour tokens
+══════════════════════════════════════════════════════ */
+
+.apr-hero { --ph-accent: var(--cu); --ph-accent-rgb: 222, 93, 142; }
+.spr-hero { --ph-accent: #1c63c2; --ph-accent-rgb: 28, 99, 194; }
+.idc-hero { --ph-accent: var(--cu); --ph-accent-rgb: 222, 93, 142; }
+
+.apr-hero, .spr-hero, .idc-hero {
+  display: flex; flex-direction: column; flex-shrink: 0;
   border-bottom: 1px solid rgba(0,0,0,0.07);
-  flex-shrink: 0;
+  position: relative; overflow: hidden;
 }
-.ac-badge {
-  flex-shrink: 0;
-  padding: 3px 8px;
-  background: linear-gradient(135deg, var(--cu) 0%, #c4447a 100%);
-  color: #fff;
-  font: 700 9px / 1 var(--f);
-  letter-spacing: 0.08em;
-  border-radius: 3px;
-  text-transform: uppercase;
-  box-shadow: 0 2px 4px rgba(222,93,142,0.25);
+
+/* Radial bloom top-right */
+.apr-hero::before, .spr-hero::before, .idc-hero::before {
+  content: ''; position: absolute; top: -20px; right: -20px;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--ph-accent-rgb),0.10) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
 }
-.ac-title-block {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+
+/* Top accent band */
+.apr-hero-bar, .spr-hero-bar, .idc-hero-bar {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 14px 8px 16px;
+  background: rgba(var(--ph-accent-rgb), 0.05);
+  border-bottom: 1px solid rgba(var(--ph-accent-rgb), 0.12);
+  position: relative; z-index: 1;
 }
-.ac-sys-label {
-  font: 700 11px / 1 var(--f);
-  letter-spacing: 0.06em;
-  color: var(--t1);
-  text-transform: uppercase;
+
+/* Badge */
+.apr-hero-badge, .spr-hero-badge, .idc-hero-badge {
+  flex-shrink: 0; padding: 3px 7px;
+  background: var(--ph-accent); color: #fff;
+  font: 700 9px/1 var(--f); letter-spacing: 0.09em;
+  border-radius: 3px; text-transform: uppercase;
 }
-.ac-sys-subtitle {
-  font: 400 9px / 1 var(--f);
-  color: var(--t3);
-  letter-spacing: 0.04em;
+
+/* System label */
+.apr-hero-sys, .spr-hero-sys, .idc-hero-sys {
+  flex: 1; font: 600 10px/1 var(--f); letter-spacing: 0.07em;
+  color: var(--t2); text-transform: uppercase;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.ac-close {
-  flex-shrink: 0;
-  width: 26px;
-  height: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  background: none;
-  border: none;
-  color: var(--t3);
-  font-size: 15px;
-  cursor: pointer;
-  transition: background 0.15s;
+
+/* Close button */
+.apr-hero-close, .spr-hero-close, .idc-hero-close {
+  flex-shrink: 0; width: 26px; height: 26px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 5px; background: none; border: none;
+  color: var(--t3); cursor: pointer;
+  transition: background 0.15s; -webkit-tap-highlight-color: transparent;
 }
-.ac-close:hover { background: rgba(0,0,0,0.06); }
+.apr-hero-close:active, .spr-hero-close:active, .idc-hero-close:active {
+  background: rgba(0,0,0,0.07);
+}
+
+/* Primary info body */
+.apr-hero-body, .spr-hero-body, .idc-hero-body {
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 11px 16px 12px;
+  border-left: 3px solid rgba(var(--ph-accent-rgb), 0.35);
+  background: linear-gradient(to right, rgba(var(--ph-accent-rgb),0.035) 0%, transparent 60%);
+  position: relative; z-index: 1;
+}
+
+/* Primary row: name + score */
+.apr-hero-primary, .spr-hero-primary, .idc-hero-primary {
+  display: flex; align-items: baseline;
+  justify-content: space-between; gap: 8px;
+}
+
+/* Name (dominant element) */
+.apr-hero-name, .spr-hero-name, .idc-hero-name {
+  font: 700 18px/1.2 var(--f); color: var(--t1);
+  letter-spacing: -0.02em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Score / status */
+.apr-hero-score, .spr-hero-score, .idc-hero-score {
+  font: 500 11.5px/1 var(--f); color: var(--t3);
+  white-space: nowrap; flex-shrink: 0;
+}
+.spr-hero-score-den { font-size: 10px; color: var(--t3); font-weight: 400; }
+
+/* Highlighted value */
+.apr-hero-mark, .spr-hero-mark, .idc-hero-mark {
+  font-weight: 700; color: var(--ph-accent); font-style: normal; background: none;
+}
+
+/* Meta sub-line */
+.apr-hero-meta, .spr-hero-meta, .idc-hero-meta {
+  font: 400 11px/1.35 var(--f); color: var(--t2);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Tag row */
+.apr-hero-tags, .spr-hero-tags, .idc-hero-tags {
+  display: flex; gap: 4px; flex-wrap: nowrap; overflow: hidden; margin-top: 1px;
+}
+
+/* Tags */
+.apr-hero-tag, .spr-hero-tag, .idc-hero-tag {
+  font: 500 9px/1 var(--f); letter-spacing: 0.04em;
+  padding: 2.5px 6px 3px; border-radius: 3px;
+  background: rgba(0,0,0,0.04); color: var(--t3);
+  border: 1px solid rgba(0,0,0,0.08);
+  white-space: nowrap; flex-shrink: 0;
+}
+.apr-hero-tag--gold, .spr-hero-tag--gold, .idc-hero-tag--gold {
+  background: rgba(185,147,30,0.09); color: #7e6215; border-color: rgba(185,147,30,0.22);
+}
+.apr-hero-tag--green, .spr-hero-tag--green, .idc-hero-tag--green {
+  background: rgba(22,163,74,0.08); color: #15803d; border-color: rgba(22,163,74,0.20);
+}
+.apr-hero-tag--accent, .spr-hero-tag--accent, .idc-hero-tag--accent {
+  background: rgba(var(--ph-accent-rgb),0.08); color: var(--ph-accent);
+  border-color: rgba(var(--ph-accent-rgb),0.22);
+}
 
 /* ══════════════════════════════════════════════════════
    UNIFIED BANNER — ub-* compact university credential
 ══════════════════════════════════════════════════════ */
-
-.ub-banner--academic {
-  --ub-accent:     var(--cu);
-  --ub-accent-rgb: 222, 93, 142;
-  --ub-rule-c:     rgba(222, 93, 142, 0.25);
-  --ub-seal-c:     rgba(222, 93, 142, 0.65);
-  --ub-border-l:   rgba(222, 93, 142, 0.40);
-  --ub-bg:         rgba(222, 93, 142, 0.04);
-}
-
-.ub-banner--athletic {
-  --ub-accent:     #1c63c2;
-  --ub-accent-rgb: 28, 99, 194;
-  --ub-rule-c:     rgba(28, 99, 194, 0.22);
-  --ub-seal-c:     rgba(28, 99, 194, 0.60);
-  --ub-border-l:   rgba(28, 99, 194, 0.38);
-  --ub-bg:         rgba(28, 99, 194, 0.03);
-}
 
 .ub-banner {
   display: flex;
@@ -9827,32 +9826,6 @@ html[lang="en"] .ac-panel-val {
 /* ══════════════════════════════════════════════════════
    IDENTITY WALLET — v3 (theme-aligned, scroll morph, directional slide)
 ══════════════════════════════════════════════════════ */
-
-/* ── Header (= sp-header) ── */
-.idc-header {
-  display: flex; align-items: center; gap: 10px;
-  padding: 13px 18px 10px;
-  border-bottom: 1px solid rgba(0,0,0,0.07);
-  flex-shrink: 0;
-}
-.idc-badge {
-  background: var(--cu); color: #fff;
-  padding: 3px 8px; font: 700 9px/1 var(--f);
-  letter-spacing: 0.08em; text-transform: uppercase;
-  border-radius: 3px; flex-shrink: 0;
-}
-.idc-title-block { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.idc-title {
-  font: 700 11px/1 var(--f); color: var(--t1);
-  letter-spacing: 0.06em; text-transform: uppercase;
-}
-.idc-subtitle { font: 400 9px/1 var(--f-th); color: var(--t3); letter-spacing: 0.04em; }
-.idc-close {
-  width: 26px; height: 26px; border-radius: 4px; border: none; background: none;
-  cursor: pointer; color: var(--t2); display: flex; align-items: center; justify-content: center;
-  transition: background 0.15s; -webkit-tap-highlight-color: transparent; flex-shrink: 0;
-}
-.idc-close:active { background: rgba(0,0,0,0.06); }
 
 /* ── Sysbar (= sp-sysbar) ── */
 .idc-sysbar {
