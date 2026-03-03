@@ -3085,6 +3085,396 @@
       calculate();
     })();
   </script>
+
+  <!-- ══════════════════════════════════════════════════════
+       PIN GATE — Identity Wallet secure access overlay
+  ══════════════════════════════════════════════════════ -->
+  <div id="pin-modal" aria-modal="true" role="dialog" aria-label="Identity Wallet — Enter PIN">
+    <div class="pin-backdrop"></div>
+    <div class="pin-card">
+
+      <!-- Header -->
+      <div class="pin-header">
+        <div class="pin-icon-ring">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <div class="pin-title">Identity Wallet</div>
+        <div class="pin-sub">Enter your 4-digit PIN to unlock</div>
+      </div>
+
+      <!-- Dot indicators -->
+      <div class="pin-dots" id="pin-dots">
+        <div class="pin-dot" data-i="0"></div>
+        <div class="pin-dot" data-i="1"></div>
+        <div class="pin-dot" data-i="2"></div>
+        <div class="pin-dot" data-i="3"></div>
+      </div>
+
+      <!-- Status label -->
+      <div class="pin-status" id="pin-status">&nbsp;</div>
+
+      <!-- Numpad -->
+      <div class="pin-pad" id="pin-pad">
+        <button class="pin-key" data-n="1" type="button"><span class="pin-key-n">1</span></button>
+        <button class="pin-key" data-n="2" type="button"><span class="pin-key-n">2</span><span class="pin-key-sub">ABC</span></button>
+        <button class="pin-key" data-n="3" type="button"><span class="pin-key-n">3</span><span class="pin-key-sub">DEF</span></button>
+        <button class="pin-key" data-n="4" type="button"><span class="pin-key-n">4</span><span class="pin-key-sub">GHI</span></button>
+        <button class="pin-key" data-n="5" type="button"><span class="pin-key-n">5</span><span class="pin-key-sub">JKL</span></button>
+        <button class="pin-key" data-n="6" type="button"><span class="pin-key-n">6</span><span class="pin-key-sub">MNO</span></button>
+        <button class="pin-key" data-n="7" type="button"><span class="pin-key-n">7</span><span class="pin-key-sub">PQRS</span></button>
+        <button class="pin-key" data-n="8" type="button"><span class="pin-key-n">8</span><span class="pin-key-sub">TUV</span></button>
+        <button class="pin-key" data-n="9" type="button"><span class="pin-key-n">9</span><span class="pin-key-sub">WXYZ</span></button>
+        <button class="pin-key pin-key--ghost" type="button" disabled></button>
+        <button class="pin-key" data-n="0" type="button"><span class="pin-key-n">0</span></button>
+        <button class="pin-key pin-key--del" id="pin-del" type="button" aria-label="Delete">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/>
+            <line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Cancel -->
+      <button class="pin-cancel" id="pin-cancel" type="button">Cancel</button>
+    </div>
+  </div>
+
+  <style>
+  /* ── PIN Modal overlay ── */
+  #pin-modal {
+    position: fixed; inset: 0; z-index: 9000;
+    display: flex; align-items: flex-end; justify-content: center;
+    pointer-events: none; visibility: hidden;
+    transition: visibility 0s 0.38s;
+  }
+  #pin-modal.open {
+    pointer-events: auto; visibility: visible;
+    transition: visibility 0s 0s;
+  }
+
+  /* Frosted dark backdrop */
+  .pin-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(8, 12, 24, 0.72);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    opacity: 0; transition: opacity 0.32s ease;
+  }
+  #pin-modal.open .pin-backdrop { opacity: 1; }
+
+  /* Glass card — bottom sheet style */
+  .pin-card {
+    position: relative; z-index: 1;
+    width: 100%; max-width: 430px;
+    background: linear-gradient(160deg, rgba(18,24,42,0.97) 0%, rgba(12,16,32,0.99) 100%);
+    border: 1px solid rgba(222,93,142,0.18);
+    border-bottom: none;
+    border-radius: 26px 26px 0 0;
+    padding: 0 0 max(env(safe-area-inset-bottom), 28px);
+    box-shadow:
+      0 -8px 40px rgba(0,0,0,0.55),
+      0 0 0 1px rgba(255,255,255,0.04) inset,
+      0 -1px 0 rgba(222,93,142,0.22) inset;
+    transform: translateY(100%);
+    transition: transform 0.42s cubic-bezier(0.32, 0.72, 0, 1);
+    overflow: hidden;
+  }
+  /* Ambient pink glow top-center */
+  .pin-card::before {
+    content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+    width: 200px; height: 160px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(222,93,142,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  /* Subtle noise texture */
+  .pin-card::after {
+    content: ''; position: absolute; inset: 0; border-radius: inherit;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.6;
+  }
+  #pin-modal.open .pin-card { transform: translateY(0); }
+
+  /* Pull handle */
+  .pin-card > * { position: relative; z-index: 1; }
+  .pin-card::before { z-index: 0; }
+
+  /* ── Header ── */
+  .pin-header {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 16px 24px 4px; text-align: center;
+    position: relative; z-index: 1;
+  }
+  /* Pull bar */
+  .pin-header::before {
+    content: ''; display: block;
+    width: 34px; height: 4px; border-radius: 99px;
+    background: rgba(255,255,255,0.15);
+    margin: 0 auto 18px;
+  }
+
+  .pin-icon-ring {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(222,93,142,0.12);
+    border: 1px solid rgba(222,93,142,0.30);
+    display: flex; align-items: center; justify-content: center;
+    color: #de5d8e;
+    box-shadow: 0 0 20px rgba(222,93,142,0.20), 0 0 0 8px rgba(222,93,142,0.06);
+    margin-bottom: 12px;
+    animation: pin-icon-breathe 3s ease-in-out infinite;
+  }
+  @keyframes pin-icon-breathe {
+    0%, 100% { box-shadow: 0 0 20px rgba(222,93,142,0.20), 0 0 0 8px rgba(222,93,142,0.06); }
+    50%       { box-shadow: 0 0 28px rgba(222,93,142,0.32), 0 0 0 12px rgba(222,93,142,0.09); }
+  }
+
+  .pin-title {
+    font: 700 17px/1 -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #fff; letter-spacing: -0.02em; margin-bottom: 5px;
+  }
+  .pin-sub {
+    font: 400 11.5px/1 -apple-system, BlinkMacSystemFont, sans-serif;
+    color: rgba(255,255,255,0.38); letter-spacing: 0.01em;
+  }
+
+  /* ── Dot indicators ── */
+  .pin-dots {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    padding: 24px 24px 6px;
+    position: relative; z-index: 1;
+  }
+  .pin-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.18);
+    transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .pin-dot.filled {
+    background: #de5d8e;
+    border-color: #de5d8e;
+    transform: scale(1.15);
+    box-shadow: 0 0 10px rgba(222,93,142,0.55);
+  }
+  .pin-dot.success {
+    background: #22c55e; border-color: #22c55e;
+    box-shadow: 0 0 12px rgba(34,197,94,0.6);
+  }
+  .pin-dot.error {
+    background: #ef4444; border-color: #ef4444;
+    box-shadow: 0 0 12px rgba(239,68,68,0.55);
+  }
+
+  /* Shake animation for wrong PIN */
+  @keyframes pin-shake {
+    0%,100% { transform: translateX(0); }
+    15%     { transform: translateX(-9px); }
+    30%     { transform: translateX(8px); }
+    45%     { transform: translateX(-6px); }
+    60%     { transform: translateX(5px); }
+    75%     { transform: translateX(-3px); }
+    90%     { transform: translateX(2px); }
+  }
+  .pin-dots.shake { animation: pin-shake 0.45s cubic-bezier(0.36,0.07,0.19,0.97); }
+
+  /* ── Status label ── */
+  .pin-status {
+    text-align: center; min-height: 16px;
+    font: 500 11px/1 -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: rgba(239,68,68,0); padding: 4px 0 10px;
+    transition: color 0.2s;
+    position: relative; z-index: 1;
+  }
+  .pin-status.error { color: #ef4444; }
+  .pin-status.success { color: #22c55e; }
+
+  /* ── Numpad ── */
+  .pin-pad {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 10px; padding: 4px 28px 6px;
+    position: relative; z-index: 1;
+  }
+  .pin-key {
+    position: relative; aspect-ratio: 1;
+    border-radius: 50%; border: none;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.09);
+    color: #fff;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    cursor: pointer; -webkit-tap-highlight-color: transparent;
+    transition: background 0.12s, transform 0.10s, box-shadow 0.12s;
+    backdrop-filter: blur(4px);
+    gap: 1px;
+  }
+  .pin-key:not(.pin-key--ghost):not(:disabled):active {
+    background: rgba(222,93,142,0.20);
+    border-color: rgba(222,93,142,0.35);
+    transform: scale(0.88);
+    box-shadow: 0 0 14px rgba(222,93,142,0.25);
+  }
+  /* Pressed highlight flash */
+  .pin-key.pressed {
+    background: rgba(222,93,142,0.22);
+    border-color: rgba(222,93,142,0.40);
+    box-shadow: 0 0 16px rgba(222,93,142,0.28);
+  }
+  .pin-key--ghost { background: none; border-color: transparent; cursor: default; }
+  .pin-key--del { background: rgba(255,255,255,0.05); }
+  .pin-key--del:active { transform: scale(0.88); }
+  .pin-key:disabled { opacity: 0; }
+
+  .pin-key-n {
+    font: 300 26px/1 -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+    letter-spacing: -0.01em; color: #fff;
+    display: block;
+  }
+  .pin-key-sub {
+    font: 600 7px/1 -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.12em; color: rgba(255,255,255,0.35);
+    display: block; text-transform: uppercase;
+  }
+
+  /* ── Cancel button ── */
+  .pin-cancel {
+    display: block; width: 100%;
+    padding: 14px 28px;
+    background: none; border: none;
+    font: 500 14px/1 -apple-system, BlinkMacSystemFont, sans-serif;
+    color: rgba(255,255,255,0.35); letter-spacing: 0.01em;
+    cursor: pointer; -webkit-tap-highlight-color: transparent;
+    transition: color 0.15s;
+    position: relative; z-index: 1;
+  }
+  .pin-cancel:active { color: rgba(255,255,255,0.65); }
+  </style>
+
+  <script>
+  /* ── PIN GATE — Identity Wallet ─────────────────────── */
+  (function () {
+    const CORRECT = '9909';
+    const modal   = document.getElementById('pin-modal');
+    const dotsEl  = document.getElementById('pin-dots');
+    const statusEl= document.getElementById('pin-status');
+    const pad     = document.getElementById('pin-pad');
+    const delBtn  = document.getElementById('pin-del');
+    const cancel  = document.getElementById('pin-cancel');
+    const dots    = Array.from(dotsEl.querySelectorAll('.pin-dot'));
+
+    let entry = '';
+    let locked = false;
+
+    /* Intercept the identity wallet card click */
+    const walletCard = document.querySelector('[data-sheet="idcard"]');
+    if (walletCard) {
+      walletCard.addEventListener('click', function (e) {
+        e.stopImmediatePropagation();
+        openPin();
+      }, true); /* capture phase — fires before the global delegate */
+    }
+
+    function openPin() {
+      entry = ''; locked = false;
+      renderDots();
+      setStatus('');
+      modal.classList.add('open');
+    }
+
+    function closePin() {
+      modal.classList.remove('open');
+    }
+
+    function renderDots() {
+      dots.forEach((d, i) => {
+        d.classList.toggle('filled', i < entry.length);
+        d.classList.remove('error', 'success');
+      });
+    }
+
+    function setStatus(msg, type) {
+      statusEl.textContent = msg || '\u00a0';
+      statusEl.className = 'pin-status' + (type ? ' ' + type : '');
+    }
+
+    function pushDigit(n) {
+      if (locked || entry.length >= 4) return;
+      entry += n;
+      renderDots();
+      if (entry.length === 4) evaluate();
+    }
+
+    function deleteDigit() {
+      if (locked || entry.length === 0) return;
+      entry = entry.slice(0, -1);
+      renderDots();
+      setStatus('');
+    }
+
+    function evaluate() {
+      locked = true;
+      if (entry === CORRECT) {
+        /* ── Success ── */
+        dots.forEach(d => { d.classList.remove('filled'); d.classList.add('success'); });
+        setStatus('Access granted', 'success');
+        setTimeout(() => {
+          closePin();
+          /* Open the wallet via the existing openSheet function */
+          if (typeof openSheet === 'function') {
+            openSheet('idcard');
+          } else {
+            const sheet = document.getElementById('sheet-idcard');
+            if (sheet) sheet.classList.add('open');
+          }
+          /* Reset for next open */
+          setTimeout(() => { entry = ''; locked = false; renderDots(); setStatus(''); }, 600);
+        }, 520);
+      } else {
+        /* ── Wrong PIN ── */
+        dots.forEach(d => { d.classList.remove('filled'); d.classList.add('error'); });
+        setStatus('Incorrect PIN', 'error');
+        dotsEl.classList.add('shake');
+        dotsEl.addEventListener('animationend', () => {
+          dotsEl.classList.remove('shake');
+          dots.forEach(d => d.classList.remove('error'));
+          entry = ''; locked = false;
+          renderDots();
+        }, { once: true });
+      }
+    }
+
+    /* Numpad digit keys */
+    pad.addEventListener('click', function (e) {
+      const key = e.target.closest('.pin-key[data-n]');
+      if (!key) return;
+      flashKey(key);
+      pushDigit(key.dataset.n);
+    });
+
+    /* Delete */
+    delBtn.addEventListener('click', () => deleteDigit());
+
+    /* Cancel */
+    cancel.addEventListener('click', () => closePin());
+
+    /* Backdrop tap to cancel */
+    modal.querySelector('.pin-backdrop').addEventListener('click', () => closePin());
+
+    /* Key flash feedback */
+    function flashKey(el) {
+      el.classList.add('pressed');
+      setTimeout(() => el.classList.remove('pressed'), 140);
+    }
+
+    /* Hardware keyboard support */
+    document.addEventListener('keydown', function (e) {
+      if (!modal.classList.contains('open')) return;
+      if (e.key >= '0' && e.key <= '9') pushDigit(e.key);
+      if (e.key === 'Backspace') deleteDigit();
+      if (e.key === 'Escape') closePin();
+    });
+  })();
+  </script>
 </body>
 
 </html>
