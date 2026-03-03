@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <g fill="white">
+    <!-- Head -->
+    <circle cx="50" cy="30" r="7"/>
+    <!-- Crown spikes -->
+    <polygon points="44,26 42,15 48,25"/>
+    <polygon points="50,24 50,13 52,24"/>
+    <polygon points="56,26 58,15 52,25"/>
+    <!-- Body -->
+    <path d="M44,36 Q44,68 46,72 Q50,64 54,72 Q56,68 56,36 C56,33 53,31 50,31 C47,31 44,33 44,36Z"/>
+    <!-- Left wing upper sweep -->
+    <path d="M44,44 C36,40 20,32 8,22 C12,32 18,42 28,48Z"/>
+    <!-- Left wing lower sweep -->
+    <path d="M44,54 C32,52 16,52 6,56 C12,54 24,56 34,58Z"/>
+    <!-- Right wing upper sweep -->
+    <path d="M56,44 C64,40 80,32 92,22 C88,32 82,42 72,48Z"/>
+    <!-- Right wing lower sweep -->
+    <path d="M56,54 C68,52 84,52 94,56 C88,54 76,56 66,58Z"/>
+    <!-- Tail feathers -->
+    <path d="M45,72 Q42,85 40,90 Q46,82 50,75 Q54,82 60,90 Q58,85 55,72Z"/>
+    <!-- Talons -->
+    <path d="M44,73 C40,73 36,77 36,81 C38,79 41,77 44,75Z"/>
+    <path d="M56,73 C60,73 64,77 64,81 C62,79 59,77 56,75Z"/>
+  </g>
+</svg>

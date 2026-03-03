@@ -213,12 +213,15 @@ document.querySelectorAll('.sheet-panel').forEach(panel => {
       f.style.setProperty('--gx', gxC);
       f.style.setProperty('--gy', gyC);
     });
-    /* Holographic sticker variables — drive rainbow & glint from rotation */
+    /* Holographic patch variables — drive rainbow & glint from rotation */
     if (frontFace) {
-      const holoAngle = rotY * 3;
-      const holoHue   = ((rotY * 2 + rotX * 0.8) % 360 + 360) % 360;
-      frontFace.style.setProperty('--holo-angle', `${holoAngle}deg`);
-      frontFace.style.setProperty('--holo-hue',   `${holoHue}deg`);
+      const holoAngle       = rotY * 3;
+      const holoHue         = ((rotY * 2 + rotX * 0.8) % 360 + 360) % 360;
+      /* Fade in the iris as the card tilts: subtle at rest, vivid when spinning */
+      const holoIrisOpacity = (0.18 + Math.min(0.52, Math.abs(rotY) * 0.006 + Math.abs(rotX - 8) * 0.003)).toFixed(3);
+      frontFace.style.setProperty('--holo-angle',        `${holoAngle}deg`);
+      frontFace.style.setProperty('--holo-hue',          `${holoHue}deg`);
+      frontFace.style.setProperty('--holo-iris-opacity', holoIrisOpacity);
       frontFace.style.setProperty('--gx', gxC);
       frontFace.style.setProperty('--gy', gyC);
     }
