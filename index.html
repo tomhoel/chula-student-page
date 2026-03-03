@@ -3087,23 +3087,25 @@
   </script>
 
   <!-- ══════════════════════════════════════════════════════
-       PIN GATE — Identity Wallet secure access overlay
+       PIN GATE — Identity Wallet secure access
   ══════════════════════════════════════════════════════ -->
   <div id="pin-modal" aria-modal="true" role="dialog" aria-label="Identity Wallet — Enter PIN">
     <div class="pin-backdrop"></div>
     <div class="pin-card">
 
-      <!-- Header -->
+      <!-- CU Logo + header -->
       <div class="pin-header">
-        <div class="pin-icon-ring">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-          </svg>
-        </div>
+        <img src="cu-logo.png" class="pin-cu-logo" alt="Chulalongkorn University" onerror="this.style.display='none'">
         <div class="pin-title">Identity Wallet</div>
-        <div class="pin-sub">Enter your 4-digit PIN to unlock</div>
+        <div class="pin-sub">Chulalongkorn University</div>
+        <div class="pin-secure-badge">
+          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Secure Access
+        </div>
       </div>
+
+      <!-- Separator -->
+      <div class="pin-sep"></div>
 
       <!-- Dot indicators -->
       <div class="pin-dots" id="pin-dots">
@@ -3130,7 +3132,7 @@
         <button class="pin-key pin-key--ghost" type="button" disabled></button>
         <button class="pin-key" data-n="0" type="button"><span class="pin-key-n">0</span></button>
         <button class="pin-key pin-key--del" id="pin-del" type="button" aria-label="Delete">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/>
             <line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/>
           </svg>
@@ -3143,211 +3145,184 @@
   </div>
 
   <style>
-  /* ── PIN Modal overlay ── */
+  /* ── PIN Modal — centered popup, blurred app behind ── */
   #pin-modal {
     position: fixed; inset: 0; z-index: 9000;
-    display: flex; align-items: flex-end; justify-content: center;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
     pointer-events: none; visibility: hidden;
-    transition: visibility 0s 0.38s;
+    transition: visibility 0s 0.30s;
   }
   #pin-modal.open {
     pointer-events: auto; visibility: visible;
     transition: visibility 0s 0s;
   }
 
-  /* Frosted dark backdrop */
+  /* Blurred app backdrop — light, matches site tone */
   .pin-backdrop {
     position: absolute; inset: 0;
-    background: rgba(8, 12, 24, 0.72);
-    backdrop-filter: blur(18px) saturate(140%);
-    -webkit-backdrop-filter: blur(18px) saturate(140%);
-    opacity: 0; transition: opacity 0.32s ease;
+    background: rgba(242, 240, 238, 0.60);
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    opacity: 0; transition: opacity 0.28s ease;
   }
   #pin-modal.open .pin-backdrop { opacity: 1; }
 
-  /* Glass card — bottom sheet style */
+  /* White card — matches site panel style */
   .pin-card {
     position: relative; z-index: 1;
-    width: 100%; max-width: 430px;
-    background: linear-gradient(160deg, rgba(18,24,42,0.97) 0%, rgba(12,16,32,0.99) 100%);
-    border: 1px solid rgba(222,93,142,0.18);
-    border-bottom: none;
-    border-radius: 26px 26px 0 0;
-    padding: 0 0 max(env(safe-area-inset-bottom), 28px);
+    width: 100%; max-width: 320px;
+    background: #fff;
+    border-radius: 22px;
+    border: 1px solid rgba(0,0,0,0.07);
     box-shadow:
-      0 -8px 40px rgba(0,0,0,0.55),
-      0 0 0 1px rgba(255,255,255,0.04) inset,
-      0 -1px 0 rgba(222,93,142,0.22) inset;
-    transform: translateY(100%);
-    transition: transform 0.42s cubic-bezier(0.32, 0.72, 0, 1);
+      0 24px 64px rgba(0,0,0,0.13),
+      0 4px 16px rgba(0,0,0,0.07),
+      0 0 0 1px rgba(255,255,255,0.9) inset;
     overflow: hidden;
+    opacity: 0;
+    transform: scale(0.92) translateY(10px);
+    transition: opacity 0.28s ease, transform 0.32s cubic-bezier(0.34,1.4,0.64,1);
   }
-  /* Ambient pink glow top-center */
+  /* CU pink top accent line */
   .pin-card::before {
-    content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
-    width: 200px; height: 160px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(222,93,142,0.18) 0%, transparent 70%);
-    pointer-events: none;
+    content: ''; display: block;
+    height: 3px;
+    background: linear-gradient(to right, #de5d8e, #b43b6b);
   }
-  /* Subtle noise texture */
-  .pin-card::after {
-    content: ''; position: absolute; inset: 0; border-radius: inherit;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 0; opacity: 0.6;
+  #pin-modal.open .pin-card {
+    opacity: 1; transform: scale(1) translateY(0);
   }
-  #pin-modal.open .pin-card { transform: translateY(0); }
-
-  /* Pull handle */
-  .pin-card > * { position: relative; z-index: 1; }
-  .pin-card::before { z-index: 0; }
 
   /* ── Header ── */
   .pin-header {
     display: flex; flex-direction: column; align-items: center;
-    padding: 16px 24px 4px; text-align: center;
-    position: relative; z-index: 1;
+    padding: 22px 24px 14px; text-align: center; gap: 5px;
   }
-  /* Pull bar */
-  .pin-header::before {
-    content: ''; display: block;
-    width: 34px; height: 4px; border-radius: 99px;
-    background: rgba(255,255,255,0.15);
-    margin: 0 auto 18px;
+  .pin-cu-logo {
+    width: 56px; height: 56px; object-fit: contain;
+    margin-bottom: 4px;
+    filter: drop-shadow(0 2px 6px rgba(222,93,142,0.18));
   }
-
-  .pin-icon-ring {
-    width: 52px; height: 52px; border-radius: 50%;
-    background: rgba(222,93,142,0.12);
-    border: 1px solid rgba(222,93,142,0.30);
-    display: flex; align-items: center; justify-content: center;
-    color: #de5d8e;
-    box-shadow: 0 0 20px rgba(222,93,142,0.20), 0 0 0 8px rgba(222,93,142,0.06);
-    margin-bottom: 12px;
-    animation: pin-icon-breathe 3s ease-in-out infinite;
-  }
-  @keyframes pin-icon-breathe {
-    0%, 100% { box-shadow: 0 0 20px rgba(222,93,142,0.20), 0 0 0 8px rgba(222,93,142,0.06); }
-    50%       { box-shadow: 0 0 28px rgba(222,93,142,0.32), 0 0 0 12px rgba(222,93,142,0.09); }
-  }
-
   .pin-title {
-    font: 700 17px/1 -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #fff; letter-spacing: -0.02em; margin-bottom: 5px;
+    font: 700 16px/1.2 var(--f);
+    color: var(--t1); letter-spacing: -0.02em;
   }
   .pin-sub {
-    font: 400 11.5px/1 -apple-system, BlinkMacSystemFont, sans-serif;
-    color: rgba(255,255,255,0.38); letter-spacing: 0.01em;
+    font: 400 11px/1 var(--f);
+    color: var(--t3); letter-spacing: 0.01em;
+  }
+  .pin-secure-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    margin-top: 4px;
+    padding: 4px 10px;
+    background: rgba(222,93,142,0.08);
+    border: 1px solid rgba(222,93,142,0.20);
+    border-radius: 20px;
+    font: 600 9px/1 var(--f);
+    color: #de5d8e; letter-spacing: 0.07em; text-transform: uppercase;
   }
 
-  /* ── Dot indicators ── */
+  /* Separator */
+  .pin-sep {
+    height: 1px; background: rgba(0,0,0,0.06);
+    margin: 0 20px;
+  }
+
+  /* ── PIN dots ── */
   .pin-dots {
-    display: flex; align-items: center; justify-content: center; gap: 14px;
-    padding: 24px 24px 6px;
-    position: relative; z-index: 1;
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    padding: 20px 24px 4px;
   }
   .pin-dot {
-    width: 14px; height: 14px; border-radius: 50%;
+    width: 13px; height: 13px; border-radius: 50%;
     background: transparent;
-    border: 2px solid rgba(255,255,255,0.18);
-    transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
+    border: 2px solid rgba(0,0,0,0.15);
+    transition: background 0.16s ease, border-color 0.16s ease,
+                transform 0.20s cubic-bezier(0.34,1.56,0.64,1),
+                box-shadow 0.16s ease;
   }
   .pin-dot.filled {
-    background: #de5d8e;
-    border-color: #de5d8e;
-    transform: scale(1.15);
-    box-shadow: 0 0 10px rgba(222,93,142,0.55);
+    background: #de5d8e; border-color: #de5d8e;
+    transform: scale(1.18);
+    box-shadow: 0 2px 8px rgba(222,93,142,0.40);
   }
   .pin-dot.success {
-    background: #22c55e; border-color: #22c55e;
-    box-shadow: 0 0 12px rgba(34,197,94,0.6);
+    background: #16a34a; border-color: #16a34a;
+    box-shadow: 0 2px 8px rgba(22,163,74,0.40);
   }
   .pin-dot.error {
-    background: #ef4444; border-color: #ef4444;
-    box-shadow: 0 0 12px rgba(239,68,68,0.55);
+    background: #dc2626; border-color: #dc2626;
+    box-shadow: 0 2px 8px rgba(220,38,38,0.35);
   }
-
-  /* Shake animation for wrong PIN */
   @keyframes pin-shake {
     0%,100% { transform: translateX(0); }
-    15%     { transform: translateX(-9px); }
-    30%     { transform: translateX(8px); }
-    45%     { transform: translateX(-6px); }
-    60%     { transform: translateX(5px); }
-    75%     { transform: translateX(-3px); }
-    90%     { transform: translateX(2px); }
+    16%     { transform: translateX(-8px); }
+    33%     { transform: translateX(7px); }
+    50%     { transform: translateX(-5px); }
+    67%     { transform: translateX(4px); }
+    83%     { transform: translateX(-2px); }
   }
-  .pin-dots.shake { animation: pin-shake 0.45s cubic-bezier(0.36,0.07,0.19,0.97); }
+  .pin-dots.shake { animation: pin-shake 0.42s ease; }
 
-  /* ── Status label ── */
+  /* ── Status ── */
   .pin-status {
-    text-align: center; min-height: 16px;
-    font: 500 11px/1 -apple-system, BlinkMacSystemFont, sans-serif;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    color: rgba(239,68,68,0); padding: 4px 0 10px;
-    transition: color 0.2s;
-    position: relative; z-index: 1;
+    text-align: center; height: 18px;
+    font: 500 10.5px/1 var(--f);
+    letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 5px 0 8px;
+    transition: color 0.18s;
+    color: transparent;
   }
-  .pin-status.error { color: #ef4444; }
-  .pin-status.success { color: #22c55e; }
+  .pin-status.error   { color: #dc2626; }
+  .pin-status.success { color: #16a34a; }
 
   /* ── Numpad ── */
   .pin-pad {
     display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 10px; padding: 4px 28px 6px;
-    position: relative; z-index: 1;
+    gap: 8px; padding: 4px 20px 6px;
   }
   .pin-key {
-    position: relative; aspect-ratio: 1;
-    border-radius: 50%; border: none;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.09);
-    color: #fff;
+    aspect-ratio: 1; border-radius: 14px;
+    background: #F9F7F6; border: 1px solid rgba(0,0,0,0.07);
+    color: var(--t1);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     cursor: pointer; -webkit-tap-highlight-color: transparent;
-    transition: background 0.12s, transform 0.10s, box-shadow 0.12s;
-    backdrop-filter: blur(4px);
+    transition: background 0.10s, transform 0.10s, border-color 0.10s, box-shadow 0.10s;
     gap: 1px;
   }
-  .pin-key:not(.pin-key--ghost):not(:disabled):active {
-    background: rgba(222,93,142,0.20);
-    border-color: rgba(222,93,142,0.35);
-    transform: scale(0.88);
-    box-shadow: 0 0 14px rgba(222,93,142,0.25);
-  }
-  /* Pressed highlight flash */
+  .pin-key:not(.pin-key--ghost):not(:disabled):active,
   .pin-key.pressed {
-    background: rgba(222,93,142,0.22);
-    border-color: rgba(222,93,142,0.40);
-    box-shadow: 0 0 16px rgba(222,93,142,0.28);
+    background: rgba(222,93,142,0.10);
+    border-color: rgba(222,93,142,0.28);
+    transform: scale(0.92);
+    box-shadow: 0 1px 4px rgba(222,93,142,0.15);
   }
-  .pin-key--ghost { background: none; border-color: transparent; cursor: default; }
-  .pin-key--del { background: rgba(255,255,255,0.05); }
-  .pin-key--del:active { transform: scale(0.88); }
+  .pin-key--ghost { background: transparent; border-color: transparent; cursor: default; }
+  .pin-key--del   { background: #F2F0EE; }
   .pin-key:disabled { opacity: 0; }
 
   .pin-key-n {
-    font: 300 26px/1 -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-    letter-spacing: -0.01em; color: #fff;
-    display: block;
+    font: 300 24px/1 -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+    color: var(--t1); letter-spacing: -0.01em; display: block;
   }
   .pin-key-sub {
-    font: 600 7px/1 -apple-system, BlinkMacSystemFont, sans-serif;
-    letter-spacing: 0.12em; color: rgba(255,255,255,0.35);
+    font: 600 6.5px/1 var(--f);
+    letter-spacing: 0.10em; color: var(--t3);
     display: block; text-transform: uppercase;
   }
 
-  /* ── Cancel button ── */
+  /* ── Cancel ── */
   .pin-cancel {
     display: block; width: 100%;
-    padding: 14px 28px;
+    padding: 13px 24px 16px;
     background: none; border: none;
-    font: 500 14px/1 -apple-system, BlinkMacSystemFont, sans-serif;
-    color: rgba(255,255,255,0.35); letter-spacing: 0.01em;
+    font: 500 13px/1 var(--f);
+    color: var(--t3); letter-spacing: 0.01em;
     cursor: pointer; -webkit-tap-highlight-color: transparent;
-    transition: color 0.15s;
-    position: relative; z-index: 1;
+    transition: color 0.14s;
   }
-  .pin-cancel:active { color: rgba(255,255,255,0.65); }
+  .pin-cancel:active { color: var(--t2); }
   </style>
 
   <script>
